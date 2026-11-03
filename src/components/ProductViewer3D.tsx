@@ -84,8 +84,70 @@ export const ProductViewer3D: React.FC<ProductViewer3DProps> = ({
     fillLight.position.set(2, -1, 2);
     scene.add(fillLight);
 
+    // Generador de textura de alta resolución para la etiqueta del envase
+    const createLabelTexture = () => {
+      const labelCanvas = document.createElement('canvas');
+      labelCanvas.width = 2048;
+      labelCanvas.height = 1024;
+      const ctx = labelCanvas.getContext('2d');
+      if (ctx) {
+        // Fondo verde bosque bioinsumos
+        const bgGrad = ctx.createLinearGradient(0, 0, 2048, 0);
+        bgGrad.addColorStop(0, '#0a2318');
+        bgGrad.addColorStop(0.5, '#123827');
+        bgGrad.addColorStop(1, '#0a2318');
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, 2048, 1024);
+
+        // Franjas decorativas esmeralda
+        ctx.fillStyle = '#22c55e';
+        ctx.fillRect(0, 0, 2048, 28);
+        ctx.fillRect(0, 996, 2048, 28);
+
+        // Panel frontal
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.04)';
+        ctx.fillRect(200, 60, 1648, 904);
+
+        // Marca
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 120px sans-serif';
+        ctx.fillText('GALYON', 320, 260);
+
+        ctx.fillStyle = '#4ade80';
+        ctx.font = 'italic bold 100px serif';
+        ctx.fillText('TRICHO', 320, 380);
+
+        ctx.fillStyle = '#d1d5db';
+        ctx.font = '500 48px sans-serif';
+        ctx.fillText('Trichoderma harzianum & asperellum', 320, 480);
+
+        ctx.fillStyle = '#9ca3af';
+        ctx.font = '400 40px sans-serif';
+        ctx.fillText('Biofungicida Microbiológico & Promotor Radicular', 320, 550);
+
+        // Badge de formato
+        ctx.fillStyle = '#166534';
+        ctx.roundRect ? ctx.roundRect(320, 640, 780, 110, 24) : ctx.fillRect(320, 640, 780, 110);
+        ctx.fill();
+
+        ctx.fillStyle = '#a7f3d0';
+        ctx.font = 'bold 50px sans-serif';
+        ctx.fillText('1 LITRO · FORMULACIÓN LÍQUIDA', 360, 715);
+
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = '36px sans-serif';
+        ctx.fillText('Biotecnología aplicada al agro · Registro de Inocuidad · Ecuador', 320, 840);
+      }
+
+      const tex = new THREE.CanvasTexture(labelCanvas);
+      tex.wrapS = THREE.RepeatWrapping;
+      tex.wrapT = THREE.ClampToEdgeWrapping;
+      tex.colorSpace = THREE.SRGBColorSpace;
+      return tex;
+    };
+
     // Sombra de contacto en el suelo
-    const shadowGeo = new THREE.PlaneGeometry(3.2, 3.2);
+    const shadowGeo = new THREE.PlaneGeometry(3.5, 3.5);
     const shadowMat = new THREE.MeshBasicMaterial({
       color: 0x000000,
       transparent: true,
@@ -96,102 +158,6 @@ export const ProductViewer3D: React.FC<ProductViewer3DProps> = ({
     shadowPlane.rotation.x = -Math.PI / 2;
     shadowPlane.position.y = -0.92;
     scene.add(shadowPlane);
-
-    // Generador procedural de envase GALYON TRICHO (1 Litro)
-    const createProceduralBottle = () => {
-      const bottleGroup = new THREE.Group();
-
-      const bodyGeo = new THREE.CylinderGeometry(0.5, 0.52, 1.35, 48);
-      const bodyMat = new THREE.MeshStandardMaterial({
-        color: 0xf5f7f4,
-        roughness: 0.25,
-        metalness: 0.05,
-      });
-      const body = new THREE.Mesh(bodyGeo, bodyMat);
-      body.castShadow = true;
-      body.receiveShadow = true;
-      bottleGroup.add(body);
-
-      const shoulderGeo = new THREE.ConeGeometry(0.5, 0.28, 48, 1, true);
-      const shoulder = new THREE.Mesh(shoulderGeo, bodyMat);
-      shoulder.position.y = 0.81;
-      shoulder.castShadow = true;
-      bottleGroup.add(shoulder);
-
-      const neckGeo = new THREE.CylinderGeometry(0.22, 0.22, 0.22, 32);
-      const neck = new THREE.Mesh(neckGeo, bodyMat);
-      neck.position.y = 0.96;
-      neck.castShadow = true;
-      bottleGroup.add(neck);
-
-      const capGeo = new THREE.CylinderGeometry(0.24, 0.24, 0.2, 32);
-      const capMat = new THREE.MeshStandardMaterial({
-        color: 0x166534,
-        roughness: 0.3,
-        metalness: 0.15,
-      });
-      const cap = new THREE.Mesh(capGeo, capMat);
-      cap.position.y = 1.08;
-      cap.castShadow = true;
-      bottleGroup.add(cap);
-
-      const ringGeo = new THREE.TorusGeometry(0.24, 0.02, 16, 32);
-      const ring = new THREE.Mesh(ringGeo, capMat);
-      ring.rotation.x = Math.PI / 2;
-      ring.position.y = 0.97;
-      bottleGroup.add(ring);
-
-      // Etiqueta tipográfica GALYON TRICHO
-      const labelCanvas = document.createElement('canvas');
-      labelCanvas.width = 1024;
-      labelCanvas.height = 512;
-      const ctx = labelCanvas.getContext('2d');
-      if (ctx) {
-        ctx.fillStyle = '#0f291e';
-        ctx.fillRect(0, 0, 1024, 512);
-
-        ctx.fillStyle = '#22c55e';
-        ctx.fillRect(0, 0, 1024, 18);
-        ctx.fillRect(0, 494, 1024, 18);
-
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 64px sans-serif';
-        ctx.fillText('GALYON', 80, 140);
-
-        ctx.fillStyle = '#4ade80';
-        ctx.font = 'italic bold 52px serif';
-        ctx.fillText('TRICHO', 80, 210);
-
-        ctx.fillStyle = '#d1d5db';
-        ctx.font = '28px sans-serif';
-        ctx.fillText('Trichoderma harzianum & asperellum', 80, 270);
-        ctx.fillText('Biofungicida & Protector Radicular', 80, 315);
-
-        ctx.fillStyle = '#a7f3d0';
-        ctx.font = 'bold 36px sans-serif';
-        ctx.fillText('1 LITRO · FORMULACIÓN LÍQUIDA', 80, 395);
-
-        ctx.fillStyle = '#9ca3af';
-        ctx.font = '22px sans-serif';
-        ctx.fillText('Biotecnología para el campo ecuatoriano', 80, 445);
-      }
-
-      const labelTex = new THREE.CanvasTexture(labelCanvas);
-      const labelGeo = new THREE.CylinderGeometry(0.505, 0.525, 0.95, 48, 1, true, 0, Math.PI * 1.5);
-      const labelMat = new THREE.MeshStandardMaterial({
-        map: labelTex,
-        roughness: 0.35,
-        metalness: 0.05,
-      });
-      const label = new THREE.Mesh(labelGeo, labelMat);
-      label.rotation.y = -Math.PI / 4;
-      label.position.y = -0.05;
-      bottleGroup.add(label);
-
-      bottleGroup.position.y = -0.15;
-      scene.add(bottleGroup);
-      return bottleGroup;
-    };
 
     // 6. Carga de modelo GLB o fallback procedural
     const loader = new GLTFLoader();
@@ -206,32 +172,47 @@ export const ProductViewer3D: React.FC<ProductViewer3DProps> = ({
         const center = box.getCenter(new THREE.Vector3());
 
         const maxDim = Math.max(size.x, size.y, size.z);
-        const scale = 1.75 / (maxDim || 1);
+        const scale = 1.8 / (maxDim || 1);
         model.scale.setScalar(scale);
 
+        // Centrar con precisión en el eje Y y situar sobre la sombra
         model.position.x = -center.x * scale;
-        model.position.y = -center.y * scale + 0.1;
+        model.position.y = -center.y * scale + 0.05;
         model.position.z = -center.z * scale;
+
+        // Ajustar plano de sombra justo en la base del envase
+        const minY = -center.y * scale - (size.y * scale * 0.5) + 0.05;
+        shadowPlane.position.y = minY - 0.01;
 
         model.traverse((child) => {
           if ((child as THREE.Mesh).isMesh) {
-            child.castShadow = true;
-            child.receiveShadow = true;
+            const mesh = child as THREE.Mesh;
+            mesh.castShadow = true;
+            mesh.receiveShadow = true;
+
+            // Si es la etiqueta y no trae mapa embebido, aplicar etiqueta GALYON TRICHO
+            if (mesh.name === 'Wrap_Around_Label') {
+              const mat = mesh.material as THREE.MeshStandardMaterial;
+              if (mat && !mat.map) {
+                mat.map = createLabelTexture();
+                mat.roughness = 0.32;
+                mat.metalness = 0.03;
+                mat.needsUpdate = true;
+              }
+            }
           }
         });
 
         scene.add(model);
         setModelType('glb');
-        setStatusMessage('Modelo GLB renderizado');
+        setStatusMessage('GALYON TRICHO 1L · Modelo Oficial');
         setLoading(false);
       },
       undefined,
       (err) => {
         if (isDisposed) return;
-        console.warn('GLTFLoader aviso:', err);
-        createProceduralBottle();
-        setModelType('procedural');
-        setStatusMessage('Envase 3D GALYON TRICHO');
+        console.error('GLTFLoader error:', err);
+        setStatusMessage('Error al cargar modelo 3D');
         setLoading(false);
       }
     );
