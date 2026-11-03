@@ -5,12 +5,15 @@ import {
   MessageCircle, 
   X, 
   Check, 
-  ChevronRight
+  ChevronRight,
+  Box
 } from 'lucide-react';
+import { ProductViewer3D } from './components/ProductViewer3D';
 
 const NAV_LINKS = [
   { name: 'Nosotros', id: 'nosotros' },
   { name: 'Bioinsumos', id: 'bioinsumos' },
+  { name: 'Visor 3D', id: 'visor3d' },
   { name: 'Asesor', id: 'asesor' },
   { name: 'Análisis de Suelo', id: 'analisis' },
   { name: 'Combos', id: 'combos' },
@@ -279,20 +282,27 @@ export default function App() {
         </p>
 
         {/* Center absolute action buttons */}
-        <div className="sm:absolute sm:left-1/2 sm:-translate-x-1/2 sm:bottom-0 flex items-center gap-3">
+        <div className="sm:absolute sm:left-1/2 sm:-translate-x-1/2 sm:bottom-0 flex items-center gap-2 sm:gap-3 flex-wrap justify-center">
           <button
             onClick={() => setActiveModal('bioinsumos')}
-            className="group relative bg-white text-black text-sm font-body font-medium rounded px-6 py-3 overflow-hidden active:scale-[0.97] transition-all duration-200 shadow-[0_0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_24px_4px_rgba(255,255,255,0.25)] hover:scale-[1.03] flex items-center gap-1.5 cursor-pointer"
+            className="group relative bg-white text-black text-sm font-body font-medium rounded px-5 sm:px-6 py-3 overflow-hidden active:scale-[0.97] transition-all duration-200 shadow-[0_0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_24px_4px_rgba(255,255,255,0.25)] hover:scale-[1.03] flex items-center gap-1.5 cursor-pointer"
           >
             <span className="relative z-10">Conocer bioinsumos</span>
             <ArrowUpRight className="w-4 h-4 relative z-10 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             <span className="absolute inset-0 bg-gradient-to-b from-white to-white/85 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
           </button>
           <button
-            onClick={() => setActiveModal('asesor')}
-            className="liquid-glass group text-white text-sm font-body font-medium rounded px-6 py-3 active:scale-[0.97] transition-all duration-200 hover:scale-[1.03] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_0_20px_2px_rgba(255,255,255,0.07)] flex items-center gap-1.5 cursor-pointer"
+            onClick={() => setActiveModal('visor3d')}
+            className="liquid-glass group text-emerald-300 hover:text-white text-sm font-body font-medium rounded px-4 sm:px-5 py-3 active:scale-[0.97] transition-all duration-200 hover:scale-[1.03] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_0_20px_2px_rgba(74,222,128,0.15)] flex items-center gap-1.5 cursor-pointer"
           >
-            <span>Asesor de cultivos</span>
+            <Box className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" />
+            <span>Visor 3D</span>
+          </button>
+          <button
+            onClick={() => setActiveModal('asesor')}
+            className="liquid-glass group text-white text-sm font-body font-medium rounded px-5 sm:px-6 py-3 active:scale-[0.97] transition-all duration-200 hover:scale-[1.03] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_0_20px_2px_rgba(255,255,255,0.07)] flex items-center gap-1.5 cursor-pointer"
+          >
+            <span>Asesor</span>
             <ArrowUpRight className="w-4 h-4 text-white/70 group-hover:text-white transition-colors" />
           </button>
         </div>
@@ -333,14 +343,23 @@ export default function App() {
                       <p className="text-xs text-white/60 mt-1">Defensa biológica de suelo y raíces fuertes frente a hongos patógenos.</p>
                       <span className="text-xs text-emerald-400 font-semibold mt-2 inline-block">1 L por $20 · Galón (4 L) por $60</span>
                     </div>
-                    <a
-                      href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20deseo%20pedir%20GALYON%20TRICHO."
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="liquid-glass text-xs text-white px-3 py-1.5 rounded-full hover:bg-white/20 flex items-center gap-1 flex-shrink-0"
-                    >
-                      Pedir <ChevronRight className="w-3 h-3" />
-                    </a>
+                    <div className="flex flex-col gap-2 flex-shrink-0">
+                      <button
+                        onClick={() => setActiveModal('visor3d')}
+                        className="liquid-glass text-xs text-emerald-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/20 flex items-center gap-1.5"
+                      >
+                        <Box className="w-3 h-3" />
+                        <span>Ver en 3D</span>
+                      </button>
+                      <a
+                        href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20deseo%20pedir%20GALYON%20TRICHO."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-white text-black text-xs font-semibold px-3 py-1.5 rounded-full hover:bg-white/90 flex items-center justify-center gap-1"
+                      >
+                        Pedir <ChevronRight className="w-3 h-3" />
+                      </a>
+                    </div>
                   </div>
 
                   <div className="p-4 rounded-xl bg-white/5 border border-white/10 flex items-start justify-between gap-4">
@@ -376,6 +395,62 @@ export default function App() {
                       Pedir <ChevronRight className="w-3 h-3" />
                     </a>
                   </div>
+                </div>
+              </div>
+            )}
+
+            {/* Modal: Visor 3D Interactivo */}
+            {activeModal === 'visor3d' && (
+              <div>
+                <div className="text-xs uppercase tracking-widest text-emerald-400 font-semibold mb-2">
+                  Experiencia Inmersiva 3D
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-heading italic text-white mb-2">
+                  GALYON TRICHO · Envase 3D
+                </h3>
+                <p className="text-sm text-white/70 mb-4">
+                  Inspecciona el diseño en 360°, volumen, precinto y especificaciones biológicas oficiales.
+                </p>
+
+                <div className="w-full h-[360px] sm:h-[420px] mb-5">
+                  <ProductViewer3D />
+                </div>
+
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+                  <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+                    <span className="text-[10px] text-white/50 uppercase block">Formato</span>
+                    <strong className="text-xs sm:text-sm text-white font-medium">1 Litro / Galón 4L</strong>
+                  </div>
+                  <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+                    <span className="text-[10px] text-white/50 uppercase block">Microorganismo</span>
+                    <strong className="text-xs sm:text-sm text-emerald-300 font-medium">Trichoderma spp.</strong>
+                  </div>
+                  <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+                    <span className="text-[10px] text-white/50 uppercase block">Acción Principal</span>
+                    <strong className="text-xs sm:text-sm text-white font-medium">Raíces y Suelo</strong>
+                  </div>
+                  <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+                    <span className="text-[10px] text-white/50 uppercase block">Precio Referencial</span>
+                    <strong className="text-xs sm:text-sm text-emerald-400 font-medium">$20 / Litro</strong>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-center gap-3">
+                  <a
+                    href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20estuve%20viendo%20el%20modelo%203D%20de%20GALYON%20TRICHO%20y%20quisiera%20hacer%20un%20pedido."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:flex-1 text-center bg-white text-black font-semibold text-sm py-3 rounded-full hover:bg-white/90 transition-colors flex items-center justify-center gap-2"
+                  >
+                    <span>Pedir GALYON TRICHO por WhatsApp</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </a>
+                  <button
+                    onClick={() => setActiveModal('bioinsumos')}
+                    className="w-full sm:w-auto liquid-glass text-white text-xs py-3 px-5 rounded-full hover:bg-white/20 transition-colors"
+                  >
+                    Ver catálogo
+                  </button>
                 </div>
               </div>
             )}
