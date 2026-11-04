@@ -718,3 +718,99 @@ document.addEventListener('keydown', e => {
  restart.addEventListener('click',ev=>{ev.preventDefault();step=0;fields.forEach(f=>data[f]='');renderWithoutJump();});
  render();
 })();
+
+// Video Background Custom JS Fade System (NO CSS transitions, 250ms rAF fade, 0.55s remaining trigger)
+(function initGlobalDynamicBackgroundVideo() {
+  const video = document.getElementById('hero-video');
+  if (!video) return;
+
+  let animFrameId = null;
+  let fadingOutRef = false;
+  let currentOpacity = 0;
+  video.style.opacity = '0';
+
+  function fade(targetOpacity, duration, onComplete) {
+    if (animFrameId) {
+      cancelAnimationFrame(animFrameId);
+      animFrameId = null;
+    }
+    const startOpacity = currentOpacity;
+    const startTime = performance.now();
+
+    function step(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      currentOpacity = startOpacity + (targetOpacity - startOpacity) * progress;
+      video.style.opacity = currentOpacity.toFixed(4);
+
+      if (progress < 1) {
+        animFrameId = requestAnimationFrame(step);
+      } else {
+        animFrameId = null;
+        if (onComplete) onComplete();
+      }
+    }
+    animFrameId = requestAnimationFrame(step);
+  }
+
+  function startFadeIn() {
+    fadingOutRef = false;
+    fade(1, 250);
+  }
+
+  function startFadeOut() {
+    fadingOutRef = true;
+    fade(0, 250);
+  }
+
+  video.addEventListener('play', function() {
+    if (!fadingOutRef && currentOpacity < 1) {
+      startFadeIn();
+    }
+  });
+
+  video.addEventListener('timeupdate', function() {
+    if (!video.duration || Number.isNaN(video.duration)) return;
+    const remaining = video.duration - video.currentTime;
+    if (remaining <= 0.55 && !fadingOutRef) {
+      startFadeOut();
+    }
+  });
+
+  video.addEventListener('ended', function() {
+    if (animFrameId) {
+      cancelAnimationFrame(animFrameId);
+      animFrameId = null;
+    }
+    currentOpacity = 0;
+    video.style.opacity = '0';
+    setTimeout(function() {
+      video.currentTime = 0;
+      video.play().then(function() {
+        startFadeIn();
+      }).catch(function() {});
+    }, 100);
+  });
+
+  function triggerPlayback() {
+    video.play().then(function() {
+      startFadeIn();
+    }).catch(function() {
+      function userResume() {
+        video.play().then(function() { startFadeIn(); }).catch(function() {});
+        window.removeEventListener('click', userResume);
+        window.removeEventListener('touchstart', userResume);
+        window.removeEventListener('scroll', userResume);
+      }
+      window.addEventListener('click', userResume, { once: true });
+      window.addEventListener('touchstart', userResume, { once: true });
+      window.addEventListener('scroll', userResume, { once: true });
+    });
+  }
+
+  if (video.readyState >= 2) {
+    triggerPlayback();
+  } else {
+    video.addEventListener('loadeddata', triggerPlayback, { once: true });
+  }
+})();

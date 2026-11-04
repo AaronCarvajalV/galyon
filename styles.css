@@ -2263,3 +2263,160 @@
     padding: 0 20px;
   }
 }
+
+/* ==========================================================================
+   v6.3.0 — GLOBAL DYNAMIC BACKGROUND & HARMONIZED CARD ELEVATION
+   ========================================================================== */
+body.has-dynamic-bg,
+body:has(.site-bg-fixed) {
+  background: transparent !important;
+}
+
+.site-bg-fixed {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.site-bg-video {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 115%;
+  height: 115%;
+  object-fit: cover;
+  object-position: center top;
+  pointer-events: none;
+  opacity: 0;
+  transition: none !important;
+}
+
+.site-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(250, 249, 244, 0.78);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  pointer-events: none;
+}
+
+/* Ensure content sits safely above the background video */
+.page-main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Let the dynamic background shine through where there was plain white/cream background */
+.intro,
+.products,
+.combos,
+.rice-product-section,
+.crop-advisor,
+.soil,
+.faq {
+  background: transparent !important;
+}
+
+/* Sections that had dark backgrounds (trust, closing, footer) stay dark */
+.trust,
+.closing,
+.footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* Components and product cards (Raíces & suelo, Desarrollo vegetal, Manejo de insectos, Combos, etc.)
+   keep solid white backgrounds with subtle elevation so they have ZERO visual noise */
+.product-card {
+  background: #ffffff !important;
+  border: 1px solid #dce8d6 !important;
+  box-shadow: 0 10px 30px rgba(20, 61, 44, 0.08) !important;
+  border-radius: 12px !important;
+}
+
+.combo-card {
+  background: #ffffff !important;
+  border: 1px solid #dce8d6 !important;
+  box-shadow: 0 10px 30px rgba(20, 61, 44, 0.08) !important;
+  border-radius: 12px !important;
+}
+
+.rice-product {
+  background: #ffffff !important;
+  border: 1px solid #dce8d6 !important;
+  box-shadow: 0 10px 30px rgba(20, 61, 44, 0.08) !important;
+  border-radius: 14px !important;
+}
+
+.catalog-note {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(6px) !important;
+  box-shadow: 0 4px 16px rgba(20, 61, 44, 0.06) !important;
+}
+
+.advisor-app {
+  background: #ffffff !important;
+  border: 1px solid #dce8d6 !important;
+  box-shadow: 0 12px 36px rgba(20, 61, 44, 0.08) !important;
+  border-radius: 18px !important;
+}
+
+.soil-sales-hero {
+  background: #ffffff !important;
+  border: 1px solid #dce8d6 !important;
+  box-shadow: 0 10px 30px rgba(20, 61, 44, 0.08) !important;
+  border-radius: 16px !important;
+}
+
+.soil-packages {
+  background: #ffffff !important;
+  border: 1px solid #dce8d6 !important;
+  box-shadow: 0 10px 30px rgba(20, 61, 44, 0.08) !important;
+  border-radius: 16px !important;
+}
+
+.soil-plan {
+  background: #ffffff !important;
+}
+
+.soil-plan[open] {
+  background: #f7fbf3 !important;
+}
+
+.identity-intro,
+.identity-editorial {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid #dce8d6 !important;
+  box-shadow: 0 8px 24px rgba(20, 61, 44, 0.06) !important;
+  border-radius: 14px !important;
+  padding: 30px 28px !important;
+}
+
+.metrics {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid #dce8d6 !important;
+  box-shadow: 0 8px 24px rgba(20, 61, 44, 0.05) !important;
+  border-radius: 14px !important;
+  padding: 10px 24px !important;
+}
+
+.trust-card {
+  background: #ffffff !important;
+  border: 1px solid #dce8d6 !important;
+  box-shadow: 0 10px 30px rgba(20, 61, 44, 0.08) !important;
+  border-radius: 14px !important;
+}
+
+.faq-list details {
+  background: #ffffff !important;
+  border: 1px solid #dce8d6 !important;
+  box-shadow: 0 4px 14px rgba(20, 61, 44, 0.04) !important;
+  border-radius: 10px !important;
+  margin-bottom: 12px !important;
+}
