@@ -1,133 +1,678 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#143c2b" />
-  <meta name="description" content="GALYON: bioinsumos agrícolas de vanguardia, análisis de fertilidad de suelo y orientación técnica especializada en Ecuador." />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="GALYON | Biotecnología aplicada a la agricultura" />
-  <meta property="og:description" content="GALYON: soluciones biológicas para tus cultivos, análisis de suelo y acompañamiento técnico. Envíos a todo Ecuador." />
-  <meta property="og:image" content="assets/marca-hojas.png" />
-  <meta property="og:url" content="https://galyon-ec.vercel.app/" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="GALYON | Biotecnología aplicada a la agricultura" />
-  <meta name="twitter:description" content="GALYON: soluciones biológicas para tus cultivos, análisis de suelo y acompañamiento técnico. Envíos a todo Ecuador." />
-  <meta name="twitter:image" content="assets/marca-hojas.png" />
-  <title>GALYON | El futuro del campo crece naturalmente</title>
-  <link rel="icon" href="assets/marca-hojas.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vinyl — The record you once knew is playing somewhere now</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Schibsted+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=7.3.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=UnifrakturCook:wght@700&amp;family=Instrument+Sans:wght@400;500&amp;display=swap" rel="stylesheet" />
   <style>
-    .icon-arrow{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;line-height:0;flex-shrink:0}
-    .icon-arrow svg{width:14px;height:14px;display:block;stroke:currentColor;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    :root {
+      --ink: #0b0b0c;
+      --sky: #dbe6ee;
+      --nav-gap: clamp(1.1rem, 2.2vw, 2.15rem);
+      --pad-x: clamp(1.25rem, 4vw, 3.6rem);
+      --ease: cubic-bezier(.22, 1, .36, 1);
+      --ease-in-out: cubic-bezier(.76, 0, .24, 1);
+      --poster: url("https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260908_122011_59c97465-4d23-4fdc-ac40-f6832f573e28.png&w=1920&q=85");
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--sky);
+      overflow-x: hidden;
+      font-family: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    /* ==========================================================================
+       HERO & MEDIA
+       ========================================================================== */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: var(--sky);
+    }
+
+    .hero__media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      transform: scale(1.08);
+      filter: blur(14px);
+      opacity: 0;
+      animation: mediaIn 1.9s var(--ease) .1s forwards;
+    }
+
+    @keyframes mediaIn {
+      to {
+        transform: scale(1);
+        filter: blur(0);
+        opacity: 1;
+      }
+    }
+
+    .hero__media::before {
+      content: "";
+      display: none;
+      position: absolute;
+      inset: -8%;
+      z-index: 0;
+      background: var(--poster) center 22% / cover no-repeat;
+      filter: blur(30px) saturate(104%);
+      transform: scale(1.05);
+    }
+
+    .hero__media img,
+    .hero__media video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 62%;
+      display: block;
+    }
+
+    .hero__media img {
+      z-index: 1;
+    }
+
+    .hero__media video {
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+
+    .hero__media video.is-ready {
+      opacity: 1;
+    }
+
+    .hero__media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      background:
+        linear-gradient(to bottom, rgba(226, 236, 243, .55) 0%, rgba(226, 236, 243, .18) 34%, rgba(226, 236, 243, 0) 58%),
+        radial-gradient(120% 70% at 50% 0%, rgba(255, 255, 255, .35), rgba(255, 255, 255, 0) 60%);
+    }
+
+    /* ==========================================================================
+       NAV
+       ========================================================================== */
+    .nav {
+      position: relative;
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: clamp(1.1rem, 2.4vw, 1.9rem) var(--pad-x);
+    }
+
+    .logo {
+      font-family: "UnifrakturCook", serif;
+      font-weight: 700;
+      font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+      line-height: 1;
+      letter-spacing: .01em;
+      white-space: nowrap;
+    }
+
+    .nav__links {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      gap: var(--nav-gap);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav__links a {
+      font-size: clamp(.95rem, 1.05vw, 1.05rem);
+      letter-spacing: .005em;
+      padding: .15rem 0;
+      display: inline-block;
+      position: relative;
+    }
+
+    .nav__links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -2px;
+      height: 1px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform .5s var(--ease);
+    }
+
+    .nav__links a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .nav__right {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+
+    .btn-play {
+      background: var(--ink);
+      color: #fff;
+      border-radius: 6px;
+      padding: .72rem 1.15rem;
+      font-size: .95rem;
+      line-height: 1;
+      white-space: nowrap;
+      display: inline-block;
+      transition: transform .45s var(--ease), background-color .45s var(--ease), box-shadow .45s var(--ease);
+    }
+
+    .btn-play:hover {
+      transform: translateY(-2px);
+      background-color: #1e1e21;
+      box-shadow: 0 10px 24px -12px rgba(0, 0, 0, .6);
+    }
+
+    .btn-play:active {
+      transform: translateY(0);
+    }
+
+    /* Hamburger */
+    .burger {
+      display: none;
+      width: 44px;
+      height: 44px;
+      margin-right: -8px;
+      position: relative;
+      z-index: 60;
+      border-radius: 8px;
+      flex: 0 0 auto;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+
+    .burger span {
+      position: absolute;
+      left: 11px;
+      width: 22px;
+      height: 1.6px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: transform .55s var(--ease-in-out), opacity .3s ease, width .55s var(--ease-in-out);
+    }
+
+    .burger span:nth-child(1) {
+      top: 17px;
+    }
+
+    .burger span:nth-child(2) {
+      top: 22px;
+      width: 15px;
+    }
+
+    .burger span:nth-child(3) {
+      top: 27px;
+    }
+
+    .burger.is-active span:nth-child(1) {
+      transform: translateY(5px) rotate(45deg);
+    }
+
+    .burger.is-active span:nth-child(2) {
+      opacity: 0;
+      transform: translateX(10px);
+    }
+
+    .burger.is-active span:nth-child(3) {
+      transform: translateY(-5px) rotate(-45deg);
+    }
+
+    /* ==========================================================================
+       HEADLINE & INNER
+       ========================================================================== */
+    .hero__inner {
+      position: relative;
+      z-index: 10;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: clamp(1.5rem, 5vh, 4.5rem) var(--pad-x) 0;
+      pointer-events: none;
+    }
+
+    .headline {
+      margin: 0;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(2.7rem, 6.3vw, 6.75rem);
+      line-height: 1.06;
+      letter-spacing: -.005em;
+      text-align: center;
+    }
+
+    .line {
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+      padding-bottom: .06em;
+      margin-bottom: -.06em;
+    }
+
+    .line > span {
+      display: block;
+      transform: translateY(110%);
+      opacity: 0;
+      animation: lineUp 1.25s var(--ease) forwards;
+    }
+
+    @keyframes lineUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .headline .line:nth-child(1) > span {
+      animation-delay: .55s;
+    }
+
+    .headline .line:nth-child(2) > span {
+      animation-delay: .68s;
+    }
+
+    /* ==========================================================================
+       STAGGER DELAY UTILITIES
+       ========================================================================== */
+    .rise {
+      opacity: 0;
+      transform: translateY(-14px);
+      animation: rise .95s var(--ease) forwards;
+    }
+
+    @keyframes rise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .d1 { animation-delay: .18s; }
+    .d2 { animation-delay: .26s; }
+    .d3 { animation-delay: .32s; }
+    .d4 { animation-delay: .38s; }
+    .d5 { animation-delay: .44s; }
+    .d6 { animation-delay: .52s; }
+
+    /* ==========================================================================
+       MOBILE MENU OVERLAY
+       ========================================================================== */
+    .menu {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 var(--pad-x);
+      background: rgba(233, 240, 246, .92);
+      backdrop-filter: blur(22px) saturate(140%);
+      -webkit-backdrop-filter: blur(22px) saturate(140%);
+      clip-path: inset(0 0 100% 0);
+      visibility: hidden;
+      transition: clip-path .85s var(--ease-in-out), visibility 0s linear .85s;
+    }
+
+    .menu.is-open {
+      clip-path: inset(0 0 0 0);
+      visibility: visible;
+      transition: clip-path .85s var(--ease-in-out), visibility 0s linear 0s;
+    }
+
+    .menu__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu__list li {
+      overflow: hidden;
+    }
+
+    .menu__list a {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(2.35rem, 12vw, 3.4rem);
+      line-height: 1.22;
+      padding: .12em 0;
+      display: block;
+      transform: translateY(115%);
+      opacity: 0;
+      transition: transform .8s var(--ease), opacity .6s ease;
+    }
+
+    .menu.is-open .menu__list a {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .menu.is-open .menu__list li:nth-child(1) a { transition-delay: .26s; }
+    .menu.is-open .menu__list li:nth-child(2) a { transition-delay: .33s; }
+    .menu.is-open .menu__list li:nth-child(3) a { transition-delay: .40s; }
+    .menu.is-open .menu__list li:nth-child(4) a { transition-delay: .47s; }
+
+    .menu__rule {
+      height: 1px;
+      background: rgba(11, 11, 12, .16);
+      margin: 2.2rem 0 0;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .9s var(--ease);
+    }
+
+    .menu.is-open .menu__rule {
+      transform: scaleX(1);
+      transition-delay: .5s;
+    }
+
+    .menu__foot {
+      margin-top: 2.2rem;
+      opacity: 0;
+      transform: translateY(22px);
+      transition: transform .8s var(--ease), opacity .6s ease;
+    }
+
+    .menu.is-open .menu__foot {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: .56s;
+    }
+
+    .menu__foot .btn-play {
+      display: inline-block;
+      padding: .95rem 1.6rem;
+      font-size: 1rem;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 900px) {
+      .nav__links,
+      .nav__right .btn-play {
+        display: none;
+      }
+
+      .burger {
+        display: block;
+      }
+
+      .hero__media video,
+      .hero__media img {
+        object-position: center 60%;
+      }
+
+      .hero__inner {
+        align-items: flex-start;
+      }
+
+      .line {
+        white-space: normal;
+      }
+
+      .headline {
+        font-size: clamp(2.4rem, 6.4vw, 3.6rem);
+        max-width: 15ch;
+      }
+    }
+
+    @media (max-width: 900px) and (orientation: portrait) {
+      .hero__media::before {
+        display: block;
+      }
+
+      .hero__media video,
+      .hero__media img {
+        top: auto;
+        bottom: 0;
+        height: 64svh;
+        object-position: center 62%;
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .6) 9%, #000 20%);
+        -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .6) 9%, #000 20%);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .headline {
+        font-size: clamp(2.15rem, 9.4vw, 3.1rem);
+        line-height: 1.12;
+        max-width: 11ch;
+      }
+
+      .hero__inner {
+        padding-top: clamp(1.75rem, 7vh, 3rem);
+      }
+
+      .hero__media video,
+      .hero__media img {
+        object-position: center 58%;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .headline {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-height: 520px) and (orientation: landscape) {
+      .headline {
+        font-size: clamp(1.7rem, 5vw, 2.4rem);
+        max-width: 22ch;
+      }
+
+      .hero__inner {
+        padding-top: .75rem;
+      }
+
+      .menu__list a {
+        font-size: clamp(1.4rem, 5vw, 1.9rem);
+      }
+
+      .menu__rule {
+        margin-top: 1.2rem;
+      }
+
+      .menu__foot {
+        margin-top: 1.2rem;
+      }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-delay: 0ms !important;
+        transition-duration: .01ms !important;
+      }
+
+      .hero__media {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+      }
+
+      .line > span {
+        transform: none !important;
+        opacity: 1 !important;
+      }
+
+      .rise {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Escenario Hero con Video de Fondo a Pantalla Completa y Navbar Integrado -->
-  <section class="hero-stage" aria-label="Hero">
-    <!-- Video Background (Optimizado sin audio, fast-start streaming) -->
-    <div class="video-bg-wrap">
-      <video
-        id="hero-video"
-        class="video-bg-media"
-        src="assets/galyon-bg-field.mp4"
-        poster="assets/galyon-bg-poster.jpg"
-        autoplay
-        loop
-        muted
-        playsinline
-        preload="auto"
-        tabindex="-1"
-        aria-hidden="true"
-      ></video>
+  <section class="hero">
+    <div class="hero__media">
+      <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260908_122011_59c97465-4d23-4fdc-ac40-f6832f573e28.png&amp;w=1920&amp;q=85" alt="A vintage turntable resting on a mossy rock in an alpine meadow at golden hour" />
+      <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260908_122011_59c97465-4d23-4fdc-ac40-f6832f573e28.png&amp;w=1920&amp;q=85" aria-hidden="true">
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260908_125738_eb584080-9f98-489e-adb2-014760aa34da.mp4" type="video/mp4" />
+      </video>
     </div>
 
-    <!-- Barra de Navegación de la Plantilla (Padding: 120px horizontal, 16px vertical) -->
-    <header class="template-nav">
-      <div class="nav-logo">
-        <a href="index.html" class="brand brand-logo-link" onclick="return window.resetToHome ? window.resetToHome(event) : true;" aria-label="GALYON, ir al inicio">
-          <img class="brand-leaf-icon" src="assets/marca-hojas.png" alt="" />
-          <span class="logo-text">GALYON</span>
-        </a>
-      </div>
+    <header class="nav">
+      <a href="#" class="logo rise d1" aria-label="Vinyl — home">Vinyl</a>
 
-      <!-- Menú con las secciones implementadas (Schibsted Grotesk Medium, 16px, -0.2px tracking) -->
-      <nav class="nav-menu" id="navlinks" aria-label="Navegación principal">
-        <a href="index.html" class="nav-item is-active" aria-current="page">Inicio</a>
-        <a href="nosotros.html" class="nav-item">Nosotros</a>
-        <a href="bioinsumos.html" class="nav-item">Bioinsumos</a>
-        <a href="asesor.html" class="nav-item">Asesor de cultivos</a>
-        <a href="analisis-suelo.html" class="nav-item">Análisis de suelo</a>
-        <a href="acompanamiento.html" class="nav-item">Acompañamiento</a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#discover" class="rise d2">Playlist</a>
+        <a href="#library" class="rise d3">Vintage</a>
+        <a href="#artists" class="rise d4">Singers</a>
+        <a href="#pricing" class="rise d5">Members</a>
       </nav>
 
-      <!-- Botones derechos de la plantilla: Sign Up (82px transparente) y Log In (101px negro) -->
-      <div class="nav-right">
-        <button type="button" class="btn-signup cart-button" id="open-cart" aria-label="Abrir carrito">
-          Sign Up
-          <span id="cart-count" style="display:none;">0</span>
-        </button>
-        <a href="https://wa.me/593968933445" target="_blank" rel="noopener" class="btn-login" id="header-wa" aria-label="Contactar por WhatsApp">
-          Log In
-        </a>
-        <button type="button" id="menu-toggle" class="nav-mobile-toggle" aria-label="Abrir menú" aria-expanded="false">
-          <span></span><span></span><span></span>
+      <div class="nav__right">
+        <a href="#play" class="btn-play rise d6">Drop Now</a>
+        <button type="button" class="burger rise d6" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
       </div>
     </header>
 
-    <!-- Contenido del Hero: Título centrado y Botella 3D interactiva flotante sin cuadro -->
-    <div class="hero-content">
-      <div class="hero-header">
-        <h1 class="hero-title">
-          El futuro del campo<br /><span class="hero-title-accent">crece naturalmente.</span>
-        </h1>
-      </div>
-
-      <!-- Componente 3D Reactivo de la botella: Directo sobre el paisaje sin marco ni cuadro -->
-      <div class="hero-3d-stage" id="hero-3d-stage">
-        <div id="webgl-canvas-mount" class="webgl-canvas-mount" aria-label="Visor 3D interactivo del producto GALYON TRICHO"></div>
-        <div id="viewer3d-loader" class="viewer3d-loader">
-          <div class="viewer3d-spinner"></div>
-        </div>
-      </div>
+    <div class="hero__inner">
+      <h1 class="headline">
+        <span class="line"><span>The record you once knew</span></span>
+        <span class="line"><span>is playing somewhere now</span></span>
+      </h1>
     </div>
   </section>
 
-  <!-- Botón flotante WhatsApp -->
-  <button class="float-wa" id="float-wa" aria-label="Consultar por WhatsApp" title="Hablemos por WhatsApp">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.05 2a9.91 9.91 0 0 0-8.58 14.85L2 22l5.31-1.39A9.96 9.96 0 0 0 12.05 22a10 10 0 0 0 0-20Zm0 18.18a8.15 8.15 0 0 1-4.15-1.13l-.3-.18-3.15.83.84-3.07-.2-.31a8.17 8.17 0 1 1 6.96 3.86Zm4.49-6.11c-.24-.12-1.43-.71-1.65-.79s-.38-.12-.54.12-.62.79-.76.95-.28.18-.52.06a6.7 6.7 0 0 1-1.95-1.2 7.24 7.24 0 0 1-1.36-1.69c-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.41s.16-.24.24-.4.04-.3-.02-.42-.54-1.3-.74-1.78c-.19-.46-.39-.4-.54-.41h-.46c-.16 0-.42.06-.64.3s-.84.82-.84 1.99.86 2.3.98 2.46 1.68 2.57 4.08 3.6c.57.25 1.01.4 1.36.51.57.18 1.09.15 1.5.09.46-.07 1.43-.59 1.63-1.16s.2-1.06.14-1.16-.22-.17-.46-.29Z"/></svg>
-  </button>
-
-  <!-- Carrito Drawer -->
-  <div id="drawer-backdrop" class="drawer-backdrop" hidden></div>
-  <aside class="drawer" id="cart-drawer" aria-label="Tu pedido" aria-modal="true" role="dialog" aria-hidden="true">
-    <div class="drawer-header"><div><span class="eyebrow">PEDIDO GALYON</span><h2>Tu selección <span id="drawer-count"></span></h2></div><button id="close-cart" class="close-btn" aria-label="Cerrar carrito">×</button></div>
-    <div class="drawer-body">
-      <div id="cart-items" class="cart-items"></div>
-      <div id="empty-cart" class="empty-cart"><h3>Aún no has elegido productos</h3><p>Abre una línea, elige la formulación y toca «+ Añadir» para armar tu pedido.</p><button class="btn btn-dark" id="explore-products">Ver productos <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span></button></div>
+  <div class="menu" id="menu">
+    <nav aria-label="Mobile">
+      <ul class="menu__list">
+        <li><a href="#discover">Playlist</a></li>
+        <li><a href="#library">Vintage</a></li>
+        <li><a href="#artists">Singers</a></li>
+        <li><a href="#pricing">Members</a></li>
+      </ul>
+    </nav>
+    <div class="menu__rule"></div>
+    <div class="menu__foot">
+      <a href="#play" class="btn-play">Drop Now</a>
     </div>
-    <div class="drawer-footer" id="drawer-footer">
-      <div class="cart-deal" id="deal-status"></div>
-      <div id="cart-breakdown" class="cart-breakdown" aria-label="Detalle del precio"></div>
-      <div class="total-line"><span>Total estimado</span><strong id="cart-total">$0</strong></div>
-      <p>Los combos tienen envío gratis en Ecuador. Para productos individuales, confirma el costo de envío y la disponibilidad por WhatsApp.</p>
-      <label class="checkout-label" for="ship-city">Ciudad o cantón de entrega (opcional)</label>
-      <input id="ship-city" placeholder="Ej.: Babahoyo, Los Ríos" maxlength="75"/>
-      <a id="checkout" class="btn btn-dark checkout" href="https://wa.me/593968933445" target="_blank" rel="noopener">Enviar pedido por WhatsApp <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span></a>
-    </div>
-  </aside>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
 
-  <!-- Three.js + Controles PBR para el Componente 3D Reactivo de GALYON TRICHO -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-  <script src="viewer3d.js?v=1.2.0" defer></script>
+  <script>
+    (function () {
+      var menu = document.getElementById('menu');
+      var burger = document.getElementById('burger');
+      var video = document.getElementById('heroVideo');
+      var isOpen = false;
 
-  <script src="script.js?v=7.2.0"></script>
+      function setMenu(next) {
+        isOpen = !!next;
+        if (menu) menu.classList.toggle('is-open', isOpen);
+        if (burger) {
+          burger.classList.toggle('is-active', isOpen);
+          burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          burger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+        }
+        document.body.classList.toggle('menu-open', isOpen);
+      }
+
+      if (burger) {
+        burger.addEventListener('click', function () {
+          setMenu(!isOpen);
+        });
+      }
+
+      if (menu) {
+        menu.addEventListener('click', function (e) {
+          if (e.target.closest('a')) {
+            setMenu(false);
+          }
+        });
+      }
+
+      window.addEventListener('keydown', function (e) {
+        if (isOpen && (e.key === 'Escape' || e.key === 'Esc')) {
+          setMenu(false);
+        }
+      });
+
+      window.addEventListener('resize', function () {
+        if (isOpen && window.innerWidth > 900) {
+          setMenu(false);
+        }
+      });
+
+      if (video) {
+        function reveal() {
+          video.classList.add('is-ready');
+        }
+
+        if (video.readyState >= 3) {
+          reveal();
+        } else {
+          video.addEventListener('loadeddata', reveal, { once: true });
+        }
+
+        function kick() {
+          var p = video.play();
+          if (p && p.catch) {
+            p.catch(function () {});
+          }
+        }
+
+        kick();
+        window.addEventListener('touchstart', kick, { once: true, passive: true });
+        window.addEventListener('click', kick, { once: true });
+      }
+    })();
+  </script>
 </body>
 </html>
