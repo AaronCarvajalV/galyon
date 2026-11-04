@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GALYON | Biotecnología Aplicada al Agro y al Ambiente</title>
-  <meta name="description" content="Bioinsumos agrícolas, análisis de suelo y acompañamiento técnico especializado para potenciar tus cultivos en Ecuador." />
+  <meta name="description" content="GALYON TRICHO: Bioinsumos microbiológicos de alta pureza, análisis de suelo y acompañamiento técnico especializado en Ecuador." />
   <link rel="icon" href="assets/marca-hojas.png" type="image/png" />
 
   <!-- Google Fonts: Neo-grotesk (Plus Jakarta Sans) y Geometric Display (Outfit) -->
@@ -30,12 +30,12 @@
       /* Unidad de referencia: min(100vw/2048, 100vh/1152) con piso de 0.55px */
       --s: max(0.55px, min(100vw / 2048, 100vh / 1152));
       
-      /* Paleta Halora / Sage Studio */
+      /* Paleta Halora / Sage Studio adaptada a Organic Technology GALYON */
       --c-page: #CBCFB8;
       --c-ink: #1E3227;
       --c-ink-sub: #3F5447;
       --c-accent: #9B8A3E;
-      --c-card-fill: rgba(203, 207, 184, 0.42);
+      --c-card-fill: rgba(203, 207, 184, 0.45);
       --c-card-border: rgba(30, 50, 39, 0.22);
       --c-pill-moss: rgba(62, 86, 70, 0.52);
 
@@ -64,7 +64,7 @@
     }
 
     /* ==========================================================================
-       2. ESCENARIO HERO FULLSCREEN & VIDEO DE FONDO CROSSFADE (4s)
+       2. ESCENARIO HERO FULLSCREEN & COMPOSICIÓN EDITORIAL
        ========================================================================== */
     .hero-stage {
       position: relative;
@@ -75,17 +75,32 @@
       background-color: var(--c-page);
     }
 
-    /* Arco circular fino de cristal detrás del centro */
+    /* Sombras orgánicas proyectadas sobre la pared salvia */
+    .ambient-leaf-shadows {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: calc(1050 * var(--s));
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.35;
+      background: radial-gradient(ellipse at 85% 35%, rgba(30, 50, 39, 0.35) 0%, transparent 65%),
+                  radial-gradient(circle at 75% 70%, rgba(30, 50, 39, 0.25) 0%, transparent 55%);
+      mix-blend-mode: multiply;
+    }
+
+    /* Arco circular fino de cristal detrás del frasco */
     .glass-arc {
       position: absolute;
-      bottom: calc(-140 * var(--s));
+      bottom: calc(-120 * var(--s));
       left: 50%;
       transform: translateX(-50%);
-      width: calc(760 * var(--s));
-      height: calc(760 * var(--s));
+      width: calc(780 * var(--s));
+      height: calc(780 * var(--s));
       border-radius: 50%;
       border: calc(1.5 * var(--s)) solid rgba(255, 255, 255, 0.45);
-      background: radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.02) 72%);
+      background: radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.02) 72%);
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
       box-shadow: inset 0 calc(1 * var(--s)) calc(2.5 * var(--s)) rgba(255, 255, 255, 0.35);
@@ -93,44 +108,51 @@
       z-index: 2;
     }
 
-    /* Contenedor del video centrado anclado al borde inferior */
-    .media-stage {
+    /* Contenedor central del Modelo 3D Interactivo GALYON TRICHO */
+    .hero-3d-stage {
       position: absolute;
-      bottom: 0;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
-      height: 100%;
-      aspect-ratio: 1920 / 1084;
-      max-width: 2160px;
-      pointer-events: none;
-      z-index: 3;
-      overflow: hidden;
+      transform: translate(-50%, -46%);
+      width: calc(880 * var(--s));
+      height: calc(960 * var(--s));
+      z-index: 5;
+      cursor: grab;
+      touch-action: none;
     }
 
-    .bg-video {
-      position: absolute;
-      bottom: 0;
-      left: 0;
+    .hero-3d-stage:active {
+      cursor: grabbing;
+    }
+
+    .hero-3d-canvas {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center bottom;
-      opacity: 0;
-      transition: opacity 0.8s ease-in-out;
-      will-change: opacity;
+      display: block;
     }
 
-    .bg-video.active {
-      opacity: 1;
-    }
-
-    /* Desvanecimiento suave en pantallas ultra-panorámicas */
-    .media-stage::after {
-      content: "";
+    /* Micro-pistas de interacción 3D */
+    .interaction-hint {
       position: absolute;
-      inset: 0;
+      bottom: calc(20 * var(--s));
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: calc(8 * var(--s));
+      background: rgba(203, 207, 184, 0.55);
+      border: 1px solid rgba(30, 50, 39, 0.15);
+      backdrop-filter: blur(8px);
+      padding: calc(6 * var(--s)) calc(16 * var(--s));
+      border-radius: 9999px;
+      font-size: calc(12 * var(--s));
+      font-weight: 600;
+      color: var(--c-ink-sub);
       pointer-events: none;
-      background: linear-gradient(to right, var(--c-page) 0%, transparent 16%, transparent 84%, var(--c-page) 100%);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      transition: opacity 0.3s ease;
     }
 
     /* ==========================================================================
@@ -158,10 +180,10 @@
       cursor: pointer;
     }
 
-    .six-petal-logo {
-      width: calc(44 * var(--s));
-      height: calc(44 * var(--s));
-      flex-shrink: 0;
+    .brand-logo-img {
+      height: calc(36 * var(--s));
+      width: auto;
+      object-fit: contain;
     }
 
     .brand-name {
@@ -246,7 +268,6 @@
       transform: translateY(-1px);
     }
 
-    /* Botón hamburguesa móvil */
     .menu-burger {
       display: none;
       width: calc(52 * var(--s));
@@ -274,45 +295,19 @@
       display: flex;
       flex-direction: column;
       gap: calc(24 * var(--s));
+      pointer-events: auto;
     }
 
     .eyebrow-wrap {
       display: inline-flex;
       align-items: center;
-      gap: calc(10 * var(--s));
-      font-size: calc(18 * var(--s));
+      font-size: calc(16 * var(--s));
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: var(--c-ink-sub);
     }
 
-    .tracking-dot {
-      width: calc(9 * var(--s));
-      height: calc(9 * var(--s));
-      border-radius: 50%;
-      background: var(--c-ink);
-      display: inline-block;
-      position: relative;
-    }
-
-    .tracking-dot::after {
-      content: "";
-      position: absolute;
-      inset: -3px;
-      border-radius: 50%;
-      border: 1.5px solid var(--c-ink);
-      opacity: 0.4;
-      animation: pulse-ring 2.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-
-    @keyframes pulse-ring {
-      0% { transform: scale(0.9); opacity: 0.6; }
-      50% { transform: scale(1.6); opacity: 0; }
-      100% { transform: scale(0.9); opacity: 0; }
-    }
-
-    /* Máscara de texto para animación de subida */
     .headline-line-mask {
       overflow: hidden;
     }
@@ -423,9 +418,6 @@
     }
 
     .card-label-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       font-size: calc(13 * var(--s));
       font-weight: 700;
       text-transform: uppercase;
@@ -433,17 +425,9 @@
       color: var(--c-ink-sub);
     }
 
-    .card-icon {
-      width: calc(16 * var(--s));
-      height: calc(16 * var(--s));
-      stroke: var(--c-ink-sub);
-      stroke-width: 2;
-      fill: none;
-    }
-
     .card-numeral {
       font-family: var(--font-num);
-      font-size: calc(44 * var(--s));
+      font-size: calc(42 * var(--s));
       font-weight: 300;
       letter-spacing: -0.03em;
       line-height: 1;
@@ -452,20 +436,12 @@
     }
 
     .card-sub-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       font-size: calc(12 * var(--s));
-      font-weight: 700;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       color: var(--c-ink-sub);
-    }
-
-    .card-badge {
-      color: var(--c-accent);
-      font-weight: 800;
-      letter-spacing: 0.12em;
+      opacity: 0.88;
     }
 
     /* ==========================================================================
@@ -559,48 +535,6 @@
       margin-bottom: 24px;
     }
 
-    /* Visor 3D WebGL dentro del modal */
-    #canvas-container-3d {
-      width: 100%;
-      height: 380px;
-      border-radius: 20px;
-      background: radial-gradient(circle at 50% 50%, #cad1b6, #b2b99f);
-      border: 1px solid rgba(30, 50, 39, 0.2);
-      overflow: hidden;
-      position: relative;
-      cursor: grab;
-      margin-bottom: 20px;
-    }
-
-    #canvas-container-3d:active {
-      cursor: grabbing;
-    }
-
-    .viewer-badge {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(8px);
-      padding: 6px 14px;
-      border-radius: 9999px;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--c-ink);
-      letter-spacing: 0.05em;
-    }
-
-    .viewer-hint {
-      position: absolute;
-      bottom: 14px;
-      left: 14px;
-      font-size: 11px;
-      color: rgba(30, 50, 39, 0.6);
-      font-weight: 500;
-      pointer-events: none;
-    }
-
-    /* Lista de productos / opciones */
     .catalog-list {
       display: grid;
       gap: 14px;
@@ -654,7 +588,6 @@
       cursor: pointer;
     }
 
-    /* Grilla de cultivos */
     .crop-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -679,7 +612,6 @@
       background: rgba(255, 255, 255, 0.85);
     }
 
-    /* Panel móvil */
     .mobile-menu {
       position: fixed;
       inset: 0;
@@ -722,15 +654,20 @@
       .menu-burger { display: flex; }
 
       .copy-block {
-        left: 40px;
+        left: 36px;
         width: 360px;
       }
-      .headline-line { font-size: 42px; }
+      .headline-line { font-size: 44px; }
       .paragraph-copy { font-size: 16px; }
       .cta-btn-dark { font-size: 16px; padding: 14px 28px; }
 
+      .hero-3d-stage {
+        width: 520px;
+        height: 600px;
+      }
+
       .metrics-block {
-        right: 40px;
+        right: 36px;
         gap: 14px;
       }
       .glass-card {
@@ -753,7 +690,7 @@
         min-height: 100vh;
         display: flex;
         flex-direction: column;
-        padding-top: 100px;
+        padding-top: 90px;
         padding-bottom: 40px;
       }
 
@@ -763,11 +700,11 @@
         left: auto;
         transform: none;
         width: 100%;
-        padding: 0 28px;
-        margin-bottom: 28px;
+        padding: 0 24px;
+        margin-bottom: 20px;
       }
 
-      .headline-line { font-size: 38px; }
+      .headline-line { font-size: 36px; }
 
       .metrics-block {
         position: relative;
@@ -776,10 +713,10 @@
         transform: none;
         flex-direction: row;
         width: 100%;
-        padding: 0 28px;
+        padding: 0 24px;
         overflow-x: auto;
         gap: 12px;
-        margin-bottom: 30px;
+        margin-bottom: 24px;
       }
 
       .glass-card {
@@ -790,14 +727,14 @@
 
       .card-numeral { font-size: 28px; }
 
-      .media-stage {
+      .hero-3d-stage {
         position: relative;
-        bottom: auto;
+        top: auto;
         left: auto;
         transform: none;
         width: 100%;
-        height: 420px;
-        margin-top: auto;
+        height: 480px;
+        margin: 0 auto;
       }
 
       .glass-arc {
@@ -811,9 +748,6 @@
         animation: none !important;
         transition: none !important;
       }
-      .bg-video {
-        display: none;
-      }
     }
   </style>
 </head>
@@ -824,39 +758,30 @@
        ======================================================================== -->
   <main class="hero-stage">
     
-    <!-- Arco de cristal fino detrás de la mano -->
+    <!-- Sombras naturales proyectadas sobre la pared verde salvia -->
+    <div class="ambient-leaf-shadows" aria-hidden="true"></div>
+
+    <!-- Arco de cristal fino detrás de la botella -->
     <div class="glass-arc" aria-hidden="true"></div>
 
-    <!-- Escenario del video en bucle suave con crossfade de 1s -->
-    <div class="media-stage" id="media-stage" aria-hidden="true">
-      <video id="videoA" class="bg-video active" muted playsinline preload="auto" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/e6d15706-f42b-400d-beda-75840834e8bc.mp4"></video>
-      <video id="videoB" class="bg-video" muted playsinline preload="auto" src="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/e6d15706-f42b-400d-beda-75840834e8bc.mp4"></video>
+    <!-- PROTAGONISTA CENTRAL: ESCENARIO 3D INTERACTIVO GALYON TRICHO -->
+    <div class="hero-3d-stage" id="hero-3d-stage" title="Arrastra para rotar en 360°">
+      <div id="webgl-canvas-mount" class="hero-3d-canvas"></div>
+      <div class="interaction-hint">
+        <span>Arrastra 360° · Modelo Oficial 1L</span>
+      </div>
     </div>
 
     <!-- HEADER -->
     <header class="header">
       <div class="header-left" onclick="window.scrollTo(0,0)">
-        <!-- Logotipo de 6 pétalos de Halora / Sage Studio -->
-        <svg class="six-petal-logo" viewBox="0 0 44 44" fill="none">
-          <circle cx="22" cy="22" r="19" stroke="#1E3227" stroke-width="1.8" stroke-dasharray="3.5 3.5" />
-          <g stroke="#1E3227" stroke-width="1.6" fill="none">
-            <ellipse cx="22" cy="14" rx="3" ry="6.5" />
-            <ellipse cx="22" cy="30" rx="3" ry="6.5" />
-            <ellipse cx="14" cy="22" rx="6.5" ry="3" />
-            <ellipse cx="30" cy="22" rx="6.5" ry="3" />
-            <ellipse cx="16" cy="16" rx="5.5" ry="3" transform="rotate(-45 16 16)" />
-            <ellipse cx="28" cy="28" rx="5.5" ry="3" transform="rotate(-45 28 28)" />
-            <ellipse cx="28" cy="16" rx="5.5" ry="3" transform="rotate(45 28 16)" />
-            <ellipse cx="16" cy="28" rx="5.5" ry="3" transform="rotate(45 16 28)" />
-          </g>
-          <circle cx="22" cy="22" r="2.2" fill="#1E3227" />
-        </svg>
+        <img src="assets/marca-hojas.png" alt="GALYON" class="brand-logo-img" />
         <span class="brand-name">GALYON</span>
       </div>
 
       <nav class="nav-centre">
         <button onclick="openModal('modal-bioinsumos')">Bioinsumos</button>
-        <button onclick="openModal('modal-visor3d')">Visor 3D</button>
+        <button onclick="focus3DFront()">Vista Frontal</button>
         <button onclick="openModal('modal-asesor')">Asesor de Cultivos</button>
         <button onclick="openModal('modal-suelo')">Análisis de Suelo</button>
         <button onclick="openModal('modal-combos')">Combos $70</button>
@@ -884,8 +809,7 @@
     <!-- COPY IZQUIERDO -->
     <div class="copy-block" id="copy-block">
       <div class="eyebrow-wrap" id="eyebrow">
-        <span class="tracking-dot"></span>
-        <span>Biotecnología Agrícola · 24/7</span>
+        <span>Biotecnología aplicada al agro y al ambiente</span>
       </div>
 
       <div class="headline-wrap">
@@ -898,16 +822,13 @@
       </div>
 
       <p class="paragraph-copy" id="paragraph-copy">
-        Bioinsumos microbiológicos, análisis de suelo y orientación técnica especializada. Formulaciones vivas para proteger y nutrir tus cultivos de manera sostenible.
+        Bioinsumos microbiológicos, análisis de suelo y orientación técnica especializada. Formulaciones vivas para proteger y nutrir tus cultivos con rigor científico.
       </p>
 
       <div class="cta-row" id="cta-row">
         <button onclick="openModal('modal-bioinsumos')" class="cta-btn-dark">Conocer bioinsumos</button>
-        <button onclick="openModal('modal-visor3d')" class="cta-btn-glass">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-          </svg>
-          <span>Visor 3D · 360°</span>
+        <button onclick="focus3DFront()" class="cta-btn-glass" title="Ver el frontal de la etiqueta oficial">
+          <span>Vista Frontal 3D</span>
         </button>
       </div>
     </div>
@@ -916,17 +837,13 @@
     <div class="metrics-block" id="metrics-block">
       
       <!-- Card 1: Concentración / Microbiología -->
-      <div class="glass-card" onclick="openModal('modal-visor3d')" title="Abrir Visor 3D de GALYON TRICHO">
+      <div class="glass-card" onclick="openModal('modal-bioinsumos')" title="Ver detalles de GALYON TRICHO">
         <div class="card-label-row">
           <span>TRICHO 1L</span>
-          <svg class="card-icon" viewBox="0 0 24 24">
-            <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/>
-          </svg>
         </div>
         <div class="card-numeral">1×10⁹</div>
         <div class="card-sub-row">
-          <span>ESPORAS / ML</span>
-          <span class="card-badge">VIVO</span>
+          <span>ESPORAS VIABLES / ML</span>
         </div>
       </div>
 
@@ -934,30 +851,21 @@
       <div class="glass-card" onclick="openModal('modal-combos')" title="Ver Combos de 4L por $70">
         <div class="card-label-row">
           <span>COMBOS 4L</span>
-          <svg class="card-icon" viewBox="0 0 24 24">
-            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-          </svg>
         </div>
         <div class="card-numeral">$70</div>
         <div class="card-sub-row">
-          <span>ENVÍO GRATIS</span>
-          <span class="card-badge">AHORRO</span>
+          <span>4L · ENVÍO GRATIS ECUADOR</span>
         </div>
       </div>
 
       <!-- Card 3: Laboratorio de Suelo -->
       <div class="glass-card" onclick="openModal('modal-suelo')" title="Ver paquetes de Análisis de Suelo">
         <div class="card-label-row">
-          <span>LAB SUELO</span>
-          <svg class="card-icon" viewBox="0 0 24 24">
-            <path d="M10 2v7.31M14 2v7.31M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"/>
-          </svg>
+          <span>ANÁLISIS DE SUELO</span>
         </div>
         <div class="card-numeral">pH · NPK</div>
         <div class="card-sub-row">
-          <span>DESDE $69</span>
-          <span class="card-badge">DATOS</span>
+          <span>LABORATORIO · DESDE $69</span>
         </div>
       </div>
 
@@ -966,47 +874,8 @@
   </main>
 
   <!-- ========================================================================
-       MODALES CONSERVAN 100% DE LA INFORMACIÓN DE GALYON Y EL MOTOR 3D
+       MODALES CONSERVAN 100% DE LA INFORMACIÓN DE GALYON
        ======================================================================== -->
-
-  <!-- MODAL: VISOR 3D (Carga el modelo auténtico galyon-tricho.glb de Aaron) -->
-  <div class="modal-overlay" id="modal-visor3d" onclick="closeModalOnBackdrop(event, 'modal-visor3d')">
-    <div class="modal-card">
-      <button class="modal-close-btn" onclick="closeModal('modal-visor3d')">&times;</button>
-      <div class="modal-tag">Render 3D Interactivo · WebGL 60 FPS</div>
-      <h3 class="modal-title">GALYON TRICHO (1 Litro)</h3>
-      <p class="modal-desc">Explora el modelo 3D oficial renderizado con HDPE translúcido, tapa moleteada y etiqueta biológica completa.</p>
-      
-      <div id="canvas-container-3d">
-        <div class="viewer-badge">Modelo 3D Oficial · 360°</div>
-        <div class="viewer-hint">Arrastra para girar · Rueda o pellizca para zoom</div>
-      </div>
-
-      <div class="catalog-list" style="grid-template-columns: repeat(3, 1fr);">
-        <div class="catalog-item" style="flex-direction: column; align-items: flex-start; padding: 14px;">
-          <small style="color: var(--c-ink-sub); font-size: 11px; text-transform: uppercase;">Microorganismo</small>
-          <strong style="color: var(--c-ink); font-size: 14px;">Trichoderma spp.</strong>
-        </div>
-        <div class="catalog-item" style="flex-direction: column; align-items: flex-start; padding: 14px;">
-          <small style="color: var(--c-ink-sub); font-size: 11px; text-transform: uppercase;">Presentación</small>
-          <strong style="color: var(--c-ink); font-size: 14px;">1 Litro / Galón 4L</strong>
-        </div>
-        <div class="catalog-item" style="flex-direction: column; align-items: flex-start; padding: 14px;">
-          <small style="color: var(--c-ink-sub); font-size: 11px; text-transform: uppercase;">Precio Litro</small>
-          <strong style="color: var(--c-ink); font-size: 14px;">$20 USD</strong>
-        </div>
-      </div>
-
-      <div style="display: flex; gap: 12px; align-items: center;">
-        <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20estuve%20viendo%20el%20modelo%203D%20de%20GALYON%20TRICHO%20y%20deseo%20pedir." target="_blank" rel="noopener" class="cta-btn-dark" style="flex: 1; text-align: center; justify-content: center; font-size: 15px; padding: 14px 20px;">
-          Pedir TRICHO por WhatsApp
-        </a>
-        <button onclick="closeModal('modal-visor3d'); openModal('modal-bioinsumos');" class="cta-btn-glass" style="font-size: 14px; padding: 14px 22px;">
-          Ver catálogo
-        </button>
-      </div>
-    </div>
-  </div>
 
   <!-- MODAL: BIOINSUMOS -->
   <div class="modal-overlay" id="modal-bioinsumos" onclick="closeModalOnBackdrop(event, 'modal-bioinsumos')">
@@ -1213,7 +1082,7 @@
       <button onclick="toggleMobileMenu()" style="border: none; font-size: 28px; background: none; cursor: pointer;">&times;</button>
     </div>
     <button onclick="toggleMobileMenu(); openModal('modal-bioinsumos')">Bioinsumos</button>
-    <button onclick="toggleMobileMenu(); openModal('modal-visor3d')">Visor 3D</button>
+    <button onclick="toggleMobileMenu(); focus3DFront()">Vista Frontal 3D</button>
     <button onclick="toggleMobileMenu(); openModal('modal-asesor')">Asesor de Cultivos</button>
     <button onclick="toggleMobileMenu(); openModal('modal-suelo')">Análisis de Suelo</button>
     <button onclick="toggleMobileMenu(); openModal('modal-combos')">Combos $70</button>
@@ -1222,16 +1091,14 @@
   </div>
 
   <!-- ========================================================================
-       JAVASCRIPT: MOTION (WAAPI), VIDEO CROSSFADE & THREE.JS 3D ENGINE
+       JAVASCRIPT: MOTION (WAAPI) & HERO 3D THREE.JS PBR ENGINE
        ======================================================================== -->
   <script type="module">
     import * as THREE from 'three';
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
     /* ------------------------------------------------------------------------
        1. ENTRANCE ANIMATION (WEB ANIMATIONS API - WAAPI)
-       Cancela el timeline al finalizar para devolver el estilo a las reglas CSS
        ------------------------------------------------------------------------ */
     async function initEntrance() {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -1251,13 +1118,13 @@
         ], { duration: 900, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'backwards' }));
       }
 
-      // B) Eyebrow & tracking dot
+      // B) Eyebrow
       const eyebrow = document.getElementById('eyebrow');
       if (eyebrow) {
         animations.push(eyebrow.animate([
-          { opacity: 0, clipPath: 'circle(0% at 10px 50%)' },
-          { opacity: 1, clipPath: 'circle(150% at 10px 50%)' }
-        ], { duration: 800, delay: 200, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'backwards' }));
+          { opacity: 0, transform: 'translateY(-10px)' },
+          { opacity: 1, transform: 'translateY(0)' }
+        ], { duration: 750, delay: 200, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'backwards' }));
       }
 
       // C) Headline lines inside masks
@@ -1301,220 +1168,469 @@
         ], { duration: 850, delay: 450 + (i * 120), easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'backwards' }));
       });
 
-      // Al completar el último efecto, cancelar timeline para devolver a estilos puros
+      // F) Entrada flotante del Modelo 3D central
+      const modelStage = document.getElementById('hero-3d-stage');
+      if (modelStage) {
+        animations.push(modelStage.animate([
+          { opacity: 0, transform: 'translate(-50%, -40%) scale(0.92)' },
+          { opacity: 1, transform: 'translate(-50%, -46%) scale(1)' }
+        ], { duration: 1100, delay: 250, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'backwards' }));
+      }
+
       Promise.all(animations.map(a => a.finished)).then(() => {
         animations.forEach(a => a.cancel());
       });
     }
 
     /* ------------------------------------------------------------------------
-       2. VIDEO BACKGROUND CON CROSSFADE SUAVE DE 1s (SIN SALTOS)
+       2. THREE.JS 3D ENGINE: HERO PROTAGONISTA GALYON TRICHO (1 LITRO)
+       Construido con las especificaciones exactas del 3D Asset Studio
        ------------------------------------------------------------------------ */
-    function initVideoCrossfade() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        return;
-      }
+    let scene, camera, renderer, controls, bottleGroup, particles;
+    let isUserInteracting = false;
+    let resumeRotateTimeout = null;
 
-      const vidA = document.getElementById('videoA');
-      const vidB = document.getElementById('videoB');
-      if (!vidA || !vidB) return;
-
-      let current = vidA;
-      let next = vidB;
-      const crossfadeTime = 1.0; // 1 segundo de desvanecimiento cruzado
-      let isCrossfading = false;
-
-      vidA.play().then(() => {
-        vidA.classList.add('active');
-      }).catch(() => {});
-
-      const onTimeUpdate = () => {
-        if (!current.duration) return;
-        const remaining = current.duration - current.currentTime;
-
-        if (remaining <= crossfadeTime && !isCrossfading) {
-          isCrossfading = true;
-          next.currentTime = 0;
-          next.play().catch(() => {});
-          next.classList.add('active');
-          current.classList.remove('active');
-
-          setTimeout(() => {
-            current.pause();
-            current.currentTime = 0;
-            // Intercambiar roles
-            const temp = current;
-            current = next;
-            next = temp;
-            isCrossfading = false;
-          }, crossfadeTime * 1000);
-        }
-      };
-
-      vidA.addEventListener('timeupdate', onTimeUpdate);
-      vidB.addEventListener('timeupdate', onTimeUpdate);
-    }
-
-    /* ------------------------------------------------------------------------
-       3. THREE.JS 3D ENGINE (CARGA EL MODELO AUTÉNTICO GALYON-TRICHO.GLB DE AARON)
-       ------------------------------------------------------------------------ */
-    let threeScene, threeCamera, threeRenderer, threeControls;
-    let threeInitialized = false;
-
-    window.init3DViewer = function() {
-      const container = document.getElementById('canvas-container-3d');
-      if (!container || threeInitialized) return;
-
-      const w = container.clientWidth || 640;
-      const h = container.clientHeight || 380;
-
-      // 1. Escena
-      threeScene = new THREE.Scene();
-
-      // 2. Cámara
-      threeCamera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100);
-      threeCamera.position.set(0, 0.6, 3.4);
-
-      // 3. Renderizador WebGL
-      threeRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
-      threeRenderer.setSize(w, h);
-      threeRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      threeRenderer.shadowMap.enabled = true;
-      threeRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
-      threeRenderer.outputColorSpace = THREE.SRGBColorSpace;
-      container.appendChild(threeRenderer.domElement);
-
-      // 4. OrbitControls con inercia
-      threeControls = new OrbitControls(threeCamera, threeRenderer.domElement);
-      threeControls.enableDamping = true;
-      threeControls.dampingFactor = 0.05;
-      threeControls.autoRotate = true;
-      threeControls.autoRotateSpeed = 1.4;
-      threeControls.minDistance = 1.2;
-      threeControls.maxDistance = 5.0;
-      threeControls.maxPolarAngle = Math.PI / 2 + 0.1;
-
-      // 5. Iluminación de estudio
-      const ambLight = new THREE.AmbientLight(0xffffff, 0.85);
-      threeScene.add(ambLight);
-
-      const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
-      keyLight.position.set(3, 5, 4);
-      keyLight.castShadow = true;
-      threeScene.add(keyLight);
-
-      const fillLight = new THREE.DirectionalLight(0xb4d4b8, 1.0);
-      fillLight.position.set(-3, 2, -3);
-      threeScene.add(fillLight);
-
-      // Sombra en el suelo
-      const shadowGeo = new THREE.PlaneGeometry(3.5, 3.5);
-      const shadowMat = new THREE.MeshBasicMaterial({ color: 0x1E3227, transparent: true, opacity: 0.35, depthWrite: false });
-      const shadowMesh = new THREE.Mesh(shadowGeo, shadowMat);
-      shadowMesh.rotation.x = -Math.PI / 2;
-      shadowMesh.position.y = -0.92;
-      threeScene.add(shadowMesh);
-
-      // Textura HD oficial para la etiqueta GALYON TRICHO
-      function createLabelTexture() {
-        const c = document.createElement('canvas');
-        c.width = 2048; c.height = 1024;
-        const ctx = c.getContext('2d');
-        if (ctx) {
-          const grad = ctx.createLinearGradient(0, 0, 2048, 0);
-          grad.addColorStop(0, '#0d281a');
-          grad.addColorStop(0.5, '#173f2b');
-          grad.addColorStop(1, '#0d281a');
-          ctx.fillStyle = grad;
-          ctx.fillRect(0, 0, 2048, 1024);
-
-          ctx.fillStyle = '#22c55e';
-          ctx.fillRect(0, 0, 2048, 30);
-          ctx.fillRect(0, 994, 2048, 30);
-
-          ctx.fillStyle = '#ffffff';
-          ctx.font = 'bold 125px sans-serif';
-          ctx.fillText('GALYON', 280, 250);
-
-          ctx.fillStyle = '#4ade80';
-          ctx.font = 'italic bold 105px serif';
-          ctx.fillText('TRICHO', 280, 380);
-
-          ctx.fillStyle = '#e2e8f0';
-          ctx.font = '500 48px sans-serif';
-          ctx.fillText('Trichoderma harzianum & asperellum', 280, 480);
-
-          ctx.fillStyle = '#94a3b8';
-          ctx.font = '400 40px sans-serif';
-          ctx.fillText('Biofungicida Microbiológico & Promotor Radicular', 280, 550);
-
-          ctx.fillStyle = '#166534';
-          ctx.roundRect ? ctx.roundRect(280, 640, 780, 115, 24) : ctx.fillRect(280, 640, 780, 115);
-          ctx.fill();
-
-          ctx.fillStyle = '#a7f3d0';
-          ctx.font = 'bold 50px sans-serif';
-          ctx.fillText('1 LITRO · FORMULACIÓN LÍQUIDA', 320, 715);
-
-          ctx.fillStyle = '#94a3b8';
-          ctx.font = '36px sans-serif';
-          ctx.fillText('Biotecnología aplicada al agro · Ecuador', 280, 840);
-        }
-        const tex = new THREE.CanvasTexture(c);
-        tex.wrapS = THREE.RepeatWrapping;
-        tex.colorSpace = THREE.SRGBColorSpace;
-        return tex;
-      }
-
-      // Cargar el modelo .glb auténtico
-      const loader = new GLTFLoader();
-      loader.load('assets/galyon-tricho.glb', (gltf) => {
-        const model = gltf.scene;
-
-        const box = new THREE.Box3().setFromObject(model);
-        const size = box.getSize(new THREE.Vector3());
-        const center = box.getCenter(new THREE.Vector3());
-
-        const maxDim = Math.max(size.x, size.y, size.z);
-        const scale = 1.8 / (maxDim || 1);
-        model.scale.setScalar(scale);
-
-        model.position.x = -center.x * scale;
-        model.position.y = -center.y * scale + 0.05;
-        model.position.z = -center.z * scale;
-
-        shadowMesh.position.y = -center.y * scale - (size.y * scale * 0.5) + 0.04;
-
-        model.traverse((child) => {
-          if (child.isMesh) {
-            child.castShadow = true;
-            child.receiveShadow = true;
-            if (child.name === 'Wrap_Around_Label' && !child.material.map) {
-              child.material.map = createLabelTexture();
-              child.material.roughness = 0.32;
-              child.material.needsUpdate = true;
-            }
-          }
-        });
-
-        threeScene.add(model);
-      });
-
-      // Loop de render
-      function animate() {
-        requestAnimationFrame(animate);
-        threeControls.update();
-        threeRenderer.render(threeScene, threeCamera);
-      }
-      animate();
-
-      threeInitialized = true;
+    // Especificaciones del envase 1L de GALYON
+    const SPECS = {
+      totalHeight: 2.47,
+      bodyRadius: 0.42,
+      bodyDiameter: 0.84,
+      labelYStart: 0.25,
+      labelYEnd: 1.60,
+      labelHeight: 1.35,
+      capHeight: 0.29,
+      capRadius: 0.228,
     };
 
-    // Inicializaciones al cargar el DOM
+    // Puntos de revolución del cuerpo del envase HDPE
+    function getBottleProfilePoints() {
+      const points = [];
+      const R = SPECS.bodyRadius;
+
+      // Base con fondo embutido (punt cóncavo)
+      points.push(new THREE.Vector2(0.00, 0.045));
+      points.push(new THREE.Vector2(0.12, 0.040));
+      points.push(new THREE.Vector2(0.24, 0.025));
+      points.push(new THREE.Vector2(0.33, 0.008));
+      // Anillo de apoyo en suelo
+      points.push(new THREE.Vector2(0.36, 0.000));
+      points.push(new THREE.Vector2(0.38, 0.000));
+      // Bisel exterior
+      points.push(new THREE.Vector2(0.405, 0.015));
+      points.push(new THREE.Vector2(0.418, 0.045));
+      points.push(new THREE.Vector2(R, 0.090));
+
+      // Cuerpo cilíndrico
+      points.push(new THREE.Vector2(R, 0.250));
+      points.push(new THREE.Vector2(R, 0.800));
+      points.push(new THREE.Vector2(R, 1.400));
+      points.push(new THREE.Vector2(R, 1.600));
+      points.push(new THREE.Vector2(R, 1.740));
+
+      // Hombro curvado ergonómico
+      points.push(new THREE.Vector2(0.414, 1.820));
+      points.push(new THREE.Vector2(0.395, 1.900));
+      points.push(new THREE.Vector2(0.362, 1.970));
+      points.push(new THREE.Vector2(0.315, 2.030));
+      points.push(new THREE.Vector2(0.255, 2.075));
+      points.push(new THREE.Vector2(0.215, 2.110));
+
+      // Cuello y anillo de precinto
+      points.push(new THREE.Vector2(0.215, 2.160));
+      points.push(new THREE.Vector2(0.232, 2.175));
+      points.push(new THREE.Vector2(0.232, 2.195));
+      points.push(new THREE.Vector2(0.212, 2.210));
+
+      // Cuello roscado superior y labio
+      points.push(new THREE.Vector2(0.210, 2.380));
+      points.push(new THREE.Vector2(0.208, 2.430));
+      points.push(new THREE.Vector2(0.185, 2.440));
+      points.push(new THREE.Vector2(0.170, 2.420));
+      points.push(new THREE.Vector2(0.170, 2.350));
+
+      return points;
+    }
+
+    // Geometría cilíndrica de etiqueta con mapeo UV calibrado (U=0.50 frente +Z)
+    function createLabelGeometry(segments = 64) {
+      const radius = SPECS.bodyRadius + 0.0008;
+      const yBottom = SPECS.labelYStart;
+      const yTop = SPECS.labelYEnd;
+      const height = yTop - yBottom;
+
+      const geometry = new THREE.BufferGeometry();
+      const positions = [];
+      const normals = [];
+      const uvs = [];
+      const indices = [];
+
+      const heightSegments = 8;
+
+      for (let yIndex = 0; yIndex <= heightSegments; yIndex++) {
+        const v = yIndex / heightSegments;
+        const y = yBottom + v * height;
+
+        for (let xIndex = 0; xIndex <= segments; xIndex++) {
+          const u = xIndex / segments;
+          // u=0.5 -> theta=0 (+Z frontal), u=0 -> -Z posterior, u=1 -> -Z posterior
+          const theta = (u - 0.5) * Math.PI * 2;
+          const x = Math.sin(theta) * radius;
+          const z = Math.cos(theta) * radius;
+
+          positions.push(x, y, z);
+          normals.push(Math.sin(theta), 0, Math.cos(theta));
+          uvs.push(u, v);
+        }
+      }
+
+      for (let yIndex = 0; yIndex < heightSegments; yIndex++) {
+        for (let xIndex = 0; xIndex < segments; xIndex++) {
+          const a = yIndex * (segments + 1) + xIndex;
+          const b = (yIndex + 1) * (segments + 1) + xIndex;
+          const c = (yIndex + 1) * (segments + 1) + (xIndex + 1);
+          const d = yIndex * (segments + 1) + (xIndex + 1);
+
+          indices.push(a, d, b);
+          indices.push(b, d, c);
+        }
+      }
+
+      geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+      geometry.setAttribute('normal', new THREE.Float32BufferAttribute(normals, 3));
+      geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
+      geometry.setIndex(indices);
+      geometry.computeVertexNormals();
+
+      return geometry;
+    }
+
+    // Puntos de la tapa moleteada
+    function getCapProfilePoints() {
+      const points = [];
+      const R = SPECS.capRadius;
+      const yStart = 2.18;
+      const yEnd = yStart + SPECS.capHeight;
+
+      points.push(new THREE.Vector2(0.210, yStart));
+      points.push(new THREE.Vector2(R - 0.006, yStart));
+      points.push(new THREE.Vector2(R, yStart + 0.006));
+      points.push(new THREE.Vector2(R, yStart + 0.045));
+      points.push(new THREE.Vector2(R - 0.004, yStart + 0.050));
+      points.push(new THREE.Vector2(R + 0.002, yStart + 0.055));
+      points.push(new THREE.Vector2(R + 0.002, yEnd - 0.015));
+      points.push(new THREE.Vector2(R, yEnd - 0.006));
+      points.push(new THREE.Vector2(R - 0.015, yEnd));
+      points.push(new THREE.Vector2(0.04, yEnd));
+      points.push(new THREE.Vector2(0.0, yEnd));
+
+      return points;
+    }
+
+    // Mapa normal procedural para las 64 estrías de la tapa
+    function createCapNormalTexture() {
+      const width = 1024;
+      const height = 256;
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+
+      if (ctx) {
+        const imgData = ctx.createImageData(width, height);
+        const data = imgData.data;
+        const numRibs = 64;
+
+        for (let y = 0; y < height; y++) {
+          const yNorm = y / height;
+          const isRibZone = yNorm > 0.18 && yNorm < 0.88;
+
+          for (let x = 0; x < width; x++) {
+            const u = x / width;
+            const angle = u * Math.PI * 2 * numRibs;
+            let nx = 0, ny = 0, nz = 1;
+
+            if (isRibZone) {
+              nx = -Math.sin(angle) * 0.75;
+              nz = Math.sqrt(Math.max(0, 1 - nx * nx));
+            }
+
+            const idx = (y * width + x) * 4;
+            data[idx] = Math.round((nx * 0.5 + 0.5) * 255);
+            data[idx + 1] = Math.round((ny * 0.5 + 0.5) * 255);
+            data[idx + 2] = Math.round((nz * 0.5 + 0.5) * 255);
+            data[idx + 3] = 255;
+          }
+        }
+        ctx.putImageData(imgData, 0, 0);
+      }
+
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.wrapS = THREE.RepeatWrapping;
+      texture.wrapT = THREE.ClampToEdgeWrapping;
+      return texture;
+    }
+
+    function initHero3D() {
+      const container = document.getElementById('webgl-canvas-mount');
+      if (!container) return;
+
+      const w = container.clientWidth;
+      const h = container.clientHeight;
+
+      // 1. Escena
+      scene = new THREE.Scene();
+
+      // 2. Cámara (focal length natural de 40mm para fotografía de producto editorial)
+      camera = new THREE.PerspectiveCamera(38, w / h, 0.1, 50);
+      camera.position.set(0, 1.25, 4.4);
+
+      // 3. Renderizador WebGL con alta precisión
+      renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true,
+        powerPreference: 'high-performance'
+      });
+      renderer.setSize(w, h);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.15;
+      container.appendChild(renderer.domElement);
+
+      // 4. OrbitControls con inercia suave
+      controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.target.set(0, 1.20, 0);
+      controls.minDistance = 2.4;
+      controls.maxDistance = 6.0;
+      controls.minPolarAngle = Math.PI / 2.7; // límites para no deformar la vista
+      controls.maxPolarAngle = Math.PI / 2 + 0.08;
+      controls.enableZoom = false; // evitar zoom accidental al scrollear la página
+
+      controls.addEventListener('start', () => {
+        isUserInteracting = true;
+        if (resumeRotateTimeout) clearTimeout(resumeRotateTimeout);
+      });
+
+      controls.addEventListener('end', () => {
+        resumeRotateTimeout = setTimeout(() => {
+          isUserInteracting = false;
+        }, 1500);
+      });
+
+      // 5. Rig de Iluminación Cinematográfica Sage Studio
+      // Luz ambiente suave
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+      scene.add(ambientLight);
+
+      // Luz clave (cálida, estilo sol tenue de estudio editorial)
+      const keyLight = new THREE.DirectionalLight('#fffdf5', 2.2);
+      keyLight.position.set(3.5, 4.5, 3.5);
+      keyLight.castShadow = true;
+      keyLight.shadow.mapSize.width = 1024;
+      keyLight.shadow.mapSize.height = 1024;
+      keyLight.shadow.bias = -0.0004;
+      scene.add(keyLight);
+
+      // Luz de relleno salvia suave
+      const fillLight = new THREE.DirectionalLight('#dce2c8', 1.1);
+      fillLight.position.set(-3, 2.5, 2);
+      scene.add(fillLight);
+
+      // Contraluz esmeralda orgánico (Organic Technology GALYON)
+      const rimLight = new THREE.DirectionalLight('#34d399', 2.8);
+      rimLight.position.set(-3.5, 3.0, -3.5);
+      scene.add(rimLight);
+
+      // Resplandor biológico inferior
+      const bioLight = new THREE.PointLight('#10b981', 1.8, 5, 2.0);
+      bioLight.position.set(1.5, 0.6, -1.5);
+      scene.add(bioLight);
+
+      // Sombra de contacto suave radial en el suelo
+      const shadowGeo = new THREE.PlaneGeometry(3.0, 3.0);
+      const sCanvas = document.createElement('canvas');
+      sCanvas.width = 256; sCanvas.height = 256;
+      const sCtx = sCanvas.getContext('2d');
+      if (sCtx) {
+        const rad = sCtx.createRadialGradient(128, 128, 25, 128, 128, 115);
+        rad.addColorStop(0, 'rgba(28, 48, 36, 0.65)');
+        rad.addColorStop(0.45, 'rgba(30, 50, 39, 0.28)');
+        rad.addColorStop(1, 'rgba(203, 207, 184, 0)');
+        sCtx.fillStyle = rad;
+        sCtx.fillRect(0, 0, 256, 256);
+      }
+      const shadowTex = new THREE.CanvasTexture(sCanvas);
+      const shadowMat = new THREE.MeshBasicMaterial({
+        map: shadowTex,
+        transparent: true,
+        opacity: 0.85,
+        depthWrite: false
+      });
+      const shadowPlane = new THREE.Mesh(shadowGeo, shadowMat);
+      shadowPlane.rotation.x = -Math.PI / 2;
+      shadowPlane.position.y = 0.002;
+      scene.add(shadowPlane);
+
+      // 6. Construcción del Modelo 3D GALYON TRICHO (1L)
+      bottleGroup = new THREE.Group();
+      bottleGroup.name = 'GALYON_TRICHO_1L';
+
+      // A) Cuerpo de plástico blanco HDPE
+      const bottleMat = new THREE.MeshPhysicalMaterial({
+        color: new THREE.Color('#f5f5f3'),
+        roughness: 0.38,
+        metalness: 0.0,
+        clearcoat: 0.08,
+        clearcoatRoughness: 0.35,
+        reflectivity: 0.5,
+      });
+      const bottleGeom = new THREE.LatheGeometry(getBottleProfilePoints(), 64);
+      bottleGeom.computeVertexNormals();
+      const bottleMesh = new THREE.Mesh(bottleGeom, bottleMat);
+      bottleMesh.name = 'Bottle_Body_HDPE';
+      bottleMesh.castShadow = true;
+      bottleMesh.receiveShadow = true;
+      bottleGroup.add(bottleMesh);
+
+      // B) Tapa moleteada con 64 estrías
+      const capMat = new THREE.MeshPhysicalMaterial({
+        color: new THREE.Color('#fcfcfc'),
+        roughness: 0.34,
+        metalness: 0.0,
+        clearcoat: 0.05,
+        clearcoatRoughness: 0.3,
+        normalMap: createCapNormalTexture(),
+        normalScale: new THREE.Vector2(0.85, 0.85),
+      });
+      const capGeom = new THREE.LatheGeometry(getCapProfilePoints(), 64);
+      capGeom.computeVertexNormals();
+      const capMesh = new THREE.Mesh(capGeom, capMat);
+      capMesh.name = 'Knurled_Cap';
+      capMesh.castShadow = true;
+      capMesh.receiveShadow = true;
+      bottleGroup.add(capMesh);
+
+      // C) Etiqueta envolvente con la textura original de 2000×1022
+      const labelMat = new THREE.MeshStandardMaterial({
+        color: new THREE.Color('#ffffff'),
+        roughness: 0.28,
+        metalness: 0.02,
+        polygonOffset: true,
+        polygonOffsetFactor: -1,
+        polygonOffsetUnits: -1,
+      });
+
+      const textureLoader = new THREE.TextureLoader();
+      textureLoader.load(
+        'assets/textures/galyon-label.png',
+        (tex) => {
+          tex.colorSpace = THREE.SRGBColorSpace;
+          tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+          tex.wrapS = THREE.ClampToEdgeWrapping;
+          tex.wrapT = THREE.ClampToEdgeWrapping;
+          labelMat.map = tex;
+          labelMat.needsUpdate = true;
+        },
+        undefined,
+        (err) => {
+          console.warn('Cargando textura de respaldo para etiqueta:', err);
+        }
+      );
+
+      const labelGeom = createLabelGeometry(64);
+      const labelMesh = new THREE.Mesh(labelGeom, labelMat);
+      labelMesh.name = 'Wrap_Around_Label';
+      labelMesh.castShadow = true;
+      labelMesh.receiveShadow = true;
+      bottleGroup.add(labelMesh);
+
+      // Posicionamiento de la botella en el suelo del escenario
+      scene.add(bottleGroup);
+
+      // 7. Partículas Biológicas Sutiles (Microorganismos en suspensión)
+      const particleCount = 45;
+      const particleGeo = new THREE.BufferGeometry();
+      const pPositions = new Float32Array(particleCount * 3);
+      for (let i = 0; i < particleCount * 3; i += 3) {
+        pPositions[i] = (Math.random() - 0.5) * 3.2;
+        pPositions[i + 1] = Math.random() * 2.8;
+        pPositions[i + 2] = (Math.random() - 0.5) * 2.5;
+      }
+      particleGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
+      const particleMat = new THREE.PointsMaterial({
+        color: 0x34d399,
+        size: 0.025,
+        transparent: true,
+        opacity: 0.55,
+      });
+      particles = new THREE.Points(particleGeo, particleMat);
+      scene.add(particles);
+
+      // 8. Responsive Resize
+      window.addEventListener('resize', onWindowResize);
+
+      // 9. Bucle de Render a 60 FPS
+      const clock = new THREE.Clock();
+
+      function animate() {
+        requestAnimationFrame(animate);
+        const elapsedTime = clock.getElapsedTime();
+
+        // Animación ambiental cuando el usuario no interactúa
+        if (bottleGroup) {
+          if (!isUserInteracting) {
+            // Rotación suave continua
+            bottleGroup.rotation.y += 0.005;
+            // Flotación sinusoidal sutil
+            bottleGroup.position.y = Math.sin(elapsedTime * 1.5) * 0.025;
+            // Inclinación orgánica sutil
+            bottleGroup.rotation.z = Math.sin(elapsedTime * 0.8) * 0.015;
+          } else {
+            // Retorno suave a posición base
+            bottleGroup.position.y += (0 - bottleGroup.position.y) * 0.05;
+            bottleGroup.rotation.z += (0 - bottleGroup.rotation.z) * 0.05;
+          }
+        }
+
+        // Movimiento de partículas
+        if (particles) {
+          particles.rotation.y = elapsedTime * 0.03;
+        }
+
+        controls.update();
+        renderer.render(scene, camera);
+      }
+
+      animate();
+    }
+
+    function onWindowResize() {
+      const container = document.getElementById('webgl-canvas-mount');
+      if (!container || !renderer || !camera) return;
+      const w = container.clientWidth;
+      const h = container.clientHeight;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    }
+
+    // Centrar vista en el frontal de la etiqueta (U = 0.50, +Z)
+    window.focus3DFront = function() {
+      if (!controls || !bottleGroup) return;
+      isUserInteracting = true;
+      bottleGroup.rotation.y = 0;
+      controls.reset();
+      setTimeout(() => { isUserInteracting = false; }, 2000);
+    };
+
+    // Inicialización al cargar el documento
     document.addEventListener('DOMContentLoaded', () => {
       initEntrance();
-      initVideoCrossfade();
+      initHero3D();
     });
   </script>
 
@@ -1525,9 +1641,6 @@
       if (el) {
         el.classList.add('open');
         document.body.style.overflow = 'hidden';
-        if (id === 'modal-visor3d' && window.init3DViewer) {
-          setTimeout(() => window.init3DViewer(), 100);
-        }
       }
     }
 
