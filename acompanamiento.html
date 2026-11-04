@@ -14,16 +14,19 @@
   <link rel="icon" href="assets/marca-hojas.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=6.0.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Schibsted+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=6.1.0" />
   <style>.icon-arrow{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;line-height:0;flex-shrink:0}.icon-arrow svg{width:14px;height:14px;display:block;stroke:currentColor;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}.topline span:last-child{display:inline-flex;align-items:center;gap:6px}</style>
 </head>
 <body>
   <div class="topline" id="inicio"><span>Biotecnología aplicada al agro y al ambiente</span><span>Envíos a todo Ecuador <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span></span></div>
-  <header class="header">
-    <div class="wrap nav">
-      <a href="index.html" class="brand" onclick="return window.resetToHome ? window.resetToHome(event) : true;" aria-label="GALYON, ir al inicio"><img class="brand-leaf" src="assets/marca-hojas.png" alt="" /><img class="brand-word" src="assets/marca-nombre.png" alt="GALYON" /></a>
-      <nav class="navlinks" id="navlinks" aria-label="Navegación principal">
+  <header class="header-modern">
+    <div class="nav-modern">
+      <a href="index.html" class="brand brand-modern" onclick="return window.resetToHome ? window.resetToHome(event) : true;" aria-label="GALYON, ir al inicio">
+        <img class="brand-leaf" src="assets/marca-hojas.png" alt="" />
+        <span class="brand-modern-title">GALYON</span>
+      </a>
+      <nav class="navlinks navlinks-modern" id="navlinks" aria-label="Navegación principal">
         <a href="index.html">Inicio</a>
         <a href="nosotros.html">Nosotros</a>
         <a href="bioinsumos.html">Bioinsumos</a>
@@ -31,10 +34,19 @@
         <a href="analisis-suelo.html">Análisis de suelo</a>
         <a href="acompanamiento.html" class="is-active" aria-current="page">Acompañamiento</a>
       </nav>
-      <div class="nav-actions">
-        <button class="cart-button" id="open-cart" aria-label="Abrir carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4h2l2.3 11h10.8L21 7H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span id="cart-count">0</span></button>
-        <a class="btn btn-small btn-dark nav-wa" id="header-wa" href="https://wa.me/593968933445" target="_blank" rel="noopener">Escríbenos <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span></a>
-        <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+      <div class="nav-actions nav-actions-modern">
+        <button class="cart-button btn-nav-cart" id="open-cart" aria-label="Abrir carrito">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4h2l2.3 11h10.8L21 7H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+          <span>Carrito</span>
+          <span class="nav-cart-badge" id="cart-count">0</span>
+        </button>
+        <a class="btn-nav-login" id="header-wa" href="https://wa.me/593968933445" target="_blank" rel="noopener">
+          Escríbenos
+          <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span>
+        </a>
+        <button id="menu-toggle" class="menu-toggle menu-toggle-modern" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>

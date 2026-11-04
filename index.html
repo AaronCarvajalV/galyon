@@ -4,31 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#143c2b" />
-  <meta name="description" content="GALYON: soluciones biológicas para tus cultivos, análisis de suelo y acompañamiento técnico. Atención en todo Ecuador." />
-  <!-- Open Graph & Social Cards -->
+  <meta name="description" content="GALYON: bioinsumos agrícolas de vanguardia, análisis de fertilidad de suelo y orientación técnica especializada en Ecuador." />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="GALYON | Inicio — Biotecnología aplicada a la agricultura" />
-  <meta property="og:description" content="GALYON: soluciones biológicas para tus cultivos, análisis de suelo y acompañamiento técnico. Atención en todo Ecuador." />
+  <meta property="og:title" content="GALYON | Biotecnología aplicada a la agricultura" />
+  <meta property="og:description" content="GALYON: soluciones biológicas para tus cultivos, análisis de suelo y acompañamiento técnico. Envíos a todo Ecuador." />
   <meta property="og:image" content="assets/marca-hojas.png" />
   <meta property="og:url" content="https://galyon-ec.vercel.app/" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="GALYON | Inicio — Biotecnología aplicada a la agricultura" />
-  <meta name="twitter:description" content="GALYON: soluciones biológicas para tus cultivos, análisis de suelo y acompañamiento técnico. Atención en todo Ecuador." />
+  <meta name="twitter:title" content="GALYON | Biotecnología aplicada a la agricultura" />
+  <meta name="twitter:description" content="GALYON: soluciones biológicas para tus cultivos, análisis de suelo y acompañamiento técnico. Envíos a todo Ecuador." />
   <meta name="twitter:image" content="assets/marca-hojas.png" />
-  <title>GALYON | Inicio — Biotecnología aplicada a la agricultura</title>
+  <title>GALYON | El futuro del campo crece naturalmente</title>
   <link rel="icon" href="assets/marca-hojas.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=6.0.0" />
-  <style>.icon-arrow{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;line-height:0;flex-shrink:0}.icon-arrow svg{width:14px;height:14px;display:block;stroke:currentColor;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}.topline span:last-child{display:inline-flex;align-items:center;gap:6px}</style>
+  <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Schibsted+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=6.1.0" />
+  <style>
+    .icon-arrow{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;line-height:0;flex-shrink:0}
+    .icon-arrow svg{width:14px;height:14px;display:block;stroke:currentColor;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .topline span:last-child{display:inline-flex;align-items:center;gap:6px}
+  </style>
 </head>
 <body>
-  <div class="topline" id="inicio"><span>Biotecnología aplicada al agro y al ambiente</span><span>Envíos a todo Ecuador <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span></span></div>
-  <header class="header">
-    <div class="wrap nav">
-      <a href="index.html" class="brand" onclick="return window.resetToHome ? window.resetToHome(event) : true;" aria-label="GALYON, ir al inicio"><img class="brand-leaf" src="assets/marca-hojas.png" alt="" /><img class="brand-word" src="assets/marca-nombre.png" alt="GALYON" /></a>
-      <nav class="navlinks" id="navlinks" aria-label="Navegación principal">
+  <!-- Barra superior informativa -->
+  <div class="topline" id="inicio">
+    <span>Biotecnología aplicada al agro y al ambiente</span>
+    <span>Envíos a todo Ecuador <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span></span>
+  </div>
+
+  <!-- Navegación Moderna -->
+  <header class="header-modern">
+    <div class="nav-modern">
+      <a href="index.html" class="brand brand-modern" onclick="return window.resetToHome ? window.resetToHome(event) : true;" aria-label="GALYON, ir al inicio">
+        <img class="brand-leaf" src="assets/marca-hojas.png" alt="" />
+        <span class="brand-modern-title">GALYON</span>
+      </a>
+      <nav class="navlinks navlinks-modern" id="navlinks" aria-label="Navegación principal">
         <a href="index.html" class="is-active" aria-current="page">Inicio</a>
         <a href="nosotros.html">Nosotros</a>
         <a href="bioinsumos.html">Bioinsumos</a>
@@ -36,22 +48,77 @@
         <a href="analisis-suelo.html">Análisis de suelo</a>
         <a href="acompanamiento.html">Acompañamiento</a>
       </nav>
-      <div class="nav-actions">
-        <button class="cart-button" id="open-cart" aria-label="Abrir carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4h2l2.3 11h10.8L21 7H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span id="cart-count">0</span></button>
-        <a class="btn btn-small btn-dark nav-wa" id="header-wa" href="https://wa.me/593968933445" target="_blank" rel="noopener">Escríbenos <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span></a>
-        <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+      <div class="nav-actions nav-actions-modern">
+        <button class="cart-button btn-nav-cart" id="open-cart" aria-label="Abrir carrito">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4h2l2.3 11h10.8L21 7H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+          <span>Carrito</span>
+          <span class="nav-cart-badge" id="cart-count">0</span>
+        </button>
+        <a class="btn-nav-login" id="header-wa" href="https://wa.me/593968933445" target="_blank" rel="noopener">
+          Escríbenos
+          <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span>
+        </a>
+        <button id="menu-toggle" class="menu-toggle menu-toggle-modern" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
-  <main class="page-main page-inicio">
-    <div class="wrap blank-canvas" style="min-height: 60vh;">
-      <!-- Sección Inicio reservada para el nuevo diseño -->
-    </div>
+
+  <!-- Hero Section con Video Background y Custom JS Fade -->
+  <main class="page-main">
+    <section class="hero-section-modern" aria-label="Bienvenida a GALYON">
+      <!-- Video Background (115% size, centered object-top, custom JS rAF fade system) -->
+      <div class="hero-video-container">
+        <video
+          id="hero-video"
+          class="hero-video-element"
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260329_050842_be71947f-f16e-4a14-810c-06e83d23ddb5.mp4"
+          autoplay
+          muted
+          playsinline
+          preload="auto"
+          tabindex="-1"
+          aria-hidden="true"
+        ></video>
+        <div class="hero-video-overlay" aria-hidden="true"></div>
+      </div>
+
+      <!-- Contenido del Hero (Headline con lema GALYON, subtítulo y CTAs) -->
+      <div class="hero-content-modern">
+        <div class="hero-header-modern">
+          <h1 class="hero-headline-modern">
+            El futuro del campo<br /><em>crece naturalmente.</em>
+          </h1>
+          <p class="hero-subtitle-modern">
+            Bioinsumos agrícolas, análisis de suelo y orientación técnica para tomar mejores decisiones en tus cultivos.
+          </p>
+        </div>
+        <div class="hero-actions-modern">
+          <a href="bioinsumos.html" class="hero-btn-primary">
+            Conocer bioinsumos
+            <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span>
+          </a>
+          <a href="asesor.html" class="hero-btn-secondary">
+            Asesor de cultivos
+            <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span>
+          </a>
+          <a href="analisis-suelo.html" class="hero-btn-secondary">
+            Análisis de suelo
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <!-- Pie de página unificado -->
   <footer class="footer">
     <div class="wrap footer-top">
       <div class="footer-brand">
-        <a href="index.html" class="brand inverted" onclick="return window.resetToHome ? window.resetToHome(event) : true;" aria-label="GALYON, volver al inicio"><img class="brand-leaf" src="assets/marca-hojas.png" alt="" /><img class="brand-word" src="assets/marca-nombre.png" alt="GALYON" /></a>
+        <a href="index.html" class="brand brand-modern inverted" onclick="return window.resetToHome ? window.resetToHome(event) : true;" aria-label="GALYON, volver al inicio">
+          <img class="brand-leaf" src="assets/marca-hojas.png" alt="" />
+          <span class="brand-modern-title" style="color:#ffffff;">GALYON</span>
+        </a>
         <p>Biotecnología aplicada al agro y al ambiente.<br/>Soluciones biológicas con acompañamiento.</p>
       </div>
       <div>
@@ -72,7 +139,13 @@
       <span>Sitio informativo · Pedidos coordinados por WhatsApp</span>
     </div>
   </footer>
-  <button class="float-wa" id="float-wa" aria-label="Consultar por WhatsApp" title="Hablemos por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.05 2a9.91 9.91 0 0 0-8.58 14.85L2 22l5.31-1.39A9.96 9.96 0 0 0 12.05 22a10 10 0 0 0 0-20Zm0 18.18a8.15 8.15 0 0 1-4.15-1.13l-.3-.18-3.15.83.84-3.07-.2-.31a8.17 8.17 0 1 1 6.96 3.86Zm4.49-6.11c-.24-.12-1.43-.71-1.65-.79s-.38-.12-.54.12-.62.79-.76.95-.28.18-.52.06a6.7 6.7 0 0 1-1.95-1.2 7.24 7.24 0 0 1-1.36-1.69c-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.41s.16-.24.24-.4.04-.3-.02-.42-.54-1.3-.74-1.78c-.19-.46-.39-.4-.54-.41h-.46c-.16 0-.42.06-.64.3s-.84.82-.84 1.99.86 2.3.98 2.46 1.68 2.57 4.08 3.6c.57.25 1.01.4 1.36.51.57.18 1.09.15 1.5.09.46-.07 1.43-.59 1.63-1.16s.2-1.06.14-1.16-.22-.17-.46-.29Z"/></svg></button>
+
+  <!-- Botón flotante WhatsApp -->
+  <button class="float-wa" id="float-wa" aria-label="Consultar por WhatsApp" title="Hablemos por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.05 2a9.91 9.91 0 0 0-8.58 14.85L2 22l5.31-1.39A9.96 9.96 0 0 0 12.05 22a10 10 0 0 0 0-20Zm0 18.18a8.15 8.15 0 0 1-4.15-1.13l-.3-.18-3.15.83.84-3.07-.2-.31a8.17 8.17 0 1 1 6.96 3.86Zm4.49-6.11c-.24-.12-1.43-.71-1.65-.79s-.38-.12-.54.12-.62.79-.76.95-.28.18-.52.06a6.7 6.7 0 0 1-1.95-1.2 7.24 7.24 0 0 1-1.36-1.69c-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.41s.16-.24.24-.4.04-.3-.02-.42-.54-1.3-.74-1.78c-.19-.46-.39-.4-.54-.41h-.46c-.16 0-.42.06-.64.3s-.84.82-.84 1.99.86 2.3.98 2.46 1.68 2.57 4.08 3.6c.57.25 1.01.4 1.36.51.57.18 1.09.15 1.5.09.46-.07 1.43-.59 1.63-1.16s.2-1.06.14-1.16-.22-.17-.46-.29Z"/></svg>
+  </button>
+
+  <!-- Carrito Drawer -->
   <div id="drawer-backdrop" class="drawer-backdrop" hidden></div>
   <aside class="drawer" id="cart-drawer" aria-label="Tu pedido" aria-modal="true" role="dialog" aria-hidden="true">
     <div class="drawer-header"><div><span class="eyebrow">PEDIDO GALYON</span><h2>Tu selección <span id="drawer-count"></span></h2></div><button id="close-cart" class="close-btn" aria-label="Cerrar carrito">×</button></div>
@@ -91,6 +164,106 @@
     </div>
   </aside>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="script.js?v=6.0.0"></script>
+
+  <!-- Script específico para Video Background Fade System (NO CSS transitions) -->
+  <script>
+    (function initHeroVideoFade() {
+      const video = document.getElementById('hero-video');
+      if (!video) return;
+
+      let animFrameId = null;
+      let fadingOutRef = false;
+      let currentOpacity = 0;
+      video.style.opacity = '0';
+
+      function fade(targetOpacity, duration, onComplete) {
+        if (animFrameId) {
+          cancelAnimationFrame(animFrameId);
+          animFrameId = null;
+        }
+        const startOpacity = currentOpacity;
+        const startTime = performance.now();
+
+        function step(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          currentOpacity = startOpacity + (targetOpacity - startOpacity) * progress;
+          video.style.opacity = currentOpacity.toFixed(4);
+
+          if (progress < 1) {
+            animFrameId = requestAnimationFrame(step);
+          } else {
+            animFrameId = null;
+            if (onComplete) onComplete();
+          }
+        }
+        animFrameId = requestAnimationFrame(step);
+      }
+
+      function startFadeIn() {
+        fadingOutRef = false;
+        fade(1, 250);
+      }
+
+      function startFadeOut() {
+        fadingOutRef = true;
+        fade(0, 250);
+      }
+
+      video.addEventListener('play', function() {
+        if (!fadingOutRef && currentOpacity < 1) {
+          startFadeIn();
+        }
+      });
+
+      video.addEventListener('timeupdate', function() {
+        if (!video.duration || Number.isNaN(video.duration)) return;
+        var remaining = video.duration - video.currentTime;
+        // 250ms fade-out when 0.55s remain before video end; fadingOutRef boolean prevents re-triggering
+        if (remaining <= 0.55 && !fadingOutRef) {
+          startFadeOut();
+        }
+      });
+
+      // On ended: opacity set to 0, 100ms delay, reset to currentTime = 0, play, fade back in
+      video.addEventListener('ended', function() {
+        if (animFrameId) {
+          cancelAnimationFrame(animFrameId);
+          animFrameId = null;
+        }
+        currentOpacity = 0;
+        video.style.opacity = '0';
+        setTimeout(function() {
+          video.currentTime = 0;
+          video.play().then(function() {
+            startFadeIn();
+          }).catch(function() {});
+        }, 100);
+      });
+
+      // Autoplay activation
+      function triggerPlayback() {
+        video.play().then(function() {
+          startFadeIn();
+        }).catch(function() {
+          function userResume() {
+            video.play().then(function() { startFadeIn(); }).catch(function() {});
+            window.removeEventListener('click', userResume);
+            window.removeEventListener('touchstart', userResume);
+          }
+          window.addEventListener('click', userResume, { once: true });
+          window.addEventListener('touchstart', userResume, { once: true });
+        });
+      }
+
+      if (video.readyState >= 2) {
+        triggerPlayback();
+      } else {
+        video.addEventListener('loadeddata', triggerPlayback, { once: true });
+      }
+    })();
+  </script>
+
+  <script src="script.js?v=6.1.0"></script>
 </body>
 </html>
