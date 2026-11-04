@@ -1877,7 +1877,7 @@
   background: #f8f8f8;
 }
 
-/* Video Background (Size: 115%, Centered horizontally, anchored to top) */
+/* Video Background (High-Definition Cover, anchored to top) */
 .video-bg-wrap {
   position: absolute;
   inset: 0;
@@ -1886,7 +1886,7 @@
   overflow: hidden;
   z-index: 1;
   background-color: #0f281e;
-  background-image: url('assets/campo-hero.webp');
+  background-image: url('assets/galyon-bg-poster.jpg');
   background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1897,8 +1897,10 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 115%;
-  height: 115%;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
   object-fit: cover;
   object-position: center top;
   pointer-events: none;
@@ -2274,7 +2276,7 @@ body:has(.site-bg-fixed) {
   z-index: 0;
   pointer-events: none;
   background-color: #0f281e;
-  background-image: url('assets/campo-hero.webp');
+  background-image: url('assets/galyon-bg-poster.jpg');
   background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2285,8 +2287,10 @@ body:has(.site-bg-fixed) {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 115%;
-  height: 115%;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
   object-fit: cover;
   object-position: center top;
   pointer-events: none;
