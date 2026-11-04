@@ -355,15 +355,82 @@
     finalizeModel(fallbackGroup);
   }
 
-  // 11. User Interaction & Auto-Rotation State
+  // 11. User Interaction, Scroll Reactivity & Physics State
   let isUserInteracting = false;
   let lastInteractionTime = 0;
+  let targetRotationY = 0;
+  let currentRotationY = 0;
+  let targetTiltX = 0;
+  let currentTiltX = 0;
+  let targetTiltZ = 0;
+  let currentTiltZ = 0;
+  let scrollVelocity = 0;
+
+  const scrollIndicator = document.getElementById('scroll-indicator');
+
+  function dismissIndicator() {
+    if (scrollIndicator && scrollIndicator.style.opacity !== '0') {
+      scrollIndicator.style.opacity = '0';
+      scrollIndicator.style.pointerEvents = 'none';
+      setTimeout(() => {
+        scrollIndicator.style.display = 'none';
+      }, 400);
+    }
+  }
+
+  // Wheel / Trackpad Scroll Reaction (Smooth 360° spin with inertia)
+  window.addEventListener('wheel', function (e) {
+    const delta = e.deltaY;
+    targetRotationY += delta * 0.0055;
+    scrollVelocity = Math.max(Math.min(delta * 0.0008, 0.35), -0.35);
+    lastInteractionTime = performance.now();
+    dismissIndicator();
+  }, { passive: true });
+
+  // Native Window Scroll Reaction
+  window.addEventListener('scroll', function () {
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    targetRotationY += scrollY * 0.002;
+    lastInteractionTime = performance.now();
+    dismissIndicator();
+  }, { passive: true });
+
+  // Touch Swipe Gesture Scroll Reaction
+  let touchStartY = 0;
+  let touchStartX = 0;
+  window.addEventListener('touchstart', function (e) {
+    if (e.touches && e.touches.length > 0) {
+      touchStartY = e.touches[0].clientY;
+      touchStartX = e.touches[0].clientX;
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchmove', function (e) {
+    if (e.touches && e.touches.length > 0) {
+      const dy = touchStartY - e.touches[0].clientY;
+      const dx = touchStartX - e.touches[0].clientX;
+      targetRotationY += (dy * 0.0075) + (dx * 0.009);
+      scrollVelocity = Math.max(Math.min(dy * 0.0008, 0.35), -0.35);
+      touchStartY = e.touches[0].clientY;
+      touchStartX = e.touches[0].clientX;
+      lastInteractionTime = performance.now();
+      dismissIndicator();
+    }
+  }, { passive: true });
+
+  // Subtle Mouse Parallax Tilt
+  window.addEventListener('mousemove', function (e) {
+    if (isUserInteracting) return;
+    const nx = (e.clientX / window.innerWidth) * 2 - 1;
+    targetTiltZ = -nx * 0.05;
+  }, { passive: true });
 
   if (controls) {
     controls.addEventListener('start', function () {
       isUserInteracting = true;
       lastInteractionTime = performance.now();
       mount.classList.add('is-dragging');
+      dismissIndicator();
     });
     controls.addEventListener('end', function () {
       isUserInteracting = false;
@@ -397,16 +464,34 @@
       controls.update();
     }
 
-    // Auto-rotation & gentle organic floating bobbing directly over landscape
+    // Scroll-reactive physics & smooth interpolation
     if (modelGroup) {
       const timeSec = now * 0.001;
 
-      // Subtle breathing float: ~10 mm vertical sine wave
-      modelGroup.position.y = Math.sin(timeSec * 1.5) * 0.010;
+      if (!isUserInteracting) {
+        // Smoothly interpolate rotation to target
+        currentRotationY += (targetRotationY - currentRotationY) * 0.085;
+        modelGroup.rotation.y = currentRotationY;
 
-      // When the user is not actively rotating with mouse/touch, rotate gently 360°
-      if (!isUserInteracting && (now - lastInteractionTime > 2500)) {
-        modelGroup.rotation.y += 0.0035;
+        // Dynamic scroll inertia tilt
+        scrollVelocity *= 0.91;
+        targetTiltX = scrollVelocity * 0.45;
+        currentTiltX += (targetTiltX - currentTiltX) * 0.12;
+        currentTiltZ += (targetTiltZ - currentTiltZ) * 0.06;
+        modelGroup.rotation.x = currentTiltX;
+        modelGroup.rotation.z = currentTiltZ;
+
+        // Gentle breathing float when idle: ~8mm sine wave
+        modelGroup.position.y = Math.sin(timeSec * 1.6) * 0.008;
+
+        // Continuous subtle idle drift if user hasn't scrolled in 3 seconds
+        if (now - lastInteractionTime > 3000) {
+          targetRotationY += 0.0025;
+        }
+      } else {
+        // If user is directly dragging via OrbitControls, sync target with current
+        targetRotationY = modelGroup.rotation.y;
+        currentRotationY = modelGroup.rotation.y;
       }
     }
 
