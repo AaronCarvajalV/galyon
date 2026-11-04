@@ -132,7 +132,7 @@ $('float-wa').addEventListener('click',()=>whatsapp('Hola GALYON, quisiera conoc
 const menu=$('menu-toggle'), nav=$('navlinks');
 menu.addEventListener('click',()=>{const open=nav.classList.toggle('is-open');menu.setAttribute('aria-expanded',String(open))});
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('is-open');menu.setAttribute('aria-expanded','false')}));
-$('year').textContent=new Date().getFullYear();
+if ($('year')) $('year').textContent=new Date().getFullYear();
 renderCart();
 
 // ponytail: cierre unificado de modales/drawers y retorno limpio al inicio
