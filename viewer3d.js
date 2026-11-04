@@ -37,9 +37,9 @@
   // 1. Scene Setup
   const scene = new THREE.Scene();
 
-  // 2. Camera Setup
+  // 2. Camera Setup (Tilted slightly down to frame cap top & full label hero view)
   const camera = new THREE.PerspectiveCamera(34, width / height, 0.1, 50);
-  camera.position.set(0, 1.12, 4.4);
+  camera.position.set(0, 1.48, 3.65);
 
   // 3. Renderer with transparent background to let the video background breathe
   const renderer = new THREE.WebGLRenderer({
@@ -56,7 +56,7 @@
     renderer.outputEncoding = THREE.sRGBEncoding;
   }
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.15;
+  renderer.toneMappingExposure = 1.18;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
@@ -73,38 +73,38 @@
     controls = new THREE.OrbitControls(camera, canvas);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
-    controls.target.set(0, 0.95, 0);
-    controls.minDistance = 1.1;
+    controls.target.set(0, 1.05, 0);
+    controls.minDistance = 2.0;
     controls.maxDistance = 5.5;
-    controls.maxPolarAngle = Math.PI / 2 + 0.08; // Prevent looking under the floor
+    controls.minPolarAngle = Math.PI / 2 - 0.35; // Allow looking at cap top
+    controls.maxPolarAngle = Math.PI / 2 + 0.12; // Prevent looking under floor
     controls.enablePan = false;
+    controls.enableZoom = true;
   }
 
-  // 5. Studio Lighting Rig (Biotech Emerald + Chiaroscuro Sculpting)
-  // Key Light (warm white from right-front)
-  const keyLight = new THREE.DirectionalLight('#fffef8', 2.9);
-  keyLight.position.set(3.6, 3.0, 2.0);
+  // 5. Studio Packaging Lighting Rig (Crisp commercial white illumination)
+  // Key Light (pure white from upper-right front)
+  const keyLight = new THREE.DirectionalLight('#ffffff', 2.8);
+  keyLight.position.set(2.6, 3.4, 2.6);
   keyLight.castShadow = true;
   keyLight.shadow.mapSize.width = 1024;
   keyLight.shadow.mapSize.height = 1024;
-  keyLight.shadow.camera.near = 0.5;
-  keyLight.shadow.camera.far = 10;
   keyLight.shadow.bias = -0.0004;
   scene.add(keyLight);
 
-  // Fill Light (ambient green/cream hemisphere)
-  const fillLight = new THREE.HemisphereLight('#f0fdf4', '#062015', 0.65);
+  // Fill Light (ambient clean sky/soft green bounce)
+  const fillLight = new THREE.HemisphereLight('#ffffff', '#e2eee6', 1.25);
   scene.add(fillLight);
 
-  // Rim Light (signature GALYON emerald rim light from back-left)
-  const rimLight = new THREE.DirectionalLight('#10b981', 3.6);
-  rimLight.position.set(-3.2, 2.4, -2.5);
+  // Soft Rim Light from upper back-left
+  const rimLight = new THREE.DirectionalLight('#ffffff', 1.5);
+  rimLight.position.set(-2.5, 3.0, -2.0);
   scene.add(rimLight);
 
-  // Accent Grazing Light (front raking light to catch condensation highlights)
-  const grazingLight = new THREE.PointLight('#e6fbf1', 2.2, 6.0, 1.8);
-  grazingLight.position.set(1.4, 1.5, 1.8);
-  scene.add(grazingLight);
+  // Front Specular Light to accentuate bottle label and cap ridges
+  const frontLight = new THREE.PointLight('#ffffff', 1.4, 8.0, 1.6);
+  frontLight.position.set(0.4, 1.4, 2.8);
+  scene.add(frontLight);
 
   // 6. Ground Shadow Disc
   const shadowCanvas = document.createElement('canvas');
@@ -237,28 +237,26 @@
   const normDry = createProceduralNormalTexture(false);
   const normCap = createCapNormalTexture();
 
-  // Bottle body material (blow-molded HDPE polymer)
+  // Bottle body material (blow-molded HDPE polymer: pure white, satin sheen)
   const bottleMaterial = new THREE.MeshPhysicalMaterial({
-    color: new THREE.Color('#f6f8f6'),
-    roughness: 0.35,
+    color: new THREE.Color('#f7faf8'),
+    roughness: 0.32,
     metalness: 0.0,
-    normalMap: normDroplets,
-    normalScale: new THREE.Vector2(0.65, 0.65),
-    clearcoat: 0.28,
-    clearcoatRoughness: 0.24,
-    reflectivity: 0.72,
+    normalMap: normDry,
+    normalScale: new THREE.Vector2(0.4, 0.4),
+    clearcoat: 0.20,
+    clearcoatRoughness: 0.20,
+    reflectivity: 0.70,
     ior: 1.52,
-    sheen: 0.18,
-    sheenColor: new THREE.Color('#a7f3d0'),
   });
 
   // Label material (satin paper with Spot-UV)
   const labelMaterial = new THREE.MeshPhysicalMaterial({
     color: new THREE.Color('#ffffff'),
-    roughness: 0.28,
-    metalness: 0.01,
-    clearcoat: 0.22,
-    clearcoatRoughness: 0.18,
+    roughness: 0.26,
+    metalness: 0.0,
+    clearcoat: 0.20,
+    clearcoatRoughness: 0.16,
     reflectivity: 0.65,
     polygonOffset: true,
     polygonOffsetFactor: -1,
@@ -267,24 +265,32 @@
 
   // Knurled cap material (injection-molded white polypropylene)
   const capMaterial = new THREE.MeshPhysicalMaterial({
-    color: new THREE.Color('#f9fbf9'),
-    roughness: 0.30,
+    color: new THREE.Color('#f8faf9'),
+    roughness: 0.28,
     metalness: 0.0,
     normalMap: normCap,
-    normalScale: new THREE.Vector2(0.6, 0.6),
-    clearcoat: 0.24,
+    normalScale: new THREE.Vector2(0.65, 0.65),
+    clearcoat: 0.22,
     clearcoatRoughness: 0.20,
     reflectivity: 0.65,
   });
 
-  // Helper for color space compatibility
-  function setSRGBColorSpace(tex) {
+  // Helper for texture settings & anisotropic filtering
+  function setupLabelTexture(tex) {
     if (!tex) return;
     if (THREE.SRGBColorSpace) {
       tex.colorSpace = THREE.SRGBColorSpace;
     } else if (THREE.sRGBEncoding) {
       tex.encoding = THREE.sRGBEncoding;
     }
+    if (renderer && renderer.capabilities) {
+      tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    }
+    tex.wrapS = THREE.ClampToEdgeWrapping;
+    tex.wrapT = THREE.ClampToEdgeWrapping;
+    tex.minFilter = THREE.LinearMipmapLinearFilter;
+    tex.magFilter = THREE.LinearFilter;
+    tex.generateMipmaps = true;
   }
 
   // 9. Load Label Texture
@@ -293,12 +299,7 @@
   textureLoader.load(
     labelPath,
     function (texture) {
-      setSRGBColorSpace(texture);
-      texture.wrapS = THREE.ClampToEdgeWrapping;
-      texture.wrapT = THREE.ClampToEdgeWrapping;
-      texture.minFilter = THREE.LinearMipmapLinearFilter;
-      texture.magFilter = THREE.LinearFilter;
-      texture.generateMipmaps = true;
+      setupLabelTexture(texture);
       labelMaterial.map = texture;
       labelMaterial.needsUpdate = true;
     },
@@ -306,9 +307,7 @@
     function () {
       // Fallback label image
       textureLoader.load('assets/galyon-label-hd.png', function (tex) {
-        setSRGBColorSpace(tex);
-        tex.wrapS = THREE.ClampToEdgeWrapping;
-        tex.wrapT = THREE.ClampToEdgeWrapping;
+        setupLabelTexture(tex);
         labelMaterial.map = tex;
         labelMaterial.needsUpdate = true;
       });
@@ -409,136 +408,36 @@
     finalizeModel(fallbackGroup);
   }
 
-  // 11. Camera Preset Navigation
-  const targetCamPos = new THREE.Vector3(0, 1.12, 4.4);
-  const targetCamLook = new THREE.Vector3(0, 0.95, 0);
-  let isTransitioningCam = true;
-  let isAutoRotate = true;
-  let lastUserInteractionTime = 0;
+  // 11. User Interaction & Auto-Rotation State
+  let isUserInteracting = false;
+  let lastInteractionTime = 0;
 
-  const viewCoordinates = {
-    front: {
-      pos: new THREE.Vector3(0, 1.12, 4.4),
-      look: new THREE.Vector3(0, 0.95, 0),
-    },
-    threeQuarter: {
-      pos: new THREE.Vector3(3.0, 1.35, 3.1),
-      look: new THREE.Vector3(0, 0.95, 0),
-    },
-    label: {
-      pos: new THREE.Vector3(0.25, 1.05, 2.05),
-      look: new THREE.Vector3(0, 0.98, 0),
-    },
-    cap: {
-      pos: new THREE.Vector3(0.42, 2.65, 1.6),
-      look: new THREE.Vector3(0, 1.88, 0),
-    },
-  };
-
-  function setCameraView(viewKey) {
-    const coords = viewCoordinates[viewKey];
-    if (!coords) return;
-    targetCamPos.copy(coords.pos);
-    targetCamLook.copy(coords.look);
-    isTransitioningCam = true;
-    isAutoRotate = false;
-    updateAutoRotateButtonState();
-  }
-
-  // Listen to orbit controls interaction
   if (controls) {
     controls.addEventListener('start', function () {
-      isTransitioningCam = false;
-      lastUserInteractionTime = performance.now();
+      isUserInteracting = true;
+      lastInteractionTime = performance.now();
       mount.classList.add('is-dragging');
     });
     controls.addEventListener('end', function () {
+      isUserInteracting = false;
+      lastInteractionTime = performance.now();
       mount.classList.remove('is-dragging');
     });
   }
 
-  // 12. UI Dock Events
-  const viewButtons = document.querySelectorAll('.dock-btn[data-view]');
-  viewButtons.forEach(btn => {
-    btn.addEventListener('click', function () {
-      viewButtons.forEach(b => {
-        b.classList.remove('is-active');
-        b.setAttribute('aria-pressed', 'false');
-      });
-      this.classList.add('is-active');
-      this.setAttribute('aria-pressed', 'true');
-      const view = this.getAttribute('data-view');
-      setCameraView(view);
-    });
-  });
-
-  const finishButtons = document.querySelectorAll('.dock-btn[data-finish]');
-  finishButtons.forEach(btn => {
-    btn.addEventListener('click', function () {
-      finishButtons.forEach(b => b.classList.remove('is-active'));
-      this.classList.add('is-active');
-      const finish = this.getAttribute('data-finish');
-      if (finish === 'condensation') {
-        bottleMaterial.normalMap = normDroplets;
-        bottleMaterial.normalScale.set(0.65, 0.65);
-        bottleMaterial.clearcoat = 0.28;
-      } else {
-        bottleMaterial.normalMap = normDry;
-        bottleMaterial.normalScale.set(0.45, 0.45);
-        bottleMaterial.clearcoat = 0.16;
-      }
-      bottleMaterial.needsUpdate = true;
-    });
-  });
-
-  const toggleRotateBtn = document.getElementById('btn-toggle-rotate');
-  function updateAutoRotateButtonState() {
-    if (!toggleRotateBtn) return;
-    if (isAutoRotate) {
-      toggleRotateBtn.classList.add('is-active');
-      toggleRotateBtn.setAttribute('aria-pressed', 'true');
-    } else {
-      toggleRotateBtn.classList.remove('is-active');
-      toggleRotateBtn.setAttribute('aria-pressed', 'false');
-    }
-  }
-
-  if (toggleRotateBtn) {
-    toggleRotateBtn.addEventListener('click', function () {
-      isAutoRotate = !isAutoRotate;
-      updateAutoRotateButtonState();
-      if (isAutoRotate) {
-        lastUserInteractionTime = 0;
-      }
-    });
-  }
-
-  // Direct Add-to-Cart from 3D Stage (script.js handles data-add-sku; we provide feedback)
-  const addTrichoBtn = document.getElementById('add-tricho-from-hero');
-  if (addTrichoBtn) {
-    addTrichoBtn.addEventListener('click', function () {
-      // Optional slight feedback bounce on the 3D model
-      if (modelGroup) {
-        modelGroup.position.y += 0.04;
-        setTimeout(() => {
-          modelGroup.position.y -= 0.04;
-        }, 180);
-      }
-    });
-  }
-
-  // 13. Responsive Resize Handler
+  // 12. Responsive Resize Handler
   function handleResize() {
     if (!mount) return;
     const newWidth = mount.clientWidth;
     const newHeight = mount.clientHeight;
+    if (newWidth <= 0 || newHeight <= 0) return;
     camera.aspect = newWidth / newHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(newWidth, newHeight);
   }
   window.addEventListener('resize', handleResize);
 
-  // 14. Main Animation & Render Loop
+  // 13. Main Animation & Render Loop
   let lastTime = performance.now();
 
   function animate(now) {
@@ -547,36 +446,20 @@
     const delta = Math.min((now - lastTime) / 1000, 0.1);
     lastTime = now;
 
-    // Camera damping interpolation
-    if (isTransitioningCam) {
-      camera.position.x += (targetCamPos.x - camera.position.x) * 0.08;
-      camera.position.y += (targetCamPos.y - camera.position.y) * 0.08;
-      camera.position.z += (targetCamPos.z - camera.position.z) * 0.08;
-
-      if (controls) {
-        controls.target.x += (targetCamLook.x - controls.target.x) * 0.08;
-        controls.target.y += (targetCamLook.y - controls.target.y) * 0.08;
-        controls.target.z += (targetCamLook.z - controls.target.z) * 0.08;
-      }
-
-      if (camera.position.distanceTo(targetCamPos) < 0.01) {
-        isTransitioningCam = false;
-      }
-    }
-
     if (controls) {
       controls.update();
     }
 
-    // Auto-rotation & gentle organic floating bobbing
+    // Auto-rotation & gentle organic floating bobbing directly over landscape
     if (modelGroup) {
       const timeSec = now * 0.001;
 
-      // Subtle breathing float: 15 mm vertical sine wave
-      modelGroup.position.y = Math.sin(timeSec * 1.6) * 0.015;
+      // Subtle breathing float: ~10 mm vertical sine wave
+      modelGroup.position.y = Math.sin(timeSec * 1.5) * 0.010;
 
-      if (isAutoRotate) {
-        modelGroup.rotation.y += 0.007;
+      // When the user is not actively rotating with mouse/touch, rotate gently 360°
+      if (!isUserInteracting && (now - lastInteractionTime > 2500)) {
+        modelGroup.rotation.y += 0.0035;
       }
     }
 
