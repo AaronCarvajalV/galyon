@@ -719,98 +719,44 @@ document.addEventListener('keydown', e => {
  render();
 })();
 
-// Video Background Custom JS Fade System (NO CSS transitions, 250ms rAF fade, 0.55s remaining trigger)
+// Video Background Seamless Loop Controller (Sin parpadeos grises, loop fluido continuo)
 (function initGlobalDynamicBackgroundVideo() {
   const video = document.getElementById('hero-video');
   if (!video) return;
 
-  let animFrameId = null;
-  let fadingOutRef = false;
-  let currentOpacity = 0;
-  video.style.opacity = '0';
+  video.loop = true;
+  video.muted = true;
+  video.playsInline = true;
+  video.style.opacity = '1';
 
-  function fade(targetOpacity, duration, onComplete) {
-    if (animFrameId) {
-      cancelAnimationFrame(animFrameId);
-      animFrameId = null;
+  function playVideo() {
+    if (video.paused) {
+      video.play().catch(function() {
+        function userResume() {
+          video.play().catch(function() {});
+          window.removeEventListener('click', userResume);
+          window.removeEventListener('touchstart', userResume);
+          window.removeEventListener('scroll', userResume);
+        }
+        window.addEventListener('click', userResume, { once: true });
+        window.addEventListener('touchstart', userResume, { once: true });
+        window.addEventListener('scroll', userResume, { once: true });
+      });
     }
-    const startOpacity = currentOpacity;
-    const startTime = performance.now();
-
-    function step(now) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      currentOpacity = startOpacity + (targetOpacity - startOpacity) * progress;
-      video.style.opacity = currentOpacity.toFixed(4);
-
-      if (progress < 1) {
-        animFrameId = requestAnimationFrame(step);
-      } else {
-        animFrameId = null;
-        if (onComplete) onComplete();
-      }
-    }
-    animFrameId = requestAnimationFrame(step);
   }
 
-  function startFadeIn() {
-    fadingOutRef = false;
-    fade(1, 250);
-  }
-
-  function startFadeOut() {
-    fadingOutRef = true;
-    fade(0, 250);
-  }
-
-  video.addEventListener('play', function() {
-    if (!fadingOutRef && currentOpacity < 1) {
-      startFadeIn();
-    }
-  });
-
-  video.addEventListener('timeupdate', function() {
-    if (!video.duration || Number.isNaN(video.duration)) return;
-    const remaining = video.duration - video.currentTime;
-    if (remaining <= 0.55 && !fadingOutRef) {
-      startFadeOut();
-    }
-  });
-
+  // Loop continuo inmediato sin modificar opacidad si el navegador llegara al fin
   video.addEventListener('ended', function() {
-    if (animFrameId) {
-      cancelAnimationFrame(animFrameId);
-      animFrameId = null;
-    }
-    currentOpacity = 0;
-    video.style.opacity = '0';
-    setTimeout(function() {
-      video.currentTime = 0;
-      video.play().then(function() {
-        startFadeIn();
-      }).catch(function() {});
-    }, 100);
+    video.currentTime = 0;
+    playVideo();
   });
 
-  function triggerPlayback() {
-    video.play().then(function() {
-      startFadeIn();
-    }).catch(function() {
-      function userResume() {
-        video.play().then(function() { startFadeIn(); }).catch(function() {});
-        window.removeEventListener('click', userResume);
-        window.removeEventListener('touchstart', userResume);
-        window.removeEventListener('scroll', userResume);
-      }
-      window.addEventListener('click', userResume, { once: true });
-      window.addEventListener('touchstart', userResume, { once: true });
-      window.addEventListener('scroll', userResume, { once: true });
-    });
-  }
+  video.addEventListener('loadeddata', playVideo);
+  video.addEventListener('canplay', playVideo);
 
   if (video.readyState >= 2) {
-    triggerPlayback();
+    playVideo();
   } else {
-    video.addEventListener('loadeddata', triggerPlayback, { once: true });
+    playVideo();
   }
 })();

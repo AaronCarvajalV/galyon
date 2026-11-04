@@ -34,7 +34,9 @@
         id="hero-video"
         class="video-bg-media"
         src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260329_050842_be71947f-f16e-4a14-810c-06e83d23ddb5.mp4"
+        poster="assets/campo-hero.webp"
         autoplay
+        loop
         muted
         playsinline
         preload="auto"
@@ -120,111 +122,12 @@
   </aside>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <!-- Script específico para Video Background Fade System (NO CSS transitions) -->
-  <script>
-    (function initHeroVideoFade() {
-      const video = document.getElementById('hero-video');
-      if (!video) return;
-
-      let animFrameId = null;
-      let fadingOutRef = false;
-      let currentOpacity = 0;
-      video.style.opacity = '0';
-
-      function fade(targetOpacity, duration, onComplete) {
-        if (animFrameId) {
-          cancelAnimationFrame(animFrameId);
-          animFrameId = null;
-        }
-        const startOpacity = currentOpacity;
-        const startTime = performance.now();
-
-        function step(now) {
-          const elapsed = now - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          currentOpacity = startOpacity + (targetOpacity - startOpacity) * progress;
-          video.style.opacity = currentOpacity.toFixed(4);
-
-          if (progress < 1) {
-            animFrameId = requestAnimationFrame(step);
-          } else {
-            animFrameId = null;
-            if (onComplete) onComplete();
-          }
-        }
-        animFrameId = requestAnimationFrame(step);
-      }
-
-      function startFadeIn() {
-        fadingOutRef = false;
-        fade(1, 250);
-      }
-
-      function startFadeOut() {
-        fadingOutRef = true;
-        fade(0, 250);
-      }
-
-      video.addEventListener('play', function() {
-        if (!fadingOutRef && currentOpacity < 1) {
-          startFadeIn();
-        }
-      });
-
-      video.addEventListener('timeupdate', function() {
-        if (!video.duration || Number.isNaN(video.duration)) return;
-        var remaining = video.duration - video.currentTime;
-        // 250ms fade-out when 0.55 seconds remain before video end; fadingOutRef boolean prevents re-triggering
-        if (remaining <= 0.55 && !fadingOutRef) {
-          startFadeOut();
-        }
-      });
-
-      // On ended: opacity set to 0, 100ms delay, reset to currentTime = 0, play, fade back in
-      video.addEventListener('ended', function() {
-        if (animFrameId) {
-          cancelAnimationFrame(animFrameId);
-          animFrameId = null;
-        }
-        currentOpacity = 0;
-        video.style.opacity = '0';
-        setTimeout(function() {
-          video.currentTime = 0;
-          video.play().then(function() {
-            startFadeIn();
-          }).catch(function() {});
-        }, 100);
-      });
-
-      // Autoplay activation
-      function triggerPlayback() {
-        video.play().then(function() {
-          startFadeIn();
-        }).catch(function() {
-          function userResume() {
-            video.play().then(function() { startFadeIn(); }).catch(function() {});
-            window.removeEventListener('click', userResume);
-            window.removeEventListener('touchstart', userResume);
-          }
-          window.addEventListener('click', userResume, { once: true });
-          window.addEventListener('touchstart', userResume, { once: true });
-        });
-      }
-
-      if (video.readyState >= 2) {
-        triggerPlayback();
-      } else {
-        video.addEventListener('loadeddata', triggerPlayback, { once: true });
-      }
-    })();
-  </script>
-
   <!-- Three.js + Controles PBR para el Componente 3D Reactivo de GALYON TRICHO -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
   <script src="viewer3d.js?v=1.1.0" defer></script>
 
-  <script src="script.js?v=7.0.0"></script>
+  <script src="script.js?v=7.1.0"></script>
 </body>
 </html>
