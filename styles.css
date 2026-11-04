@@ -1902,11 +1902,7 @@
 }
 
 .video-bg-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.24); /* Transparent overlay: rgba(0,0,0,0.24) */
-  z-index: 2;
-  pointer-events: none;
+  display: none !important;
 }
 
 /* Navigation Bar (Padding: 120px horizontal, 16px vertical) */
@@ -1920,16 +1916,7 @@
   justify-content: space-between;
   gap: 32px;
   box-sizing: border-box;
-}
-
-/* Sticky variant for inner pages */
-.template-nav.is-sticky-page {
-  position: sticky;
-  top: 0;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: transparent;
 }
 
 .nav-logo {
@@ -2298,12 +2285,7 @@ body:has(.site-bg-fixed) {
 }
 
 .site-bg-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(250, 249, 244, 0.78);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-  pointer-events: none;
+  display: none !important;
 }
 
 /* Ensure content sits safely above the background video */
