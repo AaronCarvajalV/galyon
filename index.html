@@ -5,20 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GALYON — El futuro del campo crece naturalmente</title>
   <meta name="description" content="GALYON: bioinsumos agrícolas de vanguardia, análisis de fertilidad de suelo y orientación técnica especializada en Ecuador." />
-  <link rel="icon" href="assets/marca-hojas.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=UnifrakturCook:wght@700&amp;family=Instrument+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=UnifrakturCook:wght@700&amp;family=Instrument+Sans:wght@400;500&amp;display=swap" rel="stylesheet" />
   <style>
     :root {
       --ink: #0b0b0c;
       --sky: #dbe6ee;
-      --forest: #143d2c;
       --nav-gap: clamp(0.75rem, 1.4vw, 1.75rem);
       --pad-x: clamp(1.25rem, 4vw, 3.6rem);
       --ease: cubic-bezier(.22, 1, .36, 1);
       --ease-in-out: cubic-bezier(.76, 0, .24, 1);
-      --poster: url("assets/galyon-bg-poster.jpg");
+      --poster: url("https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260908_122011_59c97465-4d23-4fdc-ac40-f6832f573e28.png&w=1920&q=85");
     }
 
     *, *::before, *::after {
@@ -56,12 +54,11 @@
     }
 
     /* ==========================================================================
-       HERO & MEDIA (FONDO DE PAISAJE GALYON — SIN TOCADISCOS)
+       HERO & MEDIA
        ========================================================================== */
     .hero {
       position: relative;
       min-height: 100svh;
-      height: 100svh;
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -72,10 +69,10 @@
       position: absolute;
       inset: 0;
       z-index: 0;
-      transform: scale(1.06);
-      filter: blur(12px);
+      transform: scale(1.08);
+      filter: blur(14px);
       opacity: 0;
-      animation: mediaIn 1.8s var(--ease) .1s forwards;
+      animation: mediaIn 1.9s var(--ease) .1s forwards;
     }
 
     @keyframes mediaIn {
@@ -93,7 +90,7 @@
       inset: -8%;
       z-index: 0;
       background: var(--poster) center 22% / cover no-repeat;
-      filter: blur(28px) saturate(104%);
+      filter: blur(30px) saturate(104%);
       transform: scale(1.05);
     }
 
@@ -104,7 +101,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 60%;
+      object-position: center 62%;
       display: block;
     }
 
@@ -129,8 +126,8 @@
       z-index: 3;
       pointer-events: none;
       background:
-        linear-gradient(to bottom, rgba(226, 236, 243, .45) 0%, rgba(226, 236, 243, .12) 35%, rgba(226, 236, 243, 0) 60%),
-        radial-gradient(120% 70% at 50% 0%, rgba(255, 255, 255, .32), rgba(255, 255, 255, 0) 65%);
+        linear-gradient(to bottom, rgba(226, 236, 243, .55) 0%, rgba(226, 236, 243, .18) 34%, rgba(226, 236, 243, 0) 58%),
+        radial-gradient(120% 70% at 50% 0%, rgba(255, 255, 255, .35), rgba(255, 255, 255, 0) 60%);
     }
 
     /* ==========================================================================
@@ -143,25 +140,16 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      padding: clamp(1rem, 2.2vw, 1.8rem) var(--pad-x);
+      padding: clamp(1.1rem, 2.4vw, 1.9rem) var(--pad-x);
     }
 
     .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
       font-family: "UnifrakturCook", serif;
       font-weight: 700;
       font-size: clamp(1.5rem, 2.4vw, 1.9rem);
       line-height: 1;
       letter-spacing: .01em;
       white-space: nowrap;
-    }
-
-    .logo-leaf {
-      width: 28px;
-      height: 28px;
-      object-fit: contain;
     }
 
     .nav__links {
@@ -298,26 +286,24 @@
     }
 
     /* ==========================================================================
-       HEADLINE & 3D STAGE INNER
+       HEADLINE & INNER (TOP-ANCHORED)
        ========================================================================== */
     .hero__inner {
       position: relative;
       z-index: 10;
       flex: 1;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: clamp(0.8rem, 2.5vh, 2.2rem) var(--pad-x) 0;
-      box-sizing: border-box;
+      justify-content: center;
+      padding: clamp(1.5rem, 5vh, 4.5rem) var(--pad-x) 0;
+      pointer-events: none;
     }
 
     .headline {
       margin: 0;
       font-family: "Instrument Serif", Georgia, serif;
       font-weight: 400;
-      font-size: clamp(2.4rem, 5.2vw, 5.8rem);
-      line-height: 1.05;
+      font-size: clamp(2.7rem, 6.3vw, 6.75rem);
+      line-height: 1.06;
       letter-spacing: -.005em;
       text-align: center;
     }
@@ -350,124 +336,6 @@
 
     .headline .line:nth-child(2) > span {
       animation-delay: .68s;
-    }
-
-    /* ==========================================================================
-       FRASCO 3D GALYON REACTIVO A SCROLL (DIRECTO SOBRE EL PAISAJE)
-       ========================================================================== */
-    .hero-3d-stage {
-      position: relative;
-      width: 100%;
-      max-width: 980px;
-      flex: 1;
-      min-height: 360px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: -6px;
-      touch-action: none;
-    }
-
-    .webgl-canvas-mount {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      cursor: grab;
-      touch-action: none;
-      outline: none;
-      background: transparent;
-    }
-
-    .webgl-canvas-mount canvas {
-      filter: drop-shadow(0 22px 35px rgba(10, 35, 22, 0.22));
-      transition: filter 0.3s ease;
-    }
-
-    .webgl-canvas-mount.is-dragging canvas,
-    .webgl-canvas-mount:active canvas {
-      filter: drop-shadow(0 28px 45px rgba(10, 35, 22, 0.32));
-    }
-
-    .webgl-canvas-mount.is-dragging,
-    .webgl-canvas-mount:active {
-      cursor: grabbing;
-    }
-
-    /* Spinner de carga 3D */
-    .viewer3d-loader {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      z-index: 5;
-      transition: opacity 0.3s ease;
-    }
-
-    .viewer3d-spinner {
-      width: 32px;
-      height: 32px;
-      border: 3px solid rgba(255, 255, 255, 0.4);
-      border-top-color: var(--forest);
-      border-radius: 50%;
-      animation: viewer3d-spin 0.8s linear infinite;
-    }
-
-    @keyframes viewer3d-spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* Indicador interactivo de scroll 3D */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 6px 15px;
-      background: rgba(255, 255, 255, 0.90);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(18, 40, 28, 0.12);
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      color: var(--forest);
-      pointer-events: none;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
-      opacity: 0.95;
-      transition: opacity 0.45s ease, transform 0.45s ease;
-      z-index: 20;
-    }
-
-    .scroll-indicator-mouse {
-      width: 13px;
-      height: 19px;
-      border: 1.6px solid var(--forest);
-      border-radius: 9px;
-      position: relative;
-      display: flex;
-      justify-content: center;
-    }
-
-    .scroll-indicator-wheel {
-      width: 2px;
-      height: 4px;
-      background: var(--forest);
-      border-radius: 1px;
-      margin-top: 3px;
-      animation: scrollWheel 1.6s ease-in-out infinite;
-    }
-
-    @keyframes scrollWheel {
-      0% { transform: translateY(0); opacity: 1; }
-      60% { transform: translateY(5px); opacity: 0; }
-      61% { transform: translateY(-2px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
     }
 
     /* ==========================================================================
@@ -604,8 +472,7 @@
       }
 
       .hero__inner {
-        align-items: center;
-        padding-top: 1.2rem;
+        align-items: flex-start;
       }
 
       .line {
@@ -613,12 +480,8 @@
       }
 
       .headline {
-        font-size: clamp(2.1rem, 6.4vw, 3.2rem);
-        max-width: 16ch;
-      }
-
-      .hero-3d-stage {
-        min-height: 320px;
+        font-size: clamp(2.4rem, 6.4vw, 3.6rem);
+        max-width: 15ch;
       }
     }
 
@@ -640,47 +503,47 @@
 
     @media (max-width: 560px) {
       .headline {
-        font-size: clamp(1.9rem, 8.5vw, 2.7rem);
+        font-size: clamp(2.15rem, 9.4vw, 3.1rem);
         line-height: 1.12;
-        max-width: 13ch;
+        max-width: 11ch;
       }
 
       .hero__inner {
-        padding-top: clamp(1rem, 4vh, 2rem);
+        padding-top: clamp(1.75rem, 7vh, 3rem);
       }
 
-      .hero-3d-stage {
-        min-height: 290px;
+      .hero__media video,
+      .hero__media img {
+        object-position: center 58%;
       }
+    }
 
-      .scroll-indicator {
-        bottom: 8px;
-        font-size: 10px;
-        padding: 5px 12px;
+    @media (max-width: 380px) {
+      .headline {
+        font-size: 2rem;
       }
     }
 
     @media (max-height: 520px) and (orientation: landscape) {
       .headline {
-        font-size: clamp(1.6rem, 5vw, 2.2rem);
-        max-width: 24ch;
+        font-size: clamp(1.7rem, 5vw, 2.4rem);
+        max-width: 22ch;
       }
 
       .hero__inner {
-        padding-top: .5rem;
-      }
-
-      .hero-3d-stage {
-        min-height: 220px;
+        padding-top: .75rem;
       }
 
       .menu__list a {
         font-size: clamp(1.4rem, 5vw, 1.9rem);
       }
 
-      .menu__rule,
+      .menu__rule {
+        margin-top: 1.2rem;
+      }
+
       .menu__foot {
-        margin-top: 1rem;
+        margin-top: 1.2rem;
       }
     }
 
@@ -712,20 +575,15 @@
 </head>
 <body>
   <section class="hero">
-    <!-- Video de fondo agrícola GALYON (NO TOCADISCOS) -->
     <div class="hero__media">
-      <img src="assets/galyon-bg-poster.jpg" alt="Campo agrícola de GALYON en Ecuador con colinas verdes y cielo despejado" />
-      <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/galyon-bg-poster.jpg" aria-hidden="true">
-        <source src="assets/galyon-bg-field.mp4" type="video/mp4" />
+      <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260908_122011_59c97465-4d23-4fdc-ac40-f6832f573e28.png&amp;w=1920&amp;q=85" alt="A vintage turntable resting on a mossy rock in an alpine meadow at golden hour" />
+      <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260908_122011_59c97465-4d23-4fdc-ac40-f6832f573e28.png&amp;w=1920&amp;q=85" aria-hidden="true">
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260908_125738_eb584080-9f98-489e-adb2-014760aa34da.mp4" type="video/mp4" />
       </video>
     </div>
 
-    <!-- Header / Navbar GALYON -->
     <header class="nav">
-      <a href="index.html" class="logo rise d1" aria-label="GALYON — Inicio">
-        <img src="assets/marca-hojas.png" alt="" class="logo-leaf" />
-        <span>GALYON</span>
-      </a>
+      <a href="index.html" class="logo rise d1" aria-label="GALYON — Inicio">GALYON</a>
 
       <nav class="nav__links" aria-label="Primary">
         <a href="index.html" class="rise d2 is-active" aria-current="page">Inicio</a>
@@ -747,30 +605,14 @@
       </div>
     </header>
 
-    <!-- Contenido Hero: Titular Top-Anchored + Componente 3D Frasco Galyon Reactivo a Scroll -->
     <div class="hero__inner">
       <h1 class="headline">
         <span class="line"><span>El futuro del campo</span></span>
         <span class="line"><span>crece naturalmente.</span></span>
       </h1>
-
-      <!-- Componente 3D Reactivo de la Botella GALYON TRICHO -->
-      <div class="hero-3d-stage" id="hero-3d-stage">
-        <div id="webgl-canvas-mount" class="webgl-canvas-mount" aria-label="Visor 3D interactivo del producto GALYON TRICHO que reacciona a scroll"></div>
-        <div id="viewer3d-loader" class="viewer3d-loader">
-          <div class="viewer3d-spinner"></div>
-        </div>
-        <div class="scroll-indicator" id="scroll-indicator">
-          <div class="scroll-indicator-mouse">
-            <div class="scroll-indicator-wheel"></div>
-          </div>
-          <span>Scroll para rotar 360°</span>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- Menú móvil desplegable -->
   <div class="menu" id="menu">
     <nav aria-label="Mobile">
       <ul class="menu__list">
@@ -788,13 +630,6 @@
     </div>
   </div>
 
-  <!-- Three.js + Controles PBR para el Componente 3D del Frasco de GALYON reactivo a Scroll -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-  <script src="viewer3d.js?v=1.3.0" defer></script>
-
-  <!-- Script de interfaz y control de video -->
   <script>
     (function () {
       var menu = document.getElementById('menu');
