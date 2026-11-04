@@ -1886,7 +1886,7 @@
   overflow: hidden;
   z-index: 1;
   background-color: #dbe6ee;
-  background-image: url('assets/galyon-bg-poster.jpg');
+  background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260908_122011_59c97465-4d23-4fdc-ac40-f6832f573e28.png&w=1920&q=85');
   background-position: center 60%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2276,7 +2276,7 @@ body:has(.site-bg-fixed) {
   z-index: 0;
   pointer-events: none;
   background-color: #dbe6ee;
-  background-image: url('assets/galyon-bg-poster.jpg');
+  background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260908_122011_59c97465-4d23-4fdc-ac40-f6832f573e28.png&w=1920&q=85');
   background-position: center 60%;
   background-size: cover;
   background-repeat: no-repeat;
