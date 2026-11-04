@@ -57,8 +57,7 @@
   }
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.18;
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.shadowMap.enabled = false;
 
   const canvas = renderer.domElement;
   canvas.style.width = '100%';
@@ -86,10 +85,6 @@
   // Key Light (pure white from upper-right front)
   const keyLight = new THREE.DirectionalLight('#ffffff', 2.8);
   keyLight.position.set(2.6, 3.4, 2.6);
-  keyLight.castShadow = true;
-  keyLight.shadow.mapSize.width = 1024;
-  keyLight.shadow.mapSize.height = 1024;
-  keyLight.shadow.bias = -0.0004;
   scene.add(keyLight);
 
   // Fill Light (ambient clean sky/soft green bounce)
@@ -106,55 +101,7 @@
   frontLight.position.set(0.4, 1.4, 2.8);
   scene.add(frontLight);
 
-  // 6. Ground Shadow Disc
-  const shadowCanvas = document.createElement('canvas');
-  shadowCanvas.width = 512;
-  shadowCanvas.height = 512;
-  const sCtx = shadowCanvas.getContext('2d');
-  if (sCtx) {
-    sCtx.clearRect(0, 0, 512, 512);
-
-    // Soft directional contact shadow shifted back-left
-    sCtx.save();
-    sCtx.translate(225, 230);
-    sCtx.rotate(-0.6);
-    sCtx.scale(1.4, 0.9);
-    const castGrad = sCtx.createRadialGradient(0, 0, 15, 0, 0, 150);
-    castGrad.addColorStop(0, 'rgba(10, 35, 22, 0.75)');
-    castGrad.addColorStop(0.4, 'rgba(10, 35, 22, 0.40)');
-    castGrad.addColorStop(0.7, 'rgba(10, 35, 22, 0.12)');
-    castGrad.addColorStop(1, 'rgba(10, 35, 22, 0)');
-    sCtx.fillStyle = castGrad;
-    sCtx.beginPath();
-    sCtx.arc(0, 0, 150, 0, Math.PI * 2);
-    sCtx.fill();
-    sCtx.restore();
-
-    // Ambient occlusion contact ring right under bottle base
-    const aoGrad = sCtx.createRadialGradient(256, 256, 15, 256, 256, 95);
-    aoGrad.addColorStop(0, 'rgba(6, 25, 16, 0.92)');
-    aoGrad.addColorStop(0.55, 'rgba(6, 25, 16, 0.88)');
-    aoGrad.addColorStop(0.75, 'rgba(6, 25, 16, 0.42)');
-    aoGrad.addColorStop(1, 'rgba(6, 25, 16, 0)');
-    sCtx.fillStyle = aoGrad;
-    sCtx.beginPath();
-    sCtx.arc(256, 256, 95, 0, Math.PI * 2);
-    sCtx.fill();
-  }
-  const shadowTex = new THREE.CanvasTexture(shadowCanvas);
-  const shadowGeo = new THREE.PlaneGeometry(3.0, 3.0);
-  const shadowMat = new THREE.MeshBasicMaterial({
-    map: shadowTex,
-    transparent: true,
-    opacity: 0.85,
-    depthWrite: false,
-  });
-  const shadowMesh = new THREE.Mesh(shadowGeo, shadowMat);
-  shadowMesh.rotation.x = -Math.PI / 2;
-  shadowMesh.position.y = 0.002;
-  scene.add(shadowMesh);
-
-  // 7. Procedural Texture Generators
+  // 6. Procedural Texture Generators
   function createProceduralNormalTexture(includeCondensation) {
     const size = 512;
     const data = new Uint8Array(size * size * 4);

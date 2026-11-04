@@ -2418,145 +2418,6 @@ body:has(.site-bg-fixed) {
 }
 
 /* ==========================================================================
-   v6.5.0 — TEXT CONTOURS & HALOS FOR ENHANCED READABILITY OVER DYNAMIC VIDEO
-   ========================================================================== */
-
-/* Navbar Brand & Links: Crisp contour */
-.template-nav .logo-text {
-  -webkit-text-stroke: 0.8px #ffffff;
-  paint-order: stroke fill;
-  text-shadow:
-    0 0 1px #ffffff,
-    0 0 6px rgba(255, 255, 255, 0.95),
-    0 2px 10px rgba(255, 255, 255, 0.85);
-}
-
-.template-nav .nav-item {
-  -webkit-text-stroke: 0.6px #ffffff;
-  paint-order: stroke fill;
-  text-shadow:
-    0 0 1px #ffffff,
-    0 0 6px rgba(255, 255, 255, 0.95),
-    0 2px 8px rgba(255, 255, 255, 0.8);
-}
-
-.template-nav .btn-signup {
-  -webkit-text-stroke: 0.6px #ffffff;
-  paint-order: stroke fill;
-  text-shadow:
-    0 0 1px #ffffff,
-    0 0 6px rgba(255, 255, 255, 0.95),
-    0 2px 8px rgba(255, 255, 255, 0.8);
-}
-
-.template-nav .nav-mobile-toggle span {
-  box-shadow: 0 0 3px #ffffff, 0 0 8px rgba(255, 255, 255, 0.9);
-}
-
-/* Reset mobile dropdown menu so links on white background are clean */
-@media (max-width: 760px) {
-  .nav-menu .nav-item {
-    -webkit-text-stroke: 0 !important;
-    text-shadow: none !important;
-  }
-}
-
-/* Hero Section Headlines (index.html) — Limpio, sólido y nítido como en el diseño de referencia */
-.hero-title {
-  -webkit-text-stroke: 0 !important;
-  paint-order: normal !important;
-  text-shadow: none !important;
-  color: #12281c !important;
-}
-
-.hero-title-accent {
-  -webkit-text-stroke: 0 !important;
-  paint-order: normal !important;
-  text-shadow: none !important;
-  color: #194e2e !important;
-}
-
-.hero-subtitle {
-  color: #1a2a20 !important;
-  font-weight: 600 !important;
-  -webkit-text-stroke: 0.8px #ffffff;
-  paint-order: stroke fill;
-  text-shadow:
-    0 0 1px #ffffff,
-    0 0 8px rgba(255, 255, 255, 0.95),
-    0 2px 14px rgba(255, 255, 255, 0.85);
-}
-
-/* Page Section Headings & Intros directly over background */
-.intro h2,
-.section-heading h2,
-.advisor-intro h2,
-.faq h2 {
-  -webkit-text-stroke: 1.6px #ffffff;
-  paint-order: stroke fill;
-  text-shadow:
-    0 0 2px #ffffff,
-    0 0 10px rgba(255, 255, 255, 0.95),
-    0 3px 20px rgba(255, 255, 255, 0.85);
-}
-
-.intro h2 span,
-.section-heading h2 span,
-.advisor-intro h2 span,
-.faq h2 span {
-  -webkit-text-stroke: 1.6px #ffffff;
-  paint-order: stroke fill;
-  text-shadow:
-    0 0 2px #ffffff,
-    0 0 10px rgba(255, 255, 255, 0.95),
-    0 3px 20px rgba(255, 255, 255, 0.85);
-}
-
-.eyebrow {
-  color: #0e3020 !important;
-  -webkit-text-stroke: 0.7px #ffffff;
-  paint-order: stroke fill;
-  text-shadow:
-    0 0 1px #ffffff,
-    0 0 6px rgba(255, 255, 255, 0.95),
-    0 1px 8px rgba(255, 255, 255, 0.85);
-}
-
-.intro-body p,
-.section-heading p,
-.advisor-intro > p,
-.faq-grid > div > p {
-  color: #153324 !important;
-  font-weight: 500 !important;
-  -webkit-text-stroke: 0.6px #ffffff;
-  paint-order: stroke fill;
-  text-shadow:
-    0 0 1px #ffffff,
-    0 0 6px rgba(255, 255, 255, 0.95),
-    0 1px 10px rgba(255, 255, 255, 0.85);
-}
-
-.link-arrow {
-  color: #143d2c !important;
-  -webkit-text-stroke: 0.6px #ffffff;
-  paint-order: stroke fill;
-  text-shadow:
-    0 0 1px #ffffff,
-    0 0 6px rgba(255, 255, 255, 0.95);
-}
-
-.advisor-perks span {
-  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.9), 0 2px 8px rgba(20, 61, 44, 0.08) !important;
-}
-
-.advisor-disclaimer {
-  color: #1b3827 !important;
-  -webkit-text-stroke: 0.5px #ffffff;
-  paint-order: stroke fill;
-  text-shadow: 0 0 4px rgba(255, 255, 255, 0.95);
-}
-
-/* ==========================================================================
    v7.1.0 — GALYON 3D HERO DIRECT STAGE (SIN CUADROS, INTEGRADO AL PAISAJE)
    ========================================================================== */
 .hero-stage {
@@ -2640,6 +2501,16 @@ body:has(.site-bg-fixed) {
   touch-action: none;
   outline: none;
   background: transparent;
+}
+
+.webgl-canvas-mount canvas {
+  filter: drop-shadow(0 22px 35px rgba(10, 35, 22, 0.22));
+  transition: filter 0.3s ease;
+}
+
+.webgl-canvas-mount.is-dragging canvas,
+.webgl-canvas-mount:active canvas {
+  filter: drop-shadow(0 28px 45px rgba(10, 35, 22, 0.32));
 }
 
 .webgl-canvas-mount.is-dragging,
