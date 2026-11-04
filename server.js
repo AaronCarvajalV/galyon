@@ -44,6 +44,9 @@ const server = http.createServer((req, res) => {
   if (cleanUrl === '/classic' || cleanUrl === '/estatico') cleanUrl = '/index.static.html';
 
   let filePath = path.join(__dirname, cleanUrl);
+  if (!fs.existsSync(filePath) && fs.existsSync(filePath + '.html')) {
+    filePath = filePath + '.html';
+  }
 
   // Seguridad básica: evitar path traversal
   if (!filePath.startsWith(__dirname)) {

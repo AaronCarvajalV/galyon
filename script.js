@@ -125,7 +125,7 @@ $('open-cart').addEventListener('click',openCart);
 $('close-cart').addEventListener('click',closeCart);
 $('drawer-backdrop').addEventListener('click',closeCart);
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCart()});
-$('explore-products').addEventListener('click',()=>{closeCart();location.hash='#lineas'});
+$('explore-products').addEventListener('click',()=>{closeCart();location.href='bioinsumos.html#lineas'});
 $('ship-city').addEventListener('input',updateCheckout);
 // Checkout is a native WhatsApp link. User must press Send to transmit the message.
 $('float-wa').addEventListener('click',()=>whatsapp('Hola GALYON, quisiera conocer más sobre sus bioinsumos y servicios.'));
@@ -137,25 +137,29 @@ renderCart();
 
 // ponytail: cierre unificado de modales/drawers y retorno limpio al inicio
 function resetToHome(e) {
- if (e) {
-  if (e.preventDefault) e.preventDefault();
-  if (e.stopPropagation) e.stopPropagation();
+ const isHome = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === '';
+ if (isHome) {
+  if (e) {
+   if (e.preventDefault) e.preventDefault();
+   if (e.stopPropagation) e.stopPropagation();
+  }
+  closeCart();
+  const nav = $('navlinks'), menu = $('menu-toggle');
+  if (nav) nav.classList.remove('is-open');
+  if (menu) menu.setAttribute('aria-expanded', 'false');
+  document.querySelectorAll('.galyon-modal').forEach(m => m.classList.add('is-dismissed'));
+  const dlg = $('combo-lightbox'); if (dlg?.open) dlg.close();
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  if (window.location.hash) {
+   try {
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+   } catch(err) {}
+  }
+  return false;
  }
- closeCart();
- const nav = $('navlinks'), menu = $('menu-toggle');
- if (nav) nav.classList.remove('is-open');
- if (menu) menu.setAttribute('aria-expanded', 'false');
- document.querySelectorAll('.galyon-modal').forEach(m => m.classList.add('is-dismissed'));
- const dlg = $('combo-lightbox'); if (dlg?.open) dlg.close();
- window.scrollTo(0, 0);
- document.documentElement.scrollTop = 0;
- document.body.scrollTop = 0;
- if (window.location.hash) {
-  try {
-   history.replaceState(null, '', window.location.pathname + window.location.search);
-  } catch(err) {}
- }
- return false;
+ return true;
 }
 window.resetToHome = resetToHome;
 document.querySelectorAll('.brand').forEach(b => b.addEventListener('click', resetToHome));
