@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GALYON | Biotecnología Aplicada al Agro y al Ambiente</title>
-  <meta name="description" content="GALYON TRICHO: Bioinsumos microbiológicos de alta pureza, análisis de suelo y acompañamiento técnico especializado en Ecuador." />
+  <meta name="description" content="GALYON TRICHO: Bioinsumos microbiológicos de alta pureza, análisis de suelo y acompañamiento técnico especializado para la agricultura sostenible en Ecuador." />
   <link rel="icon" href="assets/marca-hojas.png" type="image/png" />
 
-  <!-- Google Fonts: Neo-grotesk (Plus Jakarta Sans) y Geometric Display (Outfit) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Inter Tight (400, 500, 600, 700 + italic) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
 
-  <!-- Three.js ES Modules vía Import Map para ejecución nativa sin build step -->
+  <!-- Three.js ES Modules vía Import Map -->
   <script type="importmap">
   {
     "imports": {
@@ -24,119 +24,372 @@
 
   <style>
     /* ==========================================================================
-       1. ESCALADO MATEMÁTICO 2048×1152 & SISTEMA DE DISEÑO SAGE STUDIO
+       1. VARIABLES Y SISTEMA DE DISEÑO TROPICAL BOTANICAL TECHNOLOGY
        ========================================================================== */
     :root {
-      /* Unidad de referencia: min(100vw/2048, 100vh/1152) con piso de 0.55px */
-      --s: max(0.55px, min(100vw / 2048, 100vh / 1152));
-      
-      /* Paleta Halora / Sage Studio adaptada a Organic Technology GALYON */
-      --c-page: #CBCFB8;
-      --c-ink: #1E3227;
-      --c-ink-sub: #3F5447;
-      --c-accent: #9B8A3E;
-      --c-card-fill: rgba(203, 207, 184, 0.45);
-      --c-card-border: rgba(30, 50, 39, 0.22);
-      --c-pill-moss: rgba(62, 86, 70, 0.52);
-
-      --font-ui: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --font-num: 'Outfit', sans-serif;
+      --ink: #121410;
+      --forest: #123D24;
+      --deep-forest: #174B2B;
+      --olive: #526F27;
+      --green: #6f9a0c;
+      --lime: #b4cd52;
+      --pill: #e7efcf;
+      --line: #eef0ea;
+      --bg: #ffffff;
+      --warm-white: #f8faf5;
+      --radius: 22px;
+      --font: 'Inter Tight', system-ui, -apple-system, sans-serif;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      background: #e9eee0;
+      scroll-behavior: smooth;
+    }
+
+    html.lenis, html.lenis body {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+
+    body {
+      font-family: var(--font);
+      color: var(--ink);
+      background: transparent;
+      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      height: 100dvh;
-      overflow: hidden;
-      background-color: var(--c-page);
-      color: var(--c-ink);
-      font-family: var(--font-ui);
-      user-select: none;
-      -webkit-user-select: none;
+    img, video {
+      display: block;
+      max-width: 100%;
     }
 
-    /* ==========================================================================
-       2. ESCENARIO HERO FULLSCREEN & COMPOSICIÓN EDITORIAL
-       ========================================================================== */
-    .hero-stage {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      height: 100dvh;
-      overflow: hidden;
-      background-color: var(--c-page);
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    /* ==========================================================================
-       ESCENARIO DE HOJAS Y SOMBRAS AMBIENTALES NATURALES (VIDEO CROSSFADE)
-       ========================================================================== */
-    .media-stage {
+    button {
+      font-family: inherit;
+    }
+
+    /* Componentes compartidos */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--pill);
+      color: #2c3a10;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .h2 {
+      font-size: clamp(28px, 3.2vw, 48px);
+      font-weight: 500;
+      letter-spacing: -0.035em;
+      line-height: 1.12;
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      padding: 0 20px;
+      border-radius: 999px;
+      background: var(--forest);
+      color: #f3f8e4;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      border: none;
+      cursor: pointer;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 3px 10px rgba(18, 61, 36, 0.22);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: var(--deep-forest);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 6px 18px rgba(18, 61, 36, 0.28);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--forest);
+      border: 1px solid rgba(18, 61, 36, 0.18);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-secondary:hover {
+      background: #ffffff;
+      color: var(--ink);
+    }
+
+    .w {
+      display: inline-block;
+      will-change: transform, filter, opacity;
+    }
+
+    .glass {
       position: absolute;
-      bottom: 0;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px) saturate(1.2);
+      -webkit-backdrop-filter: blur(12px) saturate(1.2);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    }
+
+    .grid-sq {
+      position: absolute;
+      border: 1px solid #edf0e8;
+      border-radius: 10px;
+      pointer-events: none;
+    }
+
+    /* Animaciones de deriva ambiental */
+    @keyframes driftA {
+      from { transform: translateX(0px) translateY(0px); }
+      to { transform: translateX(26px) translateY(4px); }
+    }
+
+    @keyframes driftB {
+      from { transform: translateX(0px) translateY(0px); }
+      to { transform: translateX(-30px) translateY(6px); }
+    }
+
+    .drift-a { animation: driftA 14s ease-in-out infinite alternate; }
+    .drift-b { animation: driftB 17s ease-in-out infinite alternate; }
+
+    /* ==========================================================================
+       2. ESTRUCTURA Y BACKDROP DE INTRO
+       ========================================================================== */
+    .backdrop {
+      position: fixed;
+      inset: -40px;
+      z-index: 0;
+      background: url('assets/suelo-platano-campo.webp') center 70% / cover no-repeat;
+      filter: blur(24px) saturate(1.15);
+      transform: scale(1.3);
+      pointer-events: none;
+    }
+
+    #app {
+      position: relative;
+      z-index: 1;
+      background: var(--bg);
+      transform-origin: 50% 50vh;
+      overflow: clip;
+      transition: border-radius 0.4s ease;
+    }
+
+    body.intro #app {
+      transform: scale(0.9);
+      border-radius: 28px;
+    }
+
+    /* ==========================================================================
+       3. HERO SECTION (100vh, MIN 640px)
+       ========================================================================== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      overflow: hidden;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Navegación flotante pill */
+    .nav {
+      position: fixed;
+      top: 22px;
       left: 50%;
       transform: translateX(-50%);
-      height: 100%;
-      aspect-ratio: 1920 / 1084;
-      max-width: 2160px;
-      pointer-events: none;
-      z-index: 1;
-      overflow: hidden;
-      /* Máscara suave: oculta la mano central y revela las hojas reales en la derecha y sus sombras */
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 48%, rgba(0, 0, 0, 0.4) 58%, rgba(0, 0, 0, 1) 68%, rgba(0, 0, 0, 1) 100%);
-      mask-image: linear-gradient(to right, transparent 0%, transparent 48%, rgba(0, 0, 0, 0.4) 58%, rgba(0, 0, 0, 1) 68%, rgba(0, 0, 0, 1) 100%);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      padding: 6px 8px 6px 20px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 0 0 1px rgba(18, 61, 36, 0.08), 0 8px 24px rgba(0, 0, 0, 0.06);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform 0.3s ease, background 0.3s ease;
     }
 
-    .bg-video {
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--forest);
+      text-decoration: none;
+    }
+
+    .brand img {
+      height: 26px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a, .nav-links button {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #3b4d2c;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover, .nav-links button:hover {
+      color: var(--forest);
+    }
+
+    /* Nubes y sombras ambientales */
+    .cloud {
       position: absolute;
-      bottom: 0;
+      pointer-events: none;
+      z-index: 3;
+      opacity: 0.85;
+    }
+
+    .cloud.cloud-l {
+      top: -2%;
+      left: -6%;
+      width: min(44vw, 640px);
+    }
+
+    .cloud.cloud-r {
+      top: 2%;
+      right: -6%;
+      width: min(42vw, 620px);
+    }
+
+    /* Video ambiental de fondo: hojas y sombras reales */
+    .hero-media {
+      position: absolute;
       left: 0;
+      right: 0;
+      bottom: 0;
+      height: 78%;
+      z-index: 2;
+      overflow: hidden;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 24%);
+      mask-image: linear-gradient(to bottom, transparent 0%, #000 24%);
+    }
+
+    .hero-media video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0;
-      transition: opacity 0.8s ease-in-out;
-      will-change: opacity;
+      object-position: center 70%;
+      opacity: 0.88;
     }
 
-    .bg-video.active {
-      opacity: 1;
-    }
-
-    /* Arco circular fino de cristal detrás del frasco */
-    .glass-arc {
+    /* Máscara suave para integrar video y dar protagonismo al 3D */
+    .hero-media-overlay {
       position: absolute;
-      bottom: calc(-120 * var(--s));
-      left: 50%;
-      transform: translateX(-50%);
-      width: calc(780 * var(--s));
-      height: calc(780 * var(--s));
-      border-radius: 50%;
-      border: calc(1.5 * var(--s)) solid rgba(255, 255, 255, 0.45);
-      background: radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.02) 72%);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      box-shadow: inset 0 calc(1 * var(--s)) calc(2.5 * var(--s)) rgba(255, 255, 255, 0.35);
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 65%, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.2) 65%, transparent 100%);
       pointer-events: none;
-      z-index: 2;
+      z-index: 3;
     }
 
-    /* Contenedor central del Modelo 3D Interactivo GALYON TRICHO */
+    /* Titular editorial del Hero */
+    .hero-copy {
+      position: relative;
+      z-index: 20;
+      text-align: center;
+      max-width: 860px;
+      padding: 0 20px;
+      margin-top: -6vh;
+      pointer-events: none;
+    }
+
+    .hero-copy > * {
+      pointer-events: auto;
+    }
+
+    .hero-eyebrow {
+      margin-bottom: 14px;
+    }
+
+    h1#heroTitle {
+      font-size: clamp(34px, 4.8vw, 72px);
+      font-weight: 400;
+      letter-spacing: -0.045em;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    h1#heroTitle em {
+      color: var(--olive);
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .hero-desc {
+      font-size: clamp(14px, 1.4vw, 17px);
+      font-weight: 400;
+      line-height: 1.55;
+      color: #3f4e30;
+      max-width: 620px;
+      margin: 0 auto 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    /* Protagonista Central: Modelo 3D GALYON TRICHO (1L) ampliado +40% */
     .hero-3d-stage {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -46%);
-      width: calc(880 * var(--s));
-      height: calc(960 * var(--s));
-      z-index: 5;
+      transform: translate(-50%, -35%);
+      width: min(62vw, 840px);
+      height: min(85vh, 920px);
+      z-index: 10;
       cursor: grab;
       touch-action: none;
     }
@@ -148,339 +401,476 @@
     .hero-3d-canvas {
       width: 100%;
       height: 100%;
-      display: block;
     }
 
-    /* Micro-pistas de interacción 3D */
-    .interaction-hint {
+    /* Indicador interactivo 360 sutil */
+    .hint-360 {
       position: absolute;
-      bottom: calc(20 * var(--s));
+      bottom: 16px;
       left: 50%;
       transform: translateX(-50%);
-      display: flex;
-      align-items: center;
-      gap: calc(8 * var(--s));
-      background: rgba(203, 207, 184, 0.55);
-      border: 1px solid rgba(30, 50, 39, 0.15);
-      backdrop-filter: blur(8px);
-      padding: calc(6 * var(--s)) calc(16 * var(--s));
-      border-radius: 9999px;
-      font-size: calc(12 * var(--s));
+      font-size: 11px;
       font-weight: 600;
-      color: var(--c-ink-sub);
-      pointer-events: none;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      opacity: 0.85;
-      transition: opacity 0.3s ease;
+      color: #4b6131;
+      background: rgba(255, 255, 255, 0.75);
+      padding: 5px 14px;
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      pointer-events: none;
+      z-index: 12;
+      opacity: 0.9;
+    }
+
+    .hero-glass {
+      position: absolute;
+      inset: 0;
+      z-index: 8;
+      pointer-events: none;
     }
 
     /* ==========================================================================
-       3. HEADER NAVEGACIÓN SAGE STUDIO
+       4. SECCIÓN STATS / TICKETS DE BENEFICIOS REALES (#stats)
        ========================================================================== */
-    .header {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: calc(120 * var(--s));
-      padding: 0 calc(90 * var(--s));
+    .stats {
+      position: relative;
+      height: 100vh;
+      min-height: 680px;
+      overflow: hidden;
+      background: #ffffff;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      z-index: 40;
+      justify-content: center;
     }
 
-    .header-left {
+    .sq-field {
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 42%;
+      z-index: 1;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+      mask-image: linear-gradient(to bottom, #000, transparent);
+    }
+
+    .tree-wrap {
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -2%;
+      width: min(380px, 60vw);
+      pointer-events: none;
+      opacity: 0.85;
+    }
+
+    .tree {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 30px rgba(18, 61, 36, 0.15));
+    }
+
+    .stats-inner {
+      position: relative;
+      z-index: 3;
+      height: 100%;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: calc(16 * var(--s));
-      text-decoration: none;
-      color: var(--c-ink);
+      justify-content: center;
+      gap: 20px;
+      padding: 0 20px;
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    .cards {
+      position: relative;
+      z-index: 4;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      width: min(920px, 100%);
+    }
+
+    /* Tarjetas tipo ticket con muescas laterales */
+    .card {
+      height: 160px;
+      padding: 20px 22px;
+      border-radius: var(--radius);
+      background: var(--lime);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 8px 24px rgba(82, 111, 39, 0.14);
+      -webkit-mask: radial-gradient(circle 16px at 0 52%, #0000 97%, #000) left/51% 100% no-repeat,
+                    radial-gradient(circle 16px at 100% 52%, #0000 97%, #000) right/51% 100% no-repeat;
+      mask: radial-gradient(circle 16px at 0 52%, #0000 97%, #000) left/51% 100% no-repeat,
+            radial-gradient(circle 16px at 100% 52%, #0000 97%, #000) right/51% 100% no-repeat;
+      transition: transform 0.3s ease;
       cursor: pointer;
     }
 
-    .brand-logo-img {
-      height: calc(36 * var(--s));
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card small {
+      font-size: 11px;
+      font-weight: 600;
+      color: #2a3410;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .card b {
+      font-size: clamp(24px, 2.5vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #151a08;
+      line-height: 1.05;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .card span.sub {
+      font-size: 11px;
+      font-weight: 500;
+      color: #344414;
+      line-height: 1.3;
+    }
+
+    .cards-shadow {
+      width: min(840px, 94%);
+      height: 12px;
+      margin-top: -14px;
+      border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(0,0,0,0.08), transparent);
+      z-index: 3;
+    }
+
+    /* Banda frosted glass con cultivos ecuatorianos */
+    .band-wrap {
+      position: relative;
+      width: min(900px, 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .band {
+      position: absolute;
+      z-index: 5;
+      top: -6px;
+      width: min(420px, 65vw);
+      height: 64px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+    }
+
+    .logos {
+      position: relative;
+      z-index: 6;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+      width: min(900px, 100%);
+      padding: 6px 12px;
+      color: #18251a;
+      flex-wrap: wrap;
+    }
+
+    .logo-item {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--forest);
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.9;
+    }
+
+    /* ==========================================================================
+       5. CONOCE GALYON TRICHO — ACCORDION HOVER (#loop)
+       ========================================================================== */
+    .loop {
+      position: relative;
+      height: 100vh;
+      min-height: 680px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .loop-head {
+      position: absolute;
+      z-index: 4;
+      top: 9vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      padding: 0 16px;
+      text-align: center;
+    }
+
+    .track {
+      position: absolute;
+      z-index: 2;
+      inset: 0;
+      display: flex;
+    }
+
+    .panel {
+      position: relative;
+      flex: 0 0 clamp(96px, 11vw, 170px);
+      height: 100%;
+      overflow: hidden;
+      border-right: 1px solid var(--line);
+      cursor: pointer;
+      outline: none;
+      transition: flex-grow 0.9s cubic-bezier(0.77, 0, 0.18, 1);
+    }
+
+    .panel:last-child {
+      border-right: none;
+    }
+
+    .panel.is-active {
+      flex-grow: 1;
+      cursor: default;
+    }
+
+    .panel-in {
+      position: absolute;
+      left: clamp(16px, 2.5vw, 42px);
+      bottom: 10vh;
+      display: flex;
+      align-items: flex-end;
+      gap: clamp(16px, 2.4vw, 36px);
+      width: max-content;
+    }
+
+    .num {
+      font-size: clamp(150px, 34vh, 360px);
+      font-weight: 600;
+      line-height: 0.74;
+      letter-spacing: -0.07em;
+    }
+
+    .panel:nth-child(1) .num { color: var(--forest); }
+    .panel:nth-child(2) .num { color: var(--olive); }
+    .panel:nth-child(3) .num { color: var(--green); }
+
+    .step {
+      position: relative;
+      width: min(440px, 34vw);
+      padding-bottom: 6px;
+      opacity: 0;
+      transform: translateX(-24px);
+      filter: blur(6px);
+      transition: opacity 0.4s, transform 0.5s, filter 0.4s;
+    }
+
+    .panel.is-active .step {
+      opacity: 1;
+      transform: translateX(0);
+      filter: blur(0);
+      transition: opacity 0.7s 0.4s, transform 0.9s 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.7s 0.4s;
+    }
+
+    .step h3 {
+      font-size: clamp(22px, 2vw, 30px);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+
+    .step p {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #2b3322;
+    }
+
+    .step .step-cta {
+      display: inline-flex;
+      margin-top: 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--forest);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       6. CTA SECTION CINEMATOGRÁFICA (#cta)
+       ========================================================================== */
+    .cta {
+      position: relative;
+      height: 110vh;
+      min-height: 720px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .cta-img {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 80%;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 24%);
+      mask-image: linear-gradient(to bottom, transparent 0%, #000 24%);
+      overflow: hidden;
+    }
+
+    .cta-img img {
+      width: 100%;
+      height: 118%;
+      object-fit: cover;
+      object-position: center 60%;
+      filter: brightness(0.88) contrast(1.08);
+    }
+
+    /* Hojas tropicales verdes flotantes cayendo */
+    .petals {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .tropical-leaf {
+      position: absolute;
+      top: -24px;
+      width: 14px;
+      height: 10px;
+      border-radius: 80% 0 80% 0;
+      background: linear-gradient(135deg, #86A83C, #526F27);
+      opacity: 0.85;
+      animation: fallLeaf linear infinite;
+    }
+
+    @keyframes fallLeaf {
+      to {
+        transform: translate(var(--dx), 110vh) rotate(540deg);
+      }
+    }
+
+    /* Tarjeta central de cristal translúcido */
+    .cta-card {
+      position: absolute;
+      z-index: 4;
+      left: 50%;
+      top: 32%;
+      transform: translateX(-50%);
+      width: min(700px, calc(100% - 36px));
+      padding: 48px 32px 54px;
+      text-align: center;
+      border-radius: 28px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.82) 40%, rgba(255,255,255,0.45) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(18px) saturate(1.15);
+      -webkit-backdrop-filter: blur(18px) saturate(1.15);
+      box-shadow: 0 30px 60px rgba(18, 61, 36, 0.18);
+    }
+
+    .cta-card p {
+      font-size: 15px;
+      color: #27341d;
+      margin: 16px auto 26px;
+      max-width: 500px;
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       7. FOOTER MINIMALISTA (#footer)
+       ========================================================================== */
+    footer#footer {
+      background: var(--lime);
+      padding: 38px 5vw 26px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      row-gap: 24px;
+    }
+
+    .f-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--forest);
+    }
+
+    .f-brand img {
+      height: 32px;
       width: auto;
       object-fit: contain;
     }
 
-    .brand-name {
-      font-size: calc(35 * var(--s));
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: var(--c-ink);
-      line-height: 1;
-    }
-
-    .nav-centre {
+    .f-links {
       display: flex;
-      align-items: center;
-      gap: calc(34 * var(--s));
+      gap: 24px;
+      font-size: 13.5px;
+      color: #1d240c;
     }
 
-    .nav-centre a, .nav-centre button {
-      background: none;
-      border: none;
-      font-family: var(--font-ui);
-      font-size: calc(22 * var(--s));
-      font-weight: 500;
-      color: var(--c-ink-sub);
-      text-decoration: none;
-      cursor: pointer;
-      transition: color 0.2s ease, transform 0.2s ease;
-      letter-spacing: -0.01em;
+    .f-links a:hover {
+      text-decoration: underline;
     }
 
-    .nav-centre a:hover, .nav-centre button:hover {
-      color: var(--c-ink);
-      transform: translateY(-1px);
-    }
-
-    .header-right {
+    .f-contact {
+      justify-self: end;
       display: flex;
-      align-items: center;
-      gap: calc(16 * var(--s));
-    }
-
-    .pill-cart {
-      display: inline-flex;
-      align-items: center;
-      gap: calc(10 * var(--s));
-      background: var(--c-pill-moss);
-      color: #ffffff;
-      padding: calc(13 * var(--s)) calc(24 * var(--s));
-      border-radius: 9999px;
-      font-size: calc(19 * var(--s));
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      font-size: 13px;
       font-weight: 600;
-      text-decoration: none;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      transition: background 0.2s ease, transform 0.2s ease;
-      cursor: pointer;
+      color: #1d240c;
     }
 
-    .pill-cart:hover {
-      background: rgba(45, 66, 53, 0.7);
-      transform: translateY(-1px);
-    }
-
-    .pill-shop {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--c-ink);
-      color: var(--c-page);
-      padding: calc(14 * var(--s)) calc(28 * var(--s));
-      border-radius: 9999px;
-      font-size: calc(19 * var(--s));
-      font-weight: 600;
-      text-decoration: none;
-      border: none;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      cursor: pointer;
-    }
-
-    .pill-shop:hover {
-      opacity: 0.92;
-      transform: translateY(-1px);
-    }
-
-    .menu-burger {
-      display: none;
-      width: calc(52 * var(--s));
-      height: calc(52 * var(--s));
-      border-radius: 50%;
-      background: var(--c-pill-moss);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: white;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      backdrop-filter: blur(10px);
+    .f-copy {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-size: 11.5px;
+      color: #2a330f;
+      opacity: 0.85;
+      padding-top: 14px;
+      border-top: 1px solid rgba(18, 61, 36, 0.15);
     }
 
     /* ==========================================================================
-       4. COPY IZQUIERDO (VERTICALLY CENTRED)
-       ========================================================================== */
-    .copy-block {
-      position: absolute;
-      top: 50%;
-      left: calc(90 * var(--s));
-      transform: translateY(-50%);
-      width: calc(540 * var(--s));
-      z-index: 20;
-      display: flex;
-      flex-direction: column;
-      gap: calc(24 * var(--s));
-      pointer-events: auto;
-    }
-
-    .eyebrow-wrap {
-      display: inline-flex;
-      align-items: center;
-      font-size: calc(16 * var(--s));
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--c-ink-sub);
-    }
-
-    .headline-line-mask {
-      overflow: hidden;
-    }
-
-    .headline-line {
-      font-size: calc(69 * var(--s));
-      font-weight: 700;
-      letter-spacing: -0.035em;
-      line-height: 1.05;
-      color: var(--c-ink);
-      display: block;
-    }
-
-    .paragraph-copy {
-      font-size: calc(21 * var(--s));
-      font-weight: 400;
-      line-height: 1.58;
-      color: var(--c-ink-sub);
-      max-width: calc(470 * var(--s));
-    }
-
-    .cta-row {
-      display: flex;
-      align-items: center;
-      gap: calc(14 * var(--s));
-      margin-top: calc(8 * var(--s));
-    }
-
-    .cta-btn-dark {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--c-ink);
-      color: var(--c-page);
-      font-size: calc(20 * var(--s));
-      font-weight: 600;
-      padding: calc(18 * var(--s)) calc(36 * var(--s));
-      border-radius: 9999px;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .cta-btn-dark:hover {
-      opacity: 0.92;
-      transform: translateY(-1px);
-    }
-
-    .cta-btn-glass {
-      display: inline-flex;
-      align-items: center;
-      gap: calc(8 * var(--s));
-      background: var(--c-pill-moss);
-      color: #ffffff;
-      font-size: calc(19 * var(--s));
-      font-weight: 600;
-      padding: calc(17 * var(--s)) calc(28 * var(--s));
-      border-radius: 9999px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      cursor: pointer;
-      text-decoration: none;
-      backdrop-filter: blur(14px);
-      transition: background 0.2s ease, transform 0.2s ease;
-    }
-
-    .cta-btn-glass:hover {
-      background: rgba(30, 50, 39, 0.7);
-      transform: translateY(-1px);
-    }
-
-    /* ==========================================================================
-       5. METRICS DERECHO (3 FROSTED GLASS CARDS 222×160s)
-       ========================================================================== */
-    .metrics-block {
-      position: absolute;
-      top: 50%;
-      right: calc(90 * var(--s));
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: calc(20 * var(--s));
-      z-index: 20;
-    }
-
-    .glass-card {
-      width: calc(222 * var(--s));
-      height: calc(160 * var(--s));
-      border-radius: calc(20 * var(--s));
-      background: var(--c-card-fill);
-      border: 1px solid var(--c-card-border);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      padding: calc(18 * var(--s)) calc(22 * var(--s));
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .glass-card:hover {
-      transform: translateY(calc(-3 * var(--s))) scale(1.02);
-      background: rgba(203, 207, 184, 0.65);
-      border-color: rgba(30, 50, 39, 0.45);
-    }
-
-    .card-label-row {
-      font-size: calc(13 * var(--s));
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--c-ink-sub);
-    }
-
-    .card-numeral {
-      font-family: var(--font-num);
-      font-size: calc(42 * var(--s));
-      font-weight: 300;
-      letter-spacing: -0.03em;
-      line-height: 1;
-      color: var(--c-ink);
-      margin: calc(4 * var(--s)) 0;
-    }
-
-    .card-sub-row {
-      font-size: calc(12 * var(--s));
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--c-ink-sub);
-      opacity: 0.88;
-    }
-
-    /* ==========================================================================
-       6. MODAL SYSTEM (FROSTED SAGE OVERLAYS PRESERVANDO TODO GALYON)
+       8. MODAL SYSTEM (CONSERVA 100% INFORMACIÓN GALYON)
        ========================================================================== */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(30, 50, 39, 0.45);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      z-index: 100;
+      background: rgba(18, 61, 36, 0.65);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 2000;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 20px;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .modal-overlay.open {
@@ -489,19 +879,16 @@
     }
 
     .modal-card {
-      width: 100%;
-      max-width: 720px;
-      max-height: 88vh;
-      background: #DEE2CD;
-      border: 1px solid rgba(30, 50, 39, 0.25);
-      border-radius: 28px;
-      padding: 36px;
-      overflow-y: auto;
       position: relative;
-      color: var(--c-ink);
-      box-shadow: 0 30px 80px rgba(18, 32, 24, 0.25);
-      transform: translateY(20px) scale(0.98);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      width: min(720px, 100%);
+      max-height: 88vh;
+      overflow-y: auto;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 36px 32px;
+      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.28);
+      transform: translateY(24px) scale(0.96);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .modal-overlay.open .modal-card {
@@ -510,102 +897,86 @@
 
     .modal-close-btn {
       position: absolute;
-      top: 24px;
-      right: 24px;
-      width: 38px;
-      height: 38px;
+      top: 20px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      background: rgba(30, 50, 39, 0.08);
+      background: rgba(18, 61, 36, 0.08);
       border: none;
-      color: var(--c-ink);
+      color: var(--forest);
       font-size: 20px;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
       transition: background 0.2s ease;
     }
 
     .modal-close-btn:hover {
-      background: rgba(30, 50, 39, 0.18);
+      background: rgba(18, 61, 36, 0.18);
     }
 
     .modal-tag {
       font-size: 11px;
       font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: #385E46;
+      color: var(--olive);
       margin-bottom: 6px;
     }
 
     .modal-title {
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: var(--c-ink);
-      margin-bottom: 8px;
-      line-height: 1.15;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--forest);
+      letter-spacing: -0.025em;
+      margin-bottom: 10px;
     }
 
     .modal-desc {
       font-size: 15px;
-      color: var(--c-ink-sub);
-      line-height: 1.6;
+      color: #3f4e30;
+      line-height: 1.55;
       margin-bottom: 24px;
     }
 
     .catalog-list {
-      display: grid;
+      display: flex;
+      flex-direction: column;
       gap: 14px;
       margin-bottom: 24px;
     }
 
     .catalog-item {
-      padding: 18px 20px;
-      background: rgba(255, 255, 255, 0.45);
-      border: 1px solid rgba(30, 50, 39, 0.15);
-      border-radius: 16px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      background: var(--warm-white);
+      border: 1px solid var(--line);
+      border-radius: 16px;
       gap: 16px;
     }
 
     .catalog-item-info h4 {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--c-ink);
-      margin-bottom: 2px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
     }
 
     .catalog-item-info p {
-      font-size: 13px;
-      color: var(--c-ink-sub);
-      line-height: 1.45;
+      font-size: 13.5px;
+      color: #4a5c37;
+      line-height: 1.4;
     }
 
     .catalog-price {
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--c-ink);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--forest);
       white-space: nowrap;
-    }
-
-    .catalog-btn {
-      background: var(--c-ink);
-      color: var(--c-page);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 10px 18px;
-      border-radius: 9999px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-      border: none;
-      cursor: pointer;
     }
 
     .crop-grid {
@@ -616,289 +987,313 @@
     }
 
     .crop-chip {
-      padding: 12px;
+      padding: 12px 10px;
       text-align: center;
-      background: rgba(255, 255, 255, 0.5);
-      border: 1px solid rgba(30, 50, 39, 0.15);
+      background: var(--warm-white);
+      border: 1px solid var(--line);
       border-radius: 12px;
       font-size: 14px;
       font-weight: 600;
-      color: var(--c-ink);
-      text-decoration: none;
-      transition: background 0.15s ease;
+      color: var(--forest);
+      transition: all 0.2s ease;
+      cursor: pointer;
     }
 
     .crop-chip:hover {
-      background: rgba(255, 255, 255, 0.85);
-    }
-
-    .mobile-menu {
-      position: fixed;
-      inset: 0;
-      background: #DEE2CD;
-      z-index: 150;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      transform: translateY(-100%);
-      transition: transform 0.3s ease;
-    }
-
-    .mobile-menu.open {
-      transform: translateY(0);
-    }
-
-    .mobile-menu a, .mobile-menu button {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--c-ink);
-      text-align: left;
-      background: none;
-      border: none;
-      text-decoration: none;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(30, 50, 39, 0.15);
+      background: var(--forest);
+      color: #ffffff;
+      border-color: var(--forest);
     }
 
     /* ==========================================================================
-       7. TABLET Y TELÉFONO BREAKPOINTS
+       9. RESPONSIVE
        ========================================================================== */
-    @media (max-width: 1200px) {
-      .header {
-        padding: 0 32px;
-        height: 80px;
-      }
-      .brand-name { font-size: 26px; }
-      .nav-centre { display: none; }
-      .menu-burger { display: flex; }
-
-      .copy-block {
-        left: 36px;
-        width: 360px;
-      }
-      .headline-line { font-size: 44px; }
-      .paragraph-copy { font-size: 16px; }
-      .cta-btn-dark { font-size: 16px; padding: 14px 28px; }
-
-      .hero-3d-stage {
-        width: 520px;
-        height: 600px;
-      }
-
-      .metrics-block {
-        right: 36px;
-        gap: 14px;
-      }
-      .glass-card {
-        width: 180px;
-        height: 130px;
-        padding: 14px 16px;
-      }
-      .card-numeral { font-size: 34px; }
+    @media (max-width: 900px) {
+      .nav { gap: 20px; }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .card { height: 135px; }
+      .stats { height: auto; min-height: 100vh; padding: 100px 0 160px; }
+      .hero-3d-stage { width: 85vw; height: 75vh; }
+      .crop-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    @media (max-width: 820px) {
-      html, body {
-        overflow-y: auto;
-        height: auto;
-        min-height: 100vh;
-      }
+    @media (max-width: 760px) {
+      .nav { top: 14px; gap: 14px; padding: 6px 14px; width: calc(100% - 28px); justify-content: space-between; }
+      .nav-links { display: none; }
+      .hero-copy { margin-top: 0; padding-top: 80px; }
+      h1#heroTitle { font-size: 36px; }
+      .hero-3d-stage { width: 92vw; height: 60vh; transform: translate(-50%, -20%); }
+      
+      .loop { height: auto; min-height: 0; padding: 100px 0 40px; }
+      .loop-head { position: relative; top: auto; }
+      .track { position: relative; inset: auto; flex-direction: column; margin-top: 36px; }
+      .panel { flex: none; height: auto; overflow: visible; border-right: none; border-top: 1px solid var(--line); }
+      .panel-in { position: relative; left: auto; bottom: auto; padding: 24px 20px; gap: 16px; }
+      .num { font-size: 110px; }
+      .step { opacity: 1 !important; transform: none !important; filter: none !important; width: auto; }
+      
+      .cta { height: auto; min-height: 0; padding: 60px 0 0; }
+      .cta-img { position: relative; height: 85vh; min-height: 560px; }
+      .cta-card { top: 80px; padding: 34px 20px 40px; }
 
-      .hero-stage {
-        height: auto;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        padding-top: 90px;
-        padding-bottom: 40px;
-      }
-
-      .copy-block {
-        position: relative;
-        top: auto;
-        left: auto;
-        transform: none;
-        width: 100%;
-        padding: 0 24px;
-        margin-bottom: 20px;
-      }
-
-      .headline-line { font-size: 36px; }
-
-      .metrics-block {
-        position: relative;
-        top: auto;
-        right: auto;
-        transform: none;
-        flex-direction: row;
-        width: 100%;
-        padding: 0 24px;
-        overflow-x: auto;
-        gap: 12px;
-        margin-bottom: 24px;
-      }
-
-      .glass-card {
-        flex: 1;
-        min-width: 140px;
-        height: 125px;
-      }
-
-      .card-numeral { font-size: 28px; }
-
-      .hero-3d-stage {
-        position: relative;
-        top: auto;
-        left: auto;
-        transform: none;
-        width: 100%;
-        height: 480px;
-        margin: 0 auto;
-      }
-
-      .glass-arc {
-        display: none;
-      }
+      footer#footer { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+      .f-contact { justify-self: center; align-items: center; }
     }
 
-    /* Reducción de movimiento */
     @media (prefers-reduced-motion: reduce) {
-      * {
+      *, ::before, ::after {
         animation: none !important;
         transition: none !important;
       }
     }
   </style>
 </head>
-<body>
+<body class="intro">
 
-  <!-- ========================================================================
-       HERO STAGE (ONE-SCREEN FULLSCREEN SAGE STUDIO)
-       ======================================================================== -->
-  <main class="hero-stage">
-    
-    <!-- Sombras naturales proyectadas sobre la pared verde salvia -->
-    <!-- Escenario de hojas y sombras ambientales vivas con video crossfade -->
-    <div class="media-stage" id="media-stage" aria-hidden="true">
-      <video id="videoA" class="bg-video active" muted playsinline preload="auto" src="assets/ambient-leaves.mp4"></video>
-      <video id="videoB" class="bg-video" muted playsinline preload="auto" src="assets/ambient-leaves.mp4"></video>
-    </div>
+  <!-- Backdrop de intro difuminado -->
+  <div class="backdrop" id="backdrop"></div>
 
-    <!-- Arco de cristal fino detrás de la botella -->
-    <div class="glass-arc" aria-hidden="true"></div>
+  <!-- Contenedor principal de la aplicación -->
+  <div id="app">
 
-    <!-- PROTAGONISTA CENTRAL: ESCENARIO 3D INTERACTIVO GALYON TRICHO -->
-    <div class="hero-3d-stage" id="hero-3d-stage" title="Arrastra para rotar en 360°">
-      <div id="webgl-canvas-mount" class="hero-3d-canvas"></div>
-      <div class="interaction-hint">
-        <span>Arrastra 360° · Modelo Oficial 1L</span>
-      </div>
-    </div>
+    <!-- NAVEGACIÓN FLOTANTE PILL -->
+    <header class="nav" id="nav">
+      <a href="#hero" class="brand" aria-label="GALYON Inicio">
+        <img src="assets/marca-hojas.png" alt="GALYON" />
+        <span>GALYON</span>
+      </a>
 
-    <!-- HEADER -->
-    <header class="header">
-      <div class="header-left" onclick="window.scrollTo(0,0)">
-        <img src="assets/marca-hojas.png" alt="GALYON" class="brand-logo-img" />
-        <span class="brand-name">GALYON</span>
-      </div>
-
-      <nav class="nav-centre">
-        <button onclick="openModal('modal-bioinsumos')">Bioinsumos</button>
-        <button onclick="focus3DFront()">Vista Frontal</button>
-        <button onclick="openModal('modal-asesor')">Asesor de Cultivos</button>
-        <button onclick="openModal('modal-suelo')">Análisis de Suelo</button>
-        <button onclick="openModal('modal-combos')">Combos $70</button>
-        <button onclick="openModal('modal-garantia')">Acompañamiento</button>
+      <nav class="nav-links">
+        <a href="#hero">Inicio</a>
+        <a href="#stats">Beneficios</a>
+        <a href="#loop">Microbiología</a>
+        <button onclick="openModal('modal-bioinsumos')">Catálogo</button>
+        <button onclick="openModal('modal-asesor')">Asesor</button>
+        <button onclick="openModal('modal-suelo')">Suelo</button>
       </nav>
 
-      <div class="header-right">
-        <a href="https://wa.me/593968933445" target="_blank" rel="noopener noreferrer" class="pill-cart" title="Hablar por WhatsApp">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-          </svg>
-          <span>WhatsApp</span>
-        </a>
-        <button onclick="openModal('modal-bioinsumos')" class="pill-shop">Ver Productos</button>
-        <button class="menu-burger" onclick="toggleMobileMenu()" aria-label="Abrir menú">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-      </div>
+      <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20quisiera%20asesor%C3%ADa%20t%C3%A9cnica." target="_blank" rel="noopener noreferrer" class="btn">
+        Hablar con Asesor
+      </a>
     </header>
 
-    <!-- COPY IZQUIERDO -->
-    <div class="copy-block" id="copy-block">
-      <div class="eyebrow-wrap" id="eyebrow">
-        <span>Biotecnología aplicada al agro y al ambiente</span>
-      </div>
-
-      <div class="headline-wrap">
-        <div class="headline-line-mask">
-          <span class="headline-line" id="hl-line-1">El Futuro del Campo.</span>
-        </div>
-        <div class="headline-line-mask">
-          <span class="headline-line" id="hl-line-2">Crece Con Fuerza.</span>
-        </div>
-      </div>
-
-      <p class="paragraph-copy" id="paragraph-copy">
-        Bioinsumos microbiológicos, análisis de suelo y orientación técnica especializada. Formulaciones vivas para proteger y nutrir tus cultivos con rigor científico.
-      </p>
-
-      <div class="cta-row" id="cta-row">
-        <button onclick="openModal('modal-bioinsumos')" class="cta-btn-dark">Conocer bioinsumos</button>
-        <button onclick="focus3DFront()" class="cta-btn-glass" title="Ver el frontal de la etiqueta oficial">
-          <span>Vista Frontal 3D</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- METRICS DERECHO (3 FROSTED GLASS CARDS 222×160s) -->
-    <div class="metrics-block" id="metrics-block">
+    <!-- ======================================================================
+         4a. HERO PRINCIPAL: PROTAGONISTA GALYON TRICHO 3D (+40% TAMAÑO)
+         ====================================================================== -->
+    <section class="hero" id="hero">
       
-      <!-- Card 1: Concentración / Microbiología -->
-      <div class="glass-card" onclick="openModal('modal-bioinsumos')" title="Ver detalles de GALYON TRICHO">
-        <div class="card-label-row">
-          <span>TRICHO 1L</span>
+      <!-- Nubes botánicas flotantes -->
+      <div class="cloud cloud-l" data-par="-60">
+        <img class="drift-a" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261021_093216_44218665-b15e-4566-a2d4-2676ab03609d.png" alt="" />
+      </div>
+      <div class="cloud cloud-r" data-par="-90">
+        <img class="drift-b" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261021_093215_0f37c0c3-f82c-485b-87dd-5a35b75a8782.png" alt="" />
+      </div>
+
+      <!-- Video ambiental de hojas y sombras reales -->
+      <div class="hero-media">
+        <video id="heroVideo" autoplay muted loop playsinline preload="auto" src="assets/ambient-leaves.mp4"></video>
+      </div>
+      <div class="hero-media-overlay"></div>
+
+      <!-- Cristales escarchados interactivos -->
+      <div class="hero-glass" id="heroGlass"></div>
+
+      <!-- Titular editorial de la marca -->
+      <div class="hero-copy">
+        <div class="hero-eyebrow">
+          <span class="pill">Biotecnología para una agricultura más sostenible</span>
         </div>
-        <div class="card-numeral">1×10⁹</div>
-        <div class="card-sub-row">
-          <span>ESPORAS VIABLES / ML</span>
+        <h1 id="heroTitle" class="split">
+          La innovación que<br />fortalece la <em>naturaleza.</em>
+        </h1>
+        <p class="hero-desc">
+          Desarrollamos soluciones biológicas que contribuyen al bienestar de los cultivos, la salud del suelo y el desarrollo de una agricultura más sostenible en Ecuador.
+        </p>
+        <div class="hero-actions">
+          <button onclick="focus3DLabel()" class="btn">Descubrir GALYON TRICHO</button>
+          <button onclick="openModal('modal-bioinsumos')" class="btn btn-secondary">Conocer nuestros productos</button>
         </div>
       </div>
 
-      <!-- Card 2: Combos Agrícolas -->
-      <div class="glass-card" onclick="openModal('modal-combos')" title="Ver Combos de 4L por $70">
-        <div class="card-label-row">
-          <span>COMBOS 4L</span>
-        </div>
-        <div class="card-numeral">$70</div>
-        <div class="card-sub-row">
-          <span>4L · ENVÍO GRATIS ECUADOR</span>
-        </div>
+      <!-- PROTAGONISTA 3D: Envase GALYON TRICHO 1L (+40% escala y encuadre 3/4) -->
+      <div class="hero-3d-stage" id="hero-3d-stage" title="Arrastra para rotar 360° el frasco oficial">
+        <div id="webgl-mount" class="hero-3d-canvas"></div>
+        <div class="hint-360">Arrastra 360° · Modelo Oficial 1L</div>
       </div>
 
-      <!-- Card 3: Laboratorio de Suelo -->
-      <div class="glass-card" onclick="openModal('modal-suelo')" title="Ver paquetes de Análisis de Suelo">
-        <div class="card-label-row">
-          <span>ANÁLISIS DE SUELO</span>
-        </div>
-        <div class="card-numeral">pH · NPK</div>
-        <div class="card-sub-row">
-          <span>LABORATORIO · DESDE $69</span>
-        </div>
+    </section>
+
+    <!-- ======================================================================
+         4b. SECCIÓN DE BENEFICIOS Y MÉTRICAS REALES (#stats)
+         ====================================================================== -->
+    <section class="stats" id="stats">
+      <div class="sq-field" data-count="24"></div>
+
+      <!-- Silueta vegetal tropical que emerge en scroll -->
+      <div class="tree-wrap">
+        <img id="tree" class="tree" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261021_093215_95f11900-c4a0-49ad-bb2d-bb927dd594ee.png" alt="Vegetación tropical" />
       </div>
 
-    </div>
+      <div class="stats-inner">
+        <span class="pill reveal">Rigor Microbiológico</span>
+        <h2 class="h2 split">Microbiología de Alta Concentración<br />para el Campo Ecuatoriano.</h2>
 
-  </main>
+        <!-- Cuatro tarjetas tipo ticket con datos reales de etiqueta GALYON TRICHO -->
+        <div class="cards">
+          
+          <div class="card" onclick="openModal('modal-bioinsumos')">
+            <small>Categoría Técnica</small>
+            <b>Biofungicida</b>
+            <span class="sub">Prevención biológica de hongos del suelo y raíz.</span>
+          </div>
+
+          <div class="card" onclick="openModal('modal-bioinsumos')">
+            <small>Acción Agronómica</small>
+            <b>Bioestimulante</b>
+            <span class="sub">Vigoroso desarrollo radicular y absorción nutricional.</span>
+          </div>
+
+          <div class="card" onclick="openModal('modal-bioinsumos')">
+            <small>Cepas Benéficas</small>
+            <b>Trichoderma</b>
+            <span class="sub">Hongos antagonistas viables de alta pureza.</span>
+          </div>
+
+          <div class="card" onclick="openModal('modal-bioinsumos')">
+            <small>Concentración Mínima</small>
+            <b>≥ 1×10⁸</b>
+            <span class="sub">UFC / mL garantizadas en cada envase de 1L.</span>
+          </div>
+
+        </div>
+
+        <div class="cards-shadow"></div>
+
+        <!-- Banda frosted glass de cultivos atendidos -->
+        <div class="band-wrap">
+          <div class="band" id="band"></div>
+          <div class="logos">
+            <span class="logo-item">Cacao</span>
+            <span class="logo-item">Banano</span>
+            <span class="logo-item">Arroz</span>
+            <span class="logo-item">Aguacate</span>
+            <span class="logo-item">Maíz</span>
+            <span class="logo-item">Caña</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4c. CONOCE GALYON TRICHO — ACCORDION HOVER (#loop)
+         ====================================================================== -->
+    <section class="loop" id="loop">
+      <div class="loop-head">
+        <span class="pill reveal">Tres Pilares de Acción</span>
+        <h2 class="h2 split">Protección viva que transforma<br />la productividad de tu lote.</h2>
+      </div>
+
+      <div class="track" id="track">
+        
+        <!-- Panel 01 -->
+        <div class="panel is-active" tabindex="0" aria-label="Pilar 1: Protección biológica">
+          <div class="panel-in">
+            <div class="num">01</div>
+            <div class="step">
+              <h3>Protección biológica</h3>
+              <p>Contribuye a prevenir y reducir enfermedades causadas por hongos fitopatógenos del suelo y la raíz como Fusarium, Phytophthora y Rhizoctonia.</p>
+              <span class="step-cta" onclick="openModal('modal-bioinsumos')">Ver modo de acción &rarr;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 02 -->
+        <div class="panel" tabindex="0" aria-label="Pilar 2: Desarrollo radicular">
+          <div class="panel-in">
+            <div class="num">02</div>
+            <div class="step">
+              <h3>Desarrollo radicular</h3>
+              <p>Favorece el crecimiento del sistema radicular y la absorción óptima de nutrientes y agua, promoviendo mayor resistencia a estrés hídrico.</p>
+              <span class="step-cta" onclick="openModal('modal-bioinsumos')">Beneficios en raíz &rarr;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 03 -->
+        <div class="panel" tabindex="0" aria-label="Pilar 3: Salud del suelo">
+          <div class="panel-in">
+            <div class="num">03</div>
+            <div class="step">
+              <h3>Salud del suelo</h3>
+              <p>Contribuye a mejorar las condiciones biológicas del suelo, enriqueciendo la microbiota benéfica y favoreciendo cosechas saludables y sostenibles.</p>
+              <span class="step-cta" onclick="openModal('modal-suelo')">Análisis de suelo &rarr;</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4d. SECCIÓN CTA CINEMATOGRÁFICA (#cta)
+         ====================================================================== -->
+    <section class="cta" id="cta">
+      <div class="sq-field" data-count="16"></div>
+
+      <!-- Fotografía de plantación agrícola ecuatoriana con luz natural -->
+      <div class="cta-img">
+        <img id="ctaImg" src="assets/suelo-platano-campo.webp" alt="Plantación agrícola tropical en Ecuador" />
+      </div>
+
+      <!-- Hojas tropicales cayendo -->
+      <div class="petals" id="petals"></div>
+
+      <!-- Tarjeta translúcida liquid-glass -->
+      <div class="cta-card" id="ctaCard">
+        <span class="pill">Compromiso GALYON</span>
+        <h2 class="h2 split">Cultivemos un futuro<br />más sostenible.</h2>
+        <p class="reveal">
+          Conoce cómo la biotecnología puede contribuir al desarrollo de cultivos más saludables y productivos con asesoría técnica directa.
+        </p>
+        <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20quisiera%20conversar%20sobre%20bioinsumos%20para%20mi%20cultivo." target="_blank" rel="noopener noreferrer" class="btn reveal">
+          Contactar con GALYON por WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4e. FOOTER MINIMALISTA (#footer)
+         ====================================================================== -->
+    <footer id="footer">
+      <div class="f-brand">
+        <img src="assets/marca-hojas.png" alt="GALYON" />
+        <span>GALYON</span>
+      </div>
+
+      <nav class="f-links">
+        <a href="#hero">Inicio</a>
+        <a href="#stats">Beneficios</a>
+        <a href="#loop">Microbiología</a>
+        <a href="#cta">Contacto</a>
+      </nav>
+
+      <div class="f-contact">
+        <span>Ecuador · Atención Nacional</span>
+        <a href="https://wa.me/593968933445" target="_blank" rel="noopener" style="color: var(--forest); text-decoration: underline;">096 893 3445</a>
+        <small style="opacity: 0.8;">somosgalyon@gmail.com</small>
+      </div>
+
+      <div class="f-copy">
+        &copy; 2026 GALYON Biotecnología. Todos los derechos reservados. Biotecnología aplicada al agro y al ambiente.
+      </div>
+    </footer>
+
+  </div>
 
   <!-- ========================================================================
-       MODALES CONSERVAN 100% DE LA INFORMACIÓN DE GALYON
+       MODALES TÉCNICOS COMPLETOS PRESERVADOS
        ======================================================================== -->
 
   <!-- MODAL: BIOINSUMOS -->
@@ -917,7 +1312,7 @@
           </div>
           <div style="text-align: right;">
             <div class="catalog-price">$20 <small style="font-size: 12px; font-weight: normal;">/ L</small></div>
-            <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20deseo%20pedir%20TRICHO." target="_blank" rel="noopener" class="catalog-btn" style="margin-top: 6px;">Pedir &rarr;</a>
+            <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20deseo%20pedir%20TRICHO." target="_blank" rel="noopener" class="btn" style="height: 32px; font-size: 12px; margin-top: 6px;">Pedir &rarr;</a>
           </div>
         </div>
 
@@ -928,7 +1323,7 @@
           </div>
           <div style="text-align: right;">
             <div class="catalog-price">$20 <small style="font-size: 12px; font-weight: normal;">/ L</small></div>
-            <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20deseo%20pedir%20BACT." target="_blank" rel="noopener" class="catalog-btn" style="margin-top: 6px;">Pedir &rarr;</a>
+            <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20deseo%20pedir%20BACT." target="_blank" rel="noopener" class="btn" style="height: 32px; font-size: 12px; margin-top: 6px;">Pedir &rarr;</a>
           </div>
         </div>
 
@@ -939,7 +1334,7 @@
           </div>
           <div style="text-align: right;">
             <div class="catalog-price">$20 <small style="font-size: 12px; font-weight: normal;">/ L</small></div>
-            <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20deseo%20pedir%20INSECTA." target="_blank" rel="noopener" class="catalog-btn" style="margin-top: 6px;">Pedir &rarr;</a>
+            <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20deseo%20pedir%20INSECTA." target="_blank" rel="noopener" class="btn" style="height: 32px; font-size: 12px; margin-top: 6px;">Pedir &rarr;</a>
           </div>
         </div>
 
@@ -950,7 +1345,7 @@
           </div>
           <div style="text-align: right;">
             <div class="catalog-price">$25 <small style="font-size: 12px; font-weight: normal;">/ kg</small></div>
-            <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20deseo%20pedir%20TRICHO%20en%20sustrato." target="_blank" rel="noopener" class="catalog-btn" style="margin-top: 6px;">Pedir &rarr;</a>
+            <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20deseo%20pedir%20TRICHO%20en%20sustrato." target="_blank" rel="noopener" class="btn" style="height: 32px; font-size: 12px; margin-top: 6px;">Pedir &rarr;</a>
           </div>
         </div>
       </div>
@@ -975,14 +1370,6 @@
         <a class="crop-chip" href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20necesito%20asesor%C3%ADa%20para%20Maracuy%C3%A1." target="_blank" rel="noopener">Maracuyá</a>
         <a class="crop-chip" href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20necesito%20asesor%C3%ADa%20para%20Huertos." target="_blank" rel="noopener">Huertos</a>
       </div>
-
-      <div style="background: rgba(30, 50, 39, 0.08); padding: 18px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center;">
-        <div>
-          <strong style="display: block; font-size: 15px;">¿Tienes fotos de síntomas o manchas?</strong>
-          <small style="color: var(--c-ink-sub); font-size: 13px;">Nuestros técnicos analizan las imágenes de tus plantas para orientarte.</small>
-        </div>
-        <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20tengo%20fotos%20de%20mi%20cultivo%20para%20evaluaci%C3%B3n." target="_blank" rel="noopener" class="cta-btn-dark" style="font-size: 13px; padding: 10px 18px;">Enviar fotos &rarr;</a>
-      </div>
     </div>
   </div>
 
@@ -996,310 +1383,281 @@
 
       <div class="catalog-list">
         <div class="catalog-item">
-          <div class="catalog-item-info">
-            <h4>Análisis Básico ($69)</h4>
-            <p>pH, fósforo, potasio, calcio, magnesio, micronutrientes y materia orgánica.</p>
-          </div>
-          <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20deseo%20solicitar%20un%20An%C3%A1lisis%20B%C3%A1sico%20de%20Suelo." target="_blank" rel="noopener" class="catalog-btn">Solicitar</a>
-        </div>
-        <div class="catalog-item">
-          <div class="catalog-item-info">
-            <h4>Análisis Premium ($75)</h4>
-            <p>Todos los parámetros del básico más sodio, azufre, boro, conductividad y acidez cambiable.</p>
-          </div>
-          <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20deseo%20solicitar%20un%20An%C3%A1lisis%20Premium%20de%20Suelo." target="_blank" rel="noopener" class="catalog-btn">Solicitar</a>
-        </div>
-        <div class="catalog-item">
-          <div class="catalog-item-info">
-            <h4>Premium + Textura ($89)</h4>
-            <p>Química completa más porcentajes exactos de arena, limo y arcilla para manejo hídrico.</p>
-          </div>
-          <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20deseo%20solicitar%20An%C3%A1lisis%20Premium%20con%20Textura." target="_blank" rel="noopener" class="catalog-btn">Solicitar</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: COMBOS $70 -->
-  <div class="modal-overlay" id="modal-combos" onclick="closeModalOnBackdrop(event, 'modal-combos')">
-    <div class="modal-card">
-      <button class="modal-close-btn" onclick="closeModal('modal-combos')">&times;</button>
-      <div class="modal-tag">Paquetes Especiales con Envío Gratis</div>
-      <h3 class="modal-title">Combos de 4 Litros por $70</h3>
-      <p class="modal-desc">Combinaciones estratégicas para cada tipo de cultivo con cobertura nacional de transporte incluida.</p>
-
-      <div class="catalog-list" style="grid-template-columns: repeat(2, 1fr);">
-        <div class="catalog-item" style="flex-direction: column; align-items: flex-start;">
-          <small style="color: var(--c-accent); font-weight: 800; text-transform: uppercase;">Cacao</small>
-          <h4 style="font-size: 18px; margin: 4px 0;">Cacao Titán</h4>
-          <p style="font-size: 13px;">2 L Trichoderma + 2 L Bacillus subtilis. Vigor vegetativo y defensas de raíz.</p>
-          <div style="font-size: 20px; font-weight: 800; margin-top: 8px;">$70 <del style="font-size: 13px; color: var(--c-ink-sub); font-weight: 400;">$80</del></div>
-        </div>
-
-        <div class="catalog-item" style="flex-direction: column; align-items: flex-start;">
-          <small style="color: var(--c-accent); font-weight: 800; text-transform: uppercase;">Mango</small>
-          <h4 style="font-size: 18px; margin: 4px 0;">Mango Furioso</h4>
-          <p style="font-size: 13px;">2 L Bacillus + 2 L Beauveria bassiana. Manejo de floración y plagas.</p>
-          <div style="font-size: 20px; font-weight: 800; margin-top: 8px;">$70 <del style="font-size: 13px; color: var(--c-ink-sub); font-weight: 400;">$80</del></div>
-        </div>
-
-        <div class="catalog-item" style="flex-direction: column; align-items: flex-start;">
-          <small style="color: var(--c-accent); font-weight: 800; text-transform: uppercase;">Caña</small>
-          <h4 style="font-size: 18px; margin: 4px 0;">Caña Brava</h4>
-          <p style="font-size: 13px;">2 L Bacillus amyloliquefaciens + 2 L Metarhizium anisopliae.</p>
-          <div style="font-size: 20px; font-weight: 800; margin-top: 8px;">$70 <del style="font-size: 13px; color: var(--c-ink-sub); font-weight: 400;">$80</del></div>
-        </div>
-
-        <div class="catalog-item" style="flex-direction: column; align-items: flex-start;">
-          <small style="color: var(--c-accent); font-weight: 800; text-transform: uppercase;">Banano</small>
-          <h4 style="font-size: 18px; margin: 4px 0;">Verde Bestia</h4>
-          <p style="font-size: 13px;">2 L Trichoderma + 2 L Bacillus. Raíces sanas y masa foliar vigorosa.</p>
-          <div style="font-size: 20px; font-weight: 800; margin-top: 8px;">$70 <del style="font-size: 13px; color: var(--c-ink-sub); font-weight: 400;">$80</del></div>
-        </div>
-      </div>
-
-      <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20deseo%20pedir%20un%20Combo%20de%204L%20por%20%2470%20con%20env%C3%ADo%20gratis." target="_blank" rel="noopener" class="cta-btn-dark" style="width: 100%; text-align: center; justify-content: center; padding: 16px;">
-        Pedir Combo por WhatsApp (Envío Gratis)
-      </a>
-    </div>
-  </div>
-
-  <!-- MODAL: ACOMPAÑAMIENTO -->
-  <div class="modal-overlay" id="modal-garantia" onclick="closeModalOnBackdrop(event, 'modal-garantia')">
-    <div class="modal-card">
-      <button class="modal-close-btn" onclick="closeModal('modal-garantia')">&times;</button>
-      <div class="modal-tag">Nuestro Compromiso</div>
-      <h3 class="modal-title">Acompañamiento Técnico Real</h3>
-      <p class="modal-desc">La atención no termina con tu compra: te acompañamos antes, durante y después de la aplicación.</p>
-
-      <div class="catalog-list">
-        <div class="catalog-item">
           <div>
-            <h4>Asesoría técnica sin costo</h4>
-            <p>Orientación sobre dosis, compatibilidad de mezclas y calibración de equipos.</p>
+            <h4>Paquete Básico ($69)</h4>
+            <p>pH, conductividad eléctrica, materia orgánica, fósforo, potasio y nitrógeno elemental.</p>
           </div>
+          <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20deseo%20el%20an%C3%A1lisis%20de%20suelo%20B%C3%A1sico%20%28%2469%29." target="_blank" rel="noopener" class="btn" style="height: 32px; font-size: 12px;">Solicitar</a>
         </div>
         <div class="catalog-item">
           <div>
-            <h4>Seguimiento personalizado</h4>
-            <p>Atención remota a nivel nacional y visitas presenciales en Guayas y provincias aledañas.</p>
+            <h4>Paquete Completo ($79)</h4>
+            <p>Básico + micronutrientes esenciales (hierro, zinc, manganeso, cobre, boro).</p>
           </div>
+          <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20deseo%20el%20an%C3%A1lisis%20de%20suelo%20Completo%20%28%2479%29." target="_blank" rel="noopener" class="btn" style="height: 32px; font-size: 12px;">Solicitar</a>
         </div>
         <div class="catalog-item">
           <div>
-            <h4>Garantía de respaldo</h4>
-            <p>Evaluación de evolución agronómica y acompañamiento responsable en cada lote.</p>
+            <h4>Paquete Premium + Textura ($89)</h4>
+            <p>Completo + granulometría (arena, limo y arcilla) para retención hídrica.</p>
           </div>
+          <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20deseo%20el%20an%C3%A1lisis%20de%20suelo%20Premium%20%28%2489%29." target="_blank" rel="noopener" class="btn" style="height: 32px; font-size: 12px;">Solicitar</a>
         </div>
       </div>
-
-      <a href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20quisiera%20conversar%20con%20un%20ingeniero%20agr%C3%B3nomo." target="_blank" rel="noopener" class="cta-btn-dark" style="width: 100%; text-align: center; justify-content: center; padding: 16px;">
-        Hablar con un asesor técnico
-      </a>
     </div>
-  </div>
-
-  <!-- MENÚ MÓVIL SAGE -->
-  <div class="mobile-menu" id="mobile-menu">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-      <span class="brand-name">GALYON</span>
-      <button onclick="toggleMobileMenu()" style="border: none; font-size: 28px; background: none; cursor: pointer;">&times;</button>
-    </div>
-    <button onclick="toggleMobileMenu(); openModal('modal-bioinsumos')">Bioinsumos</button>
-    <button onclick="toggleMobileMenu(); focus3DFront()">Vista Frontal 3D</button>
-    <button onclick="toggleMobileMenu(); openModal('modal-asesor')">Asesor de Cultivos</button>
-    <button onclick="toggleMobileMenu(); openModal('modal-suelo')">Análisis de Suelo</button>
-    <button onclick="toggleMobileMenu(); openModal('modal-combos')">Combos $70</button>
-    <button onclick="toggleMobileMenu(); openModal('modal-garantia')">Acompañamiento</button>
-    <a href="https://wa.me/593968933445" target="_blank" rel="noopener" style="margin-top: auto; text-align: center; background: var(--c-ink); color: var(--c-page); border-radius: 9999px; padding: 16px;">Contactar por WhatsApp</a>
   </div>
 
   <!-- ========================================================================
-       JAVASCRIPT: MOTION (WAAPI) & HERO 3D THREE.JS PBR ENGINE
+       SCRIPTS: GSAP, SCROLLTRIGGER, LENIS & THREE.JS ENGINE
        ======================================================================== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+
   <script type="module">
     import * as THREE from 'three';
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-    /* ------------------------------------------------------------------------
-       1. ENTRANCE ANIMATION (WEB ANIMATIONS API - WAAPI)
-       ------------------------------------------------------------------------ */
-    async function initEntrance() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        return;
-      }
+    /* ========================================================================
+       1. INICIALIZACIÓN LENIS & GSAP
+       ======================================================================== */
+    gsap.registerPlugin(ScrollTrigger);
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.innerWidth <= 760;
 
-      await document.fonts.ready;
-
-      const animations = [];
-
-      // A) Header drop-in
-      const header = document.querySelector('.header');
-      if (header) {
-        animations.push(header.animate([
-          { opacity: 0, transform: 'translateY(-24px)' },
-          { opacity: 1, transform: 'translateY(0)' }
-        ], { duration: 900, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'backwards' }));
-      }
-
-      // B) Eyebrow
-      const eyebrow = document.getElementById('eyebrow');
-      if (eyebrow) {
-        animations.push(eyebrow.animate([
-          { opacity: 0, transform: 'translateY(-10px)' },
-          { opacity: 1, transform: 'translateY(0)' }
-        ], { duration: 750, delay: 200, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'backwards' }));
-      }
-
-      // C) Headline lines inside masks
-      const hl1 = document.getElementById('hl-line-1');
-      const hl2 = document.getElementById('hl-line-2');
-      if (hl1) {
-        animations.push(hl1.animate([
-          { transform: 'translateY(105%)' },
-          { transform: 'translateY(0%)' }
-        ], { duration: 950, delay: 300, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'backwards' }));
-      }
-      if (hl2) {
-        animations.push(hl2.animate([
-          { transform: 'translateY(105%)' },
-          { transform: 'translateY(0%)' }
-        ], { duration: 950, delay: 420, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'backwards' }));
-      }
-
-      // D) Paragraph & CTA
-      const para = document.getElementById('paragraph-copy');
-      const cta = document.getElementById('cta-row');
-      if (para) {
-        animations.push(para.animate([
-          { opacity: 0, transform: 'translateY(16px)' },
-          { opacity: 1, transform: 'translateY(0)' }
-        ], { duration: 800, delay: 560, easing: 'ease-out', fill: 'backwards' }));
-      }
-      if (cta) {
-        animations.push(cta.animate([
-          { opacity: 0, transform: 'translateY(16px)' },
-          { opacity: 1, transform: 'translateY(0)' }
-        ], { duration: 800, delay: 680, easing: 'ease-out', fill: 'backwards' }));
-      }
-
-      // E) Glass metric cards (escalonadas)
-      const cards = document.querySelectorAll('.glass-card');
-      cards.forEach((card, i) => {
-        animations.push(card.animate([
-          { opacity: 0, transform: 'translateY(28px)' },
-          { opacity: 1, transform: 'translateY(0)' }
-        ], { duration: 850, delay: 450 + (i * 120), easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'backwards' }));
+    let lenis = null;
+    if (!reduceMotion) {
+      lenis = new Lenis({
+        duration: 1.25,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true
       });
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+    }
 
-      // F) Entrada flotante del Modelo 3D central
-      const modelStage = document.getElementById('hero-3d-stage');
-      if (modelStage) {
-        animations.push(modelStage.animate([
-          { opacity: 0, transform: 'translate(-50%, -40%) scale(0.92)' },
-          { opacity: 1, transform: 'translate(-50%, -46%) scale(1)' }
-        ], { duration: 1100, delay: 250, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'backwards' }));
-      }
+    // Scroll suave en enlaces ancla
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const href = anchor.getAttribute('href');
+        if (href && href !== '#' && document.querySelector(href)) {
+          e.preventDefault();
+          if (lenis) {
+            lenis.scrollTo(href, { duration: 1.4 });
+          } else {
+            document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
 
-      Promise.all(animations.map(a => a.finished)).then(() => {
-        animations.forEach(a => a.cancel());
+    /* ========================================================================
+       2. TEXT SPLIT (RECURSIVO PARA EM Y BR)
+       ======================================================================== */
+    function splitTextToWords(element) {
+      const nodes = Array.from(element.childNodes);
+      element.innerHTML = '';
+
+      nodes.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const words = node.textContent.split(/(\s+)/);
+          words.forEach(word => {
+            if (/^\s+$/.test(word)) {
+              element.appendChild(document.createTextNode(word));
+            } else if (word) {
+              const span = document.createElement('span');
+              span.className = 'w';
+              span.textContent = word;
+              element.appendChild(span);
+            }
+          });
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          if (node.tagName.toLowerCase() === 'br') {
+            element.appendChild(document.createElement('br'));
+          } else {
+            const clone = node.cloneNode(false);
+            const subWords = node.textContent.split(/(\s+)/);
+            subWords.forEach(word => {
+              if (/^\s+$/.test(word)) {
+                clone.appendChild(document.createTextNode(word));
+              } else if (word) {
+                const span = document.createElement('span');
+                span.className = 'w';
+                span.textContent = word;
+                clone.appendChild(span);
+              }
+            });
+            element.appendChild(clone);
+          }
+        }
       });
     }
 
-    /* ------------------------------------------------------------------------
-       2. THREE.JS 3D ENGINE: HERO PROTAGONISTA GALYON TRICHO (1 LITRO)
-       Construido con las especificaciones exactas del 3D Asset Studio
-       ------------------------------------------------------------------------ */
-    let scene, camera, renderer, controls, bottleGroup, particles;
-    let isUserInteracting = false;
-    let resumeRotateTimeout = null;
+    document.querySelectorAll('.split').forEach(el => splitTextToWords(el));
 
-    // Especificaciones del envase 1L de GALYON
+    /* ========================================================================
+       3. GENERADOR DE CUADRICULA SUAVE (SQ-FIELD)
+       ======================================================================== */
+    document.querySelectorAll('.sq-field').forEach(field => {
+      const count = parseInt(field.getAttribute('data-count') || '18', 10);
+      for (let i = 0; i < count; i++) {
+        const sq = document.createElement('div');
+        sq.className = 'grid-sq';
+        const col = Math.floor(Math.random() * 26);
+        const row = Math.floor(Math.random() * 5);
+        sq.style.width = '46px';
+        sq.style.height = '46px';
+        sq.style.left = `${col * 48 - 8}px`;
+        sq.style.top = `${row * 48 + 6}px`;
+        field.appendChild(sq);
+
+        if (!reduceMotion) {
+          gsap.fromTo(sq, 
+            { opacity: 0 }, 
+            { 
+              opacity: Math.random() * 0.7 + 0.2, 
+              duration: 1.4, 
+              yoyo: true, 
+              repeat: -1, 
+              delay: Math.random() * 4, 
+              repeatDelay: Math.random() * 3,
+              ease: 'sine.inOut' 
+            }
+          );
+        }
+      }
+    });
+
+    /* ========================================================================
+       4. HERO GLASS SQUARES (CRISTALES ESCARCHADOS INTERACTIVOS)
+       ======================================================================== */
+    const heroGlass = document.getElementById('heroGlass');
+    if (heroGlass) {
+      const coords = [
+        [4, 62], [4, 71], [7.5, 71], [11, 71], [4, 80],
+        [-1, 70], [86, 56], [86, 67], [82, 76], [89.5, 76], [86, 84]
+      ];
+
+      coords.forEach(([x, y], idx) => {
+        if (isMobile && idx % 2 !== 0) return;
+        const g = document.createElement('div');
+        g.className = 'glass';
+        g.style.left = `${x}%`;
+        g.style.top = `${y}%`;
+        g.style.width = 'clamp(36px, 4.8vw, 68px)';
+        g.style.aspectRatio = '1';
+        heroGlass.appendChild(g);
+
+        if (!reduceMotion) {
+          gsap.to(g, {
+            opacity: 0.25,
+            duration: 1.1,
+            yoyo: true,
+            repeat: -1,
+            ease: 'sine.inOut',
+            delay: Math.random() * 3,
+            repeatDelay: 1 + Math.random() * 3
+          });
+        }
+      });
+    }
+
+    /* ========================================================================
+       5. HOJAS TROPICALES FLOTANTES EN CTA (#petals)
+       ======================================================================== */
+    const petalsContainer = document.getElementById('petals');
+    if (petalsContainer) {
+      for (let i = 0; i < 18; i++) {
+        const leaf = document.createElement('span');
+        leaf.className = 'tropical-leaf';
+        leaf.style.left = `${Math.random() * 100}%`;
+        leaf.style.setProperty('--dx', `${(Math.random() - 0.5) * 160}px`);
+        leaf.style.animationDuration = `${8 + Math.random() * 9}s`;
+        leaf.style.animationDelay = `-${Math.random() * 12}s`;
+        leaf.style.transform = `scale(${0.6 + Math.random() * 0.8})`;
+        petalsContainer.appendChild(leaf);
+      }
+    }
+
+    /* ========================================================================
+       6. ACCORDION EN SECCIÓN CONOCE GALYON TRICHO (#loop)
+       ======================================================================== */
+    const panels = document.querySelectorAll('.panel');
+    panels.forEach(panel => {
+      const activate = () => {
+        panels.forEach(p => p.classList.remove('is-active'));
+        panel.classList.add('is-active');
+      };
+
+      panel.addEventListener('mouseenter', activate);
+      panel.addEventListener('focus', activate);
+      panel.addEventListener('click', activate);
+    });
+
+    /* ========================================================================
+       7. MODELO 3D GALYON TRICHO (1L) — THREE.JS ENGINE (+40% TAMAÑO)
+       ======================================================================== */
+    let scene, camera, renderer, controls, bottleGroup;
+    let isUserInteracting = false;
+
     const SPECS = {
-      totalHeight: 2.47,
-      bodyRadius: 0.42,
-      bodyDiameter: 0.84,
-      labelYStart: 0.25,
-      labelYEnd: 1.60,
-      labelHeight: 1.35,
-      capHeight: 0.29,
-      capRadius: 0.228,
+      diameter: 0.87,
+      radius: 0.435,
+      totalHeight: 2.32,
+      bodyHeight: 1.86,
+      labelHeight: 1.40,
+      capRadius: 0.222,
+      capHeight: 0.24,
     };
 
-    // Puntos de revolución del cuerpo del envase HDPE
     function getBottleProfilePoints() {
       const points = [];
-      const R = SPECS.bodyRadius;
+      const R = SPECS.radius;
+      const H = SPECS.totalHeight;
+      const cornerR = 0.055;
 
-      // Base con fondo embutido (punt cóncavo)
-      points.push(new THREE.Vector2(0.00, 0.045));
-      points.push(new THREE.Vector2(0.12, 0.040));
-      points.push(new THREE.Vector2(0.24, 0.025));
-      points.push(new THREE.Vector2(0.33, 0.008));
-      // Anillo de apoyo en suelo
-      points.push(new THREE.Vector2(0.36, 0.000));
-      points.push(new THREE.Vector2(0.38, 0.000));
-      // Bisel exterior
-      points.push(new THREE.Vector2(0.405, 0.015));
-      points.push(new THREE.Vector2(0.418, 0.045));
-      points.push(new THREE.Vector2(R, 0.090));
-
-      // Cuerpo cilíndrico
-      points.push(new THREE.Vector2(R, 0.250));
-      points.push(new THREE.Vector2(R, 0.800));
-      points.push(new THREE.Vector2(R, 1.400));
-      points.push(new THREE.Vector2(R, 1.600));
-      points.push(new THREE.Vector2(R, 1.740));
-
-      // Hombro curvado ergonómico
-      points.push(new THREE.Vector2(0.414, 1.820));
-      points.push(new THREE.Vector2(0.395, 1.900));
-      points.push(new THREE.Vector2(0.362, 1.970));
-      points.push(new THREE.Vector2(0.315, 2.030));
-      points.push(new THREE.Vector2(0.255, 2.075));
-      points.push(new THREE.Vector2(0.215, 2.110));
-
-      // Cuello y anillo de precinto
-      points.push(new THREE.Vector2(0.215, 2.160));
-      points.push(new THREE.Vector2(0.232, 2.175));
-      points.push(new THREE.Vector2(0.232, 2.195));
-      points.push(new THREE.Vector2(0.212, 2.210));
-
-      // Cuello roscado superior y labio
-      points.push(new THREE.Vector2(0.210, 2.380));
-      points.push(new THREE.Vector2(0.208, 2.430));
-      points.push(new THREE.Vector2(0.185, 2.440));
-      points.push(new THREE.Vector2(0.170, 2.420));
-      points.push(new THREE.Vector2(0.170, 2.350));
-
+      points.push(new THREE.Vector2(0.001, 0.0));
+      points.push(new THREE.Vector2(R - cornerR, 0.0));
+      for (let i = 0; i <= 6; i++) {
+        const angle = -Math.PI / 2 + (i / 6) * (Math.PI / 2);
+        points.push(new THREE.Vector2(R - cornerR + cornerR * Math.cos(angle), cornerR + cornerR * Math.sin(angle)));
+      }
+      points.push(new THREE.Vector2(R, 0.40));
+      points.push(new THREE.Vector2(R, 1.84));
+      const sCenterY = 1.84;
+      const sR = 0.08;
+      for (let i = 1; i <= 6; i++) {
+        const angle = (i / 6) * (Math.PI / 2);
+        points.push(new THREE.Vector2(R - sR * (1 - Math.cos(angle)), sCenterY + sR * Math.sin(angle)));
+      }
+      points.push(new THREE.Vector2(0.25, 2.02));
+      points.push(new THREE.Vector2(0.205, 2.16));
+      points.push(new THREE.Vector2(0.205, H));
+      points.push(new THREE.Vector2(0.180, H));
+      points.push(new THREE.Vector2(0.180, 2.16));
+      points.push(new THREE.Vector2(0.001, 2.16));
       return points;
     }
 
-    // Geometría cilíndrica de etiqueta con mapeo UV calibrado (U=0.50 frente +Z)
-    function createLabelGeometry(segments = 64) {
-      const radius = SPECS.bodyRadius + 0.0008;
-      const yBottom = SPECS.labelYStart;
-      const yTop = SPECS.labelYEnd;
-      const height = yTop - yBottom;
-
+    function createCylinderGeometry(radius, yBottom, yTop, segments) {
       const geometry = new THREE.BufferGeometry();
       const positions = [];
       const normals = [];
       const uvs = [];
       const indices = [];
 
-      const heightSegments = 8;
+      for (let yIndex = 0; yIndex <= 1; yIndex++) {
+        const y = yIndex === 0 ? yBottom : yTop;
+        const v = yIndex === 0 ? 1 : 0;
 
-      for (let yIndex = 0; yIndex <= heightSegments; yIndex++) {
-        const v = yIndex / heightSegments;
-        const y = yBottom + v * height;
-
-        for (let xIndex = 0; xIndex <= segments; xIndex++) {
-          const u = xIndex / segments;
-          // u=0.5 -> theta=0 (+Z frontal), u=0 -> -Z posterior, u=1 -> -Z posterior
+        for (let i = 0; i <= segments; i++) {
+          const u = i / segments;
           const theta = (u - 0.5) * Math.PI * 2;
-          const x = Math.sin(theta) * radius;
-          const z = Math.cos(theta) * radius;
+          const x = radius * Math.sin(theta);
+          const z = radius * Math.cos(theta);
 
           positions.push(x, y, z);
           normals.push(Math.sin(theta), 0, Math.cos(theta));
@@ -1307,16 +1665,11 @@
         }
       }
 
-      for (let yIndex = 0; yIndex < heightSegments; yIndex++) {
-        for (let xIndex = 0; xIndex < segments; xIndex++) {
-          const a = yIndex * (segments + 1) + xIndex;
-          const b = (yIndex + 1) * (segments + 1) + xIndex;
-          const c = (yIndex + 1) * (segments + 1) + (xIndex + 1);
-          const d = yIndex * (segments + 1) + (xIndex + 1);
-
-          indices.push(a, d, b);
-          indices.push(b, d, c);
-        }
+      for (let i = 0; i < segments; i++) {
+        const row1 = i;
+        const row2 = segments + 1 + i;
+        indices.push(row1, row1 + 1, row2);
+        indices.push(row1 + 1, row2 + 1, row2);
       }
 
       geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
@@ -1324,11 +1677,9 @@
       geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
       geometry.setIndex(indices);
       geometry.computeVertexNormals();
-
       return geometry;
     }
 
-    // Puntos de la tapa moleteada
     function getCapProfilePoints() {
       const points = [];
       const R = SPECS.capRadius;
@@ -1346,48 +1697,36 @@
       points.push(new THREE.Vector2(R - 0.015, yEnd));
       points.push(new THREE.Vector2(0.04, yEnd));
       points.push(new THREE.Vector2(0.0, yEnd));
-
       return points;
     }
 
-    // Mapa normal procedural para las 64 estrías de la tapa
     function createCapNormalTexture() {
-      const width = 1024;
-      const height = 256;
+      const width = 1024, height = 256;
       const canvas = document.createElement('canvas');
-      canvas.width = width;
-      canvas.height = height;
+      canvas.width = width; canvas.height = height;
       const ctx = canvas.getContext('2d');
-
       if (ctx) {
         const imgData = ctx.createImageData(width, height);
         const data = imgData.data;
         const numRibs = 64;
-
         for (let y = 0; y < height; y++) {
-          const yNorm = y / height;
-          const isRibZone = yNorm > 0.18 && yNorm < 0.88;
-
+          const isRibZone = (y / height) > 0.18 && (y / height) < 0.88;
           for (let x = 0; x < width; x++) {
-            const u = x / width;
-            const angle = u * Math.PI * 2 * numRibs;
-            let nx = 0, ny = 0, nz = 1;
-
+            const angle = (x / width) * Math.PI * 2 * numRibs;
+            let nx = 0, nz = 1;
             if (isRibZone) {
               nx = -Math.sin(angle) * 0.75;
               nz = Math.sqrt(Math.max(0, 1 - nx * nx));
             }
-
             const idx = (y * width + x) * 4;
             data[idx] = Math.round((nx * 0.5 + 0.5) * 255);
-            data[idx + 1] = Math.round((ny * 0.5 + 0.5) * 255);
+            data[idx + 1] = 128;
             data[idx + 2] = Math.round((nz * 0.5 + 0.5) * 255);
             data[idx + 3] = 255;
           }
         }
         ctx.putImageData(imgData, 0, 0);
       }
-
       const texture = new THREE.CanvasTexture(canvas);
       texture.wrapS = THREE.RepeatWrapping;
       texture.wrapT = THREE.ClampToEdgeWrapping;
@@ -1395,115 +1734,85 @@
     }
 
     function initHero3D() {
-      const container = document.getElementById('webgl-canvas-mount');
+      const container = document.getElementById('webgl-mount');
       if (!container) return;
 
       const w = container.clientWidth;
       const h = container.clientHeight;
 
-      // 1. Escena
       scene = new THREE.Scene();
 
-      // 2. Cámara (focal length natural de 40mm para fotografía de producto editorial)
-      camera = new THREE.PerspectiveCamera(38, w / h, 0.1, 50);
-      camera.position.set(0, 1.25, 4.4);
+      // Cámara optimizada: encuadre 3/4 y botella al menos un 40% más grande
+      camera = new THREE.PerspectiveCamera(36, w / h, 0.1, 100);
+      camera.position.set(0, 1.30, 2.75); // Más cercana para ganar +40% de tamaño
 
-      // 3. Renderizador WebGL con alta precisión
-      renderer = new THREE.WebGLRenderer({
-        antialias: true,
-        alpha: true,
-        powerPreference: 'high-performance'
-      });
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
       renderer.setSize(w, h);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.shadowMap.enabled = true;
-      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-      renderer.outputColorSpace = THREE.SRGBColorSpace;
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.15;
       container.appendChild(renderer.domElement);
 
-      // 4. OrbitControls con inercia suave
       controls = new OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true;
       controls.dampingFactor = 0.05;
-      controls.target.set(0, 1.20, 0);
-      controls.minDistance = 2.4;
-      controls.maxDistance = 6.0;
-      controls.minPolarAngle = Math.PI / 2.7; // límites para no deformar la vista
-      controls.maxPolarAngle = Math.PI / 2 + 0.08;
-      controls.enableZoom = false; // evitar zoom accidental al scrollear la página
+      controls.enableZoom = false;
+      controls.enablePan = false;
+      controls.target.set(0, 1.25, 0); // Foco en el centro de la etiqueta oficial
+      controls.minPolarAngle = Math.PI / 2.7;
+      controls.maxPolarAngle = Math.PI / 2 + 0.12;
 
-      controls.addEventListener('start', () => {
-        isUserInteracting = true;
-        if (resumeRotateTimeout) clearTimeout(resumeRotateTimeout);
-      });
-
+      controls.addEventListener('start', () => { isUserInteracting = true; });
       controls.addEventListener('end', () => {
-        resumeRotateTimeout = setTimeout(() => {
-          isUserInteracting = false;
-        }, 1500);
+        setTimeout(() => { isUserInteracting = false; }, 1800);
       });
 
-      // 5. Rig de Iluminación Cinematográfica Sage Studio
-      // Luz ambiente suave
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
-      scene.add(ambientLight);
+      // Iluminación de estudio botánico
+      const hemiLight = new THREE.HemisphereLight(0xffffff, 0xe9eee0, 0.95);
+      scene.add(hemiLight);
 
-      // Luz clave (cálida, estilo sol tenue de estudio editorial)
-      const keyLight = new THREE.DirectionalLight('#fffdf5', 2.2);
-      keyLight.position.set(3.5, 4.5, 3.5);
-      keyLight.castShadow = true;
-      keyLight.shadow.mapSize.width = 1024;
-      keyLight.shadow.mapSize.height = 1024;
-      keyLight.shadow.bias = -0.0004;
+      const keyLight = new THREE.DirectionalLight(0xffffff, 1.6);
+      keyLight.position.set(2.4, 3.6, 2.8);
       scene.add(keyLight);
 
-      // Luz de relleno salvia suave
-      const fillLight = new THREE.DirectionalLight('#dce2c8', 1.1);
-      fillLight.position.set(-3, 2.5, 2);
+      const fillLight = new THREE.DirectionalLight(0xd4e2c8, 0.7);
+      fillLight.position.set(-2.5, 2.0, -1.8);
       scene.add(fillLight);
 
-      // Contraluz esmeralda orgánico (Organic Technology GALYON)
-      const rimLight = new THREE.DirectionalLight('#34d399', 2.8);
-      rimLight.position.set(-3.5, 3.0, -3.5);
+      const rimLight = new THREE.DirectionalLight(0xb4cd52, 0.5);
+      rimLight.position.set(0, 3.0, -3.0);
       scene.add(rimLight);
 
-      // Resplandor biológico inferior
-      const bioLight = new THREE.PointLight('#10b981', 1.8, 5, 2.0);
-      bioLight.position.set(1.5, 0.6, -1.5);
-      scene.add(bioLight);
-
-      // Sombra de contacto suave radial en el suelo
-      const shadowGeo = new THREE.PlaneGeometry(3.0, 3.0);
+      // Sombra de contacto
+      const shadowGeo = new THREE.PlaneGeometry(3.6, 3.6);
       const sCanvas = document.createElement('canvas');
       sCanvas.width = 256; sCanvas.height = 256;
       const sCtx = sCanvas.getContext('2d');
       if (sCtx) {
-        const rad = sCtx.createRadialGradient(128, 128, 25, 128, 128, 115);
-        rad.addColorStop(0, 'rgba(28, 48, 36, 0.65)');
-        rad.addColorStop(0.45, 'rgba(30, 50, 39, 0.28)');
-        rad.addColorStop(1, 'rgba(203, 207, 184, 0)');
+        const rad = sCtx.createRadialGradient(128, 128, 20, 128, 128, 120);
+        rad.addColorStop(0, 'rgba(18, 61, 36, 0.55)');
+        rad.addColorStop(0.5, 'rgba(18, 61, 36, 0.22)');
+        rad.addColorStop(1, 'rgba(255, 255, 255, 0)');
         sCtx.fillStyle = rad;
         sCtx.fillRect(0, 0, 256, 256);
       }
-      const shadowTex = new THREE.CanvasTexture(sCanvas);
-      const shadowMat = new THREE.MeshBasicMaterial({
-        map: shadowTex,
+      const shadowPlane = new THREE.Mesh(shadowGeo, new THREE.MeshBasicMaterial({
+        map: new THREE.CanvasTexture(sCanvas),
         transparent: true,
-        opacity: 0.85,
+        opacity: 0.8,
         depthWrite: false
-      });
-      const shadowPlane = new THREE.Mesh(shadowGeo, shadowMat);
+      }));
       shadowPlane.rotation.x = -Math.PI / 2;
       shadowPlane.position.y = 0.002;
       scene.add(shadowPlane);
 
-      // 6. Construcción del Modelo 3D GALYON TRICHO (1L)
+      // Construcción del Modelo 3D Oficial GALYON TRICHO (1L)
       bottleGroup = new THREE.Group();
       bottleGroup.name = 'GALYON_TRICHO_1L';
+      // Escala 42% más grande
+      bottleGroup.scale.set(1.42, 1.42, 1.42);
 
-      // A) Cuerpo de plástico blanco HDPE
+      // 1. Cuerpo HDPE Blanco
       const bottleMat = new THREE.MeshPhysicalMaterial({
         color: new THREE.Color('#f5f5f3'),
         roughness: 0.38,
@@ -1512,210 +1821,277 @@
         clearcoatRoughness: 0.35,
         reflectivity: 0.5,
       });
-      const bottleGeom = new THREE.LatheGeometry(getBottleProfilePoints(), 64);
-      bottleGeom.computeVertexNormals();
-      const bottleMesh = new THREE.Mesh(bottleGeom, bottleMat);
-      bottleMesh.name = 'Bottle_Body_HDPE';
-      bottleMesh.castShadow = true;
-      bottleMesh.receiveShadow = true;
+      const bottleMesh = new THREE.Mesh(new THREE.LatheGeometry(getBottleProfilePoints(), 64), bottleMat);
       bottleGroup.add(bottleMesh);
 
-      // B) Tapa moleteada con 64 estrías
+      // 2. Tapa Moleteada
       const capMat = new THREE.MeshPhysicalMaterial({
-        color: new THREE.Color('#fcfcfc'),
-        roughness: 0.34,
-        metalness: 0.0,
-        clearcoat: 0.05,
-        clearcoatRoughness: 0.3,
+        color: new THREE.Color('#ffffff'),
+        roughness: 0.32,
         normalMap: createCapNormalTexture(),
-        normalScale: new THREE.Vector2(0.85, 0.85),
+        normalScale: new THREE.Vector2(0.8, 0.8)
       });
-      const capGeom = new THREE.LatheGeometry(getCapProfilePoints(), 64);
-      capGeom.computeVertexNormals();
-      const capMesh = new THREE.Mesh(capGeom, capMat);
-      capMesh.name = 'Knurled_Cap';
-      capMesh.castShadow = true;
-      capMesh.receiveShadow = true;
+      const capMesh = new THREE.Mesh(new THREE.LatheGeometry(getCapProfilePoints(), 64), capMat);
       bottleGroup.add(capMesh);
 
-      // C) Etiqueta envolvente con la textura original de 2000×1022
-      const labelMat = new THREE.MeshStandardMaterial({
-        color: new THREE.Color('#ffffff'),
-        roughness: 0.28,
-        metalness: 0.02,
-        polygonOffset: true,
-        polygonOffsetFactor: -1,
-        polygonOffsetUnits: -1,
+      // 3. Etiqueta Oficial 2000x1022
+      const texLoader = new THREE.TextureLoader();
+      texLoader.load('assets/textures/galyon-label.png', (tex) => {
+        tex.colorSpace = THREE.SRGBColorSpace;
+        tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+        const labelMat = new THREE.MeshPhysicalMaterial({
+          map: tex,
+          roughness: 0.28,
+          clearcoat: 0.15,
+          side: THREE.FrontSide
+        });
+        const labelGeom = createCylinderGeometry(SPECS.radius + 0.001, 0.42, 1.82, 64);
+        const labelMesh = new THREE.Mesh(labelGeom, labelMat);
+        bottleGroup.add(labelMesh);
       });
 
-      const textureLoader = new THREE.TextureLoader();
-      textureLoader.load(
-        'assets/textures/galyon-label.png',
-        (tex) => {
-          tex.colorSpace = THREE.SRGBColorSpace;
-          tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
-          tex.wrapS = THREE.ClampToEdgeWrapping;
-          tex.wrapT = THREE.ClampToEdgeWrapping;
-          labelMat.map = tex;
-          labelMat.needsUpdate = true;
-        },
-        undefined,
-        (err) => {
-          console.warn('Cargando textura de respaldo para etiqueta:', err);
-        }
-      );
-
-      const labelGeom = createLabelGeometry(64);
-      const labelMesh = new THREE.Mesh(labelGeom, labelMat);
-      labelMesh.name = 'Wrap_Around_Label';
-      labelMesh.castShadow = true;
-      labelMesh.receiveShadow = true;
-      bottleGroup.add(labelMesh);
-
-      // Posicionamiento de la botella en el suelo del escenario
       scene.add(bottleGroup);
 
-      // 7. Partículas Biológicas Sutiles (Microorganismos en suspensión)
-      const particleCount = 45;
+      // Partículas biológicas de Trichoderma
       const particleGeo = new THREE.BufferGeometry();
-      const pPositions = new Float32Array(particleCount * 3);
-      for (let i = 0; i < particleCount * 3; i += 3) {
-        pPositions[i] = (Math.random() - 0.5) * 3.2;
-        pPositions[i + 1] = Math.random() * 2.8;
-        pPositions[i + 2] = (Math.random() - 0.5) * 2.5;
+      const pCount = 50;
+      const pPos = new Float32Array(pCount * 3);
+      for (let i = 0; i < pCount * 3; i += 3) {
+        pPos[i] = (Math.random() - 0.5) * 3.5;
+        pPos[i + 1] = Math.random() * 3.2;
+        pPos[i + 2] = (Math.random() - 0.5) * 3.0;
       }
-      particleGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
-      const particleMat = new THREE.PointsMaterial({
-        color: 0x34d399,
-        size: 0.025,
+      particleGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+      const particles = new THREE.Points(particleGeo, new THREE.PointsMaterial({
+        color: 0x86a83c,
+        size: 0.028,
         transparent: true,
-        opacity: 0.55,
-      });
-      particles = new THREE.Points(particleGeo, particleMat);
+        opacity: 0.6
+      }));
       scene.add(particles);
 
-      // 8. Responsive Resize
-      window.addEventListener('resize', onWindowResize);
+      window.addEventListener('resize', () => {
+        if (!container || !renderer || !camera) return;
+        const nw = container.clientWidth;
+        const nh = container.clientHeight;
+        camera.aspect = nw / nh;
+        camera.updateProjectionMatrix();
+        renderer.setSize(nw, nh);
+      });
 
-      // 9. Bucle de Render a 60 FPS
       const clock = new THREE.Clock();
-
       function animate() {
         requestAnimationFrame(animate);
-        const elapsedTime = clock.getElapsedTime();
-
-        // Animación ambiental cuando el usuario no interactúa
-        if (bottleGroup) {
-          if (!isUserInteracting) {
-            // Rotación suave continua
-            bottleGroup.rotation.y += 0.005;
-            // Flotación sinusoidal sutil
-            bottleGroup.position.y = Math.sin(elapsedTime * 1.5) * 0.025;
-            // Inclinación orgánica sutil
-            bottleGroup.rotation.z = Math.sin(elapsedTime * 0.8) * 0.015;
-          } else {
-            // Retorno suave a posición base
-            bottleGroup.position.y += (0 - bottleGroup.position.y) * 0.05;
-            bottleGroup.rotation.z += (0 - bottleGroup.rotation.z) * 0.05;
-          }
+        const elapsed = clock.getElapsedTime();
+        if (bottleGroup && !isUserInteracting) {
+          bottleGroup.rotation.y += 0.004;
+          bottleGroup.position.y = Math.sin(elapsed * 1.4) * 0.02;
         }
-
-        // Movimiento de partículas
-        if (particles) {
-          particles.rotation.y = elapsedTime * 0.03;
-        }
-
+        particles.rotation.y = elapsed * 0.025;
         controls.update();
         renderer.render(scene, camera);
       }
-
       animate();
     }
 
-    function onWindowResize() {
-      const container = document.getElementById('webgl-canvas-mount');
-      if (!container || !renderer || !camera) return;
-      const w = container.clientWidth;
-      const h = container.clientHeight;
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-      renderer.setSize(w, h);
-    }
-
-    /* ------------------------------------------------------------------------
-       3. VIDEO BACKGROUND: HOJAS Y SOMBRAS AMBIENTALES CON CROSSFADE SUAVE (1s)
-       ------------------------------------------------------------------------ */
-    function initVideoCrossfade() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        return;
-      }
-
-      const vidA = document.getElementById('videoA');
-      const vidB = document.getElementById('videoB');
-      if (!vidA || !vidB) return;
-
-      let current = vidA;
-      let next = vidB;
-      const crossfadeTime = 1.0;
-      let isCrossfading = false;
-
-      const startPlayback = () => {
-        vidA.play().then(() => {
-          vidA.classList.add('active');
-        }).catch(() => {
-          const unlock = () => {
-            vidA.play().then(() => vidA.classList.add('active')).catch(() => {});
-            window.removeEventListener('pointerdown', unlock);
-            window.removeEventListener('scroll', unlock);
-          };
-          window.addEventListener('pointerdown', unlock, { once: true });
-          window.addEventListener('scroll', unlock, { once: true });
-        });
-      };
-
-      startPlayback();
-
-      const onTimeUpdate = () => {
-        if (!current.duration) return;
-        const remaining = current.duration - current.currentTime;
-
-        if (remaining <= crossfadeTime && !isCrossfading) {
-          isCrossfading = true;
-          next.currentTime = 0;
-          next.play().catch(() => {});
-          next.classList.add('active');
-          current.classList.remove('active');
-
-          setTimeout(() => {
-            current.pause();
-            current.currentTime = 0;
-            const temp = current;
-            current = next;
-            next = temp;
-            isCrossfading = false;
-          }, crossfadeTime * 1000);
-        }
-      };
-
-      vidA.addEventListener('timeupdate', onTimeUpdate);
-      vidB.addEventListener('timeupdate', onTimeUpdate);
-    }
-
-    // Centrar vista en el frontal de la etiqueta (U = 0.50, +Z)
-    window.focus3DFront = function() {
+    // Centrar en la etiqueta
+    window.focus3DLabel = function() {
       if (!controls || !bottleGroup) return;
       isUserInteracting = true;
-      bottleGroup.rotation.y = 0;
+      gsap.to(bottleGroup.rotation, { y: 0, duration: 1.2, ease: 'power2.out' });
       controls.reset();
       setTimeout(() => { isUserInteracting = false; }, 2000);
     };
 
-    // Inicialización al cargar el documento
+    /* ========================================================================
+       8. INTRO & SCROLL ANIMATION SUITE (GSAP + SCROLLTRIGGER)
+       ======================================================================== */
+    function initIntroAnimation() {
+      const heroWords = document.querySelectorAll('#heroTitle .w');
+      const nav = document.getElementById('nav');
+      const app = document.getElementById('app');
+      const backdrop = document.getElementById('backdrop');
+
+      if (reduceMotion) {
+        document.body.classList.remove('intro');
+        if (backdrop) backdrop.remove();
+        initScrollAnimations();
+        return;
+      }
+
+      gsap.set(heroWords, { opacity: 0, y: 24, filter: 'blur(10px)' });
+      gsap.set(nav, { opacity: 0, y: -20 });
+
+      const tl = gsap.timeline({
+        delay: 0.25,
+        onComplete: () => {
+          document.body.classList.remove('intro');
+          gsap.set('#app', { clearProps: 'all' });
+          if (backdrop) backdrop.remove();
+          initScrollAnimations();
+        }
+      });
+
+      tl.to(app, { scale: 1, borderRadius: 0, duration: 1.4, ease: 'expo.inOut' })
+        .to(nav, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.5')
+        .to(heroWords, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1, stagger: 0.06, ease: 'power3.out' }, '-=0.7')
+        .from('.cloud.cloud-l', { x: -120, opacity: 0, duration: 1.6, ease: 'power3.out' }, 0.4)
+        .from('.cloud.cloud-r', { x: 120, opacity: 0, duration: 1.6, ease: 'power3.out' }, 0.4)
+        .from('#heroGlass .glass', { opacity: 0, scale: 0.6, duration: 0.6, stagger: { each: 0.05, from: 'random' }, ease: 'back.out(2)' }, '-=1');
+    }
+
+    function initScrollAnimations() {
+      // Parallax en Hero
+      gsap.to('#heroTitle', {
+        yPercent: -50,
+        scrollTrigger: {
+          trigger: '#hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+
+      document.querySelectorAll('.hero [data-par]').forEach(el => {
+        const par = parseFloat(el.getAttribute('data-par') || '0');
+        gsap.to(el, {
+          y: par * 2,
+          scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+      });
+
+      // Revelado de elementos .reveal
+      document.querySelectorAll('.reveal').forEach(el => {
+        gsap.from(el, {
+          opacity: 0,
+          y: 20,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%'
+          }
+        });
+      });
+
+      // Revelado de palabras en stats, loop y cta
+      document.querySelectorAll('#stats .split .w, #loop .split .w, #cta .split .w').forEach(el => {
+        gsap.from(el, {
+          opacity: 0,
+          y: 22,
+          filter: 'blur(8px)',
+          duration: 0.9,
+          stagger: 0.05,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el.closest('.split'),
+            start: 'top 82%'
+          }
+        });
+      });
+
+      // Animación de tarjetas y árbol en #stats
+      ScrollTrigger.matchMedia({
+        '(min-width: 901px)': function() {
+          gsap.from('.card', {
+            y: 40,
+            opacity: 0,
+            stagger: 0.09,
+            duration: 0.9,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '.cards',
+              start: 'top 75%'
+            }
+          });
+
+          gsap.fromTo('#tree', 
+            { yPercent: 60 },
+            { 
+              yPercent: 4, 
+              ease: 'none',
+              scrollTrigger: {
+                trigger: '#stats',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1
+              }
+            }
+          );
+        },
+        '(max-width: 900px)': function() {
+          gsap.from('.card', {
+            y: 30,
+            opacity: 0,
+            stagger: 0.08,
+            duration: 0.8,
+            scrollTrigger: {
+              trigger: '.cards',
+              start: 'top 85%'
+            }
+          });
+        }
+      });
+
+      // Animación de paneles del accordion (#loop)
+      ScrollTrigger.matchMedia({
+        '(min-width: 761px)': function() {
+          gsap.from('.panel-in', {
+            y: 100,
+            opacity: 0,
+            duration: 1.1,
+            stagger: 0.14,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '#loop',
+              start: 'top 65%'
+            }
+          });
+        }
+      });
+
+      // Animación de CTA Card & Parallax Imagen
+      gsap.fromTo('#ctaImg', 
+        { yPercent: -12 },
+        { 
+          yPercent: 0, 
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#cta',
+            start: 'top bottom',
+            end: 'bottom bottom',
+            scrub: true
+          }
+        }
+      );
+
+      gsap.from('#ctaCard', {
+        y: 70,
+        scale: 0.95,
+        opacity: 0,
+        filter: 'blur(10px)',
+        duration: 1.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '#cta',
+          start: 'top 60%'
+        }
+      });
+
+      ScrollTrigger.refresh();
+    }
+
+    // Inicialización al cargar el DOM
     document.addEventListener('DOMContentLoaded', () => {
-      initEntrance();
       initHero3D();
-      initVideoCrossfade();
+      initIntroAnimation();
     });
+
   </script>
 
   <!-- Control de Modales Vanilla JS -->
@@ -1742,18 +2118,9 @@
       }
     }
 
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobile-menu');
-      if (menu) {
-        menu.classList.toggle('open');
-      }
-    }
-
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
-        const menu = document.getElementById('mobile-menu');
-        if (menu) menu.classList.remove('open');
         document.body.style.overflow = '';
       }
     });
