@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Schibsted+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=6.5.0" />
+  <link rel="stylesheet" href="styles.css?v=7.0.0" />
   <style>
     .icon-arrow{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;line-height:0;flex-shrink:0}
     .icon-arrow svg{width:14px;height:14px;display:block;stroke:currentColor;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}
@@ -87,18 +87,86 @@
           Bioinsumos agrícolas, análisis de suelo y orientación técnica para tomar mejores decisiones en tus cultivos.
         </p>
       </div>
-      <div class="hero-buttons">
-        <a href="bioinsumos.html" class="cta-primary">
-          Conocer bioinsumos
-          <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span>
-        </a>
-        <a href="asesor.html" class="cta-secondary">
-          Asesor de cultivos
-          <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span>
-        </a>
-        <a href="analisis-suelo.html" class="cta-secondary">
-          Análisis de suelo
-        </a>
+      <!-- Componente 3D Reactivo de Producto: Centro de Atención Principal -->
+      <div class="product-3d-stage-wrapper">
+        <div class="product-3d-card" id="galyon-3d-container">
+          <!-- Canvas 3D Three.js montado dinámicamente -->
+          <div id="webgl-canvas-mount" class="webgl-canvas-mount" aria-label="Visor 3D interactivo del producto GALYON TRICHO"></div>
+
+          <!-- Indicador de carga -->
+          <div id="viewer3d-loader" class="viewer3d-loader">
+            <div class="viewer3d-spinner"></div>
+            <span>Cargando modelo 3D hiperrealista...</span>
+          </div>
+
+          <!-- Overlay superior con información del producto -->
+          <div class="stage-top-meta">
+            <div class="product-badge-pill">
+              <span class="badge-dot"></span>
+              <strong>TRICHO 1 L</strong>
+              <span class="badge-sep">·</span>
+              <span class="badge-spec">Trichoderma harzianum</span>
+            </div>
+            <div class="interactive-hint">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.85.83 6.72 2.24L21 3v6h-6l2.39-2.39A6.98 6.98 0 1 0 19 12h2Z"/></svg>
+              <span>Arrastra para rotar 360° · Rueda para zoom</span>
+            </div>
+          </div>
+
+          <!-- Dock de Controles 3D Interactivo (Bottom Island) -->
+          <div class="stage-dock" role="toolbar" aria-label="Controles del modelo 3D">
+            <!-- Selector de Vistas -->
+            <div class="dock-group views-group">
+              <button type="button" class="dock-btn is-active" data-view="front" aria-pressed="true">
+                <span>Frente</span>
+              </button>
+              <button type="button" class="dock-btn" data-view="threeQuarter" aria-pressed="false">
+                <span>3/4 Perspectiva</span>
+              </button>
+              <button type="button" class="dock-btn" data-view="label" aria-pressed="false">
+                <span>Etiqueta</span>
+              </button>
+              <button type="button" class="dock-btn" data-view="cap" aria-pressed="false">
+                <span>Tapa</span>
+              </button>
+            </div>
+
+            <div class="dock-divider"></div>
+
+            <!-- Selector de Acabado (Condensación vs Seco) -->
+            <div class="dock-group finish-group">
+              <button type="button" class="dock-btn is-active" data-finish="condensation" title="Acabado con microgotas de condensación">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                <span>Rocío</span>
+              </button>
+              <button type="button" class="dock-btn" data-finish="dry" title="Acabado polietileno puro">
+                <span>Seco</span>
+              </button>
+            </div>
+
+            <div class="dock-divider"></div>
+
+            <!-- Botón de Rotación Automática -->
+            <div class="dock-group util-group">
+              <button type="button" class="dock-btn is-active" id="btn-toggle-rotate" aria-pressed="true" title="Activar/desactivar rotación continua">
+                <svg class="spin-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                <span>360° Auto</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Barra inferior de acción con enlace a la línea completa de productos -->
+        <div class="stage-actions">
+          <a href="bioinsumos.html#detalle-tricho" class="btn-stage-primary">
+            Ver especificaciones y dosis
+            <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span>
+          </a>
+          <button type="button" class="btn-stage-cart" id="add-tricho-from-hero" data-add-sku="tricho-trichoderma">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            Añadir TRICHO 1 L ($20.00)
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -227,6 +295,12 @@
     })();
   </script>
 
-  <script src="script.js?v=6.4.0"></script>
+  <!-- Three.js + Controles PBR para el Componente 3D Reactivo de GALYON TRICHO -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="viewer3d.js?v=1.0.0" defer></script>
+
+  <script src="script.js?v=7.0.0"></script>
 </body>
 </html>
