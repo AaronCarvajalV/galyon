@@ -38,10 +38,34 @@
     .combos-page-hero {
       padding: clamp(36px, 5vw, 64px) 0 clamp(24px, 3.5vw, 42px);
     }
+    .combos-page-hero .section-heading {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid #dce8d6;
+      border-radius: 18px;
+      padding: clamp(24px, 3vw, 36px) clamp(24px, 3.5vw, 42px);
+      box-shadow: 0 10px 30px rgba(20, 61, 44, 0.06);
+      margin-bottom: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+    }
+    .combos-page-hero .section-heading > div {
+      max-width: 640px;
+    }
+    .combos-page-hero .section-heading > p {
+      max-width: 460px;
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: #496352;
+      margin: 0;
+    }
     .combos-page-hero .section-heading h1 {
-      font-size: clamp(34px, 4.4vw, 54px);
-      line-height: 1.1;
-      margin: 10px 0 16px;
+      font-size: clamp(32px, 4vw, 50px);
+      line-height: 1.12;
+      margin: 10px 0 0;
       color: #173e2b;
       font-weight: 800;
       letter-spacing: -1.2px;
@@ -51,8 +75,32 @@
       font-style: normal;
     }
     .combos-section-subhead {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid #dce8d6;
+      border-radius: 16px;
+      padding: 22px 32px;
+      box-shadow: 0 8px 24px rgba(20, 61, 44, 0.05);
       margin-top: 36px;
       margin-bottom: 24px;
+    }
+    .weekly-offer {
+      background: rgba(255, 255, 255, 0.96) !important;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid #dce8d6 !important;
+      box-shadow: 0 12px 36px rgba(20, 61, 44, 0.07) !important;
+    }
+    @media (max-width: 900px) {
+      .combos-page-hero .section-heading {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .combos-page-hero .section-heading > p {
+        max-width: 100%;
+      }
     }
     .cross-links-banner {
       display: grid;
@@ -161,7 +209,7 @@
     </div>
   </header>
 
-  <main>
+  <main class="page-main">
     <div class="wrap combos-page-hero">
       <div class="section-heading">
         <div>
@@ -175,7 +223,7 @@
       <!-- Promoción Semanal / Combo Destacado: TRICHO + Ácidos Húmicos -->
       <div class="weekly-offer" aria-labelledby="weekly-offer-title">
         <button type="button" class="weekly-offer-image combo-image-open" data-image="assets/promo-tricho-humicos.webp" aria-label="Ampliar la promoción de dos litros de TRICHO con húmicos de regalo y envío gratis" style="border:0;background:transparent;padding:0;cursor:zoom-in;">
-          <img src="assets/promo-tricho-humicos.webp" alt="Compra dos litros de GALYON TRICHO y recibe 1 kg de Ácidos Húmicos 50 % de regalo, con envío gratis" width="1672" height="941" loading="lazy" decoding="async">
+          <img src="assets/promo-tricho-humicos.webp" alt="Compra dos litros de GALYON TRICHO y recibe 1 kg de Ácidos Húmicos 50 % de regalo, con envío gratis" width="1672" height="941" loading="eager" decoding="async">
         </button>
         <div class="weekly-offer-copy">
           <span class="eyebrow">PROMOCIÓN DE LA SEMANA</span>
@@ -217,7 +265,7 @@
             <div class="combo-head"><span>01 · CACAO</span><b>ENVÍO GRATIS</b></div>
             <div class="combo-photos combo-poster">
               <button type="button" class="combo-image-open" data-image="assets/combo-cacao-titan.webp" aria-label="Ampliar imagen completa: Imagen promocional del combo Cacao Vital (GALYON CACAO TITÁN)">
-                <img src="assets/combo-cacao-titan.webp" alt="Imagen promocional del combo Cacao Vital (GALYON CACAO TITÁN)" width="1672" height="941" loading="lazy" decoding="async">
+                <img src="assets/combo-cacao-titan.webp" alt="Imagen promocional del combo Cacao Vital (GALYON CACAO TITÁN)" width="1672" height="941" loading="eager" decoding="async">
               </button>
             </div>
             <div class="combo-body">
@@ -234,7 +282,7 @@
             <div class="combo-head"><span>02 · MANGO</span><b>ENVÍO GRATIS</b></div>
             <div class="combo-photos combo-poster">
               <button type="button" class="combo-image-open" data-image="assets/combo-mango-furioso.webp" aria-label="Ampliar imagen completa: Imagen promocional del combo Mango Selecto (GALYON MANGO FURIOSO)">
-                <img src="assets/combo-mango-furioso.webp" alt="Imagen promocional del combo Mango Selecto (GALYON MANGO FURIOSO)" width="1672" height="941" loading="lazy" decoding="async">
+                <img src="assets/combo-mango-furioso.webp" alt="Imagen promocional del combo Mango Selecto (GALYON MANGO FURIOSO)" width="1672" height="941" loading="eager" decoding="async">
               </button>
             </div>
             <div class="combo-body">
@@ -251,7 +299,7 @@
             <div class="combo-head"><span>03 · CAÑA</span><b>ENVÍO GRATIS</b></div>
             <div class="combo-photos combo-poster">
               <button type="button" class="combo-image-open" data-image="assets/combo-cana-brava.webp" aria-label="Ampliar imagen completa: Imagen promocional del combo Caña Productiva (GALYON CAÑA BRAVA)">
-                <img src="assets/combo-cana-brava.webp" alt="Imagen promocional del combo Caña Productiva (GALYON CAÑA BRAVA)" width="1672" height="941" loading="lazy" decoding="async">
+                <img src="assets/combo-cana-brava.webp" alt="Imagen promocional del combo Caña Productiva (GALYON CAÑA BRAVA)" width="1672" height="941" loading="eager" decoding="async">
               </button>
             </div>
             <div class="combo-body">
@@ -268,7 +316,7 @@
             <div class="combo-head"><span>04 · BANANO Y PLÁTANO</span><b>ENVÍO GRATIS</b></div>
             <div class="combo-photos combo-poster">
               <button type="button" class="combo-image-open" data-image="assets/combo-verde-bestia.webp" aria-label="Ampliar imagen completa: Imagen promocional del combo Banano Próspero (GALYON VERDE BESTIA)">
-                <img src="assets/combo-verde-bestia.webp" alt="Imagen promocional del combo Banano Próspero (GALYON VERDE BESTIA)" width="1672" height="941" loading="lazy" decoding="async">
+                <img src="assets/combo-verde-bestia.webp" alt="Imagen promocional del combo Banano Próspero (GALYON VERDE BESTIA)" width="1672" height="941" loading="eager" decoding="async">
               </button>
             </div>
             <div class="combo-body">
