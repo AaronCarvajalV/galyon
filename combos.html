@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#143c2b" />
+  <meta name="description" content="Combos agrícolas GALYON por cultivo: Cacao, Mango, Caña, Banano y Plátano. Cuatro litros de formulaciones microbiológicas sinérgicas por $60 con envío gratis en todo Ecuador." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Combos por Cultivo | GALYON — Biotecnología aplicada a la agricultura" />
+  <meta property="og:description" content="Combos agrícolas GALYON por cultivo: Cacao, Mango, Caña, Banano y Plátano. Cuatro litros de formulaciones microbiológicas sinérgicas por $60 con envío gratis en todo Ecuador." />
+  <meta property="og:image" content="assets/marca-hojas.png" />
+  <meta property="og:url" content="https://galyon-ec.vercel.app/combos.html" />
+  <title>Combos por Cultivo | GALYON — Biotecnología aplicada a la agricultura</title>
+  <link rel="icon" href="assets/marca-hojas.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Schibsted+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=7.9.0" />
+  <style>
+    .icon-arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+      line-height: 0;
+      flex-shrink: 0;
+    }
+    .icon-arrow svg {
+      width: 14px;
+      height: 14px;
+      display: block;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .combos-page-hero {
+      padding: clamp(36px, 5vw, 64px) 0 clamp(24px, 3.5vw, 42px);
+    }
+    .combos-page-hero .section-heading h1 {
+      font-size: clamp(34px, 4.4vw, 54px);
+      line-height: 1.1;
+      margin: 10px 0 16px;
+      color: #173e2b;
+      font-weight: 800;
+      letter-spacing: -1.2px;
+    }
+    .combos-page-hero .section-heading h1 span {
+      color: #5c7941;
+      font-style: normal;
+    }
+    .combos-section-subhead {
+      margin-top: 36px;
+      margin-bottom: 24px;
+    }
+    .cross-links-banner {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .cross-link-card {
+      padding: 24px 28px;
+      background: #ffffff;
+      border: 1px solid rgba(22, 42, 27, 0.12);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(20, 61, 44, 0.05);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .cross-link-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(20, 61, 44, 0.1);
+      border-color: rgba(22, 42, 27, 0.25);
+    }
+    .cross-link-card span.kicker {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #4c7c34;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .cross-link-card strong {
+      font-size: 19px;
+      color: #162a1b;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .cross-link-card p {
+      font-size: 13.5px;
+      color: rgba(22, 42, 27, 0.72);
+      line-height: 1.6;
+      margin: 0 0 14px;
+    }
+    .cross-link-card .action-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #174b32;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    @media (max-width: 760px) {
+      .cross-links-banner {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body class="has-dynamic-bg">
+  <div class="site-bg-fixed" aria-hidden="true">
+    <img
+      id="hero-bg-img"
+      class="site-bg-img"
+      src="assets/galyon-campo-real.jpg"
+      alt="Campos agrícolas Galyon"
+    />
+  </div>
+
+  <!-- Navbar Unificado Galyon -->
+  <header class="template-nav">
+    <div class="nav-logo">
+      <a href="index.html" class="brand brand-logo-link" onclick="return window.resetToHome ? window.resetToHome(event) : true;" aria-label="GALYON, ir al inicio">
+        <img class="brand-leaf-icon" src="assets/marca-hojas.png" alt="" />
+        <span class="logo-text">GALYON</span>
+      </a>
+    </div>
+    <nav class="nav-menu" id="navlinks" aria-label="Navegación principal">
+      <a href="index.html" class="nav-item">Inicio</a>
+      <a href="nosotros.html" class="nav-item">Nosotros</a>
+      <a href="bioinsumos.html" class="nav-item">Bioinsumos</a>
+      <a href="combos.html" class="nav-item is-active" aria-current="page">Combos</a>
+      <a href="asesor.html" class="nav-item">Asesor de cultivos</a>
+      <a href="analisis-suelo.html" class="nav-item">Análisis de suelo</a>
+      <a href="acompanamiento.html" class="nav-item">Acompañamiento</a>
+      <div class="nav-menu-actions">
+        <a href="https://wa.me/593968933445?text=Hola%20GALYON,%20deseo%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" class="btn-mobile-signup">Sign Up</a>
+        <a href="https://wa.me/593968933445" target="_blank" rel="noopener" class="btn-mobile-login">Log In</a>
+      </div>
+    </nav>
+    <div class="nav-right">
+      <button type="button" class="btn-signup cart-button" id="open-cart" aria-label="Abrir carrito">
+        Sign Up
+        <span id="cart-count" style="display:none;">0</span>
+      </button>
+      <a href="https://wa.me/593968933445" target="_blank" rel="noopener" class="btn-login" id="header-wa" aria-label="Contactar por WhatsApp">
+        Log In
+      </a>
+      <button type="button" id="menu-toggle" class="nav-mobile-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap combos-page-hero">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">COMBOS GALYON · POR CULTIVO & PROMOCIONES</div>
+          <h1>Tu cultivo, <span>su combo ideal.</span></h1>
+        </div>
+        <p>Cada cosecha representa meses de trabajo y esfuerzo en el campo. Combina microorganismos benéficos para el cuidado del suelo, la prevención de enfermedades o el manejo biológico de plagas con formulaciones sinérgicas. Cuatro litros por $60 y envío gratis a todo el Ecuador.</p>
+      </div>
+
+      <!-- Promoción Semanal / Combo Destacado: TRICHO + Ácidos Húmicos -->
+      <div class="weekly-offer" aria-labelledby="weekly-offer-title">
+        <button type="button" class="weekly-offer-image combo-image-open" data-image="assets/promo-tricho-humicos.webp" aria-label="Ampliar la promoción de dos litros de TRICHO con húmicos de regalo y envío gratis" style="border:0;background:transparent;padding:0;cursor:zoom-in;">
+          <img src="assets/promo-tricho-humicos.webp" alt="Compra dos litros de GALYON TRICHO y recibe 1 kg de Ácidos Húmicos 50 % de regalo, con envío gratis" width="1672" height="941" loading="lazy" decoding="async">
+        </button>
+        <div class="weekly-offer-copy">
+          <span class="eyebrow">PROMOCIÓN DE LA SEMANA</span>
+          <h2 id="weekly-offer-title" style="margin:10px 0 14px;font-size:clamp(23px,2.5vw,33px);line-height:1.2;color:#183f2c;">¿Abonas, pero tu cultivo <span style="color:#5c7941;">no responde?</span></h2>
+          <p>Las lluvias intensas pueden desplazar nutrientes fuera del alcance del cultivo. Y cuando la planta tiene poco desarrollo radicular, parte de tu fertilización se aprovecha menos.</p>
+          <dl class="weekly-offer-benefits">
+            <div>
+              <dt>TRICHO: bioestimulación y protección</dt>
+              <dd><em>Trichoderma spp.</em> favorece el desarrollo de raíces y el aprovechamiento de nutrientes, además de ayudar al manejo preventivo de hongos del suelo susceptibles.</dd>
+            </div>
+            <div>
+              <dt>Húmicos: nutrientes disponibles</dt>
+              <dd>Ayudan a retener ciertos nutrientes y mantenerlos disponibles en el suelo, complementando la nutrición del cultivo.</dd>
+            </div>
+          </dl>
+          <p class="weekly-offer-pairing">Bioestimulación y nutrientes disponibles: un combo para impulsar el desarrollo de tu cultivo y aprovechar mejor cada fertilización.</p>
+          <div class="weekly-offer-price">
+            <strong>$40</strong>
+            <span>Combo completo · Envío gratis</span>
+          </div>
+          <p class="weekly-offer-gift">Compra <strong>2 litros de TRICHO</strong> y llévate <strong>1 kg de ácidos húmicos de regalo</strong>. ¡Y el <strong>envío también va por nuestra cuenta</strong>!</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px;">
+            <button type="button" class="catalog-add" data-add-sku="promo-tricho-humicos">Agregar promoción al pedido</button>
+            <a class="humic-contact" href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20quiero%20la%20promoci%C3%B3n%20de%202%20litros%20de%20GALYON%20TRICHO%20por%20%2440%2C%20con%201%20kg%20de%20%C3%A1cidos%20h%C3%BAmicos%20de%20regalo%20y%20env%C3%ADo%20gratis.%20Mi%20cultivo%20es%20____%20y%20mi%20destino%20de%20env%C3%ADo%20es%20____." target="_blank" rel="noopener">Consultar promoción <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cuadrícula de Combos Agrícolas por Cultivo -->
+      <div class="combos-section-subhead">
+        <div class="eyebrow">COMBOS AGRÍCOLAS POR CULTIVO</div>
+        <h2 style="font-size:clamp(24px,3vw,36px);color:#173e2b;margin:8px 0 14px;">Elige la combinación diseñada para tu finca</h2>
+      </div>
+
+      <div class="combos">
+        <div class="combo-grid">
+          <!-- 01 CACAO -->
+          <article class="combo-card">
+            <div class="combo-head"><span>01 · CACAO</span><b>ENVÍO GRATIS</b></div>
+            <div class="combo-photos combo-poster">
+              <button type="button" class="combo-image-open" data-image="assets/combo-cacao-titan.webp" aria-label="Ampliar imagen completa: Imagen promocional del combo Cacao Vital (GALYON CACAO TITÁN)">
+                <img src="assets/combo-cacao-titan.webp" alt="Imagen promocional del combo Cacao Vital (GALYON CACAO TITÁN)" width="1672" height="941" loading="lazy" decoding="async">
+              </button>
+            </div>
+            <div class="combo-body">
+              <h3>Cacao Vital (GALYON CACAO TITÁN)</h3>
+              <p>Cuida la base de tu cacaotal. TRICHO y BACT suman manejo biológico frente a hongos susceptibles, como parte de un programa preventivo que incluya drenaje, poda y sanidad del cultivo. Dale a cada mazorca más oportunidades de desarrollarse.</p>
+              <small>2 L Trichoderma spp. + 2 L Bacillus subtilis</small>
+              <div class="combo-price"><strong>$60</strong><del>$80</del><span>4 litros</span></div>
+              <button type="button" class="combo-add" data-combo="cacao">Agregar combo al pedido →</button>
+            </div>
+          </article>
+
+          <!-- 02 MANGO -->
+          <article class="combo-card">
+            <div class="combo-head"><span>02 · MANGO</span><b>ENVÍO GRATIS</b></div>
+            <div class="combo-photos combo-poster">
+              <button type="button" class="combo-image-open" data-image="assets/combo-mango-furioso.webp" aria-label="Ampliar imagen completa: Imagen promocional del combo Mango Selecto (GALYON MANGO FURIOSO)">
+                <img src="assets/combo-mango-furioso.webp" alt="Imagen promocional del combo Mango Selecto (GALYON MANGO FURIOSO)" width="1672" height="941" loading="lazy" decoding="async">
+              </button>
+            </div>
+            <div class="combo-body">
+              <h3>Mango Selecto (GALYON MANGO FURIOSO)</h3>
+              <p>Atiende dos frentes en tu huerto: enfermedades compatibles con el uso de BACT e insectos susceptibles a Beauveria bassiana. Un combo para acompañar el monitoreo y cuidar los frutos durante su desarrollo.</p>
+              <small>2 L Bacillus subtilis + 2 L Beauveria bassiana</small>
+              <div class="combo-price"><strong>$60</strong><del>$80</del><span>4 litros</span></div>
+              <button type="button" class="combo-add" data-combo="mango">Agregar combo al pedido →</button>
+            </div>
+          </article>
+
+          <!-- 03 CAÑA -->
+          <article class="combo-card">
+            <div class="combo-head"><span>03 · CAÑA</span><b>ENVÍO GRATIS</b></div>
+            <div class="combo-photos combo-poster">
+              <button type="button" class="combo-image-open" data-image="assets/combo-cana-brava.webp" aria-label="Ampliar imagen completa: Imagen promocional del combo Caña Productiva (GALYON CAÑA BRAVA)">
+                <img src="assets/combo-cana-brava.webp" alt="Imagen promocional del combo Caña Productiva (GALYON CAÑA BRAVA)" width="1672" height="941" loading="lazy" decoding="async">
+              </button>
+            </div>
+            <div class="combo-body">
+              <h3>Caña Productiva (GALYON CAÑA BRAVA)</h3>
+              <p>Refuerza el manejo sanitario del cañaveral. BACT complementa la prevención de enfermedades compatibles y Metarhizium anisopliae aporta una herramienta frente a insectos susceptibles, según la plaga identificada.</p>
+              <small>2 L Bacillus amyloliquefaciens + 2 L Metarhizium anisopliae</small>
+              <div class="combo-price"><strong>$60</strong><del>$80</del><span>4 litros</span></div>
+              <button type="button" class="combo-add" data-combo="cana">Agregar combo al pedido →</button>
+            </div>
+          </article>
+
+          <!-- 04 BANANO Y PLÁTANO -->
+          <article class="combo-card">
+            <div class="combo-head"><span>04 · BANANO Y PLÁTANO</span><b>ENVÍO GRATIS</b></div>
+            <div class="combo-photos combo-poster">
+              <button type="button" class="combo-image-open" data-image="assets/combo-verde-bestia.webp" aria-label="Ampliar imagen completa: Imagen promocional del combo Banano Próspero (GALYON VERDE BESTIA)">
+                <img src="assets/combo-verde-bestia.webp" alt="Imagen promocional del combo Banano Próspero (GALYON VERDE BESTIA)" width="1672" height="941" loading="lazy" decoding="async">
+              </button>
+            </div>
+            <div class="combo-body">
+              <h3>Banano Próspero (GALYON VERDE BESTIA)</h3>
+              <p>Incorpora microorganismos benéficos al manejo del suelo de tu bananera. TRICHO y BACT acompañan el cuidado de la zona de absorción y el manejo de hongos compatibles, junto con una buena nutrición y control del exceso de humedad.</p>
+              <small>2 L Trichoderma spp. + 2 L Bacillus amyloliquefaciens</small>
+              <div class="combo-price"><strong>$60</strong><del>$80</del><span>4 litros</span></div>
+              <button type="button" class="combo-add" data-combo="banano">Agregar combo al pedido →</button>
+            </div>
+          </article>
+        </div>
+        <p class="combo-note">Cada producto se entrega en su propio envase precintado. Incluye envío gratis dentro de Ecuador. La dosis, compatibilidad y forma de aplicación se orientan según el cultivo y la necesidad de tu finca.</p>
+      </div>
+
+      <!-- Enlaces complementarios -->
+      <div class="cross-links-banner">
+        <a href="bioinsumos.html" class="cross-link-card">
+          <div>
+            <span class="kicker">CATÁLOGO COMPLETO</span>
+            <strong>Formulaciones individuales desde 1 litro</strong>
+            <p>Conoce nuestras líneas TRICHO, BACT e INSECTA por separado, además de sustratos y acondicionadores de suelo.</p>
+          </div>
+          <span class="action-label">Ver catálogo de Bioinsumos <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span></span>
+        </a>
+        <a href="asesor.html" class="cross-link-card">
+          <div>
+            <span class="kicker">DIAGNÓSTICO PERSONALIZADO</span>
+            <strong>¿Dudas sobre qué combinación necesita tu cultivo?</strong>
+            <p>Utiliza nuestro Asesor Interactivo de Cultivos para identificar síntomas y recibir la recomendación biológica idónea.</p>
+          </div>
+          <span class="action-label">Iniciar Asesor de Cultivos <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span></span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Botón flotante WhatsApp -->
+  <button class="float-wa" id="float-wa" aria-label="Consultar por WhatsApp" title="Hablemos por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.05 2a9.91 9.91 0 0 0-8.58 14.85L2 22l5.31-1.39A9.96 9.96 0 0 0 12.05 22a10 10 0 0 0 0-20Zm0 18.18a8.15 8.15 0 0 1-4.15-1.13l-.3-.18-3.15.83.84-3.07-.2-.31a8.17 8.17 0 1 1 6.96 3.86Zm4.49-6.11c-.24-.12-1.43-.71-1.65-.79s-.38-.12-.54.12-.62.79-.76.95-.28.18-.52.06a6.7 6.7 0 0 1-1.95-1.2 7.24 7.24 0 0 1-1.36-1.69c-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.41s.16-.24.24-.4.04-.3-.02-.42-.54-1.3-.74-1.78c-.19-.46-.39-.4-.54-.41h-.46c-.16 0-.42.06-.64.3s-.84.82-.84 1.99.86 2.3.98 2.46 1.68 2.57 4.08 3.6c.57.25 1.01.4 1.36.51.57.18 1.09.15 1.5.09.46-.07 1.43-.59 1.63-1.16s.2-1.06.14-1.16-.22-.17-.46-.29Z"/></svg>
+  </button>
+  
+  <!-- Carrito Drawer -->
+  <div id="drawer-backdrop" class="drawer-backdrop" hidden></div>
+  <aside class="drawer" id="cart-drawer" aria-label="Tu pedido" aria-modal="true" role="dialog" aria-hidden="true">
+    <div class="drawer-header">
+      <div><span class="eyebrow">PEDIDO GALYON</span><h2>Tu selección <span id="drawer-count"></span></h2></div>
+      <button id="close-cart" class="close-btn" aria-label="Cerrar carrito">×</button>
+    </div>
+    <div class="drawer-body">
+      <div id="cart-items" class="cart-items"></div>
+      <div id="empty-cart" class="empty-cart">
+        <h3>Aún no has elegido productos</h3>
+        <p>Elige un combo o producto y toca «Agregar al pedido» para armar tu solicitud.</p>
+        <button class="btn btn-dark" id="explore-products">Ver productos <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span></button>
+      </div>
+    </div>
+    <div class="drawer-footer" id="drawer-footer">
+      <div class="cart-deal" id="deal-status"></div>
+      <div id="cart-breakdown" class="cart-breakdown" aria-label="Detalle del precio"></div>
+      <div class="total-line"><span>Total estimado</span><strong id="cart-total">$0</strong></div>
+      <p>Los combos tienen envío gratis en Ecuador. Para productos individuales, confirma el costo de envío y la disponibilidad por WhatsApp.</p>
+      <label class="checkout-label" for="ship-city">Ciudad o cantón de entrega (opcional)</label>
+      <input id="ship-city" placeholder="Ej.: Babahoyo, Los Ríos" maxlength="75"/>
+      <a id="checkout" class="btn btn-dark checkout" href="https://wa.me/593968933445" target="_blank" rel="noopener">Enviar pedido por WhatsApp <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span></a>
+    </div>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Visor para consultar los combos completos sin recortarlos -->
+  <dialog id="combo-lightbox" class="combo-lightbox" aria-label="Imagen ampliada del combo GALYON">
+    <button class="combo-lightbox-close" type="button" aria-label="Cerrar imagen ampliada">×</button>
+    <img id="combo-lightbox-img" alt="" width="1672" height="941" />
+  </dialog>
+
+  <script src="combo-lightbox.js" defer></script>
+  <script src="script.js?v=7.4.0"></script>
+</body>
+</html>

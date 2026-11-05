@@ -6,7 +6,8 @@
   if (!dialog || !enlarged) return;
   const close = dialog.querySelector('.combo-lightbox-close');
   document.querySelectorAll('.combo-image-open[data-image]').forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', event => {
+      event.preventDefault();
       const thumb = button.querySelector('img');
       enlarged.src = button.dataset.image;
       enlarged.alt = thumb ? thumb.alt : 'Imagen del combo GALYON';
