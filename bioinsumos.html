@@ -16,7 +16,179 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Schibsted+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=7.8.0" />
-  <style>.icon-arrow{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;line-height:0;flex-shrink:0}.icon-arrow svg{width:14px;height:14px;display:block;stroke:currentColor;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}.catalog-note a{display:inline-flex;align-items:center;gap:6px}</style>
+  <style>
+    .icon-arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+      line-height: 0;
+      flex-shrink: 0;
+    }
+    .icon-arrow svg {
+      width: 14px;
+      height: 14px;
+      display: block;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .catalog-note a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .products {
+      padding: clamp(36px, 5vw, 64px) 0 clamp(24px, 3.5vw, 42px);
+    }
+    .products .section-heading {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid #dce8d6;
+      border-radius: 18px;
+      padding: clamp(24px, 3vw, 36px) clamp(24px, 3.5vw, 42px);
+      box-shadow: 0 10px 30px rgba(20, 61, 44, 0.06);
+      margin-bottom: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+    }
+    .products .section-heading > div {
+      max-width: 640px;
+    }
+    .products .section-heading > p {
+      max-width: 460px;
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: #496352;
+      margin: 0;
+    }
+    .products .section-heading h2 {
+      font-size: clamp(32px, 4vw, 50px);
+      line-height: 1.12;
+      margin: 10px 0 0;
+      color: #173e2b;
+      font-weight: 800;
+      letter-spacing: -1.2px;
+    }
+    .products .section-heading h2 span {
+      color: #5c7941;
+      font-style: normal;
+    }
+    .combos-bridge-banner {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid #dce8d6;
+      border-radius: 18px;
+      padding: clamp(24px, 3vw, 36px) clamp(24px, 3.5vw, 42px);
+      box-shadow: 0 10px 30px rgba(20, 61, 44, 0.06);
+      margin: 36px 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+    }
+    .combos-bridge-copy h3 {
+      font-size: clamp(20px, 2.3vw, 28px);
+      color: #173e2b;
+      margin: 8px 0 10px;
+      line-height: 1.25;
+      font-weight: 800;
+    }
+    .combos-bridge-copy p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #496352;
+      margin: 0;
+      max-width: 680px;
+    }
+    .humic-panel {
+      background: rgba(255, 255, 255, 0.96) !important;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid #dce8d6 !important;
+      box-shadow: 0 12px 36px rgba(20, 61, 44, 0.07) !important;
+    }
+    .rice-product {
+      background: rgba(255, 255, 255, 0.96) !important;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid #dce8d6 !important;
+      box-shadow: 0 12px 36px rgba(20, 61, 44, 0.07) !important;
+    }
+    .cross-links-banner {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+      margin-bottom: 48px;
+    }
+    .cross-link-card {
+      padding: 24px 28px;
+      background: #ffffff;
+      border: 1px solid rgba(22, 42, 27, 0.12);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(20, 61, 44, 0.05);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .cross-link-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(20, 61, 44, 0.1);
+      border-color: rgba(22, 42, 27, 0.25);
+    }
+    .cross-link-card span.kicker {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #4c7c34;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .cross-link-card strong {
+      font-size: 19px;
+      color: #162a1b;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .cross-link-card p {
+      font-size: 13.5px;
+      color: rgba(22, 42, 27, 0.72);
+      line-height: 1.6;
+      margin: 0 0 14px;
+    }
+    .cross-link-card .action-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #174b32;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    @media (max-width: 900px) {
+      .products .section-heading,
+      .combos-bridge-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .products .section-heading > p {
+        max-width: 100%;
+      }
+      .cross-links-banner {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+  </style>
 </head>
 <body class="has-dynamic-bg">
   <div class="site-bg-fixed" aria-hidden="true">
@@ -68,7 +240,8 @@
       <div class="wrap">
         <div class="section-heading">
           <div>
-            <div class="eyebrow">NUESTROS BIOINSUMOS</div>
+            <div class="section-waypoint"><span aria-hidden="true">03</span><strong>PRODUCTOS GALYON</strong></div>
+            <div class="eyebrow">FORMULACIONES MICROBIOLÓGICAS INDIVIDUALES</div>
             <h2>Soluciones para cada <span>necesidad.</span></h2>
           </div>
           <p>Explora las tres líneas y entra en «Conocer línea» para elegir la formulación que necesitas. Si tienes dudas, te orientamos.</p>
@@ -76,36 +249,36 @@
         <div class="product-grid">
           <article class="product-card tricho">
             <div class="product-top"><span class="pill">GALYON TRICHO</span><span class="product-tag">Raíces &amp; suelo</span></div>
-            <div class="product-visual"><img class="line-photo" src="assets/linea-tricho.jpg" alt="GALYON TRICHO, línea de bioinsumos para raíces y salud del suelo" loading="lazy" /></div>
+            <div class="product-visual"><img class="line-photo" src="assets/linea-tricho.jpg" alt="GALYON TRICHO, línea de bioinsumos para raíces y salud del suelo" loading="eager" /></div>
             <div class="product-details">
               <h3>Raíces fuertes. Producción con futuro.</h3>
-              <p>Más raíces, más vigor y más oportunidades para una cosecha abundante. TRICHO ayuda a desarrollar un sistema radicular fuerte y aporta defensa biológica frente a hongos del suelo que comprometen tu producción.</p>
+              <p>Un aliado para cuidar lo que ocurre bajo tierra. Trichoderma spp. contribuye al manejo de hongos del suelo susceptibles y acompaña el establecimiento del cultivo y la exploración de agua y nutrientes.</p>
               <div class="product-bottom">
-                <div><small>Productos de la línea desde 1 litro</small><strong>$20 <span>/ litro</span></strong></div>
+                <div><small>Productos de la línea desde 1 litro</small><strong data-product-price="tricho-trichoderma">$20</strong><span class="product-price-unit"> / litro</span></div>
                 <a class="view-line" href="#detalle-tricho" aria-label="Conocer GALYON TRICHO">Conocer línea <span aria-hidden="true">→</span></a>
               </div>
             </div>
           </article>
           <article class="product-card bact">
-            <div class="product-top"><span class="pill">GALYON BACT</span><span class="product-tag">Desarrollo vegetal</span></div>
-            <div class="product-visual"><img class="line-photo" src="assets/linea-bact.jpg" alt="GALYON BACT, línea de bioinsumos para desarrollo vegetal y salud del suelo" loading="lazy" /></div>
+            <div class="product-top"><span class="pill">GALYON BACT</span><span class="product-tag">Protección microbiológica</span></div>
+            <div class="product-visual"><img class="line-photo" src="assets/linea-bact.jpg" alt="GALYON BACT, línea de bacterias benéficas para el manejo preventivo del cultivo" loading="eager" /></div>
             <div class="product-details">
-              <h3>Vigor que se nota en el campo.</h3>
-              <p>Que el crecimiento se note en tu finca: plantas vigorosas, raíces activas y mayor potencial productivo. Con bacterias benéficas que apoyan el desarrollo vegetal y el manejo de ciertos patógenos según la formulación.</p>
+              <h3>La prevención también se cultiva.</h3>
+              <p>Anticípate a los problemas con bacterias benéficas. BACT complementa la protección del tejido sano frente a patógenos susceptibles y apoya el aprovechamiento de nutrientes, según la formulación y las condiciones del cultivo.</p>
               <div class="product-bottom">
-                <div><small>Productos de la línea desde 1 litro</small><strong>$20 <span>/ litro</span></strong></div>
+                <div><small>Productos de la línea desde 1 litro</small><strong data-product-price="bact-subtilis">$20</strong><span class="product-price-unit"> / litro</span></div>
                 <a class="view-line" href="#detalle-bact" aria-label="Conocer GALYON BACT">Conocer línea <span aria-hidden="true">→</span></a>
               </div>
             </div>
           </article>
           <article class="product-card insecta">
             <div class="product-top"><span class="pill">GALYON INSECTA</span><span class="product-tag">Manejo de insectos</span></div>
-            <div class="product-visual"><img class="line-photo" src="assets/linea-insecta.jpg" alt="GALYON INSECTA, línea de bioinsumos para manejo biológico de insectos plaga" loading="lazy" /></div>
+            <div class="product-visual"><img class="line-photo" src="assets/linea-insecta.jpg" alt="GALYON INSECTA, línea de bioinsumos para manejo biológico de insectos plaga" loading="eager" /></div>
             <div class="product-details">
               <h3>Que las plagas no se lleven tu cosecha.</h3>
               <p>Mantén a raya las plagas objetivo y dale más oportunidades a tu cosecha. INSECTA reúne aliados microbiológicos para reducir la presión de insectos susceptibles y defender el fruto de tu esfuerzo.</p>
               <div class="product-bottom">
-                <div><small>Productos de la línea desde 1 litro</small><strong>$20 <span>/ litro</span></strong></div>
+                <div><small>Productos de la línea desde 1 litro</small><strong data-product-price="insecta-bt">$20</strong><span class="product-price-unit"> / litro</span></div>
                 <a class="view-line" href="#detalle-insecta" aria-label="Conocer GALYON INSECTA">Conocer línea <span aria-hidden="true">→</span></a>
               </div>
             </div>
@@ -118,80 +291,20 @@
       </div>
     </section>
     
-    <section class="combos section" id="combos" aria-labelledby="combos-title">
-      <div class="wrap">
-        <div class="section-heading">
-          <div>
-            <div class="eyebrow">COMBOS GALYON · POR CULTIVO</div>
-            <h2>Tu cultivo, <span>su combo ideal.</span></h2>
-          </div>
-          <p>Cada cosecha representa meses de trabajo. Combina aliados biológicos para dar más vigor a tu cultivo y defender su potencial productivo. Cuatro litros por $70 y envío gratis.</p>
+    <!-- Puente a Combos por Cultivo -->
+    <div class="wrap">
+      <div class="combos-bridge-banner" id="combos">
+        <div class="combos-bridge-copy">
+          <div class="section-waypoint"><span aria-hidden="true">02</span><strong>COMBOS POR CULTIVO</strong></div>
+          <span class="eyebrow" style="margin-bottom:8px;">FORMULACIONES SINÉRGICAS & PROMOCIONES</span>
+          <h3>¿Buscas una combinación completa para tu cultivo con envío gratis?</h3>
+          <p>Conoce nuestros 4 combos agrícolas sinérgicos de 4 litros (Cacao, Mango, Caña, Banano y Plátano) por $60 con envío gratis a todo el Ecuador, además de nuestra promoción semanal de TRICHO con ácidos húmicos de regalo.</p>
         </div>
-        <div class="combo-grid">
-          <article class="combo-card">
-            <div class="combo-head"><span>01 · CACAO</span><b>ENVÍO GRATIS</b></div>
-            <div class="combo-photos combo-poster">
-              <button type="button" class="combo-image-open" data-image="assets/combo-cacao-titan.webp" aria-label="Ampliar imagen completa: Imagen promocional del combo GALYON CACAO TITÁN">
-                <img src="assets/combo-cacao-titan.webp" alt="Imagen promocional del combo GALYON CACAO TITÁN" width="1672" height="941" loading="lazy" decoding="async">
-              </button>
-            </div>
-            <div class="combo-body">
-              <h3>GALYON CACAO TITÁN</h3>
-              <p>Raíces fuertes, árboles con vigor y apoyo biológico frente a enfermedades del cacao. Dale a cada mazorca más oportunidades de desarrollarse y a tu finca el potencial de una cosecha más abundante.</p>
-              <small>2 L Trichoderma spp. + 2 L Bacillus subtilis</small>
-              <div class="combo-price"><strong>$60</strong><del>$80</del><span>4 litros</span></div>
-              <button type="button" class="combo-add" data-combo="cacao">Agregar combo al pedido →</button>
-            </div>
-          </article>
-          <article class="combo-card">
-            <div class="combo-head"><span>02 · MANGO</span><b>ENVÍO GRATIS</b></div>
-            <div class="combo-photos combo-poster">
-              <button type="button" class="combo-image-open" data-image="assets/combo-mango-furioso.webp" aria-label="Ampliar imagen completa: Imagen promocional del combo GALYON MANGO FURIOSO">
-                <img src="assets/combo-mango-furioso.webp" alt="Imagen promocional del combo GALYON MANGO FURIOSO" width="1672" height="941" loading="lazy" decoding="async">
-              </button>
-            </div>
-            <div class="combo-body">
-              <h3>GALYON MANGO FURIOSO</h3>
-              <p>Mangos con mejor potencial de desarrollo, árboles vigorosos y menos presión de plagas objetivo. Cuida tus frutos y trabaja por una cosecha más abundante con el respaldo de aliados biológicos.</p>
-              <small>2 L Bacillus subtilis + 2 L Beauveria bassiana</small>
-              <div class="combo-price"><strong>$60</strong><del>$80</del><span>4 litros</span></div>
-              <button type="button" class="combo-add" data-combo="mango">Agregar combo al pedido →</button>
-            </div>
-          </article>
-          <article class="combo-card">
-            <div class="combo-head"><span>03 · CAÑA</span><b>ENVÍO GRATIS</b></div>
-            <div class="combo-photos combo-poster">
-              <button type="button" class="combo-image-open" data-image="assets/combo-cana-brava.webp" aria-label="Ampliar imagen completa: Imagen promocional del combo GALYON CAÑA BRAVA">
-                <img src="assets/combo-cana-brava.webp" alt="Imagen promocional del combo GALYON CAÑA BRAVA" width="1672" height="941" loading="lazy" decoding="async">
-              </button>
-            </div>
-            <div class="combo-body">
-              <h3>GALYON CAÑA BRAVA</h3>
-              <p>Impulsa el vigor de tu cañaveral y ayuda a mantener a raya insectos susceptibles. Más desarrollo vegetativo y mejores oportunidades de una cosecha productiva.</p>
-              <small>2 L Bacillus amyloliquefaciens + 2 L Metarhizium anisopliae</small>
-              <div class="combo-price"><strong>$60</strong><del>$80</del><span>4 litros</span></div>
-              <button type="button" class="combo-add" data-combo="cana">Agregar combo al pedido →</button>
-            </div>
-          </article>
-          <article class="combo-card">
-            <div class="combo-head"><span>04 · BANANO Y PLÁTANO</span><b>ENVÍO GRATIS</b></div>
-            <div class="combo-photos combo-poster">
-              <button type="button" class="combo-image-open" data-image="assets/combo-verde-bestia.webp" aria-label="Ampliar imagen completa: Imagen promocional del combo GALYON VERDE BESTIA">
-                <img src="assets/combo-verde-bestia.webp" alt="Imagen promocional del combo GALYON VERDE BESTIA" width="1672" height="941" loading="lazy" decoding="async">
-              </button>
-            </div>
-            <div class="combo-body">
-              <h3>GALYON VERDE BESTIA</h3>
-              <p>Dale a tus plantas raíces fuertes y el vigor necesario para sostener su desarrollo. Una base biológica para trabajar por racimos de mejor desarrollo y cosechas con más potencial.</p>
-              <small>2 L Trichoderma spp. + 2 L Bacillus amyloliquefaciens</small>
-              <div class="combo-price"><strong>$60</strong><del>$80</del><span>4 litros</span></div>
-              <button type="button" class="combo-add" data-combo="banano">Agregar combo al pedido →</button>
-            </div>
-          </article>
+        <div class="combos-bridge-action">
+          <a href="combos.html" class="btn btn-dark" style="white-space:nowrap;padding:16px 24px;border-radius:10px;">Ver página de Combos <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span></a>
         </div>
-        <p class="combo-note">Cada producto se entrega en su propio envase. Incluye envío gratis dentro de Ecuador. La dosis, compatibilidad y aplicación se orientan según el cultivo y la necesidad de tu finca. <a href="combos.html" style="color:var(--ink,#162a1b);font-weight:700;margin-left:8px;text-decoration:underline;">Ver página completa de combos y promociones especiales →</a></p>
       </div>
-    </section>
+    </div>
 
     <section class="rice-product-section section" aria-labelledby="sustrato-title">
       <div class="wrap">
@@ -201,14 +314,14 @@
             <h3 id="sustrato-title">Toda la fuerza de TRICHO. Ahora en sustrato.</h3>
             <p><strong>Tu aliado microbiológico para el cuidado de raíces y suelo, en una presentación sólida.</strong> TRICHO en sustrato contiene <em>Trichoderma spp.</em> y ofrece una alternativa para preparar aplicaciones biológicas con orientación personalizada según tu cultivo.</p>
             <div class="rice-product-points"><span>Formato sólido</span><span>Preparación guiada</span><span>Asesoría GALYON incluida</span></div>
-            <div class="rice-price"><strong>$25</strong><span>por 1 kg · precio referencial de lanzamiento</span></div>
+            <div class="rice-price"><strong data-product-price="tricho-sustrato-1kg">$25</strong><span>Presentación de 1 kg</span></div>
             <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px;">
               <button type="button" class="catalog-add" data-add-sku="tricho-sustrato-1kg">Agregar al pedido</button>
               <a target="_blank" rel="noopener" class="soil-sales-cta" href="https://wa.me/593968933445?text=Hola%20GALYON%2C%20quiero%20comprar%20TRICHO%20en%20sustrato%20%28presentaci%C3%B3n%20de%201%20kg%2C%20%2425%29.%20%C2%BFEst%C3%A1%20disponible%3F%20Mi%20cultivo%20es%3A%20____%20y%20necesito%20env%C3%ADo%20a%3A%20____.">Consultar y pedir por WhatsApp <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span></a>
             </div>
             <p class="rice-footnote">Disponibilidad, dosificación, forma de preparación y envío sujetos a confirmación por nuestro equipo.</p>
           </div>
-          <img src="assets/tricho-sustrato.webp" alt="Funda transparente sin etiqueta con presentación sólida de TRICHO en sustrato" loading="lazy" width="1105" height="1280">
+          <img src="assets/tricho-sustrato.webp" alt="Funda transparente sin etiqueta con presentación sólida de TRICHO en sustrato" loading="eager" width="1105" height="1280">
         </div>
       </div>
     </section>
@@ -219,7 +332,7 @@
         <div class="humic-panel">
           <figure class="humic-visual">
             <a href="assets/acidos-humicos-50.webp" target="_blank" rel="noopener" aria-label="Ver la presentación de Ácidos Húmicos 50 % a tamaño completo">
-              <img src="assets/acidos-humicos-50.webp" alt="Ácidos Húmicos 50 % en presentación de 1 kg. Haz que tu abono trabaje mejor." width="1200" height="1200" loading="lazy" decoding="async" />
+              <img src="assets/acidos-humicos-50.webp" alt="Ácidos Húmicos 50 % en presentación de 1 kg. Haz que tu abono trabaje mejor." width="1200" height="1200" loading="eager" decoding="async" />
             </a>
           </figure>
           <div class="humic-copy">
@@ -228,7 +341,7 @@
             <p class="humic-product-name">Ácidos Húmicos 50 %</p>
             <p class="humic-problem">Con lluvias intensas, el agua puede arrastrar suelo y desplazar nutrientes fuera de la zona donde tu cultivo los aprovecha. Parte de lo que inviertes en abono puede perderse.</p>
             <p class="humic-solution">Los ácidos húmicos contribuyen a retener ciertos nutrientes y favorecer su disponibilidad en el suelo. Cuida tu inversión en fertilización con Ácidos Húmicos 50 %, junto con un buen drenaje y un manejo ajustado a tu cultivo.</p>
-            <div class="humic-price"><strong>$15</strong><span> / kg</span></div>
+            <div class="humic-price"><strong data-product-price="acidos-humicos-1kg">$15</strong><span> / kg</span></div>
             <dl class="humic-facts" aria-label="Características del producto">
               <div><dt>Ácidos húmicos</dt><dd>50 %</dd></div>
               <div><dt>Potasio (K₂O)</dt><dd>10–12 %</dd></div>
@@ -243,6 +356,28 @@
         </div>
       </div>
     </section>
+
+    <!-- Enlaces complementarios -->
+    <div class="wrap">
+      <div class="cross-links-banner">
+        <a href="combos.html" class="cross-link-card">
+          <div>
+            <span class="kicker">COMBOS AGRÍCOLAS</span>
+            <strong>Paquetes de 4 litros con envío gratis</strong>
+            <p>Formulaciones sinérgicas diseñadas específicamente para Cacao, Mango, Caña, Banano y Plátano.</p>
+          </div>
+          <span class="action-label">Explorar Combos por Cultivo <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span></span>
+        </a>
+        <a href="asesor.html" class="cross-link-card">
+          <div>
+            <span class="kicker">DIAGNÓSTICO PERSONALIZADO</span>
+            <strong>¿Dudas sobre qué combinación necesita tu finca?</strong>
+            <p>Utiliza nuestro Asesor Interactivo de Cultivos para identificar síntomas y recibir la recomendación biológica idónea.</p>
+          </div>
+          <span class="action-label">Iniciar Asesor de Cultivos <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span></span>
+        </a>
+      </div>
+    </div>
   </main>
 
   <button class="float-wa" id="float-wa" aria-label="Consultar por WhatsApp" title="Hablemos por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.05 2a9.91 9.91 0 0 0-8.58 14.85L2 22l5.31-1.39A9.96 9.96 0 0 0 12.05 22a10 10 0 0 0 0-20Zm0 18.18a8.15 8.15 0 0 1-4.15-1.13l-.3-.18-3.15.83.84-3.07-.2-.31a8.17 8.17 0 1 1 6.96 3.86Zm4.49-6.11c-.24-.12-1.43-.71-1.65-.79s-.38-.12-.54.12-.62.79-.76.95-.28.18-.52.06a6.7 6.7 0 0 1-1.95-1.2 7.24 7.24 0 0 1-1.36-1.69c-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.41s.16-.24.24-.4.04-.3-.02-.42-.54-1.3-.74-1.78c-.19-.46-.39-.4-.54-.41h-.46c-.16 0-.42.06-.64.3s-.84.82-.84 1.99.86 2.3.98 2.46 1.68 2.57 4.08 3.6c.57.25 1.01.4 1.36.51.57.18 1.09.15 1.5.09.46-.07 1.43-.59 1.63-1.16s.2-1.06.14-1.16-.22-.17-.46-.29Z"/></svg></button>
@@ -290,26 +425,26 @@
         <div class="galyon-modal-copy">
           <span class="galyon-modal-eyebrow">CONOCE NUESTRA LÍNEA · GALYON TRICHO</span>
           <h2 id="titulo-tricho">El futuro de tu cosecha empieza bajo tierra</h2>
-          <p>Raíces más desarrolladas, un suelo con vida y mejores oportunidades para crecer. GALYON TRICHO favorece el vigor radicular y aporta manejo biológico frente a determinados hongos del suelo.</p>
+          <p>GALYON TRICHO incorpora Trichoderma spp. al cuidado del suelo. Su capacidad de competir con determinados hongos y acompañar el desarrollo radicular lo convierte en un aliado para el establecimiento y manejo preventivo del cultivo.</p>
           <div class="formulations" id="opciones-tricho">
-            <div class="formulations-heading"><div><span class="formulations-kicker">FORMULACIONES DE LA LÍNEA</span><h3>Elige tu formulación</h3></div><span class="formulations-from">Desde $20 / L</span></div>
+            <div class="formulations-heading"><div><span class="formulations-kicker">FORMULACIONES DE LA LÍNEA</span><h3>Elige tu formulación</h3></div><span class="formulations-from">Desde <b data-product-price="tricho-trichoderma">$20</b> / litro</span></div>
             <div class="formulation-item">
               <div class="formulation-copy"><strong><em>Trichoderma spp.</em></strong><small>Cuidado del suelo y del sistema radicular.</small><span class="formulation-format">Presentación: 1 litro</span></div>
-              <div class="formulation-purchase"><span class="formulation-price">$20 <small>/ litro</small></span><button type="button" class="formulation-add" data-add-sku="tricho-trichoderma" aria-label="Añadir un litro de Trichoderma spp. al carrito">+ Añadir</button></div>
+              <div class="formulation-purchase"><span class="formulation-price"><b data-product-price="tricho-trichoderma">$20</b><small>/ litro</small></span><button type="button" class="formulation-add" data-add-sku="tricho-trichoderma" aria-label="Añadir un litro de Trichoderma spp. al carrito">+ Añadir</button></div>
             </div>
             <div class="formulation-item">
               <div class="formulation-copy"><strong><em>Trichoderma spp.</em></strong><small>La misma línea TRICHO en presentación mayor para productores que buscan más volumen.</small><span class="formulation-format">Presentación: galón (4 litros)</span></div>
-              <div class="formulation-purchase"><span class="formulation-price">$60 <small>/ galón</small></span><button type="button" class="formulation-add" data-add-sku="tricho-trichoderma-galon" aria-label="Añadir un galón de Trichoderma spp. al carrito">+ Añadir</button></div>
+              <div class="formulation-purchase"><span class="formulation-price"><b data-product-price="tricho-trichoderma-galon">$60</b><small>/ galón</small></span><button type="button" class="formulation-add" data-add-sku="tricho-trichoderma-galon" aria-label="Añadir un galón de Trichoderma spp. al carrito">+ Añadir</button></div>
             </div>
             <p class="formulations-help">¿No sabes cuál elegir? Te orientamos gratuitamente por WhatsApp antes de confirmar tu pedido.</p>
             <button type="button" class="formulations-view-cart" data-view-cart="true">Ver mi pedido <span aria-hidden="true">→</span> <span class="formulations-cart-count" aria-live="polite">0</span></button>
           </div>
           <h3>¿Cómo puede ayudarte?</h3>
           <ul>
-            <li>Favorece raíces fuertes, con mayor capacidad de explorar el suelo.</li>
-            <li>Apoya el aprovechamiento de agua y nutrientes a través del desarrollo radicular.</li>
-            <li>Suma un aliado biológico frente a determinados hongos del suelo.</li>
-            <li>Fortalece la estrategia de cuidado del suelo desde la raíz.</li>
+            <li>Contribuye al establecimiento del cultivo y al desarrollo de nuevas raíces.</li>
+            <li>Compite con hongos del suelo susceptibles por espacio y recursos.</li>
+            <li>Apoya la exploración del suelo para acceder al agua y los nutrientes.</li>
+            <li>Se integra al manejo preventivo junto con drenaje y sanidad del terreno.</li>
           </ul>
           <p class="galyon-modal-note">El producto específico se recomienda según el cultivo, el diagnóstico y las condiciones de aplicación.</p>
           <a class="galyon-modal-whatsapp" href="https://wa.me/593968933445?text=Hola%2C%20GALYON.%20Quisiera%20informaci%C3%B3n%20sobre%20GALYON%20TRICHO%20y%20cu%C3%A1l%20producto%20puede%20ayudar%20a%20mi%20cultivo." target="_blank" rel="noopener">Consultar por WhatsApp <span aria-hidden="true">→</span></a>
@@ -342,27 +477,27 @@
         </div>
         <div class="galyon-modal-copy">
           <span class="galyon-modal-eyebrow">CONOCE NUESTRA LÍNEA · GALYON BACT</span>
-          <h2 id="titulo-bact">Dale a tu cultivo razones para crecer</h2>
-          <p>Que cada etapa de crecimiento cuente. GALYON BACT combina el potencial de bacterias benéficas para favorecer el vigor, apoyar las raíces y acompañar el manejo de problemas específicos según la formulación.</p>
+          <h2 id="titulo-bact">Bacterias benéficas. Protección bien dirigida.</h2>
+          <p>GALYON BACT reúne formulaciones de Bacillus subtilis y Bacillus amyloliquefaciens. Elegimos la bacteria según el problema del cultivo para complementar la prevención de enfermedades compatibles y el aprovechamiento de nutrientes.</p>
           <div class="formulations" id="opciones-bact">
-            <div class="formulations-heading"><div><span class="formulations-kicker">FORMULACIONES DE LA LÍNEA</span><h3>Elige tu formulación</h3></div><span class="formulations-from">Desde $20 / L</span></div>
+            <div class="formulations-heading"><div><span class="formulations-kicker">FORMULACIONES DE LA LÍNEA</span><h3>Elige tu formulación</h3></div><span class="formulations-from">Desde <b data-product-price="bact-subtilis">$20</b> / litro</span></div>
             <div class="formulation-item">
-              <div class="formulation-copy"><strong><em>Bacillus subtilis</em></strong><small>Apoyo al desarrollo del cultivo y manejo biológico, según la formulación.</small><span class="formulation-format">Presentación: 1 litro</span></div>
-              <div class="formulation-purchase"><span class="formulation-price">$20 <small>/ litro</small></span><button type="button" class="formulation-add" data-add-sku="bact-subtilis" aria-label="Añadir un litro de Bacillus subtilis al carrito">+ Añadir</button></div>
+              <div class="formulation-copy"><strong><em>Bacillus subtilis</em></strong><small>Manejo preventivo de enfermedades causadas por patógenos susceptibles.</small><span class="formulation-format">Presentación: 1 litro</span></div>
+              <div class="formulation-purchase"><span class="formulation-price"><b data-product-price="bact-subtilis">$20</b><small>/ litro</small></span><button type="button" class="formulation-add" data-add-sku="bact-subtilis" aria-label="Añadir un litro de Bacillus subtilis al carrito">+ Añadir</button></div>
             </div>
             <div class="formulation-item">
-              <div class="formulation-copy"><strong><em>Bacillus amyloliquefaciens</em></strong><small>Apoyo a las raíces y al cuidado del suelo.</small><span class="formulation-format">Presentación: 1 litro</span></div>
-              <div class="formulation-purchase"><span class="formulation-price">$20 <small>/ litro</small></span><button type="button" class="formulation-add" data-add-sku="bact-amyloliquefaciens" aria-label="Añadir un litro de Bacillus amyloliquefaciens al carrito">+ Añadir</button></div>
+              <div class="formulation-copy"><strong><em>Bacillus amyloliquefaciens</em></strong><small>Apoyo a la salud del suelo y manejo biológico complementario.</small><span class="formulation-format">Presentación: 1 litro</span></div>
+              <div class="formulation-purchase"><span class="formulation-price"><b data-product-price="bact-amyloliquefaciens">$20</b><small>/ litro</small></span><button type="button" class="formulation-add" data-add-sku="bact-amyloliquefaciens" aria-label="Añadir un litro de Bacillus amyloliquefaciens al carrito">+ Añadir</button></div>
             </div>
             <p class="formulations-help">¿No sabes cuál elegir? Te orientamos gratuitamente por WhatsApp antes de confirmar tu pedido.</p>
             <button type="button" class="formulations-view-cart" data-view-cart="true">Ver mi pedido <span aria-hidden="true">→</span> <span class="formulations-cart-count" aria-live="polite">0</span></button>
           </div>
           <h3>¿Cómo puede ayudarte?</h3>
           <ul>
-            <li>Impulsa el vigor y el desarrollo vegetal.</li>
-            <li>Favorece una rizosfera más activa y raíces en desarrollo.</li>
-            <li>Complementa el manejo de ciertos patógenos, según la formulación.</li>
-            <li>Elige la bacteria adecuada para la necesidad de tu cultivo.</li>
+            <li>Aporta bacterias benéficas al programa preventivo del cultivo.</li>
+            <li>Complementa la protección del tejido sano frente a patógenos susceptibles.</li>
+            <li>Apoya el aprovechamiento de nutrientes, según la cepa y las condiciones del suelo.</li>
+            <li>Permite orientar el manejo con una formulación elegida para el problema identificado.</li>
           </ul>
           <p class="galyon-modal-note">Las formulaciones de la línea tienen diferentes aplicaciones; no todas sirven para el mismo problema.</p>
           <a class="galyon-modal-whatsapp" href="https://wa.me/593968933445?text=Hola%2C%20GALYON.%20Quisiera%20informaci%C3%B3n%20sobre%20GALYON%20BACT%20y%20cu%C3%A1l%20producto%20puede%20ayudar%20a%20mi%20cultivo." target="_blank" rel="noopener">Consultar por WhatsApp <span aria-hidden="true">→</span></a>
@@ -398,18 +533,18 @@
           <h2 id="titulo-insecta">Tu esfuerzo no es alimento para las plagas</h2>
           <p>No dejes que las plagas se queden con el trabajo de tu temporada. GALYON INSECTA aporta soluciones microbiológicas dirigidas a insectos susceptibles para reducir la presión de plagas sobre tu cultivo.</p>
           <div class="formulations" id="opciones-insecta">
-            <div class="formulations-heading"><div><span class="formulations-kicker">FORMULACIONES DE LA LÍNEA</span><h3>Elige tu formulación</h3></div><span class="formulations-from">Desde $20 / L</span></div>
+            <div class="formulations-heading"><div><span class="formulations-kicker">FORMULACIONES DE LA LÍNEA</span><h3>Elige tu formulación</h3></div><span class="formulations-from">Desde <b data-product-price="insecta-bt">$20</b> / litro</span></div>
             <div class="formulation-item">
               <div class="formulation-copy"><strong><em>Bacillus thuringiensis</em></strong><small>Manejo biológico de larvas susceptibles.</small><span class="formulation-format">Presentación: 1 litro</span></div>
-              <div class="formulation-purchase"><span class="formulation-price">$20 <small>/ litro</small></span><button type="button" class="formulation-add" data-add-sku="insecta-bt" aria-label="Añadir un litro de Bacillus thuringiensis al carrito">+ Añadir</button></div>
+              <div class="formulation-purchase"><span class="formulation-price"><b data-product-price="insecta-bt">$20</b><small>/ litro</small></span><button type="button" class="formulation-add" data-add-sku="insecta-bt" aria-label="Añadir un litro de Bacillus thuringiensis al carrito">+ Añadir</button></div>
             </div>
             <div class="formulation-item">
               <div class="formulation-copy"><strong><em>Beauveria bassiana</em></strong><small>Manejo biológico de determinadas plagas de insectos.</small><span class="formulation-format">Presentación: 1 litro</span></div>
-              <div class="formulation-purchase"><span class="formulation-price">$20 <small>/ litro</small></span><button type="button" class="formulation-add" data-add-sku="insecta-beauveria" aria-label="Añadir un litro de Beauveria bassiana al carrito">+ Añadir</button></div>
+              <div class="formulation-purchase"><span class="formulation-price"><b data-product-price="insecta-beauveria">$20</b><small>/ litro</small></span><button type="button" class="formulation-add" data-add-sku="insecta-beauveria" aria-label="Añadir un litro de Beauveria bassiana al carrito">+ Añadir</button></div>
             </div>
             <div class="formulation-item">
               <div class="formulation-copy"><strong><em>Metarhizium anisopliae</em></strong><small>Manejo biológico de determinados insectos plaga.</small><span class="formulation-format">Presentación: 1 litro</span></div>
-              <div class="formulation-purchase"><span class="formulation-price">$20 <small>/ litro</small></span><button type="button" class="formulation-add" data-add-sku="insecta-metarhizium" aria-label="Añadir un litro de Metarhizium anisopliae al carrito">+ Añadir</button></div>
+              <div class="formulation-purchase"><span class="formulation-price"><b data-product-price="insecta-metarhizium">$20</b><small>/ litro</small></span><button type="button" class="formulation-add" data-add-sku="insecta-metarhizium" aria-label="Añadir un litro de Metarhizium anisopliae al carrito">+ Añadir</button></div>
             </div>
             <p class="formulations-help">¿No sabes cuál elegir? Te orientamos gratuitamente por WhatsApp antes de confirmar tu pedido.</p>
             <button type="button" class="formulations-view-cart" data-view-cart="true">Ver mi pedido <span aria-hidden="true">→</span> <span class="formulations-cart-count" aria-live="polite">0</span></button>
