@@ -130,8 +130,26 @@ $('ship-city').addEventListener('input',updateCheckout);
 // Checkout is a native WhatsApp link. User must press Send to transmit the message.
 $('float-wa').addEventListener('click',()=>whatsapp('Hola GALYON, quisiera conocer más sobre sus bioinsumos y servicios.'));
 const menu=$('menu-toggle'), nav=$('navlinks');
-menu.addEventListener('click',()=>{const open=nav.classList.toggle('is-open');menu.setAttribute('aria-expanded',String(open))});
-nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('is-open');menu.setAttribute('aria-expanded','false')}));
+if (menu && nav) {
+  menu.addEventListener('click',e=>{
+    e.stopPropagation();
+    const open=nav.classList.toggle('is-open');
+    menu.classList.toggle('is-open', open);
+    menu.setAttribute('aria-expanded',String(open));
+  });
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    nav.classList.remove('is-open');
+    menu.classList.remove('is-open');
+    menu.setAttribute('aria-expanded','false');
+  }));
+  document.addEventListener('click',e=>{
+    if (nav.classList.contains('is-open') && !nav.contains(e.target) && !menu.contains(e.target)) {
+      nav.classList.remove('is-open');
+      menu.classList.remove('is-open');
+      menu.setAttribute('aria-expanded','false');
+    }
+  });
+}
 if ($('year')) $('year').textContent=new Date().getFullYear();
 renderCart();
 

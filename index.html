@@ -70,17 +70,6 @@
       padding: 0;
     }
 
-    /* Filtro Global de Ruido Fractal SVG (Grain sutil para textura de papel) */
-    .grain {
-      position: fixed;
-      inset: 0;
-      z-index: 800;
-      pointer-events: none;
-      opacity: 0.28;
-      mix-blend-mode: multiply;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
-
     /* Labels y Tipografía Editorial */
     .label-caps {
       font-family: "Inter", sans-serif;
@@ -243,26 +232,45 @@
       transform: translateY(-1px);
     }
 
+    .nav-menu-actions {
+      display: none;
+    }
+
     .nav-mobile-toggle {
       display: none;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       background: transparent;
       border: none;
       cursor: pointer;
       padding: 0;
       gap: 5px;
+      flex-shrink: 0;
+      z-index: 110;
     }
 
     .nav-mobile-toggle span {
-      width: 22px;
+      width: 24px;
       height: 2px;
-      background: #000000;
+      background: #162A1B;
       border-radius: 2px;
       transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .nav-mobile-toggle.is-open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-mobile-toggle.is-open span:nth-child(2) {
+      opacity: 0;
+      transform: translateX(6px);
+    }
+
+    .nav-mobile-toggle.is-open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
     }
 
     /* ==========================================================================
@@ -774,25 +782,21 @@
       }
     }
 
-    @media (max-width: 900px) {
-      .template-nav {
-        padding: 16px 24px;
-      }
-      .nav-menu {
-        gap: 18px;
-      }
-      .nav-item {
-        font-size: 14px;
-      }
-    }
-
-    @media (max-width: 760px) {
+    @media (max-width: 860px) {
       .template-nav {
         padding: 14px 20px;
+        gap: 16px;
+      }
+
+      /* En móvil, ocultar los botones Sign Up y Log In del navbar superior para que no desplacen las 3 barras */
+      .nav-right .btn-signup,
+      .nav-right .btn-login {
+        display: none !important;
       }
 
       .nav-mobile-toggle {
-        display: flex;
+        display: flex !important;
+        margin-left: auto;
       }
 
       .nav-menu {
@@ -802,23 +806,26 @@
         left: 0;
         right: 0;
         background: #ffffff;
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
-        padding: 18px 24px 24px;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+        padding: 20px 24px 28px;
         flex-direction: column;
         align-items: stretch;
         gap: 0;
         z-index: 100;
+        border-bottom-left-radius: 14px;
+        border-bottom-right-radius: 14px;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
       }
 
       .nav-menu.is-open {
-        display: flex;
+        display: flex !important;
       }
 
       .nav-item {
-        padding: 12px 6px;
+        padding: 13px 8px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.06);
         font-size: 15px;
-        color: #000000;
+        color: #162A1B;
       }
 
       .nav-item.is-active::after {
@@ -826,9 +833,59 @@
       }
 
       .nav-item.is-active {
-        background: rgba(0, 0, 0, 0.05);
+        background: rgba(22, 42, 27, 0.06);
         border-radius: 6px;
-        padding-left: 12px;
+        padding-left: 14px;
+        font-weight: 700;
+      }
+
+      .nav-menu-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 18px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+      }
+
+      .btn-mobile-signup {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        border: 1.5px solid #162A1B;
+        border-radius: 8px;
+        font-family: 'Schibsted Grotesk', -apple-system, sans-serif;
+        font-weight: 600;
+        font-size: 15px;
+        letter-spacing: -0.2px;
+        color: #162A1B;
+        text-decoration: none;
+        transition: background 0.2s ease;
+      }
+
+      .btn-mobile-signup:active {
+        background: rgba(22, 42, 27, 0.05);
+      }
+
+      .btn-mobile-login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        background: #162A1B;
+        border-radius: 8px;
+        font-family: 'Schibsted Grotesk', -apple-system, sans-serif;
+        font-weight: 600;
+        font-size: 15px;
+        letter-spacing: -0.2px;
+        color: #ffffff;
+        text-decoration: none;
+        transition: background 0.2s ease;
+      }
+
+      .btn-mobile-login:active {
+        background: #0f1c12;
       }
 
       .hero__title-block {
@@ -892,9 +949,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Filtro Global de Textura de Papel SVG -->
-  <div class="grain" aria-hidden="true"></div>
 
   <!-- ==========================================================================
        SECTION 1 · HERO (SÁNDWICH DE PROFUNDIDAD CON CLIP-PATH DEL ENVASE)
@@ -967,6 +1021,10 @@
         <a href="asesor.html" class="nav-item">Asesor de cultivos</a>
         <a href="analisis-suelo.html" class="nav-item">Análisis de suelo</a>
         <a href="acompanamiento.html" class="nav-item">Acompañamiento</a>
+        <div class="nav-menu-actions">
+          <a href="https://wa.me/593968933445?text=Hola%20GALYON,%20deseo%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" class="btn-mobile-signup">Sign Up</a>
+          <a href="https://wa.me/593968933445" target="_blank" rel="noopener" class="btn-mobile-login">Log In</a>
+        </div>
       </nav>
       <div class="nav-right">
         <a href="https://wa.me/593968933445?text=Hola%20GALYON,%20deseo%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" class="btn-signup">Sign Up</a>
@@ -1141,19 +1199,30 @@
       // 1. CONTROL DE MENÚ MÓVIL
       // ------------------------------------------------------------------------
       if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', function () {
+        menuToggle.addEventListener('click', function (e) {
+          e.stopPropagation();
           var open = navMenu.classList.toggle('is-open');
+          menuToggle.classList.toggle('is-open', open);
           menuToggle.setAttribute('aria-expanded', String(open));
         });
         navMenu.querySelectorAll('a').forEach(function (a) {
           a.addEventListener('click', function () {
             navMenu.classList.remove('is-open');
+            menuToggle.classList.remove('is-open');
             menuToggle.setAttribute('aria-expanded', 'false');
           });
+        });
+        document.addEventListener('click', function (e) {
+          if (navMenu.classList.contains('is-open') && !navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+            navMenu.classList.remove('is-open');
+            menuToggle.classList.remove('is-open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
         });
         window.addEventListener('keydown', function (e) {
           if (navMenu.classList.contains('is-open') && (e.key === 'Escape' || e.key === 'Esc')) {
             navMenu.classList.remove('is-open');
+            menuToggle.classList.remove('is-open');
             menuToggle.setAttribute('aria-expanded', 'false');
           }
         });
