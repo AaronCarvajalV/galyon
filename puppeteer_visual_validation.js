@@ -35,6 +35,27 @@ async function run() {
   const threeCanvas = await page.$('#viewer3d-container canvas');
   console.log('✔ Hero headline & 3D container loaded without errors.');
 
+  // Validate exact Navbar items and layout across all 7 pages
+  console.log('\n--- Testing Unified Navbar across all 7 pages ---');
+  const expectedNav = ['Inicio', 'Nosotros', 'Asesor', 'Combos', 'Productos', 'Análisis de suelo', 'Acompañamiento'];
+  const testPages = ['index.html', 'nosotros.html', 'asesor.html', 'combos.html', 'bioinsumos.html', 'analisis-suelo.html', 'acompanamiento.html'];
+  
+  for (const p of testPages) {
+    await page.goto(`http://localhost:3000/${p}`, { waitUntil: 'domcontentloaded' });
+    const navItems = await page.$$eval('.nav-menu .nav-item', els => els.map(e => e.textContent.trim()));
+    assert.deepEqual(navItems, expectedNav, `Navbar items mismatch in ${p}: ${JSON.stringify(navItems)}`);
+    
+    // Check cart button and WhatsApp button
+    const hasCart = await page.$eval('#open-cart', el => !!el);
+    const cartCount = await page.$eval('#cart-count', el => el.textContent.trim());
+    const waText = await page.$eval('#header-wa', el => el.textContent.trim());
+    
+    assert.ok(hasCart, `Missing #open-cart in ${p}`);
+    assert.equal(cartCount, '0', `Cart count should start at 0 in ${p}`);
+    assert.ok(waText.includes('Escríbenos'), `WhatsApp button text should include 'Escríbenos' in ${p}`);
+    console.log(`✔ Navbar verified in ${p}: [${navItems.join(' · ')}] + Cart(0) + Escríbenos`);
+  }
+
   // Check overflow on all viewports for index.html
   for (const vp of viewports) {
     await page.setViewport(vp);

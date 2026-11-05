@@ -182,55 +182,81 @@
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
       flex-shrink: 0;
     }
 
-    .btn-signup {
-      width: 82px;
-      height: 40px;
+    .cart-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       background: transparent;
       border: none;
-      font-family: 'Schibsted Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-weight: 500;
-      font-size: 16px;
-      letter-spacing: -0.2px;
-      color: #000000;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       cursor: pointer;
-      padding: 0;
+      padding: 6px 8px;
+      color: #103d2c;
+      transition: opacity 0.2s ease, transform 0.15s ease;
       text-decoration: none;
-      transition: opacity 0.2s ease;
     }
 
-    .btn-signup:hover {
-      opacity: 0.7;
-    }
-
-    .btn-login {
-      width: 101px;
-      height: 40px;
-      background: #000000;
-      color: #ffffff;
-      border: none;
-      border-radius: 8px;
-      font-family: 'Schibsted Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-weight: 500;
-      font-size: 16px;
-      letter-spacing: -0.2px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.2s ease;
-    }
-
-    .btn-login:hover {
-      background: #143c2b;
+    .cart-button:hover {
+      opacity: 0.8;
       transform: translateY(-1px);
+    }
+
+    .cart-button svg {
+      width: 22px;
+      height: 22px;
+      stroke: #103d2c;
+      display: block;
+    }
+
+    .cart-button span, #cart-count {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #103d2c;
+      background: #ddecbb;
+      padding: 2px 7px;
+      border-radius: 12px;
+      min-width: 18px;
+      text-align: center;
+      line-height: 1.3;
+      display: inline-block;
+    }
+
+    .nav-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: #103d2c;
+      color: #ffffff;
+      border-radius: 6px;
+      font-family: 'Inter', 'Schibsted Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: -0.1px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .nav-wa:hover {
+      background: #1c523d;
+      transform: translateY(-1px);
+    }
+
+    .nav-wa:active {
+      transform: translateY(0);
+    }
+
+    .nav-wa .icon-arrow svg {
+      width: 13px;
+      height: 13px;
+      stroke: #ffffff;
+      stroke-width: 2.2;
     }
 
     .nav-menu-actions {
@@ -744,10 +770,14 @@
         gap: 16px;
       }
 
-      /* En móvil, ocultar los botones Sign Up y Log In del navbar superior para que no desplacen las 3 barras */
+      .nav-right .nav-wa,
       .nav-right .btn-signup,
       .nav-right .btn-login {
         display: none !important;
+      }
+
+      .nav-right .cart-button {
+        display: inline-flex !important;
       }
 
       .nav-mobile-toggle {
@@ -958,19 +988,27 @@
       <nav class="nav-menu" id="navlinks" aria-label="Navegación principal">
         <a href="index.html" class="nav-item is-active" aria-current="page">Inicio</a>
         <a href="nosotros.html" class="nav-item">Nosotros</a>
-        <a href="bioinsumos.html" class="nav-item">Bioinsumos</a>
+        <a href="asesor.html" class="nav-item">Asesor</a>
         <a href="combos.html" class="nav-item">Combos</a>
-        <a href="asesor.html" class="nav-item">Asesor de cultivos</a>
+        <a href="bioinsumos.html" class="nav-item">Productos</a>
         <a href="analisis-suelo.html" class="nav-item">Análisis de suelo</a>
         <a href="acompanamiento.html" class="nav-item">Acompañamiento</a>
         <div class="nav-menu-actions">
-          <a href="https://wa.me/593968933445?text=Hola%20GALYON,%20deseo%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" class="btn-mobile-signup">Sign Up</a>
-          <a href="https://wa.me/593968933445" target="_blank" rel="noopener" class="btn-mobile-login">Log In</a>
+          <a href="https://wa.me/593968933445" target="_blank" rel="noopener" class="btn-mobile-login">Escríbenos por WhatsApp</a>
         </div>
       </nav>
       <div class="nav-right">
-        <a href="https://wa.me/593968933445?text=Hola%20GALYON,%20deseo%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" class="btn-signup">Sign Up</a>
-        <a href="https://wa.me/593968933445" target="_blank" rel="noopener" class="btn-login" id="header-wa" aria-label="Contactar por WhatsApp">Log In</a>
+        <button type="button" class="cart-button" id="open-cart" aria-label="Abrir carrito">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M3 4h2l2.3 11h10.8L21 7H6"></path>
+            <circle cx="9" cy="20" r="1"></circle>
+            <circle cx="18" cy="20" r="1"></circle>
+          </svg>
+          <span id="cart-count">0</span>
+        </button>
+        <a href="https://wa.me/593968933445" target="_blank" rel="noopener" class="btn btn-small btn-dark nav-wa" id="header-wa" aria-label="Contactar por WhatsApp">
+          Escríbenos <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span>
+        </a>
         <button type="button" id="menu-toggle" class="nav-mobile-toggle" aria-label="Abrir menú" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
