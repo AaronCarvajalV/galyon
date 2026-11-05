@@ -69,17 +69,6 @@
       padding: 0;
     }
 
-    /* Fixed SVG Fractal-Noise Grain Layer (38% multiply blend) */
-    .grain {
-      position: fixed;
-      inset: 0;
-      z-index: 800;
-      pointer-events: none;
-      opacity: 0.38;
-      mix-blend-mode: multiply;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
-
     /* Labels and Body Typography */
     .label-caps {
       font-family: "Inter", sans-serif;
@@ -141,7 +130,7 @@
       padding: 0;
       white-space: nowrap;
       opacity: 0;
-      animation: navFade 1s var(--ease) .25s forwards;
+      animation: navLinksFade 1s var(--ease) .25s forwards;
     }
 
     .nav__links a {
@@ -188,6 +177,17 @@
       to {
         opacity: 1;
         transform: translateY(0);
+      }
+    }
+
+    @keyframes navLinksFade {
+      from {
+        opacity: 0;
+        transform: translate(-50%, calc(-50% - 10px));
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
       }
     }
 
@@ -836,7 +836,17 @@
     /* ==========================================================================
        RESPONSIVE BREAKPOINTS (PHONE ≤ 760px)
        ========================================================================== */
-    @media (max-width: 900px) {
+    @media (max-width: 1060px) {
+      .nav__links {
+        gap: clamp(0.45rem, 0.9vw, 1rem);
+      }
+      .nav__links a {
+        font-size: 10px;
+        letter-spacing: .12em;
+      }
+    }
+
+    @media (max-width: 940px) {
       .nav__links,
       .nav__signup,
       .nav__right .btn-action {
@@ -910,9 +920,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Fixed SVG Fractal-Noise Overlay -->
-  <div class="grain" aria-hidden="true"></div>
 
   <!-- ==========================================================================
        SECTION 1 · HERO (FULL VIEWPORT)
@@ -1243,7 +1250,7 @@
         if (isMenuOpen && (e.key === 'Escape' || e.key === 'Esc')) toggleMenu(false);
       });
       window.addEventListener('resize', function () {
-        if (isMenuOpen && window.innerWidth > 900) toggleMenu(false);
+        if (isMenuOpen && window.innerWidth > 940) toggleMenu(false);
       });
 
       // ------------------------------------------------------------------------
