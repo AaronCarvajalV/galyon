@@ -229,6 +229,27 @@ async function run() {
     console.log(`✔ nosotros.html layout clean at ${vp.name} (${vp.width}x${vp.height})`);
   }
 
+  // 6. Validate analisis-suelo.html
+  console.log('\n--- 6. Testing analisis-suelo.html (Soilv2 Packages & Layout) ---');
+  await page.goto('http://localhost:3000/analisis-suelo.html', { waitUntil: 'domcontentloaded' });
+  const sueloActiveNav = await page.$eval('.nav-item.is-active', el => el.textContent.trim());
+  assert.equal(sueloActiveNav, 'Análisis de suelo', 'Análisis de suelo link in navbar must be active on analisis-suelo.html');
+  const sueloWaypoint = await page.$eval('.section-waypoint', el => el.textContent.replace(/\s+/g, ' '));
+  assert.ok(sueloWaypoint.includes('04') && sueloWaypoint.includes('ANÁLISIS DE SUELO'), 'Waypoint 04 must be present');
+  const cardsCount = await page.$$eval('.soilv2-card', els => els.length);
+  assert.equal(cardsCount, 5, 'Must render exactly 5 soil analysis package cards');
+  const heroImageSrc = await page.$eval('.soilv2-hero > img', el => el.getAttribute('src'));
+  assert.ok(heroImageSrc.includes('suelo-hero-muestreo-nuevo.webp'), 'Hero image must be present');
+  console.log('✔ Soilv2 hero, waypoint 04, and all 5 package cards verified.');
+
+  for (const vp of viewports) {
+    await page.setViewport(vp);
+    await new Promise(r => setTimeout(r, 100));
+    const hasHOverflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
+    assert.ok(!hasHOverflow, `Horizontal overflow detected in analisis-suelo.html at ${vp.name}`);
+    console.log(`✔ analisis-suelo.html layout clean at ${vp.name} (${vp.width}x${vp.height})`);
+  }
+
   await browser.close();
 
   // Console error check (filter out expected network or favicon if any)

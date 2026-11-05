@@ -1,0 +1,53 @@
+
+/* GALYON: redesign del apartado Análisis de suelo – bloque independiente */
+#analisis.soilv2{padding:clamp(36px, 5vw, 64px) 0 clamp(48px, 6vw, 80px);background:transparent;color:#153d2b}
+#analisis.soilv2 .soilv2-wrap{max-width:1500px;margin:auto}
+#analisis.soilv2 .soilv2-hero{display:grid;grid-template-columns:1fr 0.92fr;gap:32px;align-items:center;min-height:255px;margin-bottom:45px;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid #dce8d6;border-radius:20px;overflow:hidden;box-shadow:0 12px 36px rgba(22,60,33,.08)}
+#analisis.soilv2 .soilv2-hero-copy{padding:35px 34px 35px 42px}
+#analisis.soilv2 .soilv2-eyebrow{font-size:11px;font-weight:800;letter-spacing:.19em;color:#48783d;margin:0 0 12px}
+#analisis.soilv2 .soilv2-hero h2{font-size:clamp(29px,3.3vw,47px);line-height:1.1;letter-spacing:-.035em;margin:0 0 13px;color:#113d2a}
+#analisis.soilv2 .soilv2-hero-copy>p:not(.soilv2-eyebrow){font-size:15px;line-height:1.65;color:#607264;margin:0;max-width:590px}
+#analisis.soilv2 .soilv2-hero>img{width:100%;height:100%;min-height:260px;object-fit:cover;display:block}
+#analisis.soilv2 .soilv2-highlights{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+#analisis.soilv2 .soilv2-highlights span{font-size:11px;font-weight:750;background:#edf5e4;border-radius:999px;padding:9px 11px;color:#305c34}
+#analisis.soilv2 .soilv2-section-head{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:0 0 24px;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid #dce8d6;border-radius:18px;padding:clamp(20px,2.5vw,28px) clamp(24px,3vw,36px);box-shadow:0 8px 24px rgba(20,61,44,0.05)}
+#analisis.soilv2 .soilv2-section-head h2{font-size:clamp(23px,2.7vw,34px);line-height:1.15;margin:0;color:#123e2b}
+#analisis.soilv2 .soilv2-section-head>p{max-width:400px;color:#6c806d;font-size:14px;line-height:1.5}
+#analisis.soilv2 .soilv2-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;align-items:stretch}
+#analisis.soilv2 .soilv2-card{display:flex;flex-direction:column;min-width:0;border-radius:15px;background:#fff;border:1px solid #dfe9d9;overflow:hidden;box-shadow:0 7px 19px rgba(19,57,30,.08);transition:transform .2s ease,box-shadow .2s ease}
+#analisis.soilv2 .soilv2-card:hover{transform:translateY(-3px);box-shadow:0 12px 23px rgba(19,57,30,.11)}
+#analisis.soilv2 .soilv2-card-photo{display:block;width:100%;height:90px;object-fit:cover}
+#analisis.soilv2 .soilv2-card-body{display:flex;flex:1;flex-direction:column;padding:18px 16px 16px;gap:11px}
+#analisis.soilv2 .soilv2-card h3{margin:0;color:#123d2b;font-size:18px;line-height:1.22;letter-spacing:-.02em}
+#analisis.soilv2 .soilv2-description{margin:0;min-height:64px;color:#667969;font-size:12px;line-height:1.55}
+#analisis.soilv2 .soilv2-includes{border-top:1px solid #e7eae4;padding-top:13px;flex:1}
+#analisis.soilv2 .soilv2-includes strong{font-size:12px;color:#1d5a35}
+#analisis.soilv2 .soilv2-includes ul{list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:10px}
+#analisis.soilv2 .soilv2-includes li{display:flex;align-items:flex-start;gap:8px;color:#36453b;font-size:11.5px;line-height:1.4}
+#analisis.soilv2 .soilv2-includes li>span{display:inline-flex;flex:0 0 17px;height:17px;align-items:center;justify-content:center;color:#155d2e;background:#e1f0d7;border-radius:50%;font-size:11px;font-weight:900}
+#analisis.soilv2 .soilv2-button{display:flex;align-items:center;justify-content:center;gap:9px;background:#176443;color:#fff!important;border-radius:9px;min-height:43px;padding:10px;font-weight:760;font-size:11.5px;text-decoration:none;text-align:center;margin-top:8px}
+#analisis.soilv2 .soilv2-button:hover{background:#0c5036}
+#analisis.soilv2 .soilv2-footnote{margin:32px auto 0;max-width:980px;background:rgba(255,255,255,0.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid #dce8d6;border-radius:14px;padding:16px 24px;box-shadow:0 6px 20px rgba(20,61,44,0.04);color:#496352;font-size:13px;line-height:1.6;text-align:center}
+@media(max-width:1200px){#analisis.soilv2 .soilv2-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:780px){#analisis.soilv2{padding:34px 0 55px}#analisis.soilv2 .soilv2-hero{grid-template-columns:1fr;gap:0}#analisis.soilv2 .soilv2-hero-copy{padding:26px 22px}#analisis.soilv2 .soilv2-hero>img{min-height:180px;max-height:240px}#analisis.soilv2 .soilv2-section-head{display:block}#analisis.soilv2 .soilv2-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}#analisis.soilv2 .soilv2-card-body{padding:15px 12px}#analisis.soilv2 .soilv2-card h3{font-size:16px}#analisis.soilv2 .soilv2-description{min-height:0}#analisis.soilv2 .soilv2-card-photo{height:75px}}
+@media(max-width:530px){#analisis.soilv2 .soilv2-grid{grid-template-columns:1fr}#analisis.soilv2 .soilv2-card-photo{height:105px}#analisis.soilv2 .soilv2-card-body{padding:18px}#analisis.soilv2 .soilv2-description{font-size:13px}#analisis.soilv2 .soilv2-includes li{font-size:12.5px}#analisis.soilv2 .soilv2-button{font-size:13px}}
+@media(prefers-reduced-motion:reduce){#analisis.soilv2 .soilv2-card{transition:none}#analisis.soilv2 .soilv2-card:hover{transform:none}}
+
+/* Legibilidad y accesibilidad dentro de la sección, sin afectar otras áreas. */
+#analisis.soilv2 .soilv2-wrap{width:min(100% - 48px,1500px)}
+#analisis.soilv2 .soilv2-hero h2 span{color:#72965c}
+#analisis.soilv2 .soilv2-description{font-size:14px;line-height:1.65}
+#analisis.soilv2 .soilv2-includes strong{font-size:13px}
+#analisis.soilv2 .soilv2-includes li{font-size:13px;line-height:1.55}
+#analisis.soilv2 .soilv2-card h3{font-size:20px;overflow-wrap:anywhere}
+#analisis.soilv2 .soilv2-button{font-size:12px;min-height:44px}
+#analisis.soilv2 .soilv2-help{display:inline-flex;align-items:center;gap:9px;margin-top:18px;color:#176443;font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+#analisis.soilv2 a:focus-visible{outline:3px solid #639742;outline-offset:4px}
+@media(max-width:530px){#analisis.soilv2 .soilv2-wrap{width:calc(100% - 32px)}#analisis.soilv2 .soilv2-button{font-size:13px}}
+
+#analisis.soilv2{scroll-margin-top:90px}
+#analisis.soilv2 .soilv2-arrow{display:inline-flex;flex-shrink:0;align-items:center;line-height:0}
+
+/* GALYON SOILV2: fotografia refinada v20261103 */
+#analisis.soilv2 .soilv2-card-photo{height:120px;object-fit:cover}
+@media(max-width:780px){#analisis.soilv2 .soilv2-card-photo{height:105px}}
