@@ -1,0 +1,121 @@
+{
+  "type": "generated-reference-illustrations",
+  "agents": {
+    "cosmopolites": {
+      "id": "cosmopolites",
+      "name": "Picudo negro del banano",
+      "scientific": "Cosmopolites sordidus",
+      "view": "Vista ampliada",
+      "image": "agente-cosmopolites"
+    },
+    "hypothenemus": {
+      "id": "hypothenemus",
+      "name": "Broca del café",
+      "scientific": "Hypothenemus hampei",
+      "view": "Vista ampliada",
+      "image": "agente-hypothenemus"
+    },
+    "frugiperda": {
+      "id": "frugiperda",
+      "name": "Larva de gusano cogollero",
+      "scientific": "Spodoptera frugiperda",
+      "view": "Vista ampliada",
+      "image": "agente-frugiperda"
+    },
+    "diatraea": {
+      "id": "diatraea",
+      "name": "Ejemplo de larva barrenadora",
+      "scientific": "Diatraea spp.",
+      "view": "Vista ampliada",
+      "image": "agente-diatraea"
+    },
+    "monilia": {
+      "id": "monilia",
+      "name": "Hongo asociado a moniliasis",
+      "scientific": "Moniliophthora roreri",
+      "view": "Vista microscópica",
+      "image": "agente-monilia"
+    },
+    "perniciosa": {
+      "id": "perniciosa",
+      "name": "Hongo asociado a escoba de bruja",
+      "scientific": "Moniliophthora perniciosa",
+      "view": "Vista ampliada",
+      "image": "agente-perniciosa"
+    },
+    "phytophthora": {
+      "id": "phytophthora",
+      "name": "Oomiceto asociado a mazorca negra",
+      "scientific": "Phytophthora spp.",
+      "view": "Vista microscópica",
+      "image": "agente-phytophthora"
+    },
+    "hemileia": {
+      "id": "hemileia",
+      "name": "Hongo de la roya del café",
+      "scientific": "Hemileia vastatrix",
+      "view": "Vista microscópica",
+      "image": "agente-hemileia"
+    },
+    "puccinia": {
+      "id": "puccinia",
+      "name": "Hongos asociados a roya",
+      "scientific": "Puccinia spp.",
+      "view": "Vista microscópica",
+      "image": "agente-puccinia"
+    },
+    "sporisorium": {
+      "id": "sporisorium",
+      "name": "Hongo del carbón de la caña",
+      "scientific": "Sporisorium scitamineum",
+      "view": "Vista microscópica",
+      "image": "agente-sporisorium"
+    },
+    "pseudocercospora": {
+      "id": "pseudocercospora",
+      "name": "Hongos asociados a Sigatoka",
+      "scientific": "Pseudocercospora spp.",
+      "view": "Vista microscópica",
+      "image": "agente-pseudocercospora"
+    },
+    "oidio": {
+      "id": "oidio",
+      "name": "Hongos asociados a oídio",
+      "scientific": "Hongos del oídio",
+      "view": "Vista microscópica",
+      "image": "agente-oidio"
+    },
+    "colletotrichum": {
+      "id": "colletotrichum",
+      "name": "Hongos asociados a antracnosis",
+      "scientific": "Colletotrichum spp.",
+      "view": "Vista microscópica",
+      "image": "agente-colletotrichum"
+    },
+    "exserohilum": {
+      "id": "exserohilum",
+      "name": "Agente a investigar en tizón foliar",
+      "scientific": "Exserohilum turcicum",
+      "view": "Vista microscópica",
+      "image": "agente-exserohilum"
+    }
+  },
+  "routes": {
+    "Banano|banano_picudo": "cosmopolites",
+    "Banano|banano_sigatoka": "pseudocercospora",
+    "Cacao|cacao_blanco": "monilia",
+    "Cacao|cacao_negro": "phytophthora",
+    "Cacao|cacao_escoba": "perniciosa",
+    "Café|cafe_roya": "hemileia",
+    "Café|cafe_broca": "hypothenemus",
+    "Maíz|maiz_roya": "puccinia",
+    "Maíz|maiz_oruga": "frugiperda",
+    "Maíz|maiz_manchas": "exserohilum",
+    "Maíz|maiz_galerias_tallo": "diatraea",
+    "Caña de azúcar|cana_roya": "puccinia",
+    "Caña de azúcar|cana_carbon": "sporisorium",
+    "Caña de azúcar|cana_barrenador": "diatraea",
+    "Hortalizas|hort_blanco": "oidio",
+    "Mango|mango_lesiones_fruto": "colletotrichum"
+  }
+}

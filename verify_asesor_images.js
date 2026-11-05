@@ -106,7 +106,8 @@ function validateImageHeader(filePath) {
 }
 
 // Read core project files
-const indexPath = path.join(ROOT_DIR, 'index.html');
+const asesorHtmlPath = fs.existsSync(path.join(ROOT_DIR, 'asesor.html')) ? path.join(ROOT_DIR, 'asesor.html') : path.join(ROOT_DIR, 'index.html');
+const indexPath = asesorHtmlPath;
 const scriptPath = path.join(ROOT_DIR, 'script.js');
 const stylesPath = path.join(ROOT_DIR, 'styles.css');
 const asesorDir = path.join(ROOT_DIR, 'assets', 'asesor');
@@ -120,13 +121,13 @@ const stylesCss = fs.existsSync(stylesPath) ? fs.readFileSync(stylesPath, 'utf8'
 // ---------------------------------------------------------------------
 console.log('--- 1. Static Architecture & File Structure Audit ---');
 
-test('index.html contains #asesor section with semantic structure', () => {
-  assert.ok(indexHtml.includes('id="asesor"'), 'index.html is missing section #asesor');
-  assert.ok(indexHtml.includes('id="advisor-app"'), 'index.html is missing #advisor-app container');
-  assert.ok(indexHtml.includes('id="advisor-content"'), 'index.html is missing #advisor-content');
-  assert.ok(indexHtml.includes('id="advisor-progress-bar"'), 'index.html is missing #advisor-progress-bar');
-  assert.ok(indexHtml.includes('id="advisor-back"'), 'index.html is missing #advisor-back button');
-  assert.ok(indexHtml.includes('id="advisor-restart"'), 'index.html is missing #advisor-restart button');
+test('asesor.html contains #asesor section with semantic structure', () => {
+  assert.ok(indexHtml.includes('id="asesor"'), 'asesor.html is missing section #asesor');
+  assert.ok(indexHtml.includes('id="advisor-app"'), 'asesor.html is missing #advisor-app container');
+  assert.ok(indexHtml.includes('id="advisor-content"'), 'asesor.html is missing #advisor-content');
+  assert.ok(indexHtml.includes('id="advisor-progress-bar"'), 'asesor.html is missing #advisor-progress-bar');
+  assert.ok(indexHtml.includes('id="advisor-back"'), 'asesor.html is missing #advisor-back button');
+  assert.ok(indexHtml.includes('id="advisor-restart"'), 'asesor.html is missing #advisor-restart button');
 });
 
 test('assets/asesor/ directory exists and contains valid WebP files', () => {
@@ -199,9 +200,9 @@ const root = {
 const content = {
   set innerHTML(val) {
     interceptedHtml = val;
-    const matches = val.matchAll(/<img[^>]+src=["\x27]([^"\x27]+)["\x27]/g);
+    const matches = val.matchAll(/<img[^>]+src=["\x27]([^"\x27]+)["\x27][^>]*>/g);
     for (const m of matches) {
-      renderedImages.push({ src: m[1] });
+      renderedImages.push({ src: m[1], async: m[0].includes('decoding="async"') });
     }
   },
   get innerHTML() { return interceptedHtml; },
@@ -244,7 +245,8 @@ const document = {
     catalog,
     general,
     unknown,
-    result
+    result,
+    productPhotos: advisorProductPhotos
   };
 }; runSimulator();
 `);
@@ -397,7 +399,7 @@ test('Edge-case crops (Arroz, Maracuyá, Otro cultivo) render valid images and c
   }
 });
 
-test('All 149 WebP assets in assets/asesor have positive dimensions (width > 0, height > 0)', () => {
+test('All WebP assets in assets/asesor have positive dimensions (width > 0, height > 0)', () => {
   const files = fs.readdirSync(asesorDir);
   for (const file of files) {
     const buf = fs.readFileSync(path.join(asesorDir, file));
@@ -607,6 +609,16 @@ test('script.js error listener handles product photo failures, idempotency, and 
   const noticesAfter = frame.children.filter(c => c.className.includes('advisor-image-unavailable'));
   assert.strictEqual(noticesAfter.length, 1, 'Unavailable notice must remain singular on repeated error');
 
+  const variant = new MockElement('figure', 'advisor-catalog-variant');
+  const variantImage = new MockElement('img');
+  const caption = new MockElement('figcaption');
+  variant.appendChild(variantImage);
+  variant.appendChild(caption);
+  errorHandler({target: variantImage});
+  assert.ok(!variant.children.includes(variantImage), 'Failed variant image must be removed');
+  assert.ok(variant.children.includes(caption), 'Microorganism caption must survive image failure');
+  assert.strictEqual(variant.children.filter(c => c.className.includes('advisor-image-unavailable')).length, 1);
+
   // Test non-image event: should return safely without throwing
   errorHandler({ target: new MockElement('div') });
   errorHandler({ target: null });
@@ -622,16 +634,59 @@ test('advisor-evidence renders is-text-only class when no image is present to pr
 });
 
 test('All dynamically rendered advisor images include decoding="async"', () => {
-  assert.ok(
-    scriptJs.includes('advisor-evidence-image"><img src="\'+\ne(displayPhoto)\'+\'"') ||
-    (scriptJs.includes('advisor-evidence-image') && scriptJs.includes('decoding="async"')),
-    'Evidence image must include decoding="async"'
-  );
-  assert.ok(
-    scriptJs.includes('<div class="advisor-product-photo"><img src="\'+\ne(choice.image)\'+\'"') ||
-    scriptJs.includes('<div class="advisor-product-photo"><img src="\'+e(choice.image)+\'" loading="lazy" decoding="async"'),
-    'Product result image must include decoding="async"'
-  );
+  assert.ok(sim.renderedImages.length > 500);
+  for (const image of sim.renderedImages) assert.ok(image.async, `Missing async decoding: ${image.src}`);
+});
+
+const expectedProductPhotos = {
+  'Trichoderma spp.': ['tricho', 'tricho-1l.webp', 'GALYON TRICHO'],
+  'Bacillus subtilis': ['subtilis', 'bact-subtilis-1l.webp', 'GALYON BACT'],
+  'Bacillus amyloliquefaciens': ['amyl', 'bact-amyloliquefaciens-1l.webp', 'GALYON BACT'],
+  'Bacillus thuringiensis': ['bt', 'insecta-bt-1l.webp', 'GALYON INSECTA'],
+  'Beauveria bassiana': ['beauveria', 'insecta-beauveria-1l.webp', 'GALYON INSECTA'],
+  'Metarhizium anisopliae': ['metarhizium', 'insecta-metarhizium-1l.webp', 'GALYON INSECTA']
+};
+test('Each specific microorganism renders exactly its individual catalog bottle', () => {
+  for (const [microbe, [key, file, line]] of Object.entries(expectedProductPhotos)) {
+    const html = sim.productPhotos(line, microbe);
+    assert.strictEqual((html.match(/<img /g) || []).length, 1, microbe);
+    assert.ok(html.includes(`src="assets/catalogo/${file}"`), microbe);
+    assert.ok(html.includes(`data-advisor-product="${key}"`), microbe);
+    assert.ok(html.includes(`${microbe}, presentación de 1 litro`), microbe);
+    assert.ok(checkExactPath(ROOT_DIR, `assets/catalogo/${file}`).exists);
+    assert.ok(validateImageHeader(path.join(ROOT_DIR, 'assets/catalogo', file)).valid);
+  }
+});
+test('Two named fungal alternatives show only those two bottles, never Bt', () => {
+  const html = sim.productPhotos('GALYON INSECTA', 'Beauveria bassiana o Metarhizium anisopliae');
+  assert.strictEqual((html.match(/<img /g) || []).length, 2);
+  assert.ok(html.includes('insecta-beauveria-1l.webp'));
+  assert.ok(html.includes('insecta-metarhizium-1l.webp'));
+  assert.ok(!html.includes('insecta-bt-1l.webp'));
+});
+test('A line without a selected formulation displays labeled alternatives without selecting a default', () => {
+  for (const [line, count] of [['GALYON BACT', 2], ['GALYON INSECTA', 3]]) {
+    const html = sim.productPhotos(line);
+    assert.strictEqual((html.match(/<img /g) || []).length, count);
+    assert.strictEqual((html.match(/<figcaption>/g) || []).length, count);
+    assert.ok(html.includes('Formulaciones a evaluar según el caso'));
+    assert.ok(!html.includes('assets/linea-'));
+  }
+});
+test('Known advisor results select the right individual bottle in both result engines', () => {
+  for (const [crop, part, symptom, expected] of [
+    ['Cacao', 'Frutos o mazorcas', 'cacao_negro', 'amyl'],
+    ['Banano', 'Hojas', 'banano_sigatoka', 'subtilis'],
+    ['Banano', 'Raíces o tallo', 'banano_picudo', 'metarhizium'],
+    ['Café', 'Frutos o granos', 'cafe_broca', 'beauveria'],
+    ['Maíz', 'Hojas', 'maiz_oruga', 'bt'],
+    ['Maíz', 'Raíces o tallo', 'maiz_raices_deterioradas', 'tricho']
+  ]) {
+    sim.setData({area: 'Finca o plantación', crop, part, symptom});
+    const html = sim.result();
+    assert.ok(html.includes(`data-advisor-product="${expected}"`), `${crop} / ${symptom}`);
+    assert.strictEqual((html.match(/data-advisor-product=/g) || []).length, 1, symptom);
+  }
 });
 
 // ---------------------------------------------------------------------

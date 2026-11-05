@@ -1,0 +1,829 @@
+{
+  "scope": "Ocho cultivos visibles; modo Huerto o jardín continúa oculto. Sin cambios de diagnósticos, productos, textos ni recomendaciones.",
+  "baseline_commit": "9351f81bc5c73222cc33e7b726be26765a53d52c",
+  "active_cards": 123,
+  "initial_missing": 23,
+  "planned_illustrations": 43,
+  "completed_illustrations": 43,
+  "entries": [
+    {
+      "slug": "ref-maiz-base-podrida",
+      "prompt": "Maize plant base with a localized dark brown softened necrotic lesion at the soil line; still recognizably a standing maize plant, show lower stalk and surrounding soil, no mushrooms.",
+      "refs": [
+        {
+          "crop": "Maíz",
+          "part": "Raíces o tallo",
+          "kind": "symptom",
+          "key": "maiz_base_pudricion",
+          "title": "Pudrición en la base del tallo",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-maiz-base-podrida.webp"
+    },
+    {
+      "slug": "ref-maiz-raices-oscuras",
+      "prompt": "Excavated maize root system next to living maize plants, some roots dark brown and deteriorated, distinguish thin healthy light roots from damaged dark roots; show entire root system and basal stalk.",
+      "refs": [
+        {
+          "crop": "Maíz",
+          "part": "Raíces o tallo",
+          "kind": "symptom",
+          "key": "maiz_raices_deterioradas",
+          "title": "Raíces oscuras o deterioradas",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-maiz-raices-oscuras.webp"
+    },
+    {
+      "slug": "ref-maiz-galerias-tallo",
+      "prompt": "Maize stalk with two small boring entrance holes and frass, a longitudinal split of the SAME stalk reveals a narrow gallery; surrounding maize leaves establish context, no giant insect.",
+      "refs": [
+        {
+          "crop": "Maíz",
+          "part": "Raíces o tallo",
+          "kind": "symptom",
+          "key": "maiz_galerias_tallo",
+          "title": "Perforaciones o galerías en el tallo",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-maiz-galerias-tallo.webp"
+    },
+    {
+      "slug": "ref-maiz-tallo-quebradizo",
+      "prompt": "Maize lower stalk visibly weakened and bent at a broken internode; exposed dry fibrous pith, full context of base and several neighboring standing stalks; no rust, no giant insect.",
+      "refs": [
+        {
+          "crop": "Maíz",
+          "part": "Raíces o tallo",
+          "kind": "symptom",
+          "key": "maiz_tallo_quebradizo",
+          "title": "Tallo debilitado o quebradizo",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-maiz-tallo-quebradizo.webp"
+    },
+    {
+      "slug": "ref-mango-arbol-amarillo",
+      "prompt": "Entire small mango (Mangifera indica) orchard tree with generalized pale yellow foliage mixed with green leaves, tree crown and trunk recognizable, no brown dead canopy.",
+      "refs": [
+        {
+          "crop": "Mango",
+          "part": "Toda la planta",
+          "kind": "symptom",
+          "key": "observacion_mango_amarillas",
+          "title": "Amarillamiento de el árbol de mango",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-mango-arbol-amarillo.webp"
+    },
+    {
+      "slug": "ref-mango-arbol-insectos",
+      "prompt": "Whole young mango (Mangifera indica) tree with visible patchy foliage loss and chewed leaf edges on several branches, small realistic insects barely visible; context of affected canopy, NOT macro insect.",
+      "refs": [
+        {
+          "crop": "Mango",
+          "part": "Toda la planta",
+          "kind": "symptom",
+          "key": "observacion_mango_insectos",
+          "title": "Daños visibles por insectos",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-mango-arbol-insectos.webp"
+    },
+    {
+      "slug": "ref-mango-crecimiento-desigual",
+      "prompt": "Young mango (Mangifera indica) orchard with a small sparse stunted tree beside a normal healthy tree of similar planting age, clear height and canopy contrast, both whole plants visible.",
+      "refs": [
+        {
+          "crop": "Mango",
+          "part": "Toda la planta",
+          "kind": "symptom",
+          "key": "observacion_mango_crecimiento",
+          "title": "Crecimiento débil o irregular",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-mango-crecimiento-desigual.webp"
+    },
+    {
+      "slug": "ref-mango-hojas-comidas",
+      "prompt": "Several mango (Mangifera indica) leaves on a branch with irregular chewed holes and ragged missing margins, moderate close view retaining full leaf blades and plant context, one tiny realistic leaf-feeding insect optional, no oversized insect.",
+      "refs": [
+        {
+          "crop": "Mango",
+          "part": "Hojas",
+          "kind": "symptom",
+          "key": "observacion_mango_insectos",
+          "title": "Hojas comidas o insectos",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-mango-hojas-comidas.webp"
+    },
+    {
+      "slug": "ref-mango-hojas-polvo",
+      "prompt": "mango (Mangifera indica) leaves showing a fine patchy superficial WHITE powdery coating, natural broad leaves of that crop, several leaves and a branch visible, no thick foam and no orange pustules.",
+      "refs": [
+        {
+          "crop": "Mango",
+          "part": "Hojas",
+          "kind": "symptom",
+          "key": "observacion_mango_polvo",
+          "title": "Capa blanquecina en hojas",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-mango-hojas-polvo.webp"
+    },
+    {
+      "slug": "ref-mango-base-decaimiento",
+      "prompt": "Lower trunk and root collar of a declining mango (Mangifera indica) tree with a few dark deteriorated fine roots visible in gently opened soil, wilted lower branch in background, contextual view of base, no scientific organism claims.",
+      "refs": [
+        {
+          "crop": "Mango",
+          "part": "Raíces o tallo",
+          "kind": "symptom",
+          "key": "observacion_mango_decaimiento",
+          "title": "Pérdida de vigor desde la base",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-mango-base-decaimiento.webp"
+    },
+    {
+      "slug": "ref-mango-tallo-galerias",
+      "prompt": "mango (Mangifera indica) woody lower branch or young trunk with small borer entrance holes and localized fresh frass resembling fine sawdust, bark and attached foliage establish identity, no giant insects and no fungal fruiting bodies.",
+      "refs": [
+        {
+          "crop": "Mango",
+          "part": "Raíces o tallo",
+          "kind": "symptom",
+          "key": "observacion_mango_insectos",
+          "title": "Galerías o insectos en tallos",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-mango-tallo-galerias.webp"
+    },
+    {
+      "slug": "ref-cana-raices-categoria",
+      "prompt": "Sugarcane lower green jointed stalks and natural exposed fibrous roots at soil level, healthy neutral botanical reference, wide contextual view.",
+      "refs": [
+        {
+          "crop": "Caña de azúcar",
+          "part": "",
+          "kind": "part",
+          "key": "Raíces o tallo",
+          "title": "Raíces o tallos",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-cana-raices-categoria.webp"
+    },
+    {
+      "slug": "ref-aguacate-arbol-amarillo",
+      "prompt": "Entire small avocado (Persea americana) orchard tree with generalized pale yellow foliage mixed with green leaves, tree crown and trunk recognizable, no brown dead canopy.",
+      "refs": [
+        {
+          "crop": "Aguacate",
+          "part": "Toda la planta",
+          "kind": "symptom",
+          "key": "observacion_aguacate_amarillas",
+          "title": "Amarillamiento de el árbol de aguacate",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-aguacate-arbol-amarillo.webp"
+    },
+    {
+      "slug": "ref-aguacate-arbol-insectos",
+      "prompt": "Whole young avocado (Persea americana) tree with visible patchy foliage loss and chewed leaf edges on several branches, small realistic insects barely visible; context of affected canopy, NOT macro insect.",
+      "refs": [
+        {
+          "crop": "Aguacate",
+          "part": "Toda la planta",
+          "kind": "symptom",
+          "key": "observacion_aguacate_insectos",
+          "title": "Daños visibles por insectos",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-aguacate-arbol-insectos.webp"
+    },
+    {
+      "slug": "ref-aguacate-crecimiento-desigual",
+      "prompt": "Young avocado (Persea americana) orchard with a small sparse stunted tree beside a normal healthy tree of similar planting age, clear height and canopy contrast, both whole plants visible.",
+      "refs": [
+        {
+          "crop": "Aguacate",
+          "part": "Toda la planta",
+          "kind": "symptom",
+          "key": "observacion_aguacate_crecimiento",
+          "title": "Crecimiento débil o irregular",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-aguacate-crecimiento-desigual.webp"
+    },
+    {
+      "slug": "ref-aguacate-hojas-comidas",
+      "prompt": "Several avocado (Persea americana) leaves on a branch with irregular chewed holes and ragged missing margins, moderate close view retaining full leaf blades and plant context, one tiny realistic leaf-feeding insect optional, no oversized insect.",
+      "refs": [
+        {
+          "crop": "Aguacate",
+          "part": "Hojas",
+          "kind": "symptom",
+          "key": "observacion_aguacate_insectos",
+          "title": "Hojas comidas o insectos",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-aguacate-hojas-comidas.webp"
+    },
+    {
+      "slug": "ref-aguacate-hojas-polvo",
+      "prompt": "avocado (Persea americana) leaves showing a fine patchy superficial WHITE powdery coating, natural broad leaves of that crop, several leaves and a branch visible, no thick foam and no orange pustules.",
+      "refs": [
+        {
+          "crop": "Aguacate",
+          "part": "Hojas",
+          "kind": "symptom",
+          "key": "observacion_aguacate_polvo",
+          "title": "Capa blanquecina en hojas",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-aguacate-hojas-polvo.webp"
+    },
+    {
+      "slug": "ref-aguacate-base-decaimiento",
+      "prompt": "Lower trunk and root collar of a declining avocado (Persea americana) tree with a few dark deteriorated fine roots visible in gently opened soil, wilted lower branch in background, contextual view of base, no scientific organism claims.",
+      "refs": [
+        {
+          "crop": "Aguacate",
+          "part": "Raíces o tallo",
+          "kind": "symptom",
+          "key": "observacion_aguacate_decaimiento",
+          "title": "Pérdida de vigor desde la base",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-aguacate-base-decaimiento.webp"
+    },
+    {
+      "slug": "ref-aguacate-tallo-galerias",
+      "prompt": "avocado (Persea americana) woody lower branch or young trunk with small borer entrance holes and localized fresh frass resembling fine sawdust, bark and attached foliage establish identity, no giant insects and no fungal fruiting bodies.",
+      "refs": [
+        {
+          "crop": "Aguacate",
+          "part": "Raíces o tallo",
+          "kind": "symptom",
+          "key": "observacion_aguacate_insectos",
+          "title": "Galerías o insectos en tallos",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-aguacate-tallo-galerias.webp"
+    },
+    {
+      "slug": "ref-aguacate-frutos-perforados",
+      "prompt": "Avocado fruits attached to a branch with a few small insect boring entrance holes and localized damaged skin, one cut fruit nearby can show a narrow insect tunnel; natural orchard context, no huge insects.",
+      "refs": [
+        {
+          "crop": "Aguacate",
+          "part": "Frutos o mazorcas",
+          "kind": "symptom",
+          "key": "observacion_aguacate_insectos",
+          "title": "Perforaciones o insectos en aguacates",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-aguacate-frutos-perforados.webp"
+    },
+    {
+      "slug": "ref-aguacate-frutos-deformes",
+      "prompt": "Several avocado fruits attached to a branch, one visibly unevenly developed asymmetric misshapen small fruit beside normal pear-shaped fruits, natural skin, no rot, no text and no diagnoses.",
+      "refs": [
+        {
+          "crop": "Aguacate",
+          "part": "Frutos o mazorcas",
+          "kind": "symptom",
+          "key": "observacion_aguacate_deformes",
+          "title": "Frutos deformados",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-aguacate-frutos-deformes.webp"
+    },
+    {
+      "slug": "ref-hortalizas-raices-categoria",
+      "prompt": "Vegetable garden tomato and lettuce bases, one carefully excavated tomato seedling with natural intact roots and soil clump, healthy neutral root and stem anatomy reference.",
+      "refs": [
+        {
+          "crop": "Hortalizas",
+          "part": "",
+          "kind": "part",
+          "key": "Raíces o tallo",
+          "title": "Raíces o tallo",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-hortalizas-raices-categoria.webp"
+    },
+    {
+      "slug": "ref-hortalizas-frutos-categoria",
+      "prompt": "Vegetable garden tomato plant with attached healthy red and green tomatoes, a pepper plant with fruit in background; neutral botanical reference for fruit selection, no lesions.",
+      "refs": [
+        {
+          "crop": "Hortalizas",
+          "part": "",
+          "kind": "part",
+          "key": "Frutos o mazorcas",
+          "title": "Frutos o flores",
+          "image": ""
+        }
+      ],
+      "reason": "Falta una fotografía en la tarjeta activa",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-hortalizas-frutos-categoria.webp"
+    },
+    {
+      "slug": "ref-cacao-arbol-amarillo",
+      "prompt": "A young cacao tree with generalized pale yellow foliage among green leaves; recognizable broad cacao leaves and pods on trunk, entire small tree visible, not a completely brown dead tree.",
+      "refs": [
+        {
+          "crop": "Cacao",
+          "part": "Toda la planta",
+          "kind": "symptom",
+          "key": "cacao_debil",
+          "title": "Amarillamiento general",
+          "image": "v534_cacao_amarillamiento_general"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-cacao-arbol-amarillo.webp"
+    },
+    {
+      "slug": "ref-cacao-ramas-secas",
+      "prompt": "Cacao tree with one conspicuously dry leafless branch and curled brown leaves on that branch; healthy neighboring branches and pods on trunk; focus on DRY BRANCHES rather than trunk bark lesions.",
+      "refs": [
+        {
+          "crop": "Cacao",
+          "part": "Toda la planta",
+          "kind": "symptom",
+          "key": "cacao_seco",
+          "title": "Ramas secas",
+          "image": "cacao_cancro"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-cacao-ramas-secas.webp"
+    },
+    {
+      "slug": "ref-cacao-raices-danadas",
+      "prompt": "Excavated cacao root collar with sparse weakened dark deteriorated fine roots, cacao trunk and broad leaves visible, contrast of remaining pale functional roots and damaged roots; not a healthy lush root illustration.",
+      "refs": [
+        {
+          "crop": "Cacao",
+          "part": "Raíces o tallo",
+          "kind": "symptom",
+          "key": "cacao_raices",
+          "title": "Raíces dañadas o débiles",
+          "image": "v52_cacao_raices"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-cacao-raices-danadas.webp"
+    },
+    {
+      "slug": "ref-cacao-mazorca-insectos",
+      "prompt": "Yellow-orange cacao pod attached to a cacao trunk with small insect feeding punctures and one small realistic pod-feeding insect; several scattered puncture marks, not an entirely rotted pod and no exaggerated insect.",
+      "refs": [
+        {
+          "crop": "Cacao",
+          "part": "Frutos o mazorcas",
+          "kind": "symptom",
+          "key": "cacao_insecto",
+          "title": "Insectos en la mazorca",
+          "image": "v534_cacao_insectos_mazorca"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-cacao-mazorca-insectos.webp"
+    },
+    {
+      "slug": "ref-banano-arbol-decaido",
+      "prompt": "Banana plant with noticeably drooping yellow lower leaves and reduced vigor, entire pseudostem and canopy visible beside healthier banana plants, realistic natural banana anatomy.",
+      "refs": [
+        {
+          "crop": "Banano",
+          "part": "Toda la planta",
+          "kind": "symptom",
+          "key": "banano_marchitez",
+          "title": "Amarillamiento general o decaimiento",
+          "image": "v535_banano_planta"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-banano-arbol-decaido.webp"
+    },
+    {
+      "slug": "ref-banano-cormo-galerias",
+      "prompt": "A real-looking banana CORM (the bulbous underground base), excavated and cut lengthwise showing several narrow irregular borer tunnels in pale tissue; attached pseudostem stump and banana leaves in background, NOT a spotted leaf or long woody trunk.",
+      "refs": [
+        {
+          "crop": "Banano",
+          "part": "Raíces o tallo",
+          "kind": "symptom",
+          "key": "banano_picudo",
+          "title": "Galerías o perforaciones en el cormo",
+          "image": "v536_banano_galerias_picudo"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-banano-cormo-galerias.webp"
+    },
+    {
+      "slug": "ref-mango-hojas-amarillas",
+      "prompt": "A branch of a mango tree with narrow lanceolate mango leaves showing yellowing and some curled margins, a few green leaves for contrast; full leaf blades visible, not a distant whole yellow tree.",
+      "refs": [
+        {
+          "crop": "Mango",
+          "part": "Hojas",
+          "kind": "symptom",
+          "key": "observacion_mango_amarillas",
+          "title": "Hojas amarillas o enrolladas",
+          "image": "v544_mango_amarillas"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-mango-hojas-amarillas.webp"
+    },
+    {
+      "slug": "ref-aguacate-hojas-amarillas",
+      "prompt": "An avocado branch with elliptical avocado leaves showing yellowing and mild curling, mixed green veins and pale blades, several entire leaf blades and orchard background; not a distant whole tree.",
+      "refs": [
+        {
+          "crop": "Aguacate",
+          "part": "Hojas",
+          "kind": "symptom",
+          "key": "observacion_aguacate_amarillas",
+          "title": "Hojas amarillas o enrolladas",
+          "image": "v544_aguacate_amarillas"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-aguacate-hojas-amarillas.webp"
+    },
+    {
+      "slug": "ref-cana-hoja-roya",
+      "prompt": "Sugarcane long blade leaves with many fine rusty orange-brown pustules and short streaks between parallel veins, entire central blade section in context of the cane plant, no text or microscopy.",
+      "refs": [
+        {
+          "crop": "Caña de azúcar",
+          "part": "Toda la planta",
+          "kind": "symptom",
+          "key": "cana_roya",
+          "title": "Manchas anaranjadas",
+          "image": "cana_roya"
+        },
+        {
+          "crop": "Caña de azúcar",
+          "part": "Hojas",
+          "kind": "symptom",
+          "key": "cana_roya",
+          "title": "Manchas anaranjadas",
+          "image": "cana_roya"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-cana-hoja-roya.webp"
+    },
+    {
+      "slug": "ref-cana-carbon-referencia",
+      "prompt": "Sugarcane plant showing ONE long thin curved black whip-like abnormal shoot emerging from the growing point, characteristic visible smut-like structure; standing cane stalks in background, whole abnormal shoot in frame, no soot clouds or invented objects.",
+      "refs": [
+        {
+          "crop": "Caña de azúcar",
+          "part": "Toda la planta",
+          "kind": "symptom",
+          "key": "cana_carbon",
+          "title": "Estructuras negras anormales",
+          "image": "cana_carbon"
+        },
+        {
+          "crop": "Caña de azúcar",
+          "part": "Raíces o tallo",
+          "kind": "symptom",
+          "key": "cana_carbon",
+          "title": "Estructuras negras anormales",
+          "image": "cana_carbon"
+        },
+        {
+          "crop": "Caña de azúcar",
+          "part": "Frutos o mazorcas",
+          "kind": "symptom",
+          "key": "cana_carbon",
+          "title": "Estructuras negras anormales",
+          "image": "cana_carbon"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-cana-carbon-referencia.webp"
+    },
+    {
+      "slug": "ref-cana-cogollo-danado",
+      "prompt": "Sugarcane upper shoot and whorl with yellowing damaged young central leaves, older outer long cane leaves green, recognizable sugarcane shoot anatomy, moderate framing, no cut corn ear.",
+      "refs": [
+        {
+          "crop": "Caña de azúcar",
+          "part": "Toda la planta",
+          "kind": "symptom",
+          "key": "cana_cogollo",
+          "title": "Cogollo amarillento o dañado",
+          "image": "cana_cogollo"
+        },
+        {
+          "crop": "Caña de azúcar",
+          "part": "Hojas",
+          "kind": "symptom",
+          "key": "cana_cogollo",
+          "title": "Cogollo amarillento o dañado",
+          "image": "cana_cogollo"
+        },
+        {
+          "crop": "Caña de azúcar",
+          "part": "Frutos o mazorcas",
+          "kind": "symptom",
+          "key": "cana_cogollo",
+          "title": "Cogollo amarillento o dañado",
+          "image": "cana_cogollo"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-cana-cogollo-danado.webp"
+    },
+    {
+      "slug": "ref-cana-tallo-perforado",
+      "prompt": "Jointed sugarcane stalk with small insect boring holes and frass; one opened section shows a narrow internal tunnel and a realistically tiny larva, cane leaves behind; no enlarged insect.",
+      "refs": [
+        {
+          "crop": "Caña de azúcar",
+          "part": "Raíces o tallo",
+          "kind": "symptom",
+          "key": "cana_barrenador",
+          "title": "Perforaciones en el tallo",
+          "image": "cana_barrenador"
+        },
+        {
+          "crop": "Caña de azúcar",
+          "part": "Frutos o mazorcas",
+          "kind": "symptom",
+          "key": "cana_barrenador",
+          "title": "Perforaciones en el tallo",
+          "image": "cana_barrenador"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-cana-tallo-perforado.webp"
+    },
+    {
+      "slug": "ref-cafe-roya-referencia",
+      "prompt": "Undersides of several coffee leaves (Coffea arabica) showing patchy fine orange powdery spore masses, recognizable oval glossy coffee leaves, branch and a few coffee cherries in background; not extreme macro, no text.",
+      "refs": [
+        {
+          "crop": "Café",
+          "part": "Toda la planta",
+          "kind": "symptom",
+          "key": "cafe_roya",
+          "title": "Polvillo naranja bajo las hojas",
+          "image": "cafe_roya"
+        },
+        {
+          "crop": "Café",
+          "part": "Hojas",
+          "kind": "symptom",
+          "key": "cafe_roya",
+          "title": "Polvillo naranja bajo las hojas",
+          "image": "cafe_roya"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-cafe-roya-referencia.webp"
+    },
+    {
+      "slug": "ref-cafe-rama-seca",
+      "prompt": "Coffee shrub branch with a dry brown terminal twig and curled brown dead leaves, adjacent healthy glossy coffee leaves and a few cherries; clear dry-branch contrast, contextual view rather than extreme closeup.",
+      "refs": [
+        {
+          "crop": "Café",
+          "part": "Toda la planta",
+          "kind": "symptom",
+          "key": "cafe_ramas",
+          "title": "Ramas que se secan",
+          "image": "cafe_rama_seca"
+        },
+        {
+          "crop": "Café",
+          "part": "Raíces o tallo",
+          "kind": "symptom",
+          "key": "cafe_ramas",
+          "title": "Ramas que se secan",
+          "image": "cafe_rama_seca"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-cafe-rama-seca.webp"
+    },
+    {
+      "slug": "ref-cafe-hojas-manchas",
+      "prompt": "Several coffee leaves with discrete brown circular necrotic spots, subtle pale centers and darker edges, leaf blades in full view with coffee branch context; not orange rust powder.",
+      "refs": [
+        {
+          "crop": "Café",
+          "part": "Hojas",
+          "kind": "symptom",
+          "key": "cafe_hojas",
+          "title": "Manchas en hojas",
+          "image": "cafe_manchas"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-cafe-hojas-manchas.webp"
+    },
+    {
+      "slug": "ref-cafe-cerezas-perforadas",
+      "prompt": "Ripe red coffee cherries attached to a branch with tiny round borer entry holes near the blossom end, coffee leaves and healthy cherries for scale, moderate close view, no giant beetle, no labels.",
+      "refs": [
+        {
+          "crop": "Café",
+          "part": "Frutos o mazorcas",
+          "kind": "symptom",
+          "key": "cafe_broca",
+          "title": "Cerezas perforadas",
+          "image": "cafe_broca"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-cafe-cerezas-perforadas.webp"
+    },
+    {
+      "slug": "ref-hortalizas-manchas-hojas",
+      "prompt": "Tomato foliage in a vegetable bed with irregular dark brown necrotic leaf lesions and some yellow surrounding tissue; several complete tomato leaflets visible, no text and no pathogen depicted.",
+      "refs": [
+        {
+          "crop": "Hortalizas",
+          "part": "Toda la planta",
+          "kind": "symptom",
+          "key": "hort_manchas",
+          "title": "Manchas oscuras en hojas",
+          "image": "hort_tizon"
+        },
+        {
+          "crop": "Hortalizas",
+          "part": "Hojas",
+          "kind": "symptom",
+          "key": "hort_manchas",
+          "title": "Manchas oscuras en hojas",
+          "image": "hort_tizon"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-hortalizas-manchas-hojas.webp"
+    },
+    {
+      "slug": "ref-hortalizas-polvo-blanco",
+      "prompt": "Vegetable squash plant leaves with patchy thin white powdery coating on green leaf surfaces, recognizable broad lobed squash leaves and garden context, no white foam or frost, moderate framing.",
+      "refs": [
+        {
+          "crop": "Hortalizas",
+          "part": "Toda la planta",
+          "kind": "symptom",
+          "key": "hort_blanco",
+          "title": "Polvo blanquecino",
+          "image": "hort_oidio"
+        },
+        {
+          "crop": "Hortalizas",
+          "part": "Hojas",
+          "kind": "symptom",
+          "key": "hort_blanco",
+          "title": "Polvo blanquecino",
+          "image": "hort_oidio"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-hortalizas-polvo-blanco.webp"
+    },
+    {
+      "slug": "ref-hortalizas-hojas-comidas",
+      "prompt": "Vegetable garden leaves with irregular chewed holes and ragged margins, clear intact vs eaten leaf tissue, a tiny caterpillar optional but not dominant, complete leaf blades, natural garden context.",
+      "refs": [
+        {
+          "crop": "Hortalizas",
+          "part": "Toda la planta",
+          "kind": "symptom",
+          "key": "hort_insectos",
+          "title": "Hojas comidas",
+          "image": "hort_insectos"
+        },
+        {
+          "crop": "Hortalizas",
+          "part": "Hojas",
+          "kind": "symptom",
+          "key": "hort_insectos",
+          "title": "Hojas comidas",
+          "image": "hort_insectos"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-hortalizas-hojas-comidas.webp"
+    },
+    {
+      "slug": "ref-hortalizas-frutos-manchas",
+      "prompt": "Tomatoes on a living tomato vine with localized dark sunken brown spots on some ripe fruit, healthy neighboring tomatoes, natural skin texture, broader botanical framing, no labels.",
+      "refs": [
+        {
+          "crop": "Hortalizas",
+          "part": "Frutos o mazorcas",
+          "kind": "symptom",
+          "key": "hort_frutos",
+          "title": "Frutos con manchas",
+          "image": "hort_antracnosis"
+        }
+      ],
+      "reason": "Imagen anterior poco nítida, repetida como referencia de otro órgano o visualmente inadecuada",
+      "status": "integrated",
+      "asset": "assets/asesor/ref-hortalizas-frutos-manchas.webp"
+    }
+  ]
+}

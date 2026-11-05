@@ -3185,3 +3185,378 @@ body:has(.site-bg-fixed) {
     margin-top: 0;
   }
 }
+
+/* ==========================================================================
+   v8.0.0 — INTEGRATED ADVISOR & STORY SYSTEM (MIGRATED FROM GALYON-XAVIER)
+   ========================================================================== */
+.advisor-integrated { background: #f2f5ed; }
+.advisor-integrated .advisor-shell {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 36px;
+}
+.advisor-integrated .advisor-story {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 32px;
+  align-items: center;
+  position: static;
+  padding-top: 0;
+  min-width: 0;
+}
+.advisor-integrated .advisor-story > .section-waypoint,
+.advisor-integrated .advisor-story > h2,
+.advisor-integrated .advisor-story-steps {
+  grid-column: 1 / -1;
+}
+.advisor-integrated .advisor-story > .section-waypoint {
+  justify-content: center;
+}
+.advisor-integrated .advisor-story h2 {
+  max-width: 850px;
+  margin: 0 auto 24px;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.13;
+  letter-spacing: -0.045em;
+  color: #173e2a;
+}
+.advisor-integrated .advisor-story h2 span {
+  color: #7da66c;
+}
+.advisor-integrated .advisor-story .advisor-story-lead {
+  font-size: 16px;
+  line-height: 1.8;
+  max-width: none;
+  margin: 0;
+  text-align: left;
+  color: #496353;
+}
+.advisor-method {
+  border-top: 0;
+  border-left: 1px solid #d5e1ce;
+  padding: 0 0 0 32px;
+  text-align: left;
+  max-width: none;
+}
+.advisor-method h3 {
+  font-size: 21px;
+  line-height: 1.4;
+  letter-spacing: -0.035em;
+  color: #214d34;
+  margin: 0 0 14px;
+}
+.advisor-method p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #597163;
+  margin: 0 0 14px;
+}
+.advisor-method p:last-child {
+  margin-bottom: 0;
+}
+.advisor-story-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  justify-content: center;
+  margin-top: 26px;
+  color: #47724a;
+  font-size: 11px;
+  font-weight: 800;
+}
+.advisor-workspace {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  min-width: 0;
+}
+.advisor-workspace-heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.advisor-workspace-heading .eyebrow {
+  justify-content: center;
+  font-size: 10px;
+  margin-bottom: 10px;
+}
+.advisor-workspace-heading h3 {
+  font-size: clamp(24px, 2.5vw, 31px);
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+  color: #173e2a;
+  margin: 0 0 10px;
+}
+.advisor-workspace-heading p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #597163;
+  margin: 0;
+}
+.advisor-workspace > .advisor-disclaimer {
+  text-align: center;
+  max-width: 800px;
+  margin: 16px auto 0;
+  font-size: 11px;
+  line-height: 1.7;
+  color: #6b7e6e;
+}
+.advisor-integrated .advisor-options-crops {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.advisor-integrated .advisor-result-v523 {
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+#advisor-app[data-advisor-total-steps="3"] .advisor-progress-bar {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#advisor-app[data-advisor-step="1"] .advisor-progress {
+  display: none;
+}
+#advisor-app[data-advisor-step="1"] .advisor-options-crops .advisor-option {
+  min-height: 206px;
+}
+#advisor-app[data-advisor-step="1"] .advisor-options-crops .advisor-option:not(.is-text) {
+  background: #fff;
+  border: 1px solid #dbe5d7;
+  justify-content: flex-start;
+}
+#advisor-app[data-advisor-step="1"] .advisor-options-crops .advisor-option:not(.is-text)::after {
+  display: none;
+}
+#advisor-app[data-advisor-step="1"] .advisor-options-crops .advisor-option img {
+  position: static;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  object-position: center center;
+  aspect-ratio: auto;
+}
+#advisor-app[data-advisor-step="1"] .advisor-options-crops .advisor-option:not(.is-text) .advisor-option-text {
+  background: #fff;
+  padding: 13px 14px;
+  flex: 1;
+}
+#advisor-app[data-advisor-step="1"] .advisor-options-crops .advisor-option:not(.is-text) strong {
+  color: #173d2a;
+  text-shadow: none;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* Crop & symptom adjustments */
+#advisor-app[data-advisor-crop="Maíz"][data-advisor-step="2"] .advisor-options-parts .advisor-option {
+  aspect-ratio: 2/1;
+  min-height: 0;
+  background: #e3ece0;
+}
+#advisor-app[data-advisor-crop="Maíz"][data-advisor-step="2"] .advisor-options-parts .advisor-option img {
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+}
+#advisor-app[data-advisor-crop="Maíz"] .advisor-options-symptoms .advisor-option:is([data-advisor-value="maiz_amarillamiento_general"],[data-advisor-value="maiz_crecimiento_desigual"],[data-advisor-value="maiz_marchitez_general"],[data-advisor-value="maiz_caidas_secamiento"]) {
+  aspect-ratio: 16/9;
+  min-height: 0;
+}
+#advisor-app[data-advisor-crop="Maíz"] .advisor-options-symptoms .advisor-option:is([data-advisor-value="maiz_amarillamiento_general"],[data-advisor-value="maiz_crecimiento_desigual"],[data-advisor-value="maiz_marchitez_general"],[data-advisor-value="maiz_caidas_secamiento"]) img {
+  object-fit: cover;
+  object-position: center;
+  transform: none;
+}
+#advisor-app[data-advisor-crop="Maíz"] .advisor-options-symptoms .advisor-option:is([data-advisor-value="maiz_manchas"],[data-advisor-value="maiz_roya"],[data-advisor-value="maiz_oruga"],[data-advisor-value="maiz_clorosis_intervenal"]) {
+  aspect-ratio: 16/9;
+  min-height: 0;
+}
+#advisor-app[data-advisor-crop="Maíz"] .advisor-options-symptoms .advisor-option:is([data-advisor-value="maiz_manchas"],[data-advisor-value="maiz_roya"],[data-advisor-value="maiz_oruga"],[data-advisor-value="maiz_clorosis_intervenal"]) img {
+  object-fit: cover;
+  object-position: center;
+  transform: none;
+}
+.crop-advisor .advisor-options .advisor-option[data-reference-image="true"] {
+  min-height: 0;
+  aspect-ratio: 16/9;
+}
+.crop-advisor .advisor-options .advisor-option[data-reference-image="true"] img {
+  object-fit: cover;
+  object-position: center;
+  transform: none;
+}
+
+/* Evidence images: 16:9 responsive */
+.crop-advisor .advisor-result-v523 .advisor-evidence:has(.advisor-evidence-image) {
+  grid-template-columns: minmax(240px, 0.45fr) minmax(0, 1fr);
+}
+.crop-advisor .advisor-result-v523 .advisor-evidence-image {
+  aspect-ratio: 16/9;
+  min-height: 0;
+  align-self: center;
+}
+.crop-advisor .advisor-result-v523 .advisor-evidence-image img {
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+}
+
+/* Agent tag badge styling */
+.crop-advisor .advisor-evidence-image .advisor-evidence-tag.advisor-agent-tag {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  max-width: calc(100% - 24px);
+  text-align: left;
+  white-space: normal;
+  line-height: 1.35;
+  background: rgba(14, 47, 26, 0.88);
+  backdrop-filter: blur(4px);
+  border-radius: 6px;
+  padding: 6px 9px;
+}
+.advisor-agent-tag b {
+  font-size: 10px;
+  letter-spacing: 0.09em;
+  color: #bbec9a;
+}
+.advisor-agent-tag i {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  font-style: italic;
+  color: #ffffff;
+}
+.advisor-agent-tag small {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #d8eadc;
+}
+
+/* Dynamic background integration */
+.has-dynamic-bg .advisor-integrated {
+  background: transparent !important;
+}
+.has-dynamic-bg .advisor-integrated .advisor-story,
+.has-dynamic-bg .advisor-workspace-heading {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid #dce8d6;
+  box-shadow: 0 10px 30px rgba(20, 61, 44, 0.06);
+  border-radius: 18px;
+  padding: 34px 38px;
+}
+
+/* Responsive advisor rules */
+@media (max-width: 950px) {
+  .advisor-integrated .advisor-story {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .advisor-integrated .advisor-story > .section-waypoint {
+    margin-bottom: 0;
+  }
+  .advisor-integrated .advisor-story h2 {
+    margin-bottom: 0;
+  }
+  .advisor-integrated .advisor-story .advisor-story-lead {
+    text-align: center;
+    margin: 0;
+  }
+  .advisor-integrated .advisor-method {
+    border-left: 0;
+    border-top: 1px solid #d5e1ce;
+    padding: 20px 0 0;
+    text-align: center;
+  }
+  .advisor-integrated .advisor-story-steps {
+    margin-top: 0;
+  }
+  .advisor-integrated .advisor-options-crops {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .advisor-integrated .advisor-shell {
+    gap: 28px;
+  }
+}
+
+@media (max-width: 760px) {
+  .advisor-integrated .advisor-story {
+    gap: 12px;
+  }
+  .advisor-integrated .advisor-story h2 {
+    font-size: 28px;
+    margin-bottom: 0;
+  }
+  .advisor-integrated .advisor-story > .advisor-story-lead,
+  .advisor-integrated .advisor-story > .advisor-method,
+  .advisor-integrated .advisor-story > .advisor-story-steps {
+    display: none;
+  }
+  .advisor-mobile-context {
+    display: block;
+    grid-column: 1 / -1;
+    text-align: left;
+    color: #52705b;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 10px;
+  }
+  .advisor-mobile-context summary {
+    text-align: center;
+    cursor: pointer;
+    font-weight: 650;
+    color: #214a31;
+    padding: 8px 12px;
+    background: #eaf1e6;
+    border-radius: 8px;
+  }
+  .advisor-mobile-context p {
+    margin: 12px 0 0;
+  }
+  .advisor-integrated .advisor-shell {
+    gap: 20px;
+  }
+  .advisor-workspace-heading {
+    display: none;
+  }
+  .has-dynamic-bg .advisor-integrated .advisor-story {
+    padding: 22px 20px;
+    border-radius: 14px;
+  }
+  #advisor-app .advisor-options-parts,
+  #advisor-app .advisor-options-symptoms {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    gap: 14px;
+  }
+  #advisor-app .advisor-options-parts .advisor-option,
+  #advisor-app .advisor-options-symptoms .advisor-option {
+    aspect-ratio: auto !important;
+    min-height: 0 !important;
+    border: 1px solid #dbe5d7;
+    background: #fff;
+    justify-content: flex-start;
+  }
+  #advisor-app .advisor-options-parts .advisor-option::after,
+  #advisor-app .advisor-options-symptoms .advisor-option::after {
+    display: none;
+  }
+  .crop-advisor .advisor-result-v523 .advisor-evidence:has(.advisor-evidence-image) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  .crop-advisor .advisor-result-v523 .advisor-evidence-image {
+    width: 100%;
+  }
+  .crop-advisor .advisor-result-v523 .advisor-evidence-copy {
+    padding: 16px;
+  }
+}

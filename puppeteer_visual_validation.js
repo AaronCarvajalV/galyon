@@ -148,6 +148,87 @@ async function run() {
     console.log(`✔ bioinsumos.html layout clean at ${vp.name} (${vp.width}x${vp.height})`);
   }
 
+  // 4. Validate asesor.html (Advisor story & interactive wizard)
+  console.log('\n--- 4. Testing asesor.html (Advisor Story & Interactive Engine) ---');
+  await page.goto('http://localhost:3000/asesor.html', { waitUntil: 'domcontentloaded' });
+  
+  // Verify active navbar link
+  const asesorActiveNav = await page.$eval('.nav-item.is-active', el => el.textContent.trim());
+  assert.equal(asesorActiveNav, 'Asesor', 'Asesor link in navbar must be active on asesor.html');
+
+  // Verify story header
+  await page.waitForSelector('.advisor-story');
+  const storyHeading = await page.$eval('.advisor-story h2', el => el.textContent);
+  assert.ok(storyHeading.includes('Cada planta cuenta una historia'), 'Advisor story heading should mention Cada planta cuenta una historia');
+  console.log('✔ Advisor story intro loaded with correct editorial headline.');
+
+  // Verify interactive wizard step 1
+  await page.waitForSelector('.advisor-options');
+  const cropButtons = await page.$$('.advisor-option');
+  assert.ok(cropButtons.length >= 8, 'Advisor should render at least 8 crop options in step 1');
+  console.log(`✔ Advisor step 1 loaded with ${cropButtons.length} crop options.`);
+
+  // Click Maíz
+  await page.evaluate(() => {
+    const btn = Array.from(document.querySelectorAll('.advisor-option')).find(el => el.textContent.includes('Maíz'));
+    if (btn) btn.click();
+  });
+  await new Promise(r => setTimeout(r, 300));
+
+  // Verify step 2 (parts)
+  const partButtons = await page.$$('.advisor-option');
+  assert.ok(partButtons.length >= 3, 'Maíz should have plant parts');
+  console.log(`✔ Advisor transitioned to step 2 with ${partButtons.length} plant part options.`);
+
+  // Click Hojas
+  await page.evaluate(() => {
+    const btn = Array.from(document.querySelectorAll('.advisor-option')).find(el => el.textContent.includes('Hojas'));
+    if (btn) btn.click();
+  });
+  await new Promise(r => setTimeout(r, 300));
+
+  // Verify step 3 (symptoms)
+  const symptomButtons = await page.$$('.advisor-option');
+  assert.ok(symptomButtons.length >= 3, 'Should render symptoms for Maíz hojas');
+  console.log(`✔ Advisor transitioned to step 3 with ${symptomButtons.length} symptom options.`);
+
+  // Click first symptom
+  await page.evaluate(() => {
+    const btn = document.querySelector('.advisor-option');
+    if (btn) btn.click();
+  });
+  await new Promise(r => setTimeout(r, 400));
+
+  // Verify step 4 (result / recommendation)
+  await page.waitForSelector('.advisor-result-v523');
+  const hasRecommendation = await page.$eval('.advisor-result-v523', el => el.textContent.length > 50);
+  assert.ok(hasRecommendation, 'Advisor should display detailed diagnosis result');
+  const hasResultImg = await page.$eval('.advisor-evidence img, .advisor-product img', el => !!el.getAttribute('src'));
+  assert.ok(hasResultImg, 'Advisor result should include evidence or product image');
+  console.log('✔ Advisor wizard completed successfully: diagnosis, image, and product recommendation verified.');
+
+  // Check overflow on all viewports for asesor.html
+  for (const vp of viewports) {
+    await page.setViewport(vp);
+    await new Promise(r => setTimeout(r, 100));
+    const hasHOverflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
+    assert.ok(!hasHOverflow, `Horizontal overflow detected in asesor.html at ${vp.name}`);
+    console.log(`✔ asesor.html layout clean at ${vp.name} (${vp.width}x${vp.height})`);
+  }
+
+  // 5. Validate nosotros.html
+  console.log('\n--- 5. Testing nosotros.html ---');
+  await page.goto('http://localhost:3000/nosotros.html', { waitUntil: 'domcontentloaded' });
+  const nosotrosActiveNav = await page.$eval('.nav-item.is-active', el => el.textContent.trim());
+  assert.equal(nosotrosActiveNav, 'Nosotros', 'Nosotros link in navbar must be active on nosotros.html');
+  for (const vp of viewports) {
+    await page.setViewport(vp);
+    await new Promise(r => setTimeout(r, 100));
+    const hasHOverflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
+    assert.ok(!hasHOverflow, `Horizontal overflow detected in nosotros.html at ${vp.name}`);
+    console.log(`✔ nosotros.html layout clean at ${vp.name} (${vp.width}x${vp.height})`);
+  }
+
   await browser.close();
 
   // Console error check (filter out expected network or favicon if any)

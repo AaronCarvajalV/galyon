@@ -64,29 +64,43 @@
     </div>
   </header>
   <main class="page-main">
-    <section class="crop-advisor section" id="asesor" aria-labelledby="advisor-heading">
+    <section class="crop-advisor section advisor-integrated" id="asesor" aria-labelledby="advisor-heading">
       <div class="wrap advisor-shell">
-        <div class="advisor-intro">
-          <div class="eyebrow">ASESORÍA AGRÍCOLA INTERACTIVA</div>
-          <h2 id="advisor-heading">¿Qué está pasando <span>con tu cultivo?</span></h2>
-          <p>Reconoce los síntomas que observas y descubre por dónde empezar. Al final, podrás consultar gratis con GALYON por WhatsApp.</p>
-          <p class="advisor-disclaimer">Es una orientación inicial, no un diagnóstico confirmado. Cada caso requiere valoración técnica.</p>
+        <div class="advisor-intro advisor-story">
+          <div class="section-waypoint"><span aria-hidden="true">01</span><strong>ASESOR DE CULTIVOS</strong></div>
+          <h2 id="advisor-heading">Cada planta cuenta una <span>historia.</span></h2>
+          <details class="advisor-mobile-context"><summary>Cómo te acompañamos</summary><p>En GALYON escuchamos tu caso, en finca o a distancia. Selecciona tu cultivo y lo que observas; al terminar podrás compartir tu consulta por WhatsApp.</p></details>
+          <p class="advisor-story-lead">Una hoja manchada, una raíz debilitada, un fruto que no prospera. Entender lo que observas es el primer paso para cuidar tu cultivo.</p>
+          <div class="advisor-method">
+            <h3>Diagnóstico, observación y acompañamiento real.</h3>
+            <p>En GALYON escuchamos tu caso, en finca o a distancia. Empieza con nuestro asesor agrícola: selecciona tu cultivo y los síntomas que observas para descubrir por dónde comenzar.</p>
+            <p>Al terminar, comparte tu consulta por WhatsApp. Nuestro equipo podrá revisar tus fotografías y orientarte con criterio técnico.</p>
+          </div>
+          <div class="advisor-story-steps" aria-label="Nuestro proceso"><span>01 · Observar</span><span>02 · Comprender</span><span>03 · Acompañar</span></div>
         </div>
-        <div class="advisor-app" id="advisor-app" aria-live="polite">
-          <div class="advisor-progress">
-            <div class="advisor-progress-label">
-              <strong>GALYON · ASESOR DE CULTIVOS</strong>
-              <span id="advisor-step-label">Paso 1 de 4</span>
+        <div class="advisor-workspace">
+          <div class="advisor-workspace-heading">
+            <span class="eyebrow">TU ASESOR AGRÍCOLA</span>
+            <h3>¿Qué está pasando con tu cultivo?</h3>
+            <p>Cuéntanos lo que ves. Te guiamos paso a paso.</p>
+          </div>
+          <div class="advisor-app" id="advisor-app" data-advisor-step="1" data-advisor-total-steps="3" aria-live="polite">
+            <div class="advisor-progress">
+              <div class="advisor-progress-label">
+                <strong>GALYON · ASESOR DE CULTIVOS</strong>
+                <span id="advisor-step-label">Paso 1 de 3</span>
+              </div>
+              <div class="advisor-progress-bar" id="advisor-progress-bar" aria-hidden="true">
+                <i></i><i></i><i></i><i></i>
+              </div>
             </div>
-            <div class="advisor-progress-bar" id="advisor-progress-bar" aria-hidden="true">
-              <i></i><i></i><i></i><i></i>
+            <div id="advisor-content" class="advisor-content"></div>
+            <div class="advisor-footer">
+              <button type="button" class="advisor-back" id="advisor-back" hidden>Anterior</button>
+              <button type="button" class="advisor-restart" id="advisor-restart" hidden>Reiniciar</button>
             </div>
           </div>
-          <div id="advisor-content" class="advisor-content"></div>
-          <div class="advisor-footer">
-            <button type="button" class="advisor-back" id="advisor-back" hidden>Anterior</button>
-            <button type="button" class="advisor-restart" id="advisor-restart" hidden>Reiniciar</button>
-          </div>
+          <p class="advisor-disclaimer">Es una orientación inicial, no un diagnóstico confirmado. Cada caso requiere valoración técnica. La consulta con GALYON por WhatsApp es gratuita.</p>
         </div>
       </div>
     </section>
