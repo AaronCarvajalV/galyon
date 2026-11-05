@@ -16,7 +16,174 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Schibsted+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=7.8.0" />
-  <style>.icon-arrow{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;line-height:0;flex-shrink:0}.icon-arrow svg{width:14px;height:14px;display:block;stroke:currentColor;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}</style>
+  <style>
+    .icon-arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+      line-height: 0;
+      flex-shrink: 0;
+    }
+    .icon-arrow svg {
+      width: 14px;
+      height: 14px;
+      display: block;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .section-waypoint {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #d2deca;
+      color: #335c36;
+    }
+    .section-waypoint > span {
+      display: grid;
+      place-items: center;
+      flex: 0 0 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #214a31;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .03em;
+    }
+    .section-waypoint strong {
+      font-size: 11px;
+      line-height: 1.5;
+      letter-spacing: .12em;
+    }
+    .section-waypoint-light {
+      color: #e4eed7;
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+    .section-waypoint-light > span {
+      background: #ddebbe;
+      color: #153e2a;
+    }
+    .faq-grid > div:first-child {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid #dce8d6;
+      border-radius: 18px;
+      padding: clamp(24px, 3vw, 36px);
+      box-shadow: 0 10px 30px rgba(20, 61, 44, 0.06);
+      align-self: start;
+    }
+    .faq-list details {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid #dce8d6;
+      border-radius: 14px;
+      margin-bottom: 14px;
+      padding: 18px 24px;
+      box-shadow: 0 6px 20px rgba(20, 61, 44, 0.04);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .faq-list details:hover {
+      border-color: rgba(22, 42, 27, 0.25);
+      box-shadow: 0 8px 24px rgba(20, 61, 44, 0.08);
+      transform: translateY(-1px);
+    }
+    .faq-list summary {
+      font-weight: 700;
+      color: #173e2b;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+      font-size: 15.5px;
+    }
+    .faq-list summary::-webkit-details-marker {
+      display: none;
+    }
+    .faq-list summary span {
+      font-size: 20px;
+      font-weight: 400;
+      color: #496352;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+    .faq-list details[open] summary span {
+      transform: rotate(45deg);
+    }
+    .faq-list details p {
+      margin: 14px 0 0;
+      color: #496352;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .cross-links-banner {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 36px;
+      margin-bottom: 36px;
+    }
+    .cross-link-card {
+      padding: 24px 28px;
+      background: #ffffff;
+      border: 1px solid rgba(22, 42, 27, 0.12);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(20, 61, 44, 0.05);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .cross-link-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(20, 61, 44, 0.1);
+      border-color: rgba(22, 42, 27, 0.25);
+    }
+    .cross-link-card span.kicker {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #4c7c34;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .cross-link-card strong {
+      font-size: 19px;
+      color: #162a1b;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .cross-link-card p {
+      font-size: 13.5px;
+      color: rgba(22, 42, 27, 0.72);
+      line-height: 1.6;
+      margin: 0 0 14px;
+    }
+    .cross-link-card .action-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #174b32;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    @media (max-width: 900px) {
+      .cross-links-banner {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+  </style>
 </head>
 <body class="has-dynamic-bg">
   <div class="site-bg-fixed" aria-hidden="true">
@@ -67,7 +234,7 @@
     <section class="trust section" id="garantia">
       <div class="wrap trust-inner">
         <div class="trust-copy">
-          <div class="eyebrow light">NUESTRO COMPROMISO</div>
+          <div class="section-waypoint section-waypoint-light"><span aria-hidden="true">05</span> <strong>ACOMPAÑAMIENTO</strong></div>
           <h2>La atención no termina <em>con tu compra.</em></h2>
           <p>Queremos que sepas qué estás aplicando, por qué y cómo evaluar su evolución. Por eso, nuestras recomendaciones vienen acompañadas de orientación responsable.</p>
           <div class="trust-list">
@@ -113,7 +280,7 @@
         <div class="faq-list">
           <details>
             <summary>¿Realizan envíos a todo el Ecuador?<span>+</span></summary>
-            <p>Sí. Todos nuestros combos agrícolas de 4 litros incluyen envío gratis dentro de Ecuador. Para productos individuales, el costo de envío se confirma según el destino. Los tiempos de entrega se coordinan antes de realizar el pedido.</p>
+            <p>Sí. Todos nuestros combos agrícolas de 4 litros incluyen envío gratis dentro de Ecuador. El envío de productos individuales cuesta $5. Los tiempos de entrega se coordinan antes de realizar el pedido.</p>
           </details>
           <details>
             <summary>¿Qué métodos de pago aceptan?<span>+</span></summary>
@@ -125,7 +292,7 @@
           </details>
           <details>
             <summary>¿Los combos tienen precio especial?<span>+</span></summary>
-            <p>Sí. Cada combo agrícola incluye 4 litros por $70, con envío gratis dentro de Ecuador. La disponibilidad y la recomendación de uso se confirman contigo por WhatsApp.</p>
+            <p>Los combos por cultivo incluyen 4 litros, con envío gratis dentro de Ecuador. Las promociones especiales indican sus cantidades y beneficios en cada oferta. Cada combo por cultivo cuesta $60. La promoción de 2 litros de TRICHO con 1 kg de ácidos húmicos de regalo cuesta $40, con envío gratis. La disponibilidad y la recomendación de uso se confirman contigo por WhatsApp.</p>
           </details>
           <details>
             <summary>¿Los resultados están garantizados?<span>+</span></summary>
@@ -134,6 +301,28 @@
         </div>
       </div>
     </section>
+
+    <!-- Enlaces complementarios -->
+    <div class="wrap">
+      <div class="cross-links-banner">
+        <a href="combos.html" class="cross-link-card">
+          <div>
+            <span class="kicker">COMBOS POR CULTIVO</span>
+            <strong>Formulaciones sinérgicas de 4 litros con envío gratis</strong>
+            <p>Conoce nuestros paquetes diseñados para Cacao, Mango, Caña, Banano y Plátano por $60 con envío gratuito.</p>
+          </div>
+          <span class="action-label">Ver Combos Agrícolas <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span></span>
+        </a>
+        <a href="bioinsumos.html" class="cross-link-card">
+          <div>
+            <span class="kicker">CATÁLOGO DE PRODUCTOS</span>
+            <strong>Formulaciones microbiológicas y bioinsumos individuales</strong>
+            <p>Explora TRICHO, BACT, INSECTA, TRICHO en sustrato y Ácidos Húmicos al 50% con acompañamiento agronómico.</p>
+          </div>
+          <span class="action-label">Explorar Productos GALYON <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12L12 4"></path><path d="M6 4h6v6"></path></svg></span></span>
+        </a>
+      </div>
+    </div>
 
     <section class="closing">
       <div class="wrap closing-inner">
@@ -152,7 +341,10 @@
       </div>
       <div>
         <strong>EXPLORA</strong>
-        <a href="bioinsumos.html">Bioinsumos</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="asesor.html">Asesor</a>
+        <a href="combos.html">Combos</a>
+        <a href="bioinsumos.html">Productos</a>
         <a href="analisis-suelo.html">Análisis de suelo</a>
         <a href="acompanamiento.html">Acompañamiento</a>
       </div>

@@ -250,6 +250,28 @@ async function run() {
     console.log(`✔ analisis-suelo.html layout clean at ${vp.name} (${vp.width}x${vp.height})`);
   }
 
+  // 7. Validate acompanamiento.html
+  console.log('\n--- 7. Testing acompanamiento.html (Garantia, FAQ & Cross-Links) ---');
+  await page.goto('http://localhost:3000/acompanamiento.html', { waitUntil: 'domcontentloaded' });
+  const acompActiveNav = await page.$eval('.nav-item.is-active', el => el.textContent.trim());
+  assert.equal(acompActiveNav, 'Acompañamiento', 'Acompañamiento link in navbar must be active on acompanamiento.html');
+  const acompWaypoint = await page.$eval('.section-waypoint', el => el.textContent.replace(/\s+/g, ' '));
+  assert.ok(acompWaypoint.includes('05') && acompWaypoint.includes('ACOMPAÑAMIENTO'), 'Waypoint 05 must be present');
+  const faqItemsCount = await page.$$eval('.faq-list details', els => els.length);
+  assert.equal(faqItemsCount, 5, 'Must render exactly 5 FAQ items');
+  const faqComboText = await page.$$eval('.faq-list details', els => els[3].textContent);
+  assert.ok(faqComboText.includes('$60'), 'FAQ about combos must quote updated $60 price');
+  assert.ok(!faqComboText.includes('$70'), 'FAQ about combos must not quote old $70 price');
+  console.log('✔ Waypoint 05, trust section, and 5 FAQs (verified $60 combos price) clean.');
+
+  for (const vp of viewports) {
+    await page.setViewport(vp);
+    await new Promise(r => setTimeout(r, 100));
+    const hasHOverflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
+    assert.ok(!hasHOverflow, `Horizontal overflow detected in acompanamiento.html at ${vp.name}`);
+    console.log(`✔ acompanamiento.html layout clean at ${vp.name} (${vp.width}x${vp.height})`);
+  }
+
   await browser.close();
 
   // Console error check (filter out expected network or favicon if any)
