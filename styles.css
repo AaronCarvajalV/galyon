@@ -2302,13 +2302,7 @@ body:has(.site-bg-fixed) {
 }
 
 .site-bg-fixed::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(to bottom, rgba(214, 230, 242, .35) 0%, rgba(214, 230, 242, .08) 35%, rgba(214, 230, 242, 0) 58%),
-    linear-gradient(to top, rgba(230, 240, 248, .88) 0%, rgba(230, 240, 248, .4) 22%, rgba(230, 240, 248, 0) 45%);
+  display: none !important;
 }
 
 .site-bg-overlay {

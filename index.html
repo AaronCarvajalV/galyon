@@ -9,7 +9,7 @@
   <!-- Google Fonts Preconnect & Stylesheet -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,11..72,500;1,11..72,500&family=Inter:wght@400;500;600;700&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,11..72,500;1,11..72,500&family=Inter:wght@400;500;600;700&family=Schibsted+Grotesk:wght@500;600;700&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet" />
 
   <style>
     /* ==========================================================================
@@ -100,282 +100,169 @@
     }
 
     /* ==========================================================================
-       NAVBAR SUPERIOR (ESTILO EDITORIAL LIMPIO GALYON)
+       NAVBAR UNIFICADO GALYON (IDÉNTICO A NOSOTROS, BIOINSUMOS, ASESOR, ETC.)
        ========================================================================== */
-    .nav {
+    .template-nav {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       z-index: 60;
+      width: 100%;
+      padding: 16px 120px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
-      padding: clamp(1.2rem, 2.5vw, 2rem) var(--pad-x);
+      gap: 32px;
+      box-sizing: border-box;
+      background: transparent;
       pointer-events: auto;
     }
 
-    .logo {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: flex-start;
-      line-height: 1;
-      white-space: nowrap;
-      color: var(--ink);
-      opacity: 0;
-      transform: translateY(-10px);
-      animation: navFade 1s var(--ease) .15s forwards;
-    }
-
-    .logo-title {
-      font-family: "Bodoni Moda", "Didot", Georgia, serif;
-      font-weight: 500;
-      font-optical-sizing: none;
-      font-variation-settings: "opsz" 11;
-      font-size: clamp(1.25rem, 1.8vw, 1.6rem);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .logo-sub {
-      font-family: "Inter", sans-serif;
-      font-size: 7.5px;
-      font-weight: 600;
-      letter-spacing: .32em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-top: 3px;
-    }
-
-    .nav__links {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
+    .nav-logo {
       display: flex;
       align-items: center;
-      gap: var(--nav-gap);
+      flex-shrink: 0;
+    }
+
+    .brand-logo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .brand-leaf-icon {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-family: 'Schibsted Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      letter-spacing: -1.44px;
+      color: #000000;
+      line-height: 1;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
       list-style: none;
       margin: 0;
       padding: 0;
-      white-space: nowrap;
-      opacity: 0;
-      animation: navLinksFade 1s var(--ease) .25s forwards;
     }
 
-    .nav__links a {
-      font-family: "Inter", sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--ink);
-      padding: .2rem 0;
-      display: inline-block;
+    .nav-item {
+      font-family: 'Schibsted Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+      color: #000000;
+      text-decoration: none;
       position: relative;
-      transition: opacity .3s var(--ease);
+      padding: 6px 0;
+      transition: color 0.2s ease, opacity 0.2s ease;
     }
 
-    .nav__links a::after {
-      content: "";
+    .nav-item:hover {
+      color: #143c2b;
+      opacity: 0.8;
+    }
+
+    .nav-item.is-active {
+      font-weight: 700;
+      color: #000000;
+    }
+
+    .nav-item.is-active::after {
+      content: '';
       position: absolute;
+      bottom: 0;
       left: 0;
       right: 0;
-      bottom: -2px;
-      height: 1px;
-      background-color: var(--accent);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform .45s var(--ease);
+      height: 2px;
+      background: #000000;
+      border-radius: 2px;
     }
 
-    .nav__links a:hover::after,
-    .nav__links a.is-active::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-
-    .nav__right {
+    .nav-right {
       display: flex;
       align-items: center;
-      gap: .75rem;
-      opacity: 0;
-      animation: navFade 1s var(--ease) .35s forwards;
+      gap: 12px;
+      flex-shrink: 0;
     }
 
-    @keyframes navFade {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes navLinksFade {
-      from {
-        opacity: 0;
-        transform: translate(-50%, calc(-50% - 10px));
-      }
-      to {
-        opacity: 1;
-        transform: translate(-50%, -50%);
-      }
-    }
-
-    .nav__signup {
-      font-family: "Inter", sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      padding: .45rem .8rem;
-      color: var(--ink);
-      transition: opacity .3s var(--ease);
-    }
-
-    .nav__signup:hover {
-      opacity: .7;
-    }
-
-    .btn-action {
-      background: var(--ink);
-      color: var(--paper);
-      border-radius: 4px;
-      padding: .65rem 1.15rem;
-      font-family: "Inter", sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      line-height: 1;
-      white-space: nowrap;
-      display: inline-block;
-      transition: transform .45s var(--ease), background-color .45s var(--ease), box-shadow .45s var(--ease);
-    }
-
-    .btn-action:hover {
-      transform: translateY(-2px);
-      background-color: #0f1c12;
-      box-shadow: 0 8px 20px -8px rgba(22, 42, 27, .6);
-    }
-
-    /* Botón Hamburguesa Móvil */
-    .burger {
-      display: none;
-      width: 44px;
-      height: 44px;
-      position: relative;
-      z-index: 70;
+    .btn-signup {
+      width: 82px;
+      height: 40px;
+      background: transparent;
+      border: none;
+      font-family: 'Schibsted Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+      color: #000000;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
+      padding: 0;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
     }
 
-    .burger span {
-      position: absolute;
-      left: 11px;
-      width: 22px;
-      height: 1.6px;
-      background: var(--ink);
-      border-radius: 2px;
-      transition: transform .55s var(--ease-in-out), opacity .3s ease, width .55s var(--ease-in-out);
+    .btn-signup:hover {
+      opacity: 0.7;
     }
 
-    .burger span:nth-child(1) { top: 17px; }
-    .burger span:nth-child(2) { top: 22px; width: 16px; }
-    .burger span:nth-child(3) { top: 27px; }
+    .btn-login {
+      width: 101px;
+      height: 40px;
+      background: #000000;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Schibsted Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
 
-    .burger.is-active span:nth-child(1) {
-      transform: translateY(5px) rotate(45deg);
-    }
-    .burger.is-active span:nth-child(2) {
-      opacity: 0;
-      transform: translateX(10px);
-    }
-    .burger.is-active span:nth-child(3) {
-      transform: translateY(-5px) rotate(-45deg);
+    .btn-login:hover {
+      background: #143c2b;
+      transform: translateY(-1px);
     }
 
-    /* Menú Desplegable Móvil */
-    .menu {
-      position: fixed;
-      inset: 0;
-      z-index: 65;
-      display: flex;
+    .nav-mobile-toggle {
+      display: none;
       flex-direction: column;
       justify-content: center;
-      padding: 0 var(--pad-x);
-      background: rgba(242, 239, 233, .96);
-      backdrop-filter: blur(24px) saturate(130%);
-      -webkit-backdrop-filter: blur(24px) saturate(130%);
-      clip-path: inset(0 0 100% 0);
-      visibility: hidden;
-      transition: clip-path .85s var(--ease-in-out), visibility 0s linear .85s;
-    }
-
-    .menu.is-open {
-      clip-path: inset(0 0 0 0);
-      visibility: visible;
-      transition: clip-path .85s var(--ease-in-out), visibility 0s linear 0s;
-    }
-
-    .menu__list {
-      list-style: none;
-      margin: 0;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
       padding: 0;
+      gap: 5px;
     }
 
-    .menu__list li {
-      overflow: hidden;
-    }
-
-    .menu__list a {
-      font-family: "Bodoni Moda", "Didot", serif;
-      font-size: clamp(2.2rem, 9.5vw, 3.4rem);
-      line-height: 1.25;
-      text-transform: uppercase;
-      padding: .1em 0;
-      display: block;
-      transform: translateY(115%);
-      opacity: 0;
-      transition: transform .8s var(--ease), opacity .6s ease;
-    }
-
-    .menu.is-open .menu__list a {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .menu.is-open .menu__list li:nth-child(1) a { transition-delay: .20s; }
-    .menu.is-open .menu__list li:nth-child(2) a { transition-delay: .26s; }
-    .menu.is-open .menu__list li:nth-child(3) a { transition-delay: .32s; }
-    .menu.is-open .menu__list li:nth-child(4) a { transition-delay: .38s; }
-    .menu.is-open .menu__list li:nth-child(5) a { transition-delay: .44s; }
-    .menu.is-open .menu__list li:nth-child(6) a { transition-delay: .50s; }
-
-    .menu__rule {
-      height: 1px;
-      background: var(--ink-hairline);
-      margin: 2.2rem 0 0;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .9s var(--ease);
-    }
-
-    .menu.is-open .menu__rule {
-      transform: scaleX(1);
-      transition-delay: .54s;
-    }
-
-    .menu__foot {
-      margin-top: 2rem;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: transform .8s var(--ease), opacity .6s ease;
-    }
-
-    .menu.is-open .menu__foot {
-      opacity: 1;
-      transform: translateY(0);
-      transition-delay: .60s;
+    .nav-mobile-toggle span {
+      width: 22px;
+      height: 2px;
+      background: #000000;
+      border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
     }
 
     /* ==========================================================================
@@ -713,74 +600,6 @@
       white-space: nowrap;
     }
 
-    .badge-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-      margin-top: 1rem;
-    }
-
-    /* Insignia Giratoria con 48 Muescas Radiales */
-    .play-badge {
-      width: 84px;
-      height: 84px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .badge-ticks {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      animation: spinTicks 16s linear infinite;
-      transform-origin: center center;
-    }
-
-    @keyframes spinTicks {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .badge-center {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--paper-dark);
-      border: 1px solid var(--ink-hairline);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2;
-      transition: transform .35s var(--ease), background-color .35s ease;
-    }
-
-    .play-badge:hover .badge-center {
-      transform: scale(1.08);
-      background: #ded9cd;
-    }
-
-    .badge-triangle {
-      width: 0;
-      height: 0;
-      border-top: 6px solid transparent;
-      border-bottom: 6px solid transparent;
-      border-left: 10px solid var(--ink);
-      margin-left: 2px;
-    }
-
-    .badge-caption {
-      font-family: "Inter", sans-serif;
-      font-weight: 600;
-      font-size: 10.5px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
     /* Columna Central */
     .facts-col-middle {
       display: flex;
@@ -852,65 +671,166 @@
       text-align: right;
     }
 
-    /* Columna Derecha: Retrato 2:3 con Parallax */
+    /* Columna Derecha: Botella 3D Interactiva 360° */
     .facts-col-right {
       position: relative;
     }
 
-    .portrait-frame {
+    .facts-3d-wrapper {
       aspect-ratio: 2 / 3;
       width: 100%;
-      overflow: hidden;
-      border-radius: 2px;
+      max-width: 420px;
+      margin: 0 auto;
       position: relative;
-      clip-path: inset(100% 0 0 0);
-      transition: clip-path 1.2s var(--ease);
-      background: var(--paper-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 1.1s var(--ease), transform 1.1s var(--ease);
+      touch-action: pan-y;
     }
 
-    .portrait-frame.is-revealed {
-      clip-path: inset(0 0 0 0);
+    .facts-3d-wrapper.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .portrait-img {
+    .webgl-canvas-mount {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      transform: scale(1.25);
-      transition: transform 1.2s var(--ease);
-      will-change: transform;
+      cursor: grab;
     }
 
-    .portrait-frame.is-revealed .portrait-img {
-      transform: scale(1);
+    .webgl-canvas-mount:active,
+    .webgl-canvas-mount.is-dragging {
+      cursor: grabbing;
+    }
+
+    .webgl-canvas-mount canvas {
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+    }
+
+    .viewer3d-loader {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+      z-index: 5;
+    }
+
+    .viewer3d-spinner {
+      width: 32px;
+      height: 32px;
+      border: 2.5px solid rgba(22, 42, 27, 0.15);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spinSpinner 0.8s linear infinite;
+    }
+
+    @keyframes spinSpinner {
+      to { transform: rotate(360deg); }
+    }
+
+    .facts-3d-hint {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-body);
+      background: rgba(230, 226, 216, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 5px 12px;
+      border-radius: 20px;
+      pointer-events: none;
+      opacity: 0.85;
+      transition: opacity 0.3s ease;
+      z-index: 6;
+      white-space: nowrap;
     }
 
     /* ==========================================================================
        RESPONSIVE BREAKPOINTS (MÓVIL ≤ 760px)
        ========================================================================== */
-    @media (max-width: 1060px) {
-      .nav__links {
-        gap: clamp(0.45rem, 0.9vw, 1rem);
-      }
-      .nav__links a {
-        font-size: 10px;
-        letter-spacing: .12em;
+    @media (max-width: 1200px) {
+      .template-nav {
+        padding: 16px 40px;
       }
     }
 
-    @media (max-width: 940px) {
-      .nav__links,
-      .nav__signup,
-      .nav__right .btn-action {
-        display: none;
+    @media (max-width: 900px) {
+      .template-nav {
+        padding: 16px 24px;
       }
-
-      .burger {
-        display: block;
+      .nav-menu {
+        gap: 18px;
+      }
+      .nav-item {
+        font-size: 14px;
       }
     }
 
     @media (max-width: 760px) {
+      .template-nav {
+        padding: 14px 20px;
+      }
+
+      .nav-mobile-toggle {
+        display: flex;
+      }
+
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+        padding: 18px 24px 24px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        z-index: 100;
+      }
+
+      .nav-menu.is-open {
+        display: flex;
+      }
+
+      .nav-item {
+        padding: 12px 6px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        font-size: 15px;
+        color: #000000;
+      }
+
+      .nav-item.is-active::after {
+        display: none;
+      }
+
+      .nav-item.is-active {
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 6px;
+        padding-left: 12px;
+      }
+
       .hero__title-block {
         top: 17%;
       }
@@ -936,7 +856,7 @@
         font-size: 12vw;
       }
 
-      .portrait-frame {
+      .facts-3d-wrapper {
         width: 100%;
         max-width: 420px;
         margin: 0 auto;
@@ -962,7 +882,7 @@
       .facts-paragraph,
       .facts-table,
       .facts-table tr,
-      .portrait-frame {
+      .facts-3d-wrapper {
         opacity: 1 !important;
         transform: none !important;
         filter: none !important;
@@ -1032,51 +952,31 @@
       </a>
     </div>
 
-    <!-- Navbar Superior Galyon -->
-    <header class="nav">
-      <a href="index.html" class="logo" aria-label="GALYON — Inicio">
-        <span class="logo-title">GALYON</span>
-        <span class="logo-sub">BIOTECNOLOGÍA</span>
-      </a>
-
-      <nav class="nav__links" aria-label="Navegación principal">
-        <a href="index.html" class="is-active" aria-current="page">Inicio</a>
-        <a href="nosotros.html">Nosotros</a>
-        <a href="bioinsumos.html">Bioinsumos</a>
-        <a href="asesor.html">Asesor de cultivos</a>
-        <a href="analisis-suelo.html">Análisis de suelo</a>
-        <a href="acompanamiento.html">Acompañamiento</a>
+    <!-- Navbar Unificado Galyon (Idéntico a Nosotros, Bioinsumos, Asesor, etc.) -->
+    <header class="template-nav">
+      <div class="nav-logo">
+        <a href="index.html" class="brand brand-logo-link" aria-label="GALYON, ir al inicio">
+          <img class="brand-leaf-icon" src="assets/marca-hojas.png" alt="" />
+          <span class="logo-text">GALYON</span>
+        </a>
+      </div>
+      <nav class="nav-menu" id="navlinks" aria-label="Navegación principal">
+        <a href="index.html" class="nav-item is-active" aria-current="page">Inicio</a>
+        <a href="nosotros.html" class="nav-item">Nosotros</a>
+        <a href="bioinsumos.html" class="nav-item">Bioinsumos</a>
+        <a href="asesor.html" class="nav-item">Asesor de cultivos</a>
+        <a href="analisis-suelo.html" class="nav-item">Análisis de suelo</a>
+        <a href="acompanamiento.html" class="nav-item">Acompañamiento</a>
       </nav>
-
-      <div class="nav__right">
-        <a href="https://wa.me/593968933445?text=Hola%20GALYON,%20deseo%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" class="nav__signup">Contacto</a>
-        <a href="https://wa.me/593968933445" target="_blank" rel="noopener" class="btn-action">Log In</a>
-        <button type="button" class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
-          <span></span>
-          <span></span>
-          <span></span>
+      <div class="nav-right">
+        <a href="https://wa.me/593968933445?text=Hola%20GALYON,%20deseo%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" class="btn-signup">Sign Up</a>
+        <a href="https://wa.me/593968933445" target="_blank" rel="noopener" class="btn-login" id="header-wa" aria-label="Contactar por WhatsApp">Log In</a>
+        <button type="button" id="menu-toggle" class="nav-mobile-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </header>
   </section>
-
-  <!-- Menú Desplegable Móvil -->
-  <div class="menu" id="menu">
-    <nav aria-label="Menú móvil">
-      <ul class="menu__list">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="nosotros.html">Nosotros</a></li>
-        <li><a href="bioinsumos.html">Bioinsumos</a></li>
-        <li><a href="asesor.html">Asesor de cultivos</a></li>
-        <li><a href="analisis-suelo.html">Análisis de suelo</a></li>
-        <li><a href="acompanamiento.html">Acompañamiento</a></li>
-      </ul>
-    </nav>
-    <div class="menu__rule"></div>
-    <div class="menu__foot">
-      <a href="https://wa.me/593968933445" target="_blank" rel="noopener" class="btn-action">Log In / Contactar</a>
-    </div>
-  </div>
 
   <!-- ==========================================================================
        SECTION 2 · STATEMENT (MANIFIESTO CON PASTILLAS CIRCULARES)
@@ -1146,69 +1046,6 @@
             <span class="char">B</span><span class="char">I</span><span class="char">O</span><span class="char">I</span><span class="char">N</span><span class="char">S</span><span class="char">U</span><span class="char">M</span><span class="char">O</span>
           </span>
         </h3>
-
-        <!-- Insignia Giratoria con 48 Muescas Radiales -->
-        <div class="badge-wrapper">
-          <div class="play-badge" id="playBadge">
-            <svg class="badge-ticks" viewBox="0 0 84 84" xmlns="http://www.w3.org/2000/svg">
-              <g stroke="var(--ink)" stroke-width="1" stroke-linecap="round" opacity="0.45">
-                <!-- 48 ticks radiales -->
-                <line x1="42" y1="4" x2="42" y2="9" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(7.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(15 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(22.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(30 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(37.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(45 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(52.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(60 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(67.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(75 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(82.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(90 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(97.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(105 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(112.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(120 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(127.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(135 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(142.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(150 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(157.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(165 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(172.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(180 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(187.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(195 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(202.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(210 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(217.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(225 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(232.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(240 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(247.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(255 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(262.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(270 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(277.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(285 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(292.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(300 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(307.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(315 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(322.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(330 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(337.5 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(345 42 42)" />
-                <line x1="42" y1="4" x2="42" y2="9" transform="rotate(352.5 42 42)" />
-              </g>
-            </svg>
-            <div class="badge-center">
-              <div class="badge-triangle"></div>
-            </div>
-          </div>
-          <span class="badge-caption">ACCIÓN RADICULAR</span>
-        </div>
       </div>
 
       <!-- Columna Central: Párrafo y Tabla Técnica -->
@@ -1247,15 +1084,17 @@
         </table>
       </div>
 
-      <!-- Columna Derecha: Retrato Vertical 2:3 con Parallax -->
+      <!-- Columna Derecha: Botella 3D Interactiva 360° -->
       <div class="facts-col-right">
-        <div class="portrait-frame" id="portraitFrame">
-          <img
-            class="portrait-img"
-            id="portraitImg"
-            src="assets/editorial/tall-cacao-pod.jpg"
-            alt="Mazorca de cacao en cultivo agroecológico Galyon"
-          />
+        <div class="facts-3d-wrapper" id="facts3dWrapper">
+          <div id="webgl-canvas-mount" class="webgl-canvas-mount" aria-label="Visor 3D interactivo de la botella GALYON TRICHO 1 Litro"></div>
+          <div id="viewer3d-loader" class="viewer3d-loader">
+            <div class="viewer3d-spinner"></div>
+          </div>
+          <div class="facts-3d-hint" id="facts3dHint">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.3"/></svg>
+            <span>Gira 360°</span>
+          </div>
         </div>
       </div>
 
@@ -1289,12 +1128,10 @@
       var factsHeading = document.getElementById('factsHeading');
       var factsPara = document.getElementById('factsPara');
       var factsTable = document.getElementById('factsTable');
-      var portraitFrame = document.getElementById('portraitFrame');
-      var portraitImg = document.getElementById('portraitImg');
+      var facts3dWrapper = document.getElementById('facts3dWrapper');
 
-      var menu = document.getElementById('menu');
-      var burger = document.getElementById('burger');
-      var isMenuOpen = false;
+      var navMenu = document.getElementById('navlinks');
+      var menuToggle = document.getElementById('menu-toggle');
 
       // Detector de modo grabación (?rec=1)
       var urlParams = new URLSearchParams(window.location.search);
@@ -1303,31 +1140,24 @@
       // ------------------------------------------------------------------------
       // 1. CONTROL DE MENÚ MÓVIL
       // ------------------------------------------------------------------------
-      function toggleMenu(open) {
-        isMenuOpen = typeof open === 'boolean' ? open : !isMenuOpen;
-        if (menu) menu.classList.toggle('is-open', isMenuOpen);
-        if (burger) {
-          burger.classList.toggle('is-active', isMenuOpen);
-          burger.setAttribute('aria-expanded', isMenuOpen ? 'true' : 'false');
-          burger.setAttribute('aria-label', isMenuOpen ? 'Cerrar menú' : 'Abrir menú');
-        }
-        document.body.classList.toggle('menu-open', isMenuOpen);
-      }
-
-      if (burger) {
-        burger.addEventListener('click', function () { toggleMenu(); });
-      }
-      if (menu) {
-        menu.addEventListener('click', function (e) {
-          if (e.target.closest('a')) toggleMenu(false);
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function () {
+          var open = navMenu.classList.toggle('is-open');
+          menuToggle.setAttribute('aria-expanded', String(open));
+        });
+        navMenu.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            navMenu.classList.remove('is-open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+        window.addEventListener('keydown', function (e) {
+          if (navMenu.classList.contains('is-open') && (e.key === 'Escape' || e.key === 'Esc')) {
+            navMenu.classList.remove('is-open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
         });
       }
-      window.addEventListener('keydown', function (e) {
-        if (isMenuOpen && (e.key === 'Escape' || e.key === 'Esc')) toggleMenu(false);
-      });
-      window.addEventListener('resize', function () {
-        if (isMenuOpen && window.innerWidth > 940) toggleMenu(false);
-      });
 
       // ------------------------------------------------------------------------
       // 2. SECUENCIA DE CARGA DEL HERO (SINCRONIZACIÓN BG + CUTOUT)
@@ -1413,11 +1243,8 @@
         setTimeout(function () {
           if (factsPara) factsPara.classList.add('is-revealed');
           if (factsTable) factsTable.classList.add('is-revealed');
+          if (facts3dWrapper) facts3dWrapper.classList.add('is-revealed');
         }, 280);
-
-        setTimeout(function () {
-          if (portraitFrame) portraitFrame.classList.add('is-revealed');
-        }, 350);
       }
 
       function applyScrollEffects(scrollY) {
@@ -1441,16 +1268,6 @@
           var opacityVal = 0.34 + scrollRatio * 0.66;
           heroGradient.style.background = 'linear-gradient(to top, var(--paper) 0%, rgba(242, 239, 233, ' + opacityVal + ') ' + gradMid + '%, transparent ' + gradTop + '%)';
           heroGradient.style.opacity = opacityVal;
-        }
-
-        // Parallax vertical ±7% en el retrato de la ficha técnica
-        if (portraitFrame && portraitImg && factsSection) {
-          var rect = portraitFrame.getBoundingClientRect();
-          if (rect.top < vh && rect.bottom > 0) {
-            var centerDiff = (rect.top + rect.height / 2 - vh / 2) / (vh / 2);
-            var drift = centerDiff * 7;
-            portraitImg.style.transform = 'translateY(' + drift + '%)';
-          }
         }
       }
 
@@ -1545,5 +1362,11 @@
 
     })();
   </script>
+
+  <!-- Three.js & Visor 3D Interactivo de la Botella (360°) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="viewer3d.js?v=2.2.0" defer></script>
 </body>
 </html>
