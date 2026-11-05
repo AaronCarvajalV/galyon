@@ -3652,3 +3652,55 @@ html.has-kinetic-motion #nosotros .metrics.is-revealed {
     padding: 16px;
   }
 }
+
+/* ==========================================================================
+   v8.1.0 — TEMA CREMA EDITORIAL (#F2EFE9 / var(--paper))
+   Idéntico al fondo de la sección Statement (EL FUTURO DEL CAMPO CRECE NATURALMENTE)
+   ========================================================================== */
+:root {
+  --paper: #f2efe9;
+}
+
+body.theme-cream {
+  background: var(--paper, #f2efe9) !important;
+  background-color: var(--paper, #f2efe9) !important;
+  color: var(--ink, #193327);
+}
+
+body.theme-cream .page-main,
+body.theme-cream #nosotros,
+body.theme-cream .intro,
+body.theme-cream .combos-page-hero {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+body.theme-cream .template-nav {
+  background: transparent !important;
+}
+
+body.theme-cream #nosotros .galyon-showcase-title {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 0 20px 0 !important;
+}
+
+body.theme-cream #nosotros .intro-grid {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid #dce8d6;
+  box-shadow: 0 10px 30px rgba(20, 61, 44, 0.05);
+  border-radius: 18px;
+  padding: 34px 38px;
+}
+
+@media (max-width: 760px) {
+  body.theme-cream #nosotros .galyon-showcase-title {
+    padding: 0 !important;
+  }
+  body.theme-cream #nosotros .intro-grid {
+    padding: 22px 20px;
+  }
+}
