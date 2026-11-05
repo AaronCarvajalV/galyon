@@ -405,51 +405,6 @@
       transition: opacity .1s linear;
     }
 
-    /* Pastilla Inferior: VER FICHA TÉCNICA */
-    .hero__pill {
-      position: absolute;
-      bottom: clamp(1.8rem, 4.2vh, 3.6rem);
-      left: 50%;
-      transform: translateX(-50%) translateY(16px);
-      z-index: 5;
-      background: var(--paper);
-      color: var(--ink);
-      border: 1px solid var(--ink-hairline);
-      border-radius: 9999px;
-      padding: .65rem 1.45rem;
-      font-family: "Inter", sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: .65rem;
-      opacity: 0;
-      box-shadow: 0 4px 18px rgba(22, 42, 27, .08);
-      transition: opacity .9s var(--ease), transform .9s var(--ease), box-shadow .35s ease;
-      cursor: pointer;
-      pointer-events: auto;
-    }
-
-    .hero__pill.is-visible {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .hero__pill:hover {
-      transform: translateX(-50%) translateY(-2px);
-      box-shadow: 0 8px 24px rgba(22, 42, 27, .14);
-    }
-
-    .pill-icon {
-      width: 13px;
-      height: 13px;
-      stroke: var(--accent);
-      fill: none;
-      stroke-width: 1.8;
-    }
-
     /* ==========================================================================
        SECTION 2 · STATEMENT (MANIFIESTO CON PASTILLAS CIRCULARES)
        ========================================================================== */
@@ -990,21 +945,6 @@
 
       <!-- Capa 4: Gradiente de fusión al scroll (derretimiento suave en el papel) -->
       <div class="hero__gradient" id="heroGradient" aria-hidden="true"></div>
-
-      <!-- Pastilla inferior: VER FICHA TÉCNICA -->
-      <a href="#factsSection" class="hero__pill" id="heroPill">
-        <svg class="pill-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-          <polyline points="14 2 14 8 20 8"/>
-          <line x1="16" y1="13" x2="8" y2="13"/>
-          <line x1="16" y1="17" x2="8" y2="17"/>
-          <polyline points="10 9 9 9 8 9"/>
-        </svg>
-        <span>VER FICHA TÉCNICA</span>
-        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-          <path d="M5 2v6M2 5l3 3 3-3"/>
-        </svg>
-      </a>
     </div>
 
     <!-- Navbar Unificado Galyon (Idéntico a Nosotros, Bioinsumos, Asesor, etc.) -->
@@ -1252,13 +1192,6 @@
               letter.classList.add('is-revealed');
             }, 300 + idx * 95);
           });
-        }
-
-        // La pastilla inferior asciende a los 1.05s
-        if (heroPill) {
-          setTimeout(function () {
-            heroPill.classList.add('is-visible');
-          }, 1050);
         }
       }
 
