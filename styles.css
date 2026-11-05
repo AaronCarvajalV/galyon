@@ -1225,6 +1225,23 @@
 .crop-advisor .advisor-product{display:grid;grid-template-columns:160px minmax(0,1fr);gap:15px;align-items:center;padding:12px 18px 18px}
 .crop-advisor .advisor-product-photo{height:170px;overflow:hidden;border-radius:10px;background:#e7eecf}
 .crop-advisor .advisor-product-photo img{width:100%;height:100%;display:block;object-fit:cover;object-position:center}
+
+/* Resultados del asesor: catálogo oficial y alternativas de formulación */
+.crop-advisor .advisor-product-photo.advisor-catalog-photo{height:auto;aspect-ratio:1;background:#fbf8f6}
+.crop-advisor .advisor-catalog-photo img{object-fit:contain!important;height:auto!important;aspect-ratio:1}
+.crop-advisor .advisor-product.has-variants,
+.crop-advisor .advisor-product:has(.advisor-product-variants){grid-template-columns:minmax(0,1fr)!important;gap:18px}
+.advisor-product-variants{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;min-width:0;width:100%}
+.advisor-variants-label{grid-column:1/-1;margin:0 0 4px;color:#52705a;font-size:12px;line-height:1.5;font-weight:600}
+.advisor-catalog-variant{margin:0;padding:10px;border-radius:12px;border:1px solid #e0e6d9;background:#fbf8f6;min-width:0;display:flex;flex-direction:column;align-items:center}
+.advisor-catalog-variant img,
+.advisor-product img[data-advisor-product]{display:block;width:100%;max-width:180px;height:auto!important;aspect-ratio:1;object-fit:contain!important}
+.advisor-catalog-variant figcaption{font-size:12px;line-height:1.45;color:#244b33;text-align:center;padding:8px 2px 2px;overflow-wrap:anywhere;font-weight:600}
+@media(max-width:540px){
+ .crop-advisor .advisor-product:has(.advisor-catalog-photo){grid-template-columns:minmax(0,1fr);gap:14px}
+ .crop-advisor .advisor-product-photo.advisor-catalog-photo{width:min(100%,260px);justify-self:center}
+ .advisor-product-variants{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+}
 .crop-advisor .advisor-product-copy>span{color:#69966e;letter-spacing:.10em;font-weight:800;font-size:9px}
 .crop-advisor .advisor-product-copy h5{font-size:23px;color:#16442c;font-weight:900;margin:6px 0;letter-spacing:-.035em}
 .crop-advisor .advisor-product-copy p{color:#566b58;font-size:12px;line-height:1.65;margin:0 0 12px}
