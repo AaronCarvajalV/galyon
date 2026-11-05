@@ -28,4 +28,68 @@
  if('IntersectionObserver' in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;schedule();}).observe(gallery);
  else visible=true;
  show(0);schedule();
+
+ // --------------------------------------------------------------------------
+ // CINEMÁTICA DE TÍTULOS Y DESVANECIMIENTO SUAVE (ESTILO STATEMENT & 3D INICIO)
+ // --------------------------------------------------------------------------
+ if (!motion.matches) {
+  document.documentElement.classList.add('has-kinetic-motion');
+ }
+
+ function revealTitleChars(titleEl, startDelay = 80) {
+  if (!titleEl || titleEl.dataset.hasRevealed) return;
+  titleEl.dataset.hasRevealed = 'true';
+  const chars = titleEl.querySelectorAll('.char');
+  setTimeout(() => {
+   chars.forEach((char, idx) => {
+    setTimeout(() => {
+     char.classList.add('is-revealed');
+    }, idx * 22);
+   });
+  }, startDelay);
+ }
+
+ // 1. Showcase principal: activa título y desvanecimiento escalonado de las 4 tarjetas
+ const showcase = document.querySelector('.galyon-showcase');
+ if (showcase) {
+  if ('IntersectionObserver' in window && !motion.matches) {
+   const showcaseObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+     if (entry.isIntersecting) {
+      revealTitleChars(document.getElementById('nosotrosShowcaseTitle'), 100);
+      const photos = showcase.querySelectorAll('.identity-photo');
+      photos.forEach(photo => photo.classList.add('is-revealed'));
+      showcaseObserver.unobserve(entry.target);
+     }
+    });
+   }, { threshold: 0.12 });
+   showcaseObserver.observe(showcase);
+  } else {
+   revealTitleChars(document.getElementById('nosotrosShowcaseTitle'), 100);
+   showcase.querySelectorAll('.identity-photo').forEach(p => p.classList.add('is-revealed'));
+  }
+ }
+
+ // 2. Sección secundaria: activa titular de Quiénes Somos y desvanecimiento de intro-grid & métricas
+ const introGrid = document.querySelector('#nosotros .intro-grid');
+ const metrics = document.querySelector('#nosotros .metrics');
+ if (introGrid) {
+  if ('IntersectionObserver' in window && !motion.matches) {
+   const introObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+     if (entry.isIntersecting) {
+      revealTitleChars(document.getElementById('nosotrosIntroTitle'), 60);
+      introGrid.classList.add('is-revealed');
+      if (metrics) metrics.classList.add('is-revealed');
+      introObserver.unobserve(entry.target);
+     }
+    });
+   }, { threshold: 0.15 });
+   introObserver.observe(introGrid);
+  } else {
+   revealTitleChars(document.getElementById('nosotrosIntroTitle'), 60);
+   introGrid.classList.add('is-revealed');
+   if (metrics) metrics.classList.add('is-revealed');
+  }
+ }
 })();
