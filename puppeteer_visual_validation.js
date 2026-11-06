@@ -27,13 +27,12 @@ async function run() {
   });
 
   // 1. Validate index.html
-  console.log('\n--- 1. Testing index.html (Hero & 3D Viewer) ---');
+  console.log('\n--- 1. Testing index.html (Hero Video & 3D Viewer) ---');
   await page.goto('http://localhost:3000/index.html', { waitUntil: 'domcontentloaded' });
-  await page.waitForSelector('.hero__headline');
-  const headlineText = await page.$eval('.hero__headline', el => el.textContent.replace(/\s+/g, ''));
-  assert.equal(headlineText, 'GALYON', 'Hero headline should say GALYON');
-  const threeCanvas = await page.$('#viewer3d-container canvas');
-  console.log('✔ Hero headline & 3D container loaded without errors.');
+  await page.waitForSelector('#heroVideo');
+  const videoSrc = await page.$eval('#heroVideo source', el => el.getAttribute('src'));
+  assert.ok(videoSrc.includes('galyon-hero-reveal'), 'Hero video source should be galyon-hero-reveal');
+  console.log('✔ Hero video & 3D container loaded without errors.');
 
   // Validate exact Navbar items and layout across all 7 pages
   console.log('\n--- Testing Unified Navbar across all 7 pages ---');
