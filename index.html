@@ -882,7 +882,6 @@
         id="heroVideo"
         autoplay
         muted
-        loop
         playsinline
         poster="assets/galyon-hero-reveal-poster.webp"
         aria-label="GALYON TRICHO en plantación de cacao"
@@ -1123,10 +1122,12 @@
       }
 
       // ------------------------------------------------------------------------
-      // 2. SECUENCIA DE CARGA DEL HERO (VIDEO CINEMATOGRÁFICO)
+      // 2. SECUENCIA DE CARGA DEL HERO (VIDEO CINEMATOGRÁFICO: 1 REPRODUCCIÓN POR VISITA/REINICIO)
       // ------------------------------------------------------------------------
       function runHeroLoadSequence() {
         if (heroVideo) {
+          heroVideo.loop = false;
+          heroVideo.currentTime = 0;
           heroVideo.classList.add('is-settled');
           var playPromise = heroVideo.play();
           if (playPromise !== undefined) {
@@ -1134,6 +1135,16 @@
           }
         }
       }
+
+      // Al restaurar la página desde la caché del navegador (bfcache), reiniciar reproducción única
+      window.addEventListener('pageshow', function (e) {
+        if (heroVideo && e.persisted) {
+          heroVideo.loop = false;
+          heroVideo.currentTime = 0;
+          var p = heroVideo.play();
+          if (p !== undefined) p.catch(function () {});
+        }
+      });
 
       // ------------------------------------------------------------------------
       // 3. REVELACIONES AL SCROLL Y DERRETIMIENTO DEL HERO
