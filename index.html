@@ -580,11 +580,12 @@
       font-weight: 500;
       font-optical-sizing: none;
       font-variation-settings: "opsz" 11;
-      font-size: clamp(28px, 4.2vw, 54px);
-      line-height: 1.25;
-      letter-spacing: -0.01em;
+      font-size: clamp(24px, 3.1vw, 44px);
+      line-height: 1.28;
+      letter-spacing: 0.012em;
+      text-transform: uppercase;
       color: var(--ink);
-      max-width: 26ch;
+      max-width: 1140px;
       text-wrap: balance;
     }
 
@@ -595,7 +596,8 @@
 
     .statement-line {
       display: block;
-      white-space: normal;
+      margin: 0.16em 0;
+      white-space: nowrap;
     }
 
     .char {
@@ -923,6 +925,17 @@
         text-align: center;
       }
 
+      .statement-title {
+        font-size: clamp(20px, 5.5vw, 28px);
+        line-height: 1.34;
+        max-width: 100%;
+      }
+
+      .statement-line {
+        display: inline;
+        white-space: normal;
+      }
+
       .nav-menu.is-open .nav-item {
         color: #16241b !important;
         text-shadow: none !important;
@@ -1194,10 +1207,24 @@
   <section class="statement-section" id="statementSection">
     <span class="label-caps statement-label" id="statementLabel">BIOTECNOLOGÍA AGRÍCOLA EN ECUADOR</span>
 
-    <h2 class="statement-title" id="statementTitle" aria-label="Bioinsumos agrícolas, análisis de suelo y orientación técnica para tomar mejores decisiones en tus cultivos.">
-      <span class="statement-word"><span class="char">B</span><span class="char">i</span><span class="char">o</span><span class="char">i</span><span class="char">n</span><span class="char">s</span><span class="char">u</span><span class="char">m</span><span class="char">o</span><span class="char">s</span></span>&nbsp;<span class="statement-word"><span class="char">a</span><span class="char">g</span><span class="char">r</span><span class="char">í</span><span class="char">c</span><span class="char">o</span><span class="char">l</span><span class="char">a</span><span class="char">s</span><span class="char">,</span></span>&nbsp;<span class="statement-word"><span class="char">a</span><span class="char">n</span><span class="char">á</span><span class="char">l</span><span class="char">i</span><span class="char">s</span><span class="char">i</span><span class="char">s</span></span>&nbsp;<span class="statement-word"><span class="char">d</span><span class="char">e</span></span>&nbsp;<span class="statement-word"><span class="char">s</span><span class="char">u</span><span class="char">e</span><span class="char">l</span><span class="char">o</span></span>
-      <span class="statement-word"><span class="char">y</span></span>&nbsp;<span class="statement-word"><span class="char">o</span><span class="char">r</span><span class="char">i</span><span class="char">e</span><span class="char">n</span><span class="char">t</span><span class="char">a</span><span class="char">c</span><span class="char">i</span><span class="char">ó</span><span class="char">n</span></span>&nbsp;<span class="statement-word"><span class="char">t</span><span class="char">é</span><span class="char">c</span><span class="char">n</span><span class="char">i</span><span class="char">c</span><span class="char">a</span></span>&nbsp;<span class="statement-word"><span class="char">p</span><span class="char">a</span><span class="char">r</span><span class="char">a</span></span>&nbsp;<span class="statement-word"><span class="char">t</span><span class="char">o</span><span class="char">m</span><span class="char">a</span><span class="char">r</span></span>
-      <span class="statement-word"><span class="char">m</span><span class="char">e</span><span class="char">j</span><span class="char">o</span><span class="char">r</span><span class="char">e</span><span class="char">s</span></span>&nbsp;<span class="statement-word"><span class="char">d</span><span class="char">e</span><span class="char">c</span><span class="char">i</span><span class="char">s</span><span class="char">i</span><span class="char">o</span><span class="char">n</span><span class="char">e</span><span class="char">s</span></span>&nbsp;<span class="statement-word"><span class="char">e</span><span class="char">n</span></span>&nbsp;<span class="statement-word"><span class="char">t</span><span class="char">u</span><span class="char">s</span></span>&nbsp;<span class="statement-word"><span class="char">c</span><span class="char">u</span><span class="char">l</span><span class="char">t</span><span class="char">i</span><span class="char">v</span><span class="char">o</span><span class="char">s</span><span class="char">.</span></span>
+    <h2 class="statement-title" id="statementTitle" aria-label="BIOINSUMOS AGRÍCOLAS, ANÁLISIS DE SUELO Y ORIENTACIÓN TÉCNICA PARA TOMAR MEJORES DECISIONES EN TUS CULTIVOS.">
+      <span class="statement-line">
+        <span class="statement-word"><span class="char">B</span><span class="char">I</span><span class="char">O</span><span class="char">I</span><span class="char">N</span><span class="char">S</span><span class="char">U</span><span class="char">M</span><span class="char">O</span><span class="char">S</span></span>&nbsp;<span class="statement-word"><span class="char">A</span><span class="char">G</span><span class="char">R</span><span class="char">Í</span><span class="char">C</span><span class="char">O</span><span class="char">L</span><span class="char">A</span><span class="char">S</span><span class="char">,</span></span>
+        <span class="round-pill" id="pill1">
+          <img src="assets/editorial/pill-trichoderma-mycelium.jpg" alt="Micelio y esporas de Trichoderma" />
+        </span>
+        <span class="statement-word"><span class="char">A</span><span class="char">N</span><span class="char">Á</span><span class="char">L</span><span class="char">I</span><span class="char">S</span><span class="char">I</span><span class="char">S</span></span>&nbsp;<span class="statement-word"><span class="char">D</span><span class="char">E</span></span>&nbsp;<span class="statement-word"><span class="char">S</span><span class="char">U</span><span class="char">E</span><span class="char">L</span><span class="char">O</span></span>
+      </span>
+      <span class="statement-line">
+        <span class="statement-word"><span class="char">Y</span></span>&nbsp;<span class="statement-word"><span class="char">O</span><span class="char">R</span><span class="char">I</span><span class="char">E</span><span class="char">N</span><span class="char">T</span><span class="char">A</span><span class="char">C</span><span class="char">I</span><span class="char">Ó</span><span class="char">N</span></span>&nbsp;<span class="statement-word"><span class="char">T</span><span class="char">É</span><span class="char">C</span><span class="char">N</span><span class="char">I</span><span class="char">C</span><span class="char">A</span></span>&nbsp;<span class="statement-word"><span class="char">P</span><span class="char">A</span><span class="char">R</span><span class="char">A</span></span>&nbsp;<span class="statement-word"><span class="char">T</span><span class="char">O</span><span class="char">M</span><span class="char">A</span><span class="char">R</span></span>
+      </span>
+      <span class="statement-line">
+        <span class="statement-word"><span class="char">M</span><span class="char">E</span><span class="char">J</span><span class="char">O</span><span class="char">R</span><span class="char">E</span><span class="char">S</span></span>&nbsp;<span class="statement-word"><span class="char">D</span><span class="char">E</span><span class="char">C</span><span class="char">I</span><span class="char">S</span><span class="char">I</span><span class="char">O</span><span class="char">N</span><span class="char">E</span><span class="char">S</span></span>
+        <span class="round-pill" id="pill2">
+          <img src="assets/editorial/tall-cacao-pod.jpg" alt="Cultivos sanos y productivos" />
+        </span>
+        <span class="statement-word"><span class="char">E</span><span class="char">N</span></span>&nbsp;<span class="statement-word"><span class="char">T</span><span class="char">U</span><span class="char">S</span></span>&nbsp;<span class="statement-word"><span class="char">C</span><span class="char">U</span><span class="char">L</span><span class="char">T</span><span class="char">I</span><span class="char">V</span><span class="char">O</span><span class="char">S</span><span class="char">.</span></span>
+      </span>
     </h2>
 
     <!-- Emblema Vectorial Botánico (66px): Doble anillo con hoja y raíces -->
@@ -1423,14 +1450,22 @@
           chars.forEach(function (char, idx) {
             setTimeout(function () {
               char.classList.add('is-revealed');
-            }, idx * 16);
+            }, idx * 15);
           });
         }
+
+        // Las esferas circulares con imágenes emergen con rebote spring
+        setTimeout(function () {
+          if (pill1) pill1.classList.add('is-revealed');
+        }, 360);
+        setTimeout(function () {
+          if (pill2) pill2.classList.add('is-revealed');
+        }, 620);
 
         // El emblema gira desde -90deg y escala 0.6
         setTimeout(function () {
           if (emblem) emblem.classList.add('is-revealed');
-        }, 650);
+        }, 850);
       }
 
       function triggerFactsReveal() {
