@@ -320,7 +320,7 @@
       left: 0;
       right: 0;
       height: 130px;
-      background: linear-gradient(to bottom, rgba(242, 239, 233, 0.75) 0%, rgba(242, 239, 233, 0.25) 60%, transparent 100%);
+      background: linear-gradient(to bottom, rgba(10, 24, 14, 0.45) 0%, transparent 100%);
       z-index: 10;
       pointer-events: none;
     }
@@ -353,6 +353,186 @@
 
     .hero__video.is-settled {
       transform: scale(1);
+    }
+
+    /* Viñeta lateral izquierda para asegurar legibilidad impecable sobre el follaje */
+    .hero__scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(8, 20, 12, 0.88) 0%, rgba(8, 20, 12, 0.72) 35%, rgba(8, 20, 12, 0.35) 55%, transparent 75%);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* Contenido Editorial del Hero (Título, Subtítulo y Botones CTA) */
+    .hero__content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0 120px;
+      box-sizing: border-box;
+      z-index: 15;
+      pointer-events: none;
+      transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+      will-change: opacity, transform;
+    }
+
+    .hero__text-block {
+      max-width: 580px;
+      pointer-events: auto;
+    }
+
+    .hero__title {
+      margin: 0 0 20px 0;
+      font-family: 'Plus Jakarta Sans', 'Schibsted Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-weight: 700;
+      font-size: clamp(34px, 4.6vw, 68px);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: #FFFFFF;
+    }
+
+    .hero__title-line {
+      display: block;
+    }
+
+    .hero__word {
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .hero__char {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(0.45em) rotate(3deg);
+      transition: transform .8s var(--ease), opacity .8s var(--ease);
+      will-change: transform, opacity;
+    }
+
+    .hero__char.is-revealed {
+      opacity: 1;
+      transform: translateY(0) rotate(0deg);
+    }
+
+    .hero__subtitle {
+      margin: 0 0 32px 0;
+      font-family: 'Plus Jakarta Sans', 'Schibsted Grotesk', -apple-system, sans-serif;
+      font-weight: 400;
+      font-size: clamp(16px, 1.6vw, 21px);
+      line-height: 1.45;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 480px;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .8s var(--ease), transform .8s var(--ease);
+      will-change: opacity, transform;
+    }
+
+    .hero__subtitle.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero__actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(22px) scale(0.97);
+      transition: opacity .8s var(--spring), transform .8s var(--spring);
+      will-change: opacity, transform;
+    }
+
+    .hero__actions.is-revealed {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .hero__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Schibsted Grotesk', -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1;
+      padding: 16px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      cursor: pointer;
+      box-sizing: border-box;
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .hero__btn--primary {
+      background: #A0D756;
+      color: #0E2914;
+      font-weight: 600;
+      box-shadow: 0 4px 20px rgba(160, 215, 86, 0.28);
+      border: 1.5px solid #A0D756;
+    }
+
+    .hero__btn--primary:hover {
+      background: #B2E568;
+      border-color: #B2E568;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 26px rgba(160, 215, 86, 0.42);
+    }
+
+    .hero__btn--ghost {
+      background: rgba(14, 41, 20, 0.42);
+      color: #FFFFFF;
+      font-weight: 500;
+      border: 1.5px solid rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .hero__btn--ghost:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    /* Navbar dentro del Hero con fondo oscuro natural */
+    .hero .template-nav .logo-text {
+      color: #FFFFFF;
+    }
+
+    .hero .template-nav .nav-item {
+      color: rgba(255, 255, 255, 0.92);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero .template-nav .nav-item:hover {
+      color: #FFFFFF;
+      opacity: 1;
+    }
+
+    .hero .template-nav .nav-item.is-active {
+      color: #FFFFFF;
+      font-weight: 700;
+    }
+
+    .hero .template-nav .nav-item.is-active::after {
+      background: #A0D756;
+    }
+
+    .hero .template-nav .cart-button {
+      color: #FFFFFF;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .hero .template-nav .cart-button:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .hero .template-nav .nav-mobile-toggle span {
+      background: #FFFFFF;
     }
 
     /* Gradiente de Fusión al Scroll (Derretimiento hacia el papel crema) */
@@ -395,22 +575,27 @@
     }
 
     .statement-title {
-      margin: 0;
+      margin: 0 auto;
       font-family: "Bodoni Moda", "Didot", Georgia, serif;
       font-weight: 500;
       font-optical-sizing: none;
       font-variation-settings: "opsz" 11;
-      font-size: clamp(38px, 7.2vw, 132px);
-      line-height: 1.06;
-      letter-spacing: .005em;
-      text-transform: uppercase;
+      font-size: clamp(28px, 4.2vw, 54px);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
       color: var(--ink);
-      max-width: 19ch;
+      max-width: 26ch;
+      text-wrap: balance;
+    }
+
+    .statement-word {
+      display: inline-block;
+      white-space: nowrap;
     }
 
     .statement-line {
       display: block;
-      white-space: nowrap;
+      white-space: normal;
     }
 
     .char {
@@ -697,12 +882,50 @@
       .template-nav {
         padding: 16px 40px;
       }
+
+      .hero__content {
+        padding: 0 48px;
+      }
     }
 
     @media (max-width: 860px) {
       .template-nav {
         padding: 14px 20px;
         gap: 16px;
+      }
+
+      .hero__content {
+        padding: 90px 24px 40px;
+        align-items: flex-end;
+      }
+
+      .hero__scrim {
+        background: linear-gradient(180deg, rgba(8, 20, 12, 0.82) 0%, rgba(8, 20, 12, 0.5) 45%, rgba(8, 20, 12, 0.88) 100%);
+      }
+
+      .hero__title {
+        font-size: clamp(28px, 7.5vw, 42px);
+      }
+
+      .hero__subtitle {
+        font-size: 15px;
+        margin-bottom: 22px;
+      }
+
+      .hero__actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+      }
+
+      .hero__btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-menu.is-open .nav-item {
+        color: #16241b !important;
+        text-shadow: none !important;
       }
 
       .nav-right .nav-wa,
@@ -853,6 +1076,10 @@
         transform: scale(1) !important;
       }
 
+      .hero__char,
+      .hero__subtitle,
+      .hero__actions,
+
       .char,
       .round-pill,
       .emblem,
@@ -892,6 +1119,34 @@
 
       <!-- Capa de Gradiente de fusión al scroll (derretimiento suave hacia el papel crema) -->
       <div class="hero__gradient" id="heroGradient" aria-hidden="true"></div>
+    </div>
+
+    <!-- Capa de Viñeta lateral izquierda para asegurar legibilidad impecable sobre el follaje -->
+    <div class="hero__scrim" aria-hidden="true"></div>
+
+    <!-- Contenido Editorial del Hero: Título animado, Subtítulo y Botones CTA -->
+    <div class="hero__content" id="heroContent">
+      <div class="hero__text-block">
+        <h1 class="hero__title" id="heroTitle" aria-label="El futuro del campo crece naturalmente.">
+          <span class="hero__title-line">
+            <span class="hero__word"><span class="hero__char">E</span><span class="hero__char">l</span></span>&nbsp;<span class="hero__word"><span class="hero__char">f</span><span class="hero__char">u</span><span class="hero__char">t</span><span class="hero__char">u</span><span class="hero__char">r</span><span class="hero__char">o</span></span>&nbsp;<span class="hero__word"><span class="hero__char">d</span><span class="hero__char">e</span><span class="hero__char">l</span></span>&nbsp;<span class="hero__word"><span class="hero__char">c</span><span class="hero__char">a</span><span class="hero__char">m</span><span class="hero__char">p</span><span class="hero__char">o</span></span>
+          </span>
+          <span class="hero__title-line">
+            <span class="hero__word"><span class="hero__char">c</span><span class="hero__char">r</span><span class="hero__char">e</span><span class="hero__char">c</span><span class="hero__char">e</span></span>&nbsp;<span class="hero__word"><span class="hero__char">n</span><span class="hero__char">a</span><span class="hero__char">t</span><span class="hero__char">u</span><span class="hero__char">r</span><span class="hero__char">a</span><span class="hero__char">l</span><span class="hero__char">m</span><span class="hero__char">e</span><span class="hero__char">n</span><span class="hero__char">t</span><span class="hero__char">e</span><span class="hero__char">.</span></span>
+          </span>
+        </h1>
+        <p class="hero__subtitle" id="heroSubtitle">
+          Biotecnología y acompañamiento para cuidar tu cultivo.
+        </p>
+        <div class="hero__actions" id="heroActions">
+          <a href="bioinsumos.html" class="hero__btn hero__btn--primary" id="heroBtnProductos">
+            Conoce nuestras soluciones
+          </a>
+          <a href="asesor.html" class="hero__btn hero__btn--ghost" id="heroBtnAsesor">
+            Consulta tu cultivo
+          </a>
+        </div>
+      </div>
     </div>
 
     <!-- Navbar Unificado Galyon (Idéntico a Nosotros, Bioinsumos, Asesor, etc.) -->
@@ -939,31 +1194,10 @@
   <section class="statement-section" id="statementSection">
     <span class="label-caps statement-label" id="statementLabel">BIOTECNOLOGÍA AGRÍCOLA EN ECUADOR</span>
 
-    <h2 class="statement-title" id="statementTitle">
-      <span class="statement-line" id="line1">
-        <!-- EL ● FUTURO DEL -->
-        <span class="char">E</span><span class="char">L</span>
-        <span class="round-pill" id="pill1">
-          <img src="assets/editorial/pill-trichoderma-mycelium.jpg" alt="Micelio y esporas de Trichoderma" />
-        </span>
-        <span class="char">F</span><span class="char">U</span><span class="char">T</span><span class="char">U</span><span class="char">R</span><span class="char">O</span>
-        <span class="char">&nbsp;</span>
-        <span class="char">D</span><span class="char">E</span><span class="char">L</span>
-      </span>
-
-      <span class="statement-line" id="line2">
-        <!-- CAMPO ● CRECE -->
-        <span class="char">C</span><span class="char">A</span><span class="char">M</span><span class="char">P</span><span class="char">O</span>
-        <span class="round-pill" id="pill2">
-          <img src="assets/editorial/tall-cacao-pod.jpg" alt="Cultivos sanos y productivos" />
-        </span>
-        <span class="char">C</span><span class="char">R</span><span class="char">E</span><span class="char">C</span><span class="char">E</span>
-      </span>
-
-      <span class="statement-line" id="line3">
-        <!-- NATURALMENTE -->
-        <span class="char">N</span><span class="char">A</span><span class="char">T</span><span class="char">U</span><span class="char">R</span><span class="char">A</span><span class="char">L</span><span class="char">M</span><span class="char">E</span><span class="char">N</span><span class="char">T</span><span class="char">E</span>
-      </span>
+    <h2 class="statement-title" id="statementTitle" aria-label="Bioinsumos agrícolas, análisis de suelo y orientación técnica para tomar mejores decisiones en tus cultivos.">
+      <span class="statement-word"><span class="char">B</span><span class="char">i</span><span class="char">o</span><span class="char">i</span><span class="char">n</span><span class="char">s</span><span class="char">u</span><span class="char">m</span><span class="char">o</span><span class="char">s</span></span>&nbsp;<span class="statement-word"><span class="char">a</span><span class="char">g</span><span class="char">r</span><span class="char">í</span><span class="char">c</span><span class="char">o</span><span class="char">l</span><span class="char">a</span><span class="char">s</span><span class="char">,</span></span>&nbsp;<span class="statement-word"><span class="char">a</span><span class="char">n</span><span class="char">á</span><span class="char">l</span><span class="char">i</span><span class="char">s</span><span class="char">i</span><span class="char">s</span></span>&nbsp;<span class="statement-word"><span class="char">d</span><span class="char">e</span></span>&nbsp;<span class="statement-word"><span class="char">s</span><span class="char">u</span><span class="char">e</span><span class="char">l</span><span class="char">o</span></span>
+      <span class="statement-word"><span class="char">y</span></span>&nbsp;<span class="statement-word"><span class="char">o</span><span class="char">r</span><span class="char">i</span><span class="char">e</span><span class="char">n</span><span class="char">t</span><span class="char">a</span><span class="char">c</span><span class="char">i</span><span class="char">ó</span><span class="char">n</span></span>&nbsp;<span class="statement-word"><span class="char">t</span><span class="char">é</span><span class="char">c</span><span class="char">n</span><span class="char">i</span><span class="char">c</span><span class="char">a</span></span>&nbsp;<span class="statement-word"><span class="char">p</span><span class="char">a</span><span class="char">r</span><span class="char">a</span></span>&nbsp;<span class="statement-word"><span class="char">t</span><span class="char">o</span><span class="char">m</span><span class="char">a</span><span class="char">r</span></span>
+      <span class="statement-word"><span class="char">m</span><span class="char">e</span><span class="char">j</span><span class="char">o</span><span class="char">r</span><span class="char">e</span><span class="char">s</span></span>&nbsp;<span class="statement-word"><span class="char">d</span><span class="char">e</span><span class="char">c</span><span class="char">i</span><span class="char">s</span><span class="char">i</span><span class="char">o</span><span class="char">n</span><span class="char">e</span><span class="char">s</span></span>&nbsp;<span class="statement-word"><span class="char">e</span><span class="char">n</span></span>&nbsp;<span class="statement-word"><span class="char">t</span><span class="char">u</span><span class="char">s</span></span>&nbsp;<span class="statement-word"><span class="char">c</span><span class="char">u</span><span class="char">l</span><span class="char">t</span><span class="char">i</span><span class="char">v</span><span class="char">o</span><span class="char">s</span><span class="char">.</span></span>
     </h2>
 
     <!-- Emblema Vectorial Botánico (66px): Doble anillo con hoja y raíces -->
@@ -1067,6 +1301,10 @@
       var heroVideo = document.getElementById('heroVideo');
       var heroStage = document.getElementById('heroStage');
       var heroGradient = document.getElementById('heroGradient');
+      var heroContent = document.getElementById('heroContent');
+      var heroTitle = document.getElementById('heroTitle');
+      var heroSubtitle = document.getElementById('heroSubtitle');
+      var heroActions = document.getElementById('heroActions');
 
       var statementSection = document.getElementById('statementSection');
       var statementLabel = document.getElementById('statementLabel');
@@ -1122,7 +1360,7 @@
       }
 
       // ------------------------------------------------------------------------
-      // 2. SECUENCIA DE CARGA DEL HERO (VIDEO CINEMATOGRÁFICO: 1 REPRODUCCIÓN POR VISITA/REINICIO)
+      // 2. SECUENCIA DE CARGA DEL HERO (VIDEO CINEMATOGRÁFICO Y TEXTO CINÉTICO)
       // ------------------------------------------------------------------------
       function runHeroLoadSequence() {
         if (heroVideo) {
@@ -1134,15 +1372,37 @@
             playPromise.catch(function () {});
           }
         }
+
+        // Animar cinéticamente las letras del titular del Hero
+        var heroChars = document.querySelectorAll('.hero__char');
+        heroChars.forEach(function (char, idx) {
+          char.classList.remove('is-revealed');
+          setTimeout(function () {
+            char.classList.add('is-revealed');
+          }, idx * 26 + 220);
+        });
+
+        // Revelar subtítulo
+        if (heroSubtitle) {
+          heroSubtitle.classList.remove('is-revealed');
+          setTimeout(function () {
+            heroSubtitle.classList.add('is-revealed');
+          }, 680);
+        }
+
+        // Revelar botones CTA
+        if (heroActions) {
+          heroActions.classList.remove('is-revealed');
+          setTimeout(function () {
+            heroActions.classList.add('is-revealed');
+          }, 920);
+        }
       }
 
       // Al restaurar la página desde la caché del navegador (bfcache), reiniciar reproducción única
       window.addEventListener('pageshow', function (e) {
-        if (heroVideo && e.persisted) {
-          heroVideo.loop = false;
-          heroVideo.currentTime = 0;
-          var p = heroVideo.play();
-          if (p !== undefined) p.catch(function () {});
+        if (e.persisted) {
+          runHeroLoadSequence();
         }
       });
 
@@ -1163,22 +1423,14 @@
           chars.forEach(function (char, idx) {
             setTimeout(function () {
               char.classList.add('is-revealed');
-            }, idx * 26);
+            }, idx * 16);
           });
         }
-
-        // Las pastillas circulares emergen con rebote spring
-        setTimeout(function () {
-          if (pill1) pill1.classList.add('is-revealed');
-        }, 340);
-        setTimeout(function () {
-          if (pill2) pill2.classList.add('is-revealed');
-        }, 580);
 
         // El emblema gira desde -90deg y escala 0.6
         setTimeout(function () {
           if (emblem) emblem.classList.add('is-revealed');
-        }, 750);
+        }, 650);
       }
 
       function triggerFactsReveal() {
@@ -1207,6 +1459,13 @@
         // Desplazamiento parallax del stage a 0.32x scroll
         if (heroStage) {
           heroStage.style.transform = 'translate(-50%, calc(-50% + ' + (scrollY * 0.32) + 'px))';
+        }
+
+        // Desvanecimiento suave y elevación del contenido editorial del Hero al hacer scroll
+        if (heroContent) {
+          var fadeRatio = Math.min(1, Math.max(0, scrollY / (vh * 0.45)));
+          heroContent.style.opacity = String(1 - fadeRatio);
+          heroContent.style.transform = 'translateY(' + (-scrollY * 0.22) + 'px)';
         }
 
         // Desenfoque suave del video hasta 6px
