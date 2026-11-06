@@ -355,25 +355,6 @@
       transform: scale(1);
     }
 
-    /* Imagen estática con etiqueta 100% nítida y legible que se fusiona al finalizar el video */
-    .hero__final-image {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 60%;
-      z-index: 2;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.45s ease-out;
-      will-change: opacity, filter;
-    }
-
-    .hero__final-image.is-visible {
-      opacity: 1;
-    }
-
     /* Gradiente de Fusión al Scroll (Derretimiento hacia el papel crema) */
     .hero__gradient {
       position: absolute;
@@ -872,11 +853,6 @@
         transform: scale(1) !important;
       }
 
-      .hero__final-image {
-        opacity: 1 !important;
-        transition: none !important;
-      }
-
       .char,
       .round-pill,
       .emblem,
@@ -913,16 +889,6 @@
         <source src="assets/galyon-hero-reveal.mp4" type="video/mp4" />
         <source src="assets/galyon-hero-reveal.webp" type="image/webp" />
       </video>
-
-      <!-- Imagen estática en alta definición con etiqueta 100% nítida y legible -->
-      <img
-        class="hero__final-image"
-        id="heroFinalImage"
-        src="assets/galyon-hero-final.webp"
-        alt="Botella GALYON TRICHO con etiqueta nítida en plantación de cacao"
-        aria-hidden="true"
-        loading="eager"
-      />
 
       <!-- Capa de Gradiente de fusión al scroll (derretimiento suave hacia el papel crema) -->
       <div class="hero__gradient" id="heroGradient" aria-hidden="true"></div>
@@ -1099,7 +1065,6 @@
 
       // Elementos del DOM
       var heroVideo = document.getElementById('heroVideo');
-      var heroFinalImage = document.getElementById('heroFinalImage');
       var heroStage = document.getElementById('heroStage');
       var heroGradient = document.getElementById('heroGradient');
 
@@ -1157,61 +1122,27 @@
       }
 
       // ------------------------------------------------------------------------
-      // 2. SECUENCIA DE CARGA DEL HERO (VIDEO CINEMATOGRÁFICO Y ENFOQUE NÍTIDO)
+      // 2. SECUENCIA DE CARGA DEL HERO (VIDEO CINEMATOGRÁFICO: 1 REPRODUCCIÓN POR VISITA/REINICIO)
       // ------------------------------------------------------------------------
-      var imageRevealed = false;
-
-      function showFinalCrispImage() {
-        if (imageRevealed) return;
-        imageRevealed = true;
-        if (heroFinalImage) {
-          heroFinalImage.classList.add('is-visible');
-        }
-      }
-
       function runHeroLoadSequence() {
-        imageRevealed = false;
-        if (heroFinalImage) {
-          heroFinalImage.classList.remove('is-visible');
-        }
         if (heroVideo) {
           heroVideo.loop = false;
           heroVideo.currentTime = 0;
           heroVideo.classList.add('is-settled');
           var playPromise = heroVideo.play();
           if (playPromise !== undefined) {
-            playPromise.catch(function () {
-              showFinalCrispImage();
-            });
+            playPromise.catch(function () {});
           }
-        } else {
-          showFinalCrispImage();
         }
-      }
-
-      if (heroVideo) {
-        // Disparar la transición suave al acercarse al final del video
-        heroVideo.addEventListener('timeupdate', function () {
-          if (heroVideo.duration && heroVideo.currentTime >= (heroVideo.duration - 0.35)) {
-            showFinalCrispImage();
-          }
-        });
-
-        // Garantía al finalizar completamente el video
-        heroVideo.addEventListener('ended', function () {
-          showFinalCrispImage();
-        });
-
-        // En caso de error de carga de video
-        heroVideo.addEventListener('error', function () {
-          showFinalCrispImage();
-        });
       }
 
       // Al restaurar la página desde la caché del navegador (bfcache), reiniciar reproducción única
       window.addEventListener('pageshow', function (e) {
-        if (e.persisted) {
-          runHeroLoadSequence();
+        if (heroVideo && e.persisted) {
+          heroVideo.loop = false;
+          heroVideo.currentTime = 0;
+          var p = heroVideo.play();
+          if (p !== undefined) p.catch(function () {});
         }
       });
 
@@ -1278,11 +1209,10 @@
           heroStage.style.transform = 'translate(-50%, calc(-50% + ' + (scrollY * 0.32) + 'px))';
         }
 
-        // Desenfoque suave del video e imagen estática hasta 6px
+        // Desenfoque suave del video hasta 6px
         var scrollRatio = Math.min(1, Math.max(0, scrollY / (vh * 0.6)));
         var blurAmt = scrollRatio * 6;
         if (heroVideo) heroVideo.style.filter = 'blur(' + blurAmt + 'px)';
-        if (heroFinalImage) heroFinalImage.style.filter = 'blur(' + blurAmt + 'px)';
 
         // El gradiente inferior crece de 34% a 100% fundiéndose en el papel
         if (heroGradient) {
