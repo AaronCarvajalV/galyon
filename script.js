@@ -1295,3 +1295,35 @@ document.addEventListener('keydown', e => {
     playVideo();
   }
 })();
+
+// ==========================================================================
+// GALYON AMBIENT LEAF SHADOWS MOTION & PARALLAX
+// ==========================================================================
+(function() {
+  var bg = document.querySelector('.leaf-shadows-bg');
+  var drift = document.querySelector('.leaf-shadows-drift');
+  var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (!bg) return;
+
+  var ticking = false;
+  function updateParallax() {
+    ticking = false;
+    if (motion.matches) return;
+    var scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+    bg.style.setProperty('--leaf-scroll-y', (-scrollY * 0.022).toFixed(1) + 'px');
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  document.addEventListener('visibilitychange', function() {
+    if (drift) {
+      drift.style.animationPlayState = document.hidden ? 'paused' : 'running';
+    }
+  });
+})();
+

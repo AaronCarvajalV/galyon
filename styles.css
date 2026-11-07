@@ -2709,8 +2709,9 @@ html, body {
    v6.3.0 — GLOBAL DYNAMIC BACKGROUND & HARMONIZED CARD ELEVATION
    ========================================================================== */
 body.has-dynamic-bg,
+body.theme-cream,
 body:has(.site-bg-fixed) {
-  background: transparent !important;
+  background: #eef0e4 !important;
 }
 
 .site-bg-fixed {
@@ -2722,37 +2723,100 @@ body:has(.site-bg-fixed) {
   overflow: hidden;
   z-index: 0;
   pointer-events: none;
-  background-color: #dbe6ee;
-  background-image: url('assets/galyon-campo-real.jpg');
-  background-position: center 65%;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: #eef0e4;
 }
 
-.site-bg-video {
-  display: none !important;
+/* Capa exterior para parallax controlado por scroll */
+.leaf-shadows-bg {
+  position: absolute;
+  inset: -8% -8%;
+  width: 116%;
+  height: 116%;
+  will-change: transform;
+  transform: translate3d(0, var(--leaf-scroll-y, 0px), 0);
 }
 
+/* Capa interior con la textura de sombras de helechos y deriva de brisa */
+.leaf-shadows-drift,
 .site-bg-img {
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  inset: 0;
   width: 100%;
   height: 100%;
   min-width: 100%;
   min-height: 100%;
   object-fit: cover;
-  object-position: center 65%;
+  object-position: center center;
+  background-image: url('assets/mindora-leaf-shadows.webp');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  animation: leafShadowBreeze 22s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate;
+}
+
+/* Capa de luz solar moteada (dappled light) */
+.leaf-shadows-light {
+  position: absolute;
+  inset: -6% -6%;
+  width: 112%;
+  height: 112%;
+  background: 
+    radial-gradient(ellipse 55% 45% at 18% 22%, rgba(255, 255, 245, 0.50) 0%, rgba(255, 255, 245, 0) 70%),
+    radial-gradient(ellipse 50% 55% at 82% 78%, rgba(255, 253, 235, 0.42) 0%, rgba(255, 253, 235, 0) 70%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(246, 249, 238, 0.30) 0%, rgba(246, 249, 238, 0) 80%);
+  mix-blend-mode: soft-light;
   pointer-events: none;
-  opacity: 1 !important;
+  will-change: transform, opacity;
+  animation: dappledSunlight 15s ease-in-out infinite alternate;
 }
 
+@keyframes leafShadowBreeze {
+  0% {
+    transform: translate3d(0px, 0px, 0) scale(1) rotate(0deg);
+  }
+  28% {
+    transform: translate3d(-10px, 7px, 0) scale(1.018) rotate(0.22deg);
+  }
+  62% {
+    transform: translate3d(8px, -7px, 0) scale(1.026) rotate(-0.25deg);
+  }
+  84% {
+    transform: translate3d(-5px, 5px, 0) scale(1.014) rotate(0.12deg);
+  }
+  100% {
+    transform: translate3d(0px, 0px, 0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes dappledSunlight {
+  0% {
+    opacity: 0.35;
+    transform: translate3d(0px, 0px, 0) scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: translate3d(12px, -9px, 0) scale(1.03);
+  }
+  100% {
+    opacity: 0.40;
+    transform: translate3d(-7px, 7px, 0) scale(1.01);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .leaf-shadows-drift,
+  .site-bg-img,
+  .leaf-shadows-light {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+.site-bg-video,
+.site-bg-overlay,
 .site-bg-fixed::after {
-  display: none !important;
-}
-
-.site-bg-overlay {
   display: none !important;
 }
 
