@@ -877,6 +877,52 @@
       white-space: nowrap;
     }
 
+    .facts-3d-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+      z-index: 7;
+      position: relative;
+    }
+
+    .facts-3d-btn {
+      appearance: none;
+      border: 1px solid rgba(22, 42, 27, 0.16);
+      background: rgba(255, 255, 255, 0.76);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #2b3a2a;
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .facts-3d-btn:hover {
+      background: #162A1B;
+      color: #FAF8F5;
+      border-color: #162A1B;
+      transform: translateY(-1px);
+    }
+
+    .facts-3d-btn.is-active {
+      background: #162A1B;
+      color: #FAF8F5;
+      border-color: #162A1B;
+      box-shadow: 0 4px 12px rgba(22, 42, 27, 0.16);
+    }
+
     /* ==========================================================================
        RESPONSIVE BREAKPOINTS (MÓVIL ≤ 760px)
        ========================================================================== */
@@ -1325,6 +1371,16 @@
             <span>Gira 360°</span>
           </div>
         </div>
+        <div class="facts-3d-controls" id="facts3dControls" role="group" aria-label="Controles de vista 3D de la botella">
+          <button type="button" class="facts-3d-btn is-active" data-view="front">Frontal</button>
+          <button type="button" class="facts-3d-btn" data-view="threeQuarter">Vista 3/4</button>
+          <button type="button" class="facts-3d-btn" data-view="back">Posterior</button>
+          <button type="button" class="facts-3d-btn" data-view="cap">Tapa 3D</button>
+          <button type="button" class="facts-3d-btn facts-3d-btn-autorotate is-active" id="btn3dAutoRotate" data-autorotate="true" title="Pausar o reanudar rotación 360°">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.3"/></svg>
+            <span>360°</span>
+          </button>
+        </div>
       </div>
 
     </div>
@@ -1627,6 +1683,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-  <script src="viewer3d.js?v=2.2.0" defer></script>
+  <script src="viewer3d.js?v=3.0.0" defer></script>
 </body>
 </html>
